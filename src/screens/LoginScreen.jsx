@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, View } from 'react-native';
+import { translate } from '../localization/i18n';
 
 class LoginScreen extends React.Component {
 	render() {
@@ -9,7 +10,7 @@ class LoginScreen extends React.Component {
 				alignItems:'center',
 				justifyContent:'center'
 			}}>
-				<Button title="Go to Login"
+				<Button title={translate('menu')}
 						onPress={() => this.props.navigation.navigate('Home')}
 				/>
 			</View>
