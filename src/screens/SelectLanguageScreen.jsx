@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 class SelectLanguageScreen extends React.Component {
 	changeLang = value => {
 		switchLanguage(value, this);
-		this.props.navigation.navigate('Root');
+		this.props.navigation.navigate('Guide');
 	};
 	
 	componentDidMount() {

@@ -6,5 +6,11 @@ export const ru = {
 	selectLanguage: 'Выберите язык',
 	next: 'Далее',
 	run: 'Поехали!',
-	personalArea: 'Личный Кабинет',
+	tabbar: {
+		Home: 'Главная',
+		Menu: 'Меню',
+		PersonalArea: 'Личный Кабинет',
+		Search: 'Поиск',
+		Basket: 'Корзина',
+	},
 };

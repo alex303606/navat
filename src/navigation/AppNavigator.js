@@ -24,6 +24,7 @@ const AppNavigator = createStackNavigator({
 		swipeEnabled: false,
 		defaultNavigationOptions: {
 			header: null,
+			gesturesEnabled: false,
 		},
 	});
 

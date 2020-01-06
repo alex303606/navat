@@ -1,39 +1,27 @@
 import { createAppContainer } from 'react-navigation';
-import LoginScreen from '../screens/LoginScreen';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import HomeScreen from '../screens/HomeScreen';
 import { TabBarBottomContainer } from '../components/TabBarBottomContainer';
+import PersonalAreaNavigator from './PersonalAreaNavigator';
+import HomeNavigator from './HomeNavigator';
+import MenuNavigator from './MenuNavigator';
+import SearchNavigator from './SearchNavigator';
+import BasketNavigator from './BasketNavigator';
 
 const RootNavigation = createBottomTabNavigator({
 		Home: {
-			screen: HomeScreen,
-			navigationOptions: {
-				tabBarLabel: 'Главная',
-			},
+			screen: HomeNavigator,
 		},
 		Menu: {
-			screen: HomeScreen,
-			navigationOptions: {
-				tabBarLabel: 'Меню',
-			},
+			screen: MenuNavigator,
 		},
 		PersonalArea: {
-			screen: LoginScreen,
-			navigationOptions: {
-				tabBarLabel: 'Личный Кабинет',
-			},
+			screen: PersonalAreaNavigator,
 		},
 		Search: {
-			screen: HomeScreen,
-			navigationOptions: {
-				tabBarLabel: 'Поиск',
-			},
+			screen: SearchNavigator,
 		},
 		Basket: {
-			screen: HomeScreen,
-			navigationOptions: {
-				tabBarLabel: 'Корзина',
-			},
+			screen: BasketNavigator,
 		},
 	},
 	{
@@ -43,27 +31,19 @@ const RootNavigation = createBottomTabNavigator({
 		animationEnabled: false,
 		swipeEnabled: false,
 		tabBarOptions: {
-			style: {
-				height: 60,
-				flexDirection: 'row',
-				alignItems: 'stretch',
-			},
-			activeTintColor: 'black',
-			inactiveTintColor: 'black',
-			activeBackgroundColor: 'blue',
-			inactiveBackgroundColor: 'transparent',
+			activeTintColor: '#1E8149',
+			inactiveTintColor: '#C1C0C9',
 			showIcon: false,
 			labelStyle: {
-				fontSize: 14,
-				fontWeight: '600',
+				fontSize: 12,
+				lineHeight: 14,
+				fontWeight: 'normal',
+				marginTop: 4,
 			},
 			tabStyle: {
-				flex: 1,
-				height: 60,
-				flexDirection: 'row',
+				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
-				borderBottomWidth: 4,
 			},
 		},
 		tabBarComponent: TabBarBottomContainer,

@@ -17,11 +17,11 @@ const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		paddingHorizontal: 20,
 		paddingVertical: 20,
 	},
 	imageContainer: {
 		marginBottom: 14,
+		flex: 1,
 		position: 'relative',
 	},
 	image: {
@@ -44,9 +44,9 @@ const styles = StyleSheet.create({
 		marginHorizontal: 11,
 	},
 });
-const GuideScreen = () => {
+const GuideScreen = (props) => {
 	const [count, setCount] = useState(1);
-	const nextGuide = () => endOfGuide ? null : setCount(count + 1);
+	const nextGuide = () => endOfGuide ? props.navigation.navigate('Root') : setCount(count + 1);
 	const endOfGuide = Object.keys(guides).length === count;
 	const renderItem = item => {
 		return (
@@ -65,13 +65,13 @@ const GuideScreen = () => {
 					<Image
 						style={styles.image}
 						source={guides[count]}
-						resizeMode='cover'/>
+						resizeMode='contain'/>
 					<View style={styles.progressBar}>
 						{Object.keys(guides).map(renderItem)}
 					</View>
 				</View>
 				<Button
-					buttonStyle={{backgroundColor: config.mainColor}}
+					buttonStyle={{backgroundColor: config.MainColor}}
 					textStyle={{color: 'white'}}
 					onPress={nextGuide}
 					title={translate(endOfGuide ? 'run' : 'next')}
