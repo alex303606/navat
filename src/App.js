@@ -2,16 +2,16 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import { persistor, store } from './store/configureStore';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import { ActivityIndicator, StyleSheet, View, StatusBar } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import AppNavigator from './navigation/AppNavigator';
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "white",
+		backgroundColor: 'white',
 		justifyContent: 'center',
-		alignItems: 'center'
-	}
+		alignItems: 'center',
+	},
 });
 
 const LoadingView = () => (
@@ -24,11 +24,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<Provider store={store}>
-				<PersistGate loading={<LoadingView />} persistor={persistor}>
-					<StatusBar
-						backgroundColor='red'
-						barStyle='light-content'
-					/>
+				<PersistGate loading={<LoadingView/>} persistor={persistor}>
 					<AppNavigator/>
 				</PersistGate>
 			</Provider>

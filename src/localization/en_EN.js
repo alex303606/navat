@@ -4,5 +4,6 @@
 
 export const en = {
 	selectLanguage: 'Select language',
-	menu: 'Menu'
+	next: 'Next',
+	run: 'Go!',
 };

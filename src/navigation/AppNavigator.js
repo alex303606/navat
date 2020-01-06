@@ -1,15 +1,30 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/LoginScreen';
+import SelectLanguageScreen from '../screens/SelectLanguageScreen';
+import SelectLocationScreen from '../screens/SelectLocationScreen';
+import GuideScreen from '../screens/GuideScreen';
+import RootNavigation from './RootNavigation';
 
 const AppNavigator = createStackNavigator({
-	Home: {
-		screen: HomeScreen,
+		SelectLocation: {
+			screen: SelectLocationScreen,
+		},
+		SelectLanguage: {
+			screen: SelectLanguageScreen,
+		},
+		Guide: {
+			screen: GuideScreen,
+		},
+		Root: {
+			screen: RootNavigation,
+		},
 	},
-	Login: {
-		screen: LoginScreen,
-	},
-});
+	{
+		initialRouteName: 'SelectLocation',
+		swipeEnabled: false,
+		defaultNavigationOptions: {
+			header: null,
+		},
+	});
 
 export default createAppContainer(AppNavigator);

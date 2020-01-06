@@ -18,6 +18,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* NavatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* NavatTests.m */; };
 		5371D6E589F2B1DFE2763A45 /* libPods-Navat-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB68778CF2F91D29FCA6C752 /* libPods-Navat-tvOS.a */; };
 		6A424D82AFE2E0895C22C3D9 /* libPods-Navat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 076554CC38C29C62A9A525CD /* libPods-Navat.a */; };
+		CE0D864723C3903C009EAAB7 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C3896041E45417DB770A0BC /* icomoon.ttf */; };
 		CE9DEF4723A93F9B008DFF74 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9DEF4523A93F9B008DFF74 /* LaunchScreen.xib */; };
 		D12E80EF9DB8D8AEC7546C5A /* libPods-Navat-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5ED2328B40C2C40DD1443A /* libPods-Navat-tvOSTests.a */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		3F31C49BF84BDDFE0C3B0D44 /* Pods-Navat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navat.debug.xcconfig"; path = "Target Support Files/Pods-Navat/Pods-Navat.debug.xcconfig"; sourceTree = "<group>"; };
 		48523D99DF003CC81109D047 /* Pods-Navat-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navat-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Navat-tvOS/Pods-Navat-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		4E00E899A7740B6C116E6464 /* Pods-NavatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavatTests.debug.xcconfig"; path = "Target Support Files/Pods-NavatTests/Pods-NavatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5C3896041E45417DB770A0BC /* icomoon.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icomoon.ttf; path = ../src/assets/fonts/icomoon.ttf; sourceTree = "<group>"; };
 		5E940BB8968101BC06C4E0B2 /* Pods-Navat-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navat-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Navat-tvOS/Pods-Navat-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		88C2485B4A9F973ACB9E9BB3 /* Pods-Navat-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navat-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Navat-tvOSTests/Pods-Navat-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9D4E0030D44E2C5794753521 /* Pods-NavatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavatTests.release.xcconfig"; path = "Target Support Files/Pods-NavatTests/Pods-NavatTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				7568821E698500A2600F5B77 /* Pods */,
+				A722962592A842F9AEE864DF /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -195,6 +198,14 @@
 				2D02E4901E0B4A5D006451C7 /* Navat-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A722962592A842F9AEE864DF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5C3896041E45417DB770A0BC /* icomoon.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +240,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				9DB465FEB468D2B0B020C43C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -336,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0D864723C3903C009EAAB7 /* icomoon.ttf in Resources */,
 				CE9DEF4723A93F9B008DFF74 /* LaunchScreen.xib in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -429,54 +440,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9DB465FEB468D2B0B020C43C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Navat/Pods-Navat-resources.sh",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Navat/Pods-Navat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DC3FCE1367C706431B189116 /* [CP] Check Pods Manifest.lock */ = {

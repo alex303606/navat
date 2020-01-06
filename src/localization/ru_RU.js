@@ -4,5 +4,7 @@
 
 export const ru = {
 	selectLanguage: 'Выберите язык',
-	menu: 'Меню'
+	next: 'Далее',
+	run: 'Поехали!',
+	personalArea: 'Личный Кабинет',
 };
