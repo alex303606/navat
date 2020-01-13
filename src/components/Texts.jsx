@@ -14,7 +14,7 @@ const styles = ReactNative.StyleSheet.create({
 	h3: {
 		fontSize: 14,
 		lineHeight: 17,
-		fontWeight: '600',
+		fontWeight: 'bold',
 	},
 	text: {
 		fontSize: 18,

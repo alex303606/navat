@@ -9,12 +9,14 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	label: {
-		marginBottom: 12,
+		marginBottom: 10,
 	},
 	input: {
 		height: 30,
 		paddingHorizontal: 10,
 		flexGrow: 1,
+		fontSize: 14,
+		padding: 0,
 	},
 	inputWrapper: {
 		borderWidth: 1,
@@ -34,7 +36,7 @@ const Input = props => {
 					value={props.value}
 					onChangeText={props.onChangeText}
 					underlineColorAndroid='transparent'
-					secureTextEntry={props.secure}
+					secureTextEntry={!!props.secure}
 				/>
 				{
 					props.renderRightButton && props.renderRightButton()

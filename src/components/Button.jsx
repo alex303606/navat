@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 const Button = props => {
 	return (
 		<TouchableOpacity
-			activeOpacity={0.7}
+			activeOpacity={0.3}
 			style={[styles.button, props.buttonStyle]}
 			onPress={props.onPress}>
 			<Text style={props.textStyle}>{props.title}</Text>
