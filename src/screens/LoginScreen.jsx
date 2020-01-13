@@ -124,7 +124,7 @@ class LoginScreen extends Component {
 			onPress={this.changePasswordSecure}>
 			<IonIcon
 				style={styles.iconEye}
-				name="ios-eye-off"
+				name={this.state.passwordSecure ? 'ios-eye-off' : 'ios-eye'}
 				size={30}
 				color={config.GreyColor}
 			/>
