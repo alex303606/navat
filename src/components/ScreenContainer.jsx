@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import config from '../../config';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
 	page: {
@@ -17,11 +18,15 @@ const ScreenContainer = props => {
 				backgroundColor={config.BackgroundColor}
 				barStyle='dark-content'
 			/>
-			<View style={styles.page}>
+			<View style={[styles.page, props.style]}>
 				{props.children}
 			</View>
 		</SafeAreaView>
 	);
+};
+
+ScreenContainer.propTypes = {
+	style: PropTypes.object,
 };
 
 export default ScreenContainer;

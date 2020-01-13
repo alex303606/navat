@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		paddingHorizontal: 15,
 		backgroundColor: 'white',
-		paddingVertical: 7,
 	},
 	tabbar: {
 		shadowColor: '#000',

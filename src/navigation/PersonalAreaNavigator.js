@@ -1,22 +1,22 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 import { translate } from '../localization/i18n';
 import Header from '../components/Header';
-import HomeScreen from '../screens/HomeScreen';
 import { View } from 'react-native';
 import React from 'react';
+import LoginScreen from '../screens/LoginScreen';
 
 const PersonalAreaNavigator = createStackNavigator({
-		Login: {
+		Profile: {
 			screen: LoginScreen,
 		},
-		HomeScreen: HomeScreen
+		Login: RegisterScreen
 	},
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'Login',
+		initialRouteName: 'Profile',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.PersonalArea'),

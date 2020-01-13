@@ -6,6 +6,7 @@ import HomeNavigator from './HomeNavigator';
 import MenuNavigator from './MenuNavigator';
 import SearchNavigator from './SearchNavigator';
 import BasketNavigator from './BasketNavigator';
+import config from '../../config';
 
 const RootNavigation = createBottomTabNavigator({
 		Home: {
@@ -25,13 +26,13 @@ const RootNavigation = createBottomTabNavigator({
 		},
 	},
 	{
-		initialRouteName: 'Home',
+		initialRouteName: 'PersonalArea',
 		backBehavior: 'none',
 		lazy: true,
 		animationEnabled: false,
 		swipeEnabled: false,
 		tabBarOptions: {
-			activeTintColor: '#1E8149',
+			activeTintColor: config.MainColor,
 			inactiveTintColor: '#C1C0C9',
 			showIcon: false,
 			labelStyle: {
@@ -44,6 +45,7 @@ const RootNavigation = createBottomTabNavigator({
 				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
+				height: config.TabBarHeight,
 			},
 		},
 		tabBarComponent: TabBarBottomContainer,

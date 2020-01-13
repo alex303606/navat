@@ -1,6 +1,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 import { translate } from '../localization/i18n';
 import Header from '../components/Header';
 import HomeScreen from '../screens/HomeScreen';
@@ -9,7 +9,7 @@ import React from 'react';
 
 const BasketNavigator = createStackNavigator({
 		Login: {
-			screen: LoginScreen,
+			screen: RegisterScreen,
 		},
 		HomeScreen: HomeScreen
 	},
