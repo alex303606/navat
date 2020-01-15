@@ -29,7 +29,7 @@ const ScreenContainer = props => {
 				{props.children}
 			</View>
 			<KeyboardSpacer
-				style={{backgroundColor: 'rgb(241,241,242)'}}
+				style={{backgroundColor: 'white'}}
 				topSpacing={space}
 			/>
 		</SafeAreaView>
