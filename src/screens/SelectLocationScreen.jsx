@@ -2,9 +2,11 @@ import React from 'react';
 import { Image, ImageBackground, SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import { H1 } from '../components/Texts';
 import Button from '../components/Button';
-
-const backGround = require('../assets/images/background.png');
-const logo = require('../assets/images/logo.png');
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { selectLocation } from '../store/actions/profile';
+import backGround from '../assets/images/background.png';
+import logo from '../assets/images/logo.png';
 const styles = StyleSheet.create({
 	page: {
 		flex: 1,
@@ -33,6 +35,11 @@ const styles = StyleSheet.create({
 });
 
 class SelectLocationScreen extends React.Component {
+	selectLocation = location => () => {
+		this.props.selectLocation(location);
+		this.props.navigation.navigate('SelectLanguage');
+	};
+	
 	render() {
 		return (
 			<ImageBackground source={backGround} style={styles.backGround}>
@@ -48,12 +55,12 @@ class SelectLocationScreen extends React.Component {
 							<Button
 								buttonStyle={{marginBottom: 18}}
 								title='Алматы'
-								onPress={() => this.props.navigation.navigate('SelectLanguage')}
+								onPress={this.selectLocation('KZ')}
 							/>
 							<Button
 								style={{backGroundColor: 'white'}}
 								title='Бишкек'
-								onPress={() => this.props.navigation.navigate('SelectLanguage')}
+								onPress={this.selectLocation('KG')}
 							/>
 						</View>
 					</View>
@@ -63,4 +70,11 @@ class SelectLocationScreen extends React.Component {
 	}
 }
 
-export default SelectLocationScreen;
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			selectLocation,
+		},
+		dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(SelectLocationScreen);

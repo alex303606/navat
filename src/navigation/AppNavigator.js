@@ -20,7 +20,7 @@ const AppNavigator = createStackNavigator({
 		},
 	},
 	{
-		initialRouteName: 'Root',
+		initialRouteName: 'SelectLocation',
 		swipeEnabled: false,
 		defaultNavigationOptions: {
 			header: null,

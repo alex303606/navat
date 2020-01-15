@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { H1 } from '../components/Texts';
 import ScreenContainer from '../components/ScreenContainer';
 import Button from '../components/Button';
-import { TextInput } from 'react-native';
+import { Image, TextInput } from 'react-native';
+import { connect } from 'react-redux';
+import { countries } from '../../config';
 
 class RegisterScreen extends Component {
 	emptyMethod = () => null;
@@ -20,6 +22,7 @@ class RegisterScreen extends Component {
 		return (
 			<ScreenContainer>
 				<H1 style={{textAlign: 'center'}}>Register Screen</H1>
+				<Image style={{width: 100, height: 60}} source={countries[this.props.location].flag} resizeMode='contain'/>
 				<TextInput
 					style={{borderWidth: 1, height: 30}}
 					value={this.state.value}
@@ -35,4 +38,8 @@ class RegisterScreen extends Component {
 	}
 }
 
-export default RegisterScreen;
+const mapStateToProps = state => ({
+	location: state.profile.location,
+});
+
+export default connect(mapStateToProps, null)(RegisterScreen);
