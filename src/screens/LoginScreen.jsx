@@ -117,6 +117,11 @@ class LoginScreen extends Component {
 	
 	changePasswordSecure = () => this.setState({passwordSecure: !this.state.passwordSecure});
 	
+	goToRegistration = () => {
+		this.toggleModal();
+		this.props.navigation.navigate('Register');
+	};
+	
 	renderChangePasswordSecureButton = () => (
 		<TouchableOpacity
 			style={styles.rightBtn}
@@ -124,7 +129,7 @@ class LoginScreen extends Component {
 			onPress={this.changePasswordSecure}>
 			<IonIcon
 				style={styles.iconEye}
-				name={this.state.passwordSecure ? 'ios-eye-off' : 'ios-eye'}
+				name={this.state.passwordSecure ? 'ios-eye' : 'ios-eye-off'}
 				size={30}
 				color={config.GreyColor}
 			/>
@@ -201,7 +206,7 @@ class LoginScreen extends Component {
 							<Button
 								buttonStyle={{backgroundColor: config.InactiveColor}}
 								textStyle={styles.textStyle}
-								onPress={this.emptyMethod}
+								onPress={this.goToRegistration}
 								title={translate('signUp')}
 							/>
 						</View>
