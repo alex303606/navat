@@ -11,8 +11,12 @@ export default {
 export const countries = {
 	KG: {
 		flag: require('./src/assets/images/kg.jpg'),
+		code: '996',
+		phoneMask: '999 99-99-99',
 	},
 	KZ: {
 		flag: require('./src/assets/images/kz.jpg'),
+		code: '7',
+		phoneMask: '999 999-99-99',
 	},
 };

@@ -11,12 +11,12 @@ const PersonalAreaNavigator = createStackNavigator({
 		Profile: {
 			screen: LoginScreen,
 		},
-		Register: RegisterScreen
+		Register: RegisterScreen,
 	},
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'Register',
+		initialRouteName: 'Profile',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.PersonalArea'),

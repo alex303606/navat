@@ -1,34 +1,42 @@
 import React, { Component } from 'react';
 import { H1, H3, Label, SmallText } from '../components/Texts';
 import ScreenContainer from '../components/ScreenContainer';
-import { Keyboard, StyleSheet, TouchableOpacity, View, ScrollView } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ScrollView } from 'react-native';
 import Button from '../components/Button';
 import config from '../../config';
 import { translate } from '../localization/i18n';
-import CustomModal from '../components/CustomModal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Input from '../components/Input';
+import Shadow from '../components/Shadow';
 
 Icon.loadFont();
 IonIcon.loadFont();
 
 const styles = StyleSheet.create({
+	page: {
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'flex-end',
+	},
 	textStyle: {
 		fontWeight: '500',
 		fontSize: 15,
 		lineHeight: 18,
 		color: 'white',
 	},
-	page: {
-		flex: 1,
-		paddingVertical: 25,
-	},
 	container: {
 		flex: 1,
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	modal: {
+		backgroundColor: 'white',
+		paddingHorizontal: 15,
+		paddingVertical: 25,
+		borderRadius: 8,
+		flex: 1,
 	},
 	modalHeader: {
 		marginBottom: 20,
@@ -65,9 +73,19 @@ const styles = StyleSheet.create({
 		marginBottom: 23,
 	},
 	footer: {
+		flexGrow: 1,
 		flexDirection: 'column',
 		justifyContent: 'flex-end',
 		paddingTop: 20,
+	},
+	content: {
+		flex: 1,
+		paddingVertical: 25,
+	},
+	modalWrap: {
+		paddingVertical: 5,
+		flex: 1,
+		marginTop: 10,
 	},
 });
 
@@ -77,34 +95,6 @@ class LoginScreen extends Component {
 		passwordSecure: true,
 		login: '',
 		password: '',
-		keyboardIsVisible: false,
-	};
-	
-	keyboardDidShowListener;
-	keyboardDidHideListener;
-	
-	componentDidMount() {
-		this.keyboardDidShowListener = Keyboard.addListener(
-			'keyboardDidShow',
-			this.keyboardDidShow,
-		);
-		this.keyboardDidHideListener = Keyboard.addListener(
-			'keyboardDidHide',
-			this.keyboardDidHide,
-		);
-	}
-	
-	componentWillUnmount() {
-		this.keyboardDidShowListener.remove();
-		this.keyboardDidHideListener.remove();
-	}
-	
-	keyboardDidShow = () => {
-		this.setState({keyboardIsVisible: true});
-	};
-	
-	keyboardDidHide = () => {
-		this.setState({keyboardIsVisible: false});
 	};
 	
 	emptyMethod = () => null;
@@ -139,79 +129,83 @@ class LoginScreen extends Component {
 	render() {
 		return (
 			<ScreenContainer style={styles.page}>
-				<View style={styles.container}>
-					<H3 style={{marginBottom: 10}}>
-						{translate('youAreNotLoggedIn')}
-					</H3>
-					<SmallText style={{textAlign: 'center'}}>
-						{translate('loginOrRegister')}
-					</SmallText>
-				</View>
-				<Button
-					buttonStyle={{backgroundColor: config.MainColor}}
-					textStyle={styles.textStyle}
-					onPress={this.toggleModal}
-					title={translate('enterOrRegister')}
-				/>
-				<CustomModal
-					modalVisible={this.state.modalVisible}
-					setModalVisible={this.toggleModal}
-					modalStyle={{flex: this.state.keyboardIsVisible ? 1 : 0.85}}
-					keyboardIsVisible={this.state.keyboardIsVisible}
-				>
-					<View style={styles.modalHeader}>
-						<TouchableOpacity
-							style={styles.btnClose}
-							activeOpacity={0.7}
-							onPress={this.toggleModal}>
-							<Icon
-								style={styles.iconClose}
-								name="close"
-								size={36}
-								color={config.MainColor}
-							/>
-						</TouchableOpacity>
+				{!this.state.modalVisible &&
+				<View style={styles.content}>
+					<View style={styles.container}>
+						<H3 style={{marginBottom: 10}}>
+							{translate('youAreNotLoggedIn')}
+						</H3>
+						<SmallText style={{textAlign: 'center'}}>
+							{translate('loginOrRegister')}
+						</SmallText>
 					</View>
-					<ScrollView
-						scrollEnabled={true}
-						contentContainerStyle={{
-							flex: this.state.keyboardIsVisible ? 0 : 1,
-						}}
-					>
-						<H1 style={styles.modalTitle}>{translate('enter')}</H1>
-						<Input
-							onChangeText={this.changeLogin}
-							value={this.state.login}
-							label={translate('loginText')}
-						/>
-						<Input
-							onChangeText={this.changePassword}
-							value={this.state.password}
-							label={translate('password')}
-							secure={this.state.passwordSecure}
-							renderRightButton={this.renderChangePasswordSecureButton}
-						/>
-						<TouchableOpacity
-							style={styles.remind}
-							activeOpacity={0.7}>
-							<Label style={{color: config.MainColor}}>{translate('remind')}</Label>
-						</TouchableOpacity>
-						<Button
-							buttonStyle={{backgroundColor: config.MainColor}}
-							textStyle={styles.textStyle}
-							onPress={this.emptyMethod}
-							title={translate('signIn')}
-						/>
-						<View style={[styles.footer, {flex: this.state.keyboardIsVisible ? 0 : 1}]}>
-							<Button
-								buttonStyle={{backgroundColor: config.InactiveColor}}
-								textStyle={styles.textStyle}
-								onPress={this.goToRegistration}
-								title={translate('signUp')}
-							/>
+					< Button
+						buttonStyle={{backgroundColor: config.MainColor}}
+						textStyle={styles.textStyle}
+						onPress={this.toggleModal}
+						title={translate('enterOrRegister')}
+					/>
+				</View>
+				}
+				
+				{this.state.modalVisible &&
+				<View style={styles.modalWrap}>
+					<Shadow style={styles.modal}>
+						<View style={styles.modalHeader}>
+							<TouchableOpacity
+								style={styles.btnClose}
+								activeOpacity={0.7}
+								onPress={this.toggleModal}>
+								<Icon
+									style={styles.iconClose}
+									name="close"
+									size={36}
+									color={config.MainColor}
+								/>
+							</TouchableOpacity>
 						</View>
-					</ScrollView>
-				</CustomModal>
+						<ScrollView
+							keyboardShouldPersistTaps='handled'
+							scrollEnabled={true}
+							contentContainerStyle={{flexGrow: 1}}
+						>
+							<H1 style={styles.modalTitle}>{translate('enter')}</H1>
+							<Input
+								autoFocus={true}
+								onChangeText={this.changeLogin}
+								value={this.state.login}
+								label={translate('loginText')}
+							/>
+							<Input
+								onChangeText={this.changePassword}
+								value={this.state.password}
+								label={translate('password')}
+								secure={this.state.passwordSecure}
+								renderRightButton={this.renderChangePasswordSecureButton}
+							/>
+							<TouchableOpacity
+								style={styles.remind}
+								activeOpacity={0.7}>
+								<Label style={{color: config.MainColor}}>{translate('remind')}</Label>
+							</TouchableOpacity>
+							<Button
+								buttonStyle={{backgroundColor: config.MainColor}}
+								textStyle={styles.textStyle}
+								onPress={this.emptyMethod}
+								title={translate('signIn')}
+							/>
+							<View style={styles.footer}>
+								<Button
+									buttonStyle={{backgroundColor: config.InactiveColor}}
+									textStyle={[styles.textStyle, {color: config.MainColor}]}
+									onPress={this.goToRegistration}
+									title={translate('signUp')}
+								/>
+							</View>
+						</ScrollView>
+					</Shadow>
+				</View>
+				}
 			</ScreenContainer>
 		);
 	}

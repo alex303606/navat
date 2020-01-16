@@ -5,7 +5,7 @@ import ScreenContainer from '../components/ScreenContainer';
 const HomeScreen = () => {
 	return (
 		<ScreenContainer>
-			<H1 style={{textAlign: 'center'}}>Second Screen</H1>
+			<H1 style={{textAlign: 'center'}}>Empty Screen</H1>
 		</ScreenContainer>
 	);
 };

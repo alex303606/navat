@@ -1,6 +1,5 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import RegisterScreen from '../screens/RegisterScreen';
 import { translate } from '../localization/i18n';
 import Header from '../components/Header';
 import HomeScreen from '../screens/HomeScreen';
@@ -8,15 +7,14 @@ import { View } from 'react-native';
 import React from 'react';
 
 const MenuNavigator = createStackNavigator({
-		Login: {
-			screen: RegisterScreen,
+		Home: {
+			screen: HomeScreen,
 		},
-		HomeScreen: HomeScreen
 	},
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'Login',
+		initialRouteName: 'Home',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.Menu'),

@@ -28,8 +28,14 @@ const Button = props => {
 Button.propTypes = {
 	onPress: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,
-	buttonStyle: PropTypes.object,
-	textStyle: PropTypes.object,
+	buttonStyle: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.array,
+	]),
+	textStyle: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.array,
+	]),
 };
 
 export default Button;

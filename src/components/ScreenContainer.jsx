@@ -9,14 +9,20 @@ const styles = StyleSheet.create({
 	page: {
 		flex: 1,
 		backgroundColor: config.BackgroundColor,
+	},
+	innerPage: {
+		flex: 1,
+		backgroundColor: config.BackgroundColor,
 		paddingHorizontal: 10,
+		flexDirection: 'column',
+		justifyContent: 'flex-start',
 	},
 });
 
 const ScreenContainer = props => {
 	const space = Platform.select({
 		ios: -(config.TabBarHeight + getBottomSpace()),
-		android: -35,
+		android: -40,
 	});
 	
 	return (
@@ -25,7 +31,7 @@ const ScreenContainer = props => {
 				backgroundColor={config.BackgroundColor}
 				barStyle='dark-content'
 			/>
-			<View style={[styles.page, props.style]}>
+			<View style={[styles.innerPage, props.style]}>
 				{props.children}
 			</View>
 			<KeyboardSpacer

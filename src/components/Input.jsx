@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 10,
 		flexGrow: 1,
 		fontSize: 14,
-		padding: 0,
+		paddingVertical: 0,
 	},
 	inputWrapper: {
 		borderWidth: 1,
@@ -32,6 +32,7 @@ const Input = props => {
 			<Label style={styles.label}>{props.label}</Label>
 			<View style={styles.inputWrapper}>
 				<TextInput
+					autoFocus={props.autoFocus}
 					style={styles.input}
 					value={props.value}
 					onChangeText={props.onChangeText}
@@ -52,6 +53,7 @@ Input.propTypes = {
 	value: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	secure: PropTypes.bool,
+	autoFocus: PropTypes.bool,
 };
 
 export default Input;

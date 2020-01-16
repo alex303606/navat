@@ -26,7 +26,7 @@ const RootNavigation = createBottomTabNavigator({
 		},
 	},
 	{
-		initialRouteName: 'PersonalArea',
+		initialRouteName: 'Home',
 		backBehavior: 'none',
 		lazy: true,
 		animationEnabled: false,

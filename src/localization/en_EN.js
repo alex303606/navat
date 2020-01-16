@@ -15,6 +15,8 @@ export const en = {
 	signIn: 'Sign in',
 	signUp: 'Sign up',
 	enter: 'Sign in',
+	enterYourPhone: 'Enter your \n phone number',
+	SmsInfo: 'After that, an SMS with an authorization code will be sent to the phone number you specified for confirmation.',
 	tabbar: {
 		Home: 'Home',
 		Menu: 'Menu',
