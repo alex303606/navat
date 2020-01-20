@@ -1,20 +1,28 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import RegisterScreen from '../screens/RegisterScreen';
 import { translate } from '../localization/i18n';
 import Header from '../components/Header';
 import { View } from 'react-native';
 import React from 'react';
-import HomeScreen from '../screens/HomeScreen';
+import LoginScreen from '../screens/LoginScreen';
+import ConfirmCodeScreen from '../screens/ConfirmCodeScreen';
 
-const PersonalAreaNavigator = createStackNavigator({
-		Home: {
-			screen: HomeScreen,
+const AuthNavigator = createStackNavigator({
+		Profile: {
+			screen: LoginScreen,
+		},
+		Register: {
+			screen: RegisterScreen,
+		},
+		ConfirmCode: {
+			screen: ConfirmCodeScreen,
 		},
 	},
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'Home',
+		initialRouteName: 'Profile',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.PersonalArea'),
@@ -28,4 +36,4 @@ const PersonalAreaNavigator = createStackNavigator({
 		header: null,
 	});
 
-export default createAppContainer(PersonalAreaNavigator);
+export default createAppContainer(AuthNavigator);

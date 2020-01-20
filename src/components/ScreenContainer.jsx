@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
 
 const ScreenContainer = props => {
 	const space = Platform.select({
-		ios: -(config.TabBarHeight + getBottomSpace()),
-		android: -40,
+		ios: -(getBottomSpace()),
+		android: 25,
 	});
 	
 	return (
@@ -35,7 +35,7 @@ const ScreenContainer = props => {
 				{props.children}
 			</View>
 			<KeyboardSpacer
-				style={{backgroundColor: 'white'}}
+				style={{backgroundColor: config.BackgroundColor}}
 				topSpacing={space}
 			/>
 		</SafeAreaView>

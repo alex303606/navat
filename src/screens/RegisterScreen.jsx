@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Bold, H1, Text } from '../components/Texts';
 import ScreenContainer from '../components/ScreenContainer';
 import Button from '../components/Button';
-import ReactNative, { Image, ScrollView, TextInput, View } from 'react-native';
+import ReactNative, { Image, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import { TextInputMask } from 'react-native-masked-text';
-import config, { countries } from '../../config';
+import { countries } from '../../config';
 import Shadow from '../components/Shadow';
 import { translate } from '../localization/i18n';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 const styles = ReactNative.StyleSheet.create({
 	page: {
@@ -65,14 +66,29 @@ const styles = ReactNative.StyleSheet.create({
 });
 
 class RegisterScreen extends Component {
-	emptyMethod = () => null;
 	state = {
 		value: '',
+		phoneIsValid: false,
+		phoneNumber: '',
+	};
+	
+	phoneIsValid = () => {
+		const phoneNumber = parsePhoneNumberFromString(`+${countries[this.props.location].code} ${this.state.value}`);
+		if (phoneNumber) {
+			const phoneIsValid = phoneNumber.isValid() && phoneNumber.number && phoneNumber.country && phoneNumber.country === this.props.location;
+			if (phoneIsValid) {
+				this.setState({phoneNumber: phoneNumber.number});
+			}
+			return phoneIsValid;
+		}
+		return false;
 	};
 	
 	changeValue = value => {
-		return this.setState({value});
+		return this.setState({value}, () => this.setState({phoneIsValid: this.phoneIsValid()}));
 	};
+	
+	confirmCode = () => this.props.navigation.navigate('ConfirmCode');
 	
 	render() {
 		return (
@@ -81,6 +97,7 @@ class RegisterScreen extends Component {
 					<ScrollView
 						scrollEnabled={true}
 						contentContainerStyle={{flexGrow: 1}}
+						keyboardShouldPersistTaps='handled'
 					>
 						<H1 style={styles.title}>{translate('enterYourPhone')}</H1>
 						<View style={styles.phone}>
@@ -106,9 +123,8 @@ class RegisterScreen extends Component {
 						<Bold style={styles.info}>{translate('SmsInfo')}</Bold>
 						<View style={styles.footer}>
 							<Button
-								buttonStyle={{backgroundColor: config.InactiveColor}}
-								textStyle={{color: config.MainColor}}
-								onPress={() => this.emptyMethod}
+								disabled={!this.state.phoneIsValid}
+								onPress={this.confirmCode}
 								title='Получить код'/>
 						</View>
 					</ScrollView>

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 class SelectLanguageScreen extends React.Component {
 	changeLang = value => {
 		switchLanguage(value, this);
-		this.props.navigation.navigate('Guide');
+		this.props.navigation.navigate('Auth');
 	};
 	
 	componentDidMount() {
@@ -62,23 +62,28 @@ class SelectLanguageScreen extends React.Component {
 							<H1 style={styles.title}>Выберите язык</H1>
 							<H1 style={[styles.title, {marginBottom: 13}]}>Select language</H1>
 							<Button
-								buttonStyle={{marginBottom: 18}}
+								textStyle={{color: 'black'}}
+								buttonStyle={{backgroundColor: 'white', marginTop: 18}}
 								onPress={() => this.changeLang('ru')}
 								title='Русский'/>
 							<Button
-								buttonStyle={{marginBottom: 18}}
+								textStyle={{color: 'black'}}
+								buttonStyle={{backgroundColor: 'white', marginTop: 18}}
 								onPress={() => this.changeLang('en')}
 								title='English'/>
 							<Button
-								buttonStyle={{marginBottom: 18}}
+								textStyle={{color: 'black'}}
+								buttonStyle={{backgroundColor: 'white', marginTop: 18}}
 								onPress={() => this.changeLang('kg')}
 								title='Кыргыз тили'/>
 							<Button
-								buttonStyle={{marginBottom: 18}}
+								textStyle={{color: 'black'}}
+								buttonStyle={{backgroundColor: 'white', marginTop: 18}}
 								onPress={() => this.changeLang('kz')}
 								title='Қазақ тілі'/>
 							<Button
-								buttonStyle={{marginBottom: 18}}
+								textStyle={{color: 'black'}}
+								buttonStyle={{backgroundColor: 'white', marginTop: 18}}
 								onPress={() => this.changeLang('tr')}
 								title='Türk dili'/>
 						</View>

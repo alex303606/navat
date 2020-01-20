@@ -53,13 +53,15 @@ class SelectLocationScreen extends React.Component {
 						<View style={styles.containerInner}>
 							<H1 style={styles.title}>Выберите город</H1>
 							<Button
-								buttonStyle={{marginBottom: 18}}
+								buttonStyle={{marginBottom: 18, backgroundColor: 'white'}}
 								title='Алматы'
+								textStyle={{color: 'black'}}
 								onPress={this.selectLocation('KZ')}
 							/>
 							<Button
-								style={{backGroundColor: 'white'}}
+								buttonStyle={{backgroundColor: 'white'}}
 								title='Бишкек'
+								textStyle={{color: 'black'}}
 								onPress={this.selectLocation('KG')}
 							/>
 						</View>

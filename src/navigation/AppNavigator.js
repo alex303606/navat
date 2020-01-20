@@ -4,6 +4,7 @@ import SelectLanguageScreen from '../screens/SelectLanguageScreen';
 import SelectLocationScreen from '../screens/SelectLocationScreen';
 import GuideScreen from '../screens/GuideScreen';
 import RootNavigation from './RootNavigation';
+import AuthNavigator from './AuthNavigator';
 
 const AppNavigator = createStackNavigator({
 		SelectLocation: {
@@ -14,6 +15,9 @@ const AppNavigator = createStackNavigator({
 		},
 		Guide: {
 			screen: GuideScreen,
+		},
+		Auth: {
+			screen: AuthNavigator,
 		},
 		Root: {
 			screen: RootNavigation,

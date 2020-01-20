@@ -97,7 +97,7 @@ class LoginScreen extends Component {
 		password: '',
 	};
 	
-	emptyMethod = () => null;
+	signInHandler = () => this.props.navigation.navigate('Guide');
 	
 	toggleModal = () => this.setState({modalVisible: !this.state.modalVisible});
 	
@@ -147,7 +147,6 @@ class LoginScreen extends Component {
 					/>
 				</View>
 				}
-				
 				{this.state.modalVisible &&
 				<View style={styles.modalWrap}>
 					<Shadow style={styles.modal}>
@@ -189,15 +188,13 @@ class LoginScreen extends Component {
 								<Label style={{color: config.MainColor}}>{translate('remind')}</Label>
 							</TouchableOpacity>
 							<Button
-								buttonStyle={{backgroundColor: config.MainColor}}
 								textStyle={styles.textStyle}
-								onPress={this.emptyMethod}
+								onPress={this.signInHandler}
 								title={translate('signIn')}
 							/>
 							<View style={styles.footer}>
 								<Button
-									buttonStyle={{backgroundColor: config.InactiveColor}}
-									textStyle={[styles.textStyle, {color: config.MainColor}]}
+									textStyle={styles.textStyle}
 									onPress={this.goToRegistration}
 									title={translate('signUp')}
 								/>

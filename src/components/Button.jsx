@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Text } from './Texts';
+import config from '../../config';
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: 'white',
+		backgroundColor: config.MainColor,
 		height: 35,
 		borderRadius: 5,
 		width: '100%',
@@ -15,12 +16,24 @@ const styles = StyleSheet.create({
 });
 
 const Button = props => {
+	const pressHandler = () => props.disabled ? null : props.onPress();
+	
 	return (
 		<TouchableOpacity
 			activeOpacity={0.3}
-			style={[styles.button, props.buttonStyle]}
-			onPress={props.onPress}>
-			<Text style={props.textStyle}>{props.title}</Text>
+			style={[
+				styles.button,
+				{backgroundColor: config.InactiveColorFunc(props.disabled ? 0.3 : 1)},
+				props.buttonStyle,
+			]}
+			onPress={pressHandler}>
+			<Text
+				style={[
+					{color: props.disabled ? config.MainColor : 'white'},
+					props.textStyle,
+				]}>
+				{props.title}
+			</Text>
 		</TouchableOpacity>
 	);
 };
@@ -28,6 +41,7 @@ const Button = props => {
 Button.propTypes = {
 	onPress: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,
+	disabled: PropTypes.bool,
 	buttonStyle: PropTypes.oneOfType([
 		PropTypes.object,
 		PropTypes.array,
