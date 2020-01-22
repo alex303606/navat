@@ -7,14 +7,14 @@ import React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 
 const PersonalAreaNavigator = createStackNavigator({
-		Home: {
+		HomeScreen: {
 			screen: HomeScreen,
 		},
 	},
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'Home',
+		initialRouteName: 'HomeScreen',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.PersonalArea'),

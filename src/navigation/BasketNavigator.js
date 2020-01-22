@@ -7,14 +7,14 @@ import { View } from 'react-native';
 import React from 'react';
 
 const BasketNavigator = createStackNavigator({
-		Home: {
+		HomeScreen: {
 			screen: HomeScreen,
 		},
 	},
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'Home',
+		initialRouteName: 'HomeScreen',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.Basket'),
