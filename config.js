@@ -3,6 +3,7 @@ export default {
 	InitLocation: 'KG',
 	TabBarHeight: 64,
 	MainColor: '#1E8149',
+	LoaderColor: '#0000ff',
 	InactiveColorFunc: (opacity) => `rgba(30, 129, 73, ${opacity})`,
 	BackgroundColor: '#F5F5F5',
 	GreyColor: '#C1C0C9',

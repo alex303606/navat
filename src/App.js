@@ -4,6 +4,7 @@ import { persistor, store } from './store/configureStore';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import AppNavigationState from './navigation/AppNavigationState';
+import config from '../config';
 
 const styles = StyleSheet.create({
 	container: {
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
 
 const LoadingView = () => (
 	<View style={styles.container}>
-		<ActivityIndicator size="large" color="#0000ff"/>
+		<ActivityIndicator size="large" color={config.LoaderColor}/>
 	</View>
 );
 

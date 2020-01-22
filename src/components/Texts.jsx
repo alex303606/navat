@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactNative from 'react-native';
-import {Platform} from 'react-native';
+import { Platform } from 'react-native';
 
 const styles = ReactNative.StyleSheet.create({
 	font: {
@@ -10,6 +10,14 @@ const styles = ReactNative.StyleSheet.create({
 	h1: {
 		fontSize: 24,
 		lineHeight: 29,
+		fontWeight: Platform.select({
+			android: 'bold',
+			ios: '600',
+		}),
+	},
+	h2: {
+		fontSize: 20,
+		lineHeight: 24,
 		fontWeight: Platform.select({
 			android: 'bold',
 			ios: '600',
@@ -42,11 +50,23 @@ const styles = ReactNative.StyleSheet.create({
 			android: 'bold',
 			ios: '500',
 		}),
-	}
+	},
+	littleText: {
+		fontSize: 12,
+		lineHeight: 14,
+		fontWeight: Platform.select({
+			android: 'normal',
+			ios: '600',
+		}),
+	},
 });
 
 const H1 = props => (
 	<ReactNative.Text {...props} style={[styles.font, styles.h1, props.style]}/>
+);
+
+const H2 = props => (
+	<ReactNative.Text {...props} style={[styles.font, styles.h2, props.style]}/>
 );
 
 const H3 = props => (
@@ -69,11 +89,17 @@ const Bold = props => (
 	<ReactNative.Text {...props} style={[styles.font, styles.bold, props.style]}/>
 );
 
+const LittleText = props => (
+	<ReactNative.Text {...props} style={[styles.font, styles.littleText, props.style]}/>
+);
+
 export {
 	H1,
+	H2,
 	H3,
 	Text,
 	SmallText,
 	Label,
 	Bold,
+	LittleText,
 };

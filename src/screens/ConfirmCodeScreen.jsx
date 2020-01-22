@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import { Alert, View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import CodeFiled from 'react-native-confirmation-code-field';
 import { H1, Text } from '../components/Texts';
 import Shadow from '../components/Shadow';
