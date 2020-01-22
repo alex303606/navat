@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { H2, Label, LittleText } from '../components/Texts';
-import ScreenContainer from '../components/ScreenContainer';
+import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import IonIcon from 'react-native-vector-icons/Ionicons';
+import Stars from 'react-native-stars';
 import ReactNative, {
 	ImageBackground,
 	FlatList,
@@ -8,12 +10,10 @@ import ReactNative, {
 	TouchableOpacity,
 	View,
 } from 'react-native';
-import Stars from 'react-native-stars';
 import CustomIcon from '../components/CustomIcon';
 import stock from '../assets/images/temporaryPictures/stock.png';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import IonIcon from 'react-native-vector-icons/Ionicons';
-import { connect } from 'react-redux';
+import { H2, Label, LittleText } from '../components/Texts';
+import ScreenContainer from '../components/ScreenContainer';
 import ImageWithLoader from '../components/ImageWithLoader';
 
 Icon.loadFont();
@@ -73,51 +73,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 });
-
-const DATA = [
-	{
-		id: '1',
-		title: 'Завтраки',
-		icon: 'breakfast',
-		color: '#F2994A',
-	},
-	{
-		id: '2',
-		title: 'Закуски',
-		icon: 'snack',
-		color: '#A67E6C',
-	},
-	{
-		id: '3',
-		title: 'Салаты',
-		icon: 'salads',
-		color: '#1E8149',
-	},
-	{
-		id: '4',
-		title: 'Супы',
-		icon: 'soups',
-		color: '#F52D56',
-	},
-	{
-		id: '5',
-		title: 'Хан самса',
-		icon: 'hansamsi',
-		color: '#5552D3',
-	},
-	{
-		id: '6',
-		title: 'Супы',
-		icon: 'soups',
-		color: '#F52D56',
-	},
-	{
-		id: '7',
-		title: 'Хан самса',
-		icon: 'hansamsi',
-		color: '#5552D3',
-	},
-];
 
 const ItemSeparatorComponent = (props) => <View style={{width: props.width || 15}}/>;
 
@@ -217,13 +172,13 @@ class HomeScreen extends Component {
 					<SectionHeader title='Меню'/>
 					<View>
 						<FlatList
-							data={DATA}
+							data={this.props.categories}
 							horizontal
 							ItemSeparatorComponent={this.renderSeparator(20)}
 							renderItem={this.renderMenuItem}
 							keyExtractor={this.keyExtractor}
 							showsHorizontalScrollIndicator={false}
-							contentContainerStyle={{height: 97, flex: !!DATA.length ? 0 : 1}}
+							contentContainerStyle={{height: 97, flex: !!this.props.categories.length ? 0 : 1}}
 							ListEmptyComponent={ListEmptyComponent}
 						/>
 					</View>
@@ -250,6 +205,7 @@ class HomeScreen extends Component {
 
 const mapStateToProps = state => ({
 	popularDishes: state.menu.popularDishes,
+	categories: state.menu.categories,
 });
 
 export default connect(mapStateToProps, null)(HomeScreen);
