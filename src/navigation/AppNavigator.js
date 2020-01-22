@@ -3,7 +3,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import SelectLanguageScreen from '../screens/SelectLanguageScreen';
 import SelectLocationScreen from '../screens/SelectLocationScreen';
 import GuideScreen from '../screens/GuideScreen';
-import RootNavigation from './RootNavigation';
 import AuthNavigator from './AuthNavigator';
 
 const AppNavigator = createStackNavigator({
@@ -18,9 +17,6 @@ const AppNavigator = createStackNavigator({
 		},
 		Auth: {
 			screen: AuthNavigator,
-		},
-		Root: {
-			screen: RootNavigation,
 		},
 	},
 	{

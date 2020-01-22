@@ -5,6 +5,9 @@ import { H1, Text } from '../components/Texts';
 import Shadow from '../components/Shadow';
 import ScreenContainer from '../components/ScreenContainer';
 import Link from '../components/Link';
+import { bindActionCreators } from 'redux';
+import { signIn } from '../store/actions/profile';
+import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
 	page: {
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default class ConfirmCodeScreen extends Component {
+class ConfirmCodeScreen extends Component {
 	
 	state = {
 		codeIsSuccessful: false,
@@ -64,7 +67,8 @@ export default class ConfirmCodeScreen extends Component {
 	
 	onFinishCheckingCode = code => {
 		if (code === '1234') {
-			this.props.navigation.navigate('Guide');
+			this.props.signIn();
+			//this.props.navigation.navigate('Guide');
 			// return this.setState({codeIsSuccessful: true});
 		}
 		
@@ -124,3 +128,12 @@ export default class ConfirmCodeScreen extends Component {
 		);
 	}
 }
+
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			signIn,
+		},
+		dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(ConfirmCodeScreen);

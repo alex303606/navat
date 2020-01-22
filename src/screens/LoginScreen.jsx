@@ -9,6 +9,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Input from '../components/Input';
 import Shadow from '../components/Shadow';
+import { bindActionCreators } from 'redux';
+import { signIn } from '../store/actions/profile';
+import { connect } from 'react-redux';
 
 Icon.loadFont();
 IonIcon.loadFont();
@@ -97,7 +100,8 @@ class LoginScreen extends Component {
 		password: '',
 	};
 	
-	signInHandler = () => this.props.navigation.navigate('Guide');
+	//signInHandler = () => this.props.navigation.navigate('Guide');
+	signInHandler = () => this.props.signIn();
 	
 	toggleModal = () => this.setState({modalVisible: !this.state.modalVisible});
 	
@@ -208,4 +212,11 @@ class LoginScreen extends Component {
 	}
 }
 
-export default LoginScreen;
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			signIn,
+		},
+		dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(LoginScreen);

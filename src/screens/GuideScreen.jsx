@@ -4,6 +4,9 @@ import ScreenContainer from '../components/ScreenContainer';
 import Button from '../components/Button';
 import { translate } from '../localization/i18n';
 import config from '../../config';
+import { bindActionCreators } from 'redux';
+import { setGuideIsViewed } from '../store/actions/profile';
+import { connect } from 'react-redux';
 
 const guides = {
 	1: require('../assets/images/guide1.png'),
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
 });
 const GuideScreen = (props) => {
 	const [count, setCount] = useState(1);
-	const nextGuide = () => endOfGuide ? props.navigation.navigate('Root') : setCount(count + 1);
+	const nextGuide = () => endOfGuide ? props.setGuideIsViewed() : setCount(count + 1);
 	const endOfGuide = Object.keys(guides).length === count;
 	const renderItem = item => {
 		return (
@@ -81,4 +84,11 @@ const GuideScreen = (props) => {
 	);
 };
 
-export default GuideScreen;
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			setGuideIsViewed,
+		},
+		dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(GuideScreen);

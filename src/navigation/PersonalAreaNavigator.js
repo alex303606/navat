@@ -4,17 +4,17 @@ import { translate } from '../localization/i18n';
 import Header from '../components/Header';
 import { View } from 'react-native';
 import React from 'react';
-import HomeScreen from '../screens/HomeScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 
 const PersonalAreaNavigator = createStackNavigator({
-		HomeScreen: {
-			screen: HomeScreen,
+		Profile: {
+			screen: ProfileScreen,
 		},
 	},
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'HomeScreen',
+		initialRouteName: 'Profile',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.PersonalArea'),

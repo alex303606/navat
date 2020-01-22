@@ -3,7 +3,7 @@ import React from 'react';
 import { persistor, store } from './store/configureStore';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import AppNavigator from './navigation/AppNavigator';
+import AppNavigationState from './navigation/AppNavigationState';
 
 const styles = StyleSheet.create({
 	container: {
@@ -25,7 +25,7 @@ export default class App extends React.Component {
 		return (
 			<Provider store={store}>
 				<PersistGate loading={<LoadingView/>} persistor={persistor}>
-					<AppNavigator/>
+					<AppNavigationState/>
 				</PersistGate>
 			</Provider>
 		);
