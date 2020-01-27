@@ -1,6 +1,7 @@
 export default {
 	apiUrl: `http://localhost:8000`,
 	InitLocation: 'KG',
+	shadowOptOpacity: 0.15,
 	TabBarHeight: 64,
 	MainColor: '#1E8149',
 	LoaderColor: '#0000ff',

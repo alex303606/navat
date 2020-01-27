@@ -9,20 +9,29 @@ import ReactNative, {
 	StyleSheet,
 	TouchableOpacity,
 	View,
+	Dimensions,
+	ScrollView,
 } from 'react-native';
 import CustomIcon from '../components/CustomIcon';
 import stock from '../assets/images/temporaryPictures/stock.png';
-import { H2, Label, LittleText } from '../components/Texts';
+import { Bold, H2, LittleText, MiddleText } from '../components/Texts';
 import ScreenContainer from '../components/ScreenContainer';
 import ImageWithLoader from '../components/ImageWithLoader';
+import { BoxShadow } from 'react-native-shadow';
+import config from '../../config';
+import Price from '../components/Price';
+import Carousel from '../components/Carousel';
 
 Icon.loadFont();
 IonIcon.loadFont();
 
+const pagePadding = 13;
+
 const styles = StyleSheet.create({
 	page: {
 		flex: 1,
-		padding: 13,
+		padding: pagePadding,
+		paddingHorizontal: 0,
 	},
 	item: {
 		width: 75,
@@ -59,13 +68,12 @@ const styles = StyleSheet.create({
 		color: '#F52D56',
 	},
 	header: {
-		marginBottom: 12,
-		borderRadius: 6,
-		overflow: 'hidden',
 		height: 150,
+		marginBottom: 12,
+		paddingHorizontal: pagePadding,
 	},
 	section: {
-		marginBottom: 12,
+		marginBottom: 0,
 	},
 	listEmptyComponent: {
 		flex: 1,
@@ -88,6 +96,7 @@ const SectionHeader = (props) => (
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		marginBottom: 20,
+		paddingHorizontal: pagePadding,
 	}}>
 		<H2>{props.title}</H2>
 		<TouchableOpacity
@@ -108,51 +117,86 @@ const SectionHeader = (props) => (
 	</View>
 );
 
-
 class HomeScreen extends Component {
 	renderMenuItem = ({item}) => {
+		const shadowOpt = {
+			width: 75,
+			height: 97,
+			color: '#000',
+			border: 3,
+			radius: 4,
+			opacity: config.shadowOptOpacity,
+			x: 3,
+			y: 3,
+			style: {marginHorizontal: 5},
+		};
 		return (
 			<TouchableOpacity activeOpacity={0.3} onPress={() => alert(item.title)}>
-				<View style={[styles.item, {backgroundColor: item.color}]}>
-					<CustomIcon
-						color={'white'}
-						name={item.icon}
-						size={43}/>
-					<LittleText style={{color: 'white'}}>{item.title}</LittleText>
-				</View>
+				<BoxShadow setting={shadowOpt}>
+					<View style={[styles.item, {backgroundColor: item.color}]}>
+						<CustomIcon
+							color={'white'}
+							name={item.icon}
+							size={43}/>
+						<LittleText style={{color: 'white'}}>{item.title}</LittleText>
+					</View>
+				</BoxShadow>
 			</TouchableOpacity>
 		);
 	};
 	
 	renderPopularDishes = ({item}) => {
+		const shadowOpt = {
+			width: 250,
+			height: 211,
+			color: '#000',
+			border: 3,
+			radius: 4,
+			opacity: config.shadowOptOpacity,
+			x: 3,
+			y: 3,
+			style: {marginHorizontal: 5},
+		};
 		return (
-			<View
-				style={{
-					width: 250,
-					height: 211,
-					borderWidth: 1,
-					borderRadius: 4,
-					overflow: 'hidden',
-				}}>
-				<ImageWithLoader
-					resizeMode='cover'
-					style={{width: '100%', height: 129}}
-					source={{uri: item.image}}
-				/>
-				<View>
-					<Label>{item.title}</Label>
-					<LittleText>{item.category}</LittleText>
-					<ReactNative.Text>{item.price}</ReactNative.Text>
-					<Stars
-						default={item.rating}
-						count={5}
-						starSize={20}
-						spacing={6}
-						fullStar={<Icon size={20} color={'#FFC700'} name={'star'}/>}
-						emptyStar={<Icon size={20} color={'#DAD9E2'} name={'star'}/>}
+			<BoxShadow setting={shadowOpt}>
+				<View
+					style={{
+						width: 250,
+						height: 211,
+						borderRadius: 4,
+						overflow: 'hidden',
+						backgroundColor: 'white',
+					}}>
+					<ImageWithLoader
+						resizeMode='cover'
+						style={{width: '100%', height: 129}}
+						source={{uri: item.image}}
 					/>
+					<View style={{
+						padding: 11,
+					}}>
+						<Bold style={{marginBottom: 3}}>{item.title}</Bold>
+						<MiddleText>{item.category}</MiddleText>
+						<View style={{
+							flexDirection: 'row',
+							alignItems: 'flex-end',
+							justifyContent: 'space-between',
+							marginTop: 8,
+						}}>
+							<Stars
+								disabled
+								default={item.rating}
+								count={5}
+								starSize={20}
+								spacing={6}
+								fullStar={<Icon size={20} color={'#FFC700'} name={'star'}/>}
+								emptyStar={<Icon size={20} color={'#DAD9E2'} name={'star'}/>}
+							/>
+							<Price title={item.price}/>
+						</View>
+					</View>
 				</View>
-			</View>
+			</BoxShadow>
 		);
 	};
 	
@@ -163,41 +207,73 @@ class HomeScreen extends Component {
 	);
 	
 	render() {
+		const shadowOpt = {
+			width: Dimensions.get('window').width - pagePadding * 2,
+			height: 150,
+			color: '#000',
+			border: 4,
+			radius: 6,
+			opacity: config.shadowOptOpacity,
+			x: 0,
+			y: 4,
+		};
 		return (
 			<ScreenContainer style={styles.page}>
-				<View style={styles.header}>
-					<ImageBackground source={stock} style={{width: '100%', height: '100%'}}/>
-				</View>
-				<View style={styles.section}>
-					<SectionHeader title='Меню'/>
-					<View>
+				<ScrollView
+					keyboardShouldPersistTaps='handled'
+					scrollEnabled={true}
+					contentContainerStyle={{flexGrow: 1}}
+					showsVerticalScrollIndicator={false}
+				>
+					<View style={styles.header}>
+						<BoxShadow setting={shadowOpt}>
+							<ImageBackground source={stock} style={{
+								borderRadius: 6,
+								overflow: 'hidden',
+								width: '100%',
+								height: '100%',
+							}}/>
+						</BoxShadow>
+					</View>
+					<View style={styles.section}>
+						<SectionHeader title='Меню'/>
 						<FlatList
 							data={this.props.categories}
 							horizontal
-							ItemSeparatorComponent={this.renderSeparator(20)}
+							ItemSeparatorComponent={this.renderSeparator(10)}
 							renderItem={this.renderMenuItem}
 							keyExtractor={this.keyExtractor}
 							showsHorizontalScrollIndicator={false}
-							contentContainerStyle={{height: 97, flex: !!this.props.categories.length ? 0 : 1}}
+							contentContainerStyle={{
+								height: 111,
+								paddingHorizontal: 8,
+								flex: !!this.props.categories.length ? 0 : 1,
+							}}
 							ListEmptyComponent={ListEmptyComponent}
 						/>
 					</View>
-				</View>
-				<View style={styles.section}>
-					<SectionHeader title='Популярные блюда'/>
-					<View>
+					<View style={styles.section}>
+						<SectionHeader title='Популярные блюда'/>
 						<FlatList
 							data={this.props.popularDishes}
 							horizontal
-							ItemSeparatorComponent={this.renderSeparator(15)}
+							ItemSeparatorComponent={this.renderSeparator(10)}
 							renderItem={this.renderPopularDishes}
 							keyExtractor={this.keyExtractor}
 							showsHorizontalScrollIndicator={false}
-							contentContainerStyle={{height: 211, flex: !!this.props.popularDishes.length ? 0 : 1}}
+							contentContainerStyle={{
+								height: 223,
+								paddingHorizontal: 8,
+								flex: !!this.props.popularDishes.length ? 0 : 1,
+							}}
 							ListEmptyComponent={ListEmptyComponent}
 						/>
 					</View>
-				</View>
+					<View style={styles.section}>
+						<SectionHeader title='Наши заведения'/>
+						<Carousel items={this.props.branches}/>
+					</View>
+				</ScrollView>
 			</ScreenContainer>
 		);
 	}
@@ -206,6 +282,7 @@ class HomeScreen extends Component {
 const mapStateToProps = state => ({
 	popularDishes: state.menu.popularDishes,
 	categories: state.menu.categories,
+	branches: state.menu.branches,
 });
 
 export default connect(mapStateToProps, null)(HomeScreen);

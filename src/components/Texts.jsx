@@ -55,9 +55,15 @@ const styles = ReactNative.StyleSheet.create({
 		fontSize: 12,
 		lineHeight: 14,
 		fontWeight: Platform.select({
-			android: 'normal',
+			android: 'bold',
 			ios: '600',
 		}),
+	},
+	middleText: {
+		color: '#9B9B9B',
+		fontSize: 13,
+		lineHeight: 16,
+		fontWeight: 'normal',
 	},
 });
 
@@ -93,6 +99,10 @@ const LittleText = props => (
 	<ReactNative.Text {...props} style={[styles.font, styles.littleText, props.style]}/>
 );
 
+const MiddleText = props => (
+	<ReactNative.Text {...props} style={[styles.font, styles.middleText, props.style]}/>
+);
+
 export {
 	H1,
 	H2,
@@ -102,4 +112,5 @@ export {
 	Label,
 	Bold,
 	LittleText,
+	MiddleText,
 };
