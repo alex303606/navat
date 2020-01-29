@@ -80,6 +80,32 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
+	popularDishes: {
+		width: 250,
+		height: 211,
+		borderRadius: 4,
+		overflow: 'hidden',
+		backgroundColor: 'white',
+	},
+	popularDishesFooter: {
+		flexDirection: 'row',
+		alignItems: 'flex-end',
+		justifyContent: 'space-between',
+		marginTop: 8,
+	},
+	headerImage: {
+		borderRadius: 6,
+		overflow: 'hidden',
+		width: '100%',
+		height: '100%',
+	},
+	sectionHeader: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		marginBottom: 20,
+		paddingHorizontal: pagePadding,
+	},
 });
 
 const ItemSeparatorComponent = (props) => <View style={{width: props.width || 15}}/>;
@@ -91,13 +117,7 @@ const ListEmptyComponent = () => (
 );
 
 const SectionHeader = (props) => (
-	<View style={{
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		marginBottom: 20,
-		paddingHorizontal: pagePadding,
-	}}>
+	<View style={styles.sectionHeader}>
 		<H2>{props.title}</H2>
 		<TouchableOpacity
 			activeOpacity={0.3}
@@ -160,37 +180,24 @@ class HomeScreen extends Component {
 		return (
 			<BoxShadow setting={shadowOpt}>
 				<View
-					style={{
-						width: 250,
-						height: 211,
-						borderRadius: 4,
-						overflow: 'hidden',
-						backgroundColor: 'white',
-					}}>
+					style={styles.popularDishes}>
 					<ImageWithLoader
 						resizeMode='cover'
 						style={{width: '100%', height: 129}}
 						source={{uri: item.image}}
 					/>
-					<View style={{
-						padding: 11,
-					}}>
+					<View style={{padding: 11}}>
 						<Bold style={{marginBottom: 3}}>{item.title}</Bold>
 						<MiddleText>{item.category}</MiddleText>
-						<View style={{
-							flexDirection: 'row',
-							alignItems: 'flex-end',
-							justifyContent: 'space-between',
-							marginTop: 8,
-						}}>
+						<View style={styles.popularDishesFooter}>
 							<Stars
 								disabled
 								default={item.rating}
 								count={5}
-								starSize={20}
-								spacing={6}
-								fullStar={<Icon size={20} color={'#FFC700'} name={'star'}/>}
-								emptyStar={<Icon size={20} color={'#DAD9E2'} name={'star'}/>}
+								starSize={16}
+								spacing={4}
+								fullStar={<Icon size={16} color={'#FFC700'} name={'star'}/>}
+								emptyStar={<Icon size={16} color={'#DAD9E2'} name={'star'}/>}
 							/>
 							<Price title={item.price}/>
 						</View>
@@ -227,12 +234,7 @@ class HomeScreen extends Component {
 				>
 					<View style={styles.header}>
 						<BoxShadow setting={shadowOpt}>
-							<ImageBackground source={stock} style={{
-								borderRadius: 6,
-								overflow: 'hidden',
-								width: '100%',
-								height: '100%',
-							}}/>
+							<ImageBackground source={stock} style={styles.headerImage}/>
 						</BoxShadow>
 					</View>
 					<View style={styles.section}>
