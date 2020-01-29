@@ -24,4 +24,8 @@ export const ru = {
 		Search: 'Поиск',
 		Basket: 'Корзина',
 	},
+	navigationTitle: {
+		Branches: 'Наши заведения',
+		PopularDishes: 'Популярные блюда',
+	},
 };

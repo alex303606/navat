@@ -84,10 +84,10 @@ const Slide = (props: any) => {
 							disabled
 							default={rating}
 							count={5}
-							starSize={16}
-							spacing={4}
-							fullStar={<Icon size={16} color={'#FFC700'} name={'star'}/>}
-							emptyStar={<Icon size={16} color={'#DAD9E2'} name={'star'}/>}
+							starSize={14}
+							spacing={3}
+							fullStar={<Icon size={14} color={'#FFC700'} name={'star'}/>}
+							emptyStar={<Icon size={14} color={'#DAD9E2'} name={'star'}/>}
 						/>
 					</View>
 				</View>
@@ -101,9 +101,9 @@ export const Carousel = (props: any) => {
 	const renderSlide = item => (
 		<Slide key={item.id} {...item}/>
 	);
-	if (Platform.OS === 'android') {
+	if (Platform.OS === 'android' || props.vertical) {
 		return (
-			<View style={{height: 200}}>
+			<View style={props.vertical ? {flex: 1} : {height: 200}}>
 				<ScrollView
 					decelerationRate={0}
 					horizontal={false}
@@ -111,6 +111,10 @@ export const Carousel = (props: any) => {
 					showsVerticalScrollIndicator={false}
 					snapToInterval={200}
 					snapToAlignment={'center'}
+					contentContainerStyle={props.vertical ? {
+						flexGrow: 1,
+						paddingVertical: 10,
+					} : {}}
 				>
 					{items.map(renderSlide)}
 				</ScrollView>

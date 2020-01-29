@@ -2,19 +2,19 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { translate } from '../localization/i18n';
 import Header from '../components/Header';
-import HomeScreen from '../screens/HomeScreen';
 import { View } from 'react-native';
 import React from 'react';
+import MenuScreen from '../screens/MenuScreen';
 
 const MenuNavigator = createStackNavigator({
-		HomeScreen: {
-			screen: HomeScreen,
+		Menu: {
+			screen: MenuScreen,
 		},
 	},
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'HomeScreen',
+		initialRouteName: 'Menu',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.Menu'),

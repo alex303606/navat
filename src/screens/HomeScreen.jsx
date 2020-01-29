@@ -30,7 +30,7 @@ const pagePadding = 13;
 const styles = StyleSheet.create({
 	page: {
 		flex: 1,
-		padding: pagePadding,
+		paddingTop: pagePadding,
 		paddingHorizontal: 0,
 	},
 	item: {
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
 	},
 	popularDishesFooter: {
 		flexDirection: 'row',
-		alignItems: 'flex-end',
+		alignItems: 'center',
 		justifyContent: 'space-between',
 		marginTop: 8,
 	},
@@ -121,7 +121,7 @@ const SectionHeader = (props) => (
 		<H2>{props.title}</H2>
 		<TouchableOpacity
 			activeOpacity={0.3}
-			onPress={() => alert('show more clicked')}>
+			onPress={() => props.navigation.navigate(props.targetScreen)}>
 			<View style={styles.showMoreBtn}>
 				<ReactNative.Text style={styles.showMoreText}>Показать все</ReactNative.Text>
 				<View style={styles.showMoreIconWrapper}>
@@ -138,6 +138,11 @@ const SectionHeader = (props) => (
 );
 
 class HomeScreen extends Component {
+	static navigationOptions = () => {
+		return {
+			header: null,
+		};
+	};
 	renderMenuItem = ({item}) => {
 		const shadowOpt = {
 			width: 75,
@@ -186,7 +191,7 @@ class HomeScreen extends Component {
 						style={{width: '100%', height: 129}}
 						source={{uri: item.image}}
 					/>
-					<View style={{padding: 11}}>
+					<View style={{padding: 11, flex: 1}}>
 						<Bold style={{marginBottom: 3}}>{item.title}</Bold>
 						<MiddleText>{item.category}</MiddleText>
 						<View style={styles.popularDishesFooter}>
@@ -194,10 +199,10 @@ class HomeScreen extends Component {
 								disabled
 								default={item.rating}
 								count={5}
-								starSize={16}
-								spacing={4}
-								fullStar={<Icon size={16} color={'#FFC700'} name={'star'}/>}
-								emptyStar={<Icon size={16} color={'#DAD9E2'} name={'star'}/>}
+								starSize={14}
+								spacing={3}
+								fullStar={<Icon size={14} color={'#FFC700'} name={'star'}/>}
+								emptyStar={<Icon size={14} color={'#DAD9E2'} name={'star'}/>}
 							/>
 							<Price title={item.price}/>
 						</View>
@@ -238,7 +243,7 @@ class HomeScreen extends Component {
 						</BoxShadow>
 					</View>
 					<View style={styles.section}>
-						<SectionHeader title='Меню'/>
+						<SectionHeader navigation={this.props.navigation} targetScreen='Menu' title='Меню'/>
 						<FlatList
 							data={this.props.categories}
 							horizontal
@@ -255,7 +260,7 @@ class HomeScreen extends Component {
 						/>
 					</View>
 					<View style={styles.section}>
-						<SectionHeader title='Популярные блюда'/>
+						<SectionHeader navigation={this.props.navigation} targetScreen='PopularDishes' title='Популярные блюда'/>
 						<FlatList
 							data={this.props.popularDishes}
 							horizontal
@@ -272,7 +277,7 @@ class HomeScreen extends Component {
 						/>
 					</View>
 					<View style={styles.section}>
-						<SectionHeader title='Наши заведения'/>
+						<SectionHeader navigation={this.props.navigation} targetScreen='Branches' title='Наши заведения'/>
 						<Carousel items={this.props.branches}/>
 					</View>
 				</ScrollView>

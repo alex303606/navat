@@ -24,4 +24,8 @@ export const en = {
 		Search: 'Search',
 		Basket: 'Basket',
 	},
+	navigationTitle: {
+		Branches: 'Our establishments',
+		PopularDishes: 'Popular dishes',
+	},
 };
