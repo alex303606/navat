@@ -1,12 +1,12 @@
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { TabBarBottomContainer } from '../components/TabBarBottomContainer';
 import PersonalAreaNavigator from './PersonalAreaNavigator';
 import HomeNavigator from './HomeNavigator';
 import MenuNavigator from './MenuNavigator';
 import SearchNavigator from './SearchNavigator';
 import BasketNavigator from './BasketNavigator';
 import config from '../../config';
+import TabBarBottomContainer from '../components/TabBarBottomContainer';
 
 const RootNavigation = createBottomTabNavigator({
 		Home: {

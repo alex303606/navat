@@ -143,6 +143,11 @@ class HomeScreen extends Component {
 			header: null,
 		};
 	};
+	
+	navigateToCategory = (id) => () => {
+		this.props.navigation.navigate('Category', {id})
+	};
+	
 	renderMenuItem = ({item}) => {
 		const shadowOpt = {
 			width: 75,
@@ -155,8 +160,9 @@ class HomeScreen extends Component {
 			y: 3,
 			style: {marginHorizontal: 5},
 		};
+		
 		return (
-			<TouchableOpacity activeOpacity={0.3} onPress={() => alert(item.title)}>
+			<TouchableOpacity activeOpacity={0.3} onPress={this.navigateToCategory(item.id)}>
 				<BoxShadow setting={shadowOpt}>
 					<View style={[styles.item, {backgroundColor: item.color}]}>
 						<CustomIcon

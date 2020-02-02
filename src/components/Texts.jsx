@@ -65,6 +65,14 @@ const styles = ReactNative.StyleSheet.create({
 		lineHeight: 16,
 		fontWeight: 'normal',
 	},
+	description: {
+		fontSize: 10,
+		lineHeight: 12,
+		fontWeight: Platform.select({
+			android: 'normal',
+			ios: '200',
+		}),
+	},
 });
 
 const H1 = props => (
@@ -103,6 +111,10 @@ const MiddleText = props => (
 	<ReactNative.Text {...props} style={[styles.font, styles.middleText, props.style]}/>
 );
 
+const Description = props => (
+	<ReactNative.Text {...props} style={[styles.font, styles.description, props.style]}/>
+);
+
 export {
 	H1,
 	H2,
@@ -113,4 +125,5 @@ export {
 	Bold,
 	LittleText,
 	MiddleText,
+	Description,
 };

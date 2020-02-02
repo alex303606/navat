@@ -1,20 +1,20 @@
+import React from 'react';
+import { View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { translate } from '../localization/i18n';
 import Header from '../components/Header';
-import HomeScreen from '../screens/HomeScreen';
-import { View } from 'react-native';
-import React from 'react';
+import BasketScreen from '../screens/BasketScreen';
 
 const BasketNavigator = createStackNavigator({
-		HomeScreen: {
-			screen: HomeScreen,
+		Basket: {
+			screen: BasketScreen,
 		},
 	},
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'HomeScreen',
+		initialRouteName: 'Basket',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.Basket'),

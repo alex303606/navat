@@ -9,6 +9,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import thunkMiddleware from 'redux-thunk';
 import profileReducer from "./reducers/profile";
 import menuReducer from "./reducers/menu";
+import basketReducer from "./reducers/basket";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,6 +22,7 @@ const enhancers = composeEnhancers(applyMiddleware(...middleware));
 const appReducer = combineReducers({
 	profile: profileReducer,
 	menu: menuReducer,
+	basket: basketReducer,
 });
 
 const persistConfig = {

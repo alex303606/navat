@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import ReactNative, { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { Text } from './Texts';
 import { translate } from '../localization/i18n';
 import CustomIcon from './CustomIcon';
+import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
 	page: {
@@ -26,6 +27,35 @@ const styles = StyleSheet.create({
 		elevation: 10,
 		borderWidth: 0,
 	},
+	row: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		height: 16,
+		borderRadius: 8,
+		backgroundColor: '#F24444',
+		paddingHorizontal: 3,
+		position: 'absolute',
+		top: 5,
+		right: 0,
+	},
+	price: {
+		color: 'white',
+		fontSize: 11,
+		lineHeight: 13,
+		fontWeight: 'normal',
+		marginRight: 1,
+	},
+	priceIcon: {
+		position: 'absolute',
+		top: '50%',
+		left: '50%',
+		marginTop: -4,
+		marginLeft: -4,
+	},
+	priceIconContainer: {
+		height: 8,
+		width: 8,
+	},
 });
 
 const icons = {
@@ -36,7 +66,7 @@ const icons = {
 	Basket: 'basket',
 };
 
-export class TabBarBottomContainer extends Component {
+class TabBarBottomContainer extends Component {
 	render() {
 		const {
 			navigation,
@@ -50,7 +80,7 @@ export class TabBarBottomContainer extends Component {
 			<TouchableWithoutFeedback onPress={this.navigationHandler(route)} key={route.key}>
 				<View style={[
 					tabStyle,
-					{flex: routeIndex === 2 ? 5 : 3},
+					{flex: routeIndex === 2 ? 5 : 3, position: 'relative'},
 				]}>
 					<CustomIcon
 						color={routeIndex === index ? activeTintColor : inactiveTintColor}
@@ -64,6 +94,18 @@ export class TabBarBottomContainer extends Component {
 						]}>
 						{translate(`tabbar.${route.routeName}`)}
 					</Text>
+					{(route.routeName === 'Basket' && !!this.props.totalPrice) &&
+					<View style={styles.row}>
+						<ReactNative.Text style={styles.price}>{this.props.totalPrice}</ReactNative.Text>
+						<View style={styles.priceIconContainer}>
+							<CustomIcon
+								style={styles.priceIcon}
+								color='white'
+								name={'price'}
+								size={8}/>
+						</View>
+					</View>
+					}
 				</View>
 			</TouchableWithoutFeedback>
 		);
@@ -83,3 +125,9 @@ export class TabBarBottomContainer extends Component {
 		this.props.navigation.navigate(routeName);
 	};
 }
+
+const mapStateToProps = state => ({
+	totalPrice: state.basket.totalPrice,
+});
+
+export default connect(mapStateToProps, null)(TabBarBottomContainer);

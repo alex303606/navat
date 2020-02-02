@@ -5,10 +5,14 @@ import Header from '../components/Header';
 import { View } from 'react-native';
 import React from 'react';
 import MenuScreen from '../screens/MenuScreen';
+import CategoryScreen from '../screens/CategoryScreen';
 
 const MenuNavigator = createStackNavigator({
 		Menu: {
 			screen: MenuScreen,
+		},
+		Category: {
+			screen: CategoryScreen,
 		},
 	},
 	{

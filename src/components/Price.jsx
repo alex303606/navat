@@ -20,7 +20,7 @@ const styles = ReactNative.StyleSheet.create({
 const Price = (props) => {
 	return (
 		<View style={[styles.row, props.style]}>
-			<ReactNative.Text style={styles.price}>{`${props.title} `}</ReactNative.Text>
+			<ReactNative.Text style={[styles.price, props.textStyle]}>{`${props.title} `}</ReactNative.Text>
 			<View style={{alignSelf: 'flex-end'}}>
 				<CustomIcon
 					color={'#1E8149'}

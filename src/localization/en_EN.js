@@ -17,6 +17,8 @@ export const en = {
 	enter: 'Sign in',
 	enterYourPhone: 'Enter your \n phone number',
 	SmsInfo: 'After that, an SMS with an authorization code will be sent to the phone number you specified for confirmation.',
+	toBasket: 'Add to cart',
+	clearBasket: 'Clear basket',
 	tabbar: {
 		Home: 'Home',
 		Menu: 'Menu',
