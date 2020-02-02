@@ -1,7 +1,7 @@
 const popularDishes = [
 	{
 		id: '1',
-		title: 'Хан плов',
+		title: 'Хан плов 1',
 		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
 		category: 'Эксклюзивные рецепты',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
@@ -10,7 +10,7 @@ const popularDishes = [
 	},
 	{
 		id: '2',
-		title: 'Хан самса мексиканская',
+		title: 'Хан самса мексиканская 1',
 		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
 		category: 'Эксклюзивные рецепты',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
@@ -19,7 +19,7 @@ const popularDishes = [
 	},
 	{
 		id: '3',
-		title: 'Плов Апашкин',
+		title: 'Плов Апашкин 1',
 		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
 		category: 'Эксклюзивные рецепты',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
@@ -28,7 +28,7 @@ const popularDishes = [
 	},
 	{
 		id: '4',
-		title: 'Хан плов',
+		title: 'Хан плов 2',
 		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
 		category: 'Эксклюзивные рецепты',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
@@ -37,7 +37,7 @@ const popularDishes = [
 	},
 	{
 		id: '5',
-		title: 'Хан самса мексиканская',
+		title: 'Хан самса мексиканская 2',
 		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
 		category: 'Эксклюзивные рецепты',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
@@ -46,7 +46,7 @@ const popularDishes = [
 	},
 	{
 		id: '6',
-		title: 'Плов Апашкин',
+		title: 'Плов Апашкин 2',
 		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
 		category: 'Эксклюзивные рецепты',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
@@ -55,7 +55,7 @@ const popularDishes = [
 	},
 	{
 		id: '7',
-		title: 'Хан плов',
+		title: 'Хан плов 3',
 		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
 		category: 'Эксклюзивные рецепты',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
@@ -64,7 +64,7 @@ const popularDishes = [
 	},
 	{
 		id: '8',
-		title: 'Хан самса мексиканская',
+		title: 'Хан самса мексиканская 3',
 		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
 		category: 'Эксклюзивные рецепты',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
@@ -73,7 +73,7 @@ const popularDishes = [
 	},
 	{
 		id: '9',
-		title: 'Плов Апашкин',
+		title: 'Плов Апашкин 3',
 		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
 		category: 'Эксклюзивные рецепты',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
