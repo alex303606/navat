@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { H1, H3, Label, SmallText } from '../components/Texts';
 import ScreenContainer from '../components/ScreenContainer';
-import { StyleSheet, TouchableOpacity, View, ScrollView } from 'react-native';
+import { TouchableOpacity, View, ScrollView } from 'react-native';
 import Button from '../components/Button';
 import config from '../../config';
 import { translate } from '../localization/i18n';
@@ -12,11 +12,12 @@ import Shadow from '../components/Shadow';
 import { bindActionCreators } from 'redux';
 import { signIn } from '../store/actions/profile';
 import { connect } from 'react-redux';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 Icon.loadFont();
 IonIcon.loadFont();
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
 		flexDirection: 'column',
@@ -24,8 +25,8 @@ const styles = StyleSheet.create({
 	},
 	textStyle: {
 		fontWeight: '500',
-		fontSize: 15,
-		lineHeight: 18,
+		fontSize: '15rem',
+		lineHeight: '18rem',
 		color: 'white',
 	},
 	container: {
@@ -36,60 +37,63 @@ const styles = StyleSheet.create({
 	},
 	modal: {
 		backgroundColor: 'white',
-		paddingHorizontal: 15,
-		paddingVertical: 25,
-		borderRadius: 8,
+		paddingHorizontal: '15rem',
+		paddingVertical: '25rem',
+		borderRadius: '8rem',
 		flex: 1,
 	},
 	modalHeader: {
-		marginBottom: 20,
+		marginBottom: '20rem',
 	},
 	btnClose: {
-		width: 25,
-		height: 25,
+		width: '25rem',
+		height: '25rem',
 		position: 'relative',
 	},
 	rightBtn: {
-		width: 30,
-		height: 30,
+		width: '30rem',
+		height: '30rem',
 		position: 'relative',
 	},
 	iconClose: {
 		position: 'absolute',
 		top: '50%',
 		left: '50%',
-		marginTop: -18,
-		marginLeft: -18,
+		marginTop: '-18rem',
+		marginLeft: '-18rem',
 	},
 	iconEye: {
 		position: 'absolute',
 		top: '50%',
 		left: '50%',
-		marginTop: -15,
-		marginLeft: -15,
+		marginTop: '-15rem',
+		marginLeft: '-15rem',
 	},
 	modalTitle: {
-		marginBottom: 28,
+		marginBottom: '28rem',
 	},
 	remind: {
-		marginTop: 8,
-		marginBottom: 23,
+		marginTop: '8rem',
+		marginBottom: '23rem',
 	},
 	footer: {
 		flexGrow: 1,
 		flexDirection: 'column',
 		justifyContent: 'flex-end',
-		paddingTop: 20,
+		paddingTop: '20rem',
 	},
 	content: {
 		flex: 1,
-		paddingVertical: 25,
+		paddingVertical: '25rem',
 	},
 	modalWrap: {
-		paddingVertical: 5,
+		paddingVertical: '5rem',
 		flex: 1,
-		marginTop: 10,
+		marginTop: '10rem',
 	},
+	$size30: '30rem',
+	$size36: '36rem',
+	$10: '10rem',
 });
 
 class LoginScreen extends Component {
@@ -124,7 +128,7 @@ class LoginScreen extends Component {
 			<IonIcon
 				style={styles.iconEye}
 				name={this.state.passwordSecure ? 'ios-eye' : 'ios-eye-off'}
-				size={30}
+				size={styles.$size30}
 				color={config.GreyColor}
 			/>
 		</TouchableOpacity>
@@ -136,7 +140,7 @@ class LoginScreen extends Component {
 				{!this.state.modalVisible &&
 				<View style={styles.content}>
 					<View style={styles.container}>
-						<H3 style={{marginBottom: 10}}>
+						<H3 style={{marginBottom: styles.$10}}>
 							{translate('youAreNotLoggedIn')}
 						</H3>
 						<SmallText style={{textAlign: 'center'}}>
@@ -162,7 +166,7 @@ class LoginScreen extends Component {
 								<Icon
 									style={styles.iconClose}
 									name="close"
-									size={36}
+									size={styles.$size36}
 									color={config.MainColor}
 								/>
 							</TouchableOpacity>

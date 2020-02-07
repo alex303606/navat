@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { Dimensions, FlatList, StyleSheet, View } from 'react-native';
+import { Dimensions, FlatList, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Bold, H2, MiddleText } from '../components/Texts';
 import config from '../../config';
@@ -8,18 +8,19 @@ import ImageWithLoader from '../components/ImageWithLoader';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Price from '../components/Price';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 const width = Dimensions.get('window').width - 54;
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
 		backgroundColor: config.BackgroundColor,
-		paddingHorizontal: 9,
+		paddingHorizontal: '9rem',
 	},
 	popularDishes: {
 		flex: 1,
-		borderRadius: 4,
+		borderRadius: '4rem',
 		overflow: 'hidden',
 		backgroundColor: 'white',
 	},
@@ -27,13 +28,29 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'flex-end',
 		justifyContent: 'space-between',
-		marginTop: 8,
+		marginTop: '8rem',
 		flexGrow: 1,
 	},
 	wrapper: {
 		width: width / 2,
-		marginHorizontal: 9,
+		marginHorizontal: '9rem',
 		backgroundColor: '#fff',
+	},
+	$border: '10rem',
+	$radius: '4rem',
+	$3: '3rem',
+	$5: '5rem',
+	$9: '9rem',
+	$10: '10rem',
+	$11: '11rem',
+	$18: '18rem',
+	$starSize: '14rem',
+	imageWithLoader: {
+		width: '100%',
+		height: '146rem',
+	},
+	bold: {
+		marginBottom: 3,
 	},
 });
 
@@ -50,15 +67,15 @@ const Wrapper = props => {
 		width: width / 2,
 		height: itemHeight,
 		color: '#000',
-		border: 10,
-		radius: 4,
+		border: styles.$border,
+		radius: styles.$radius,
 		opacity: config.shadowOptOpacity,
 		x: 0,
 		y: 0,
 		style: {
-			marginHorizontal: 9,
+			marginHorizontal: styles.$9,
 			backgroundColor: '#fff',
-		}
+		},
 	};
 	
 	const setItemHeightHandler = ({nativeEvent: {layout: {height}}}) => {
@@ -89,7 +106,7 @@ class PopularDishesScreen extends Component {
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{
 						flexGrow: 1,
-						paddingVertical: 10,
+						paddingVertical: styles.$10,
 					}}
 					ListEmptyComponent={ListEmptyComponent}
 				/>
@@ -103,22 +120,22 @@ class PopularDishesScreen extends Component {
 				<View style={styles.popularDishes}>
 					<ImageWithLoader
 						resizeMode='cover'
-						style={{width: '100%', height: 146}}
+						style={styles.imageWithLoader}
 						source={{uri: item.image}}
 					/>
-					<View style={{padding: 11, flex: 1}}>
-						<Bold style={{marginBottom: 3}}>{item.title}</Bold>
+					<View style={{padding: styles.$11, flex: 1}}>
+						<Bold style={styles.bold}>{item.title}</Bold>
 						<MiddleText>{item.category}</MiddleText>
 						<View style={styles.popularDishesFooter}>
-							<View style={{marginRight: 5}}>
+							<View style={{marginRight: styles.$5}}>
 								<Stars
 									disabled
 									default={item.rating}
 									count={5}
-									starSize={14}
-									spacing={3}
-									fullStar={<Icon size={14} color={'#FFC700'} name={'star'}/>}
-									emptyStar={<Icon size={14} color={'#DAD9E2'} name={'star'}/>}
+									starSize={styles.starSize}
+									spacing={styles.$3}
+									fullStar={<Icon size={styles.starSize} color={'#FFC700'} name={'star'}/>}
+									emptyStar={<Icon size={styles.starSize} color={'#DAD9E2'} name={'star'}/>}
 								/>
 							</View>
 							<Price title={item.price}/>
@@ -129,7 +146,7 @@ class PopularDishesScreen extends Component {
 		);
 	};
 	
-	renderSeparator = () => <View style={{height: 18}}/>;
+	renderSeparator = () => <View style={{height: styles.$18}}/>;
 	
 	keyExtractor = (item) => item.id;
 }

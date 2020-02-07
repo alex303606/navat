@@ -7,6 +7,12 @@ import SearchNavigator from './SearchNavigator';
 import BasketNavigator from './BasketNavigator';
 import config from '../../config';
 import TabBarBottomContainer from '../components/TabBarBottomContainer';
+import EStyleSheet from 'react-native-extended-stylesheet';
+const styles = EStyleSheet.create({
+	$fontSize: '12rem',
+	$lineHeight: '14rem',
+	$marginTop:' 4rem',
+});
 
 const RootNavigation = createBottomTabNavigator({
 		Home: {
@@ -36,10 +42,10 @@ const RootNavigation = createBottomTabNavigator({
 			inactiveTintColor: '#C1C0C9',
 			showIcon: false,
 			labelStyle: {
-				fontSize: 12,
-				lineHeight: 14,
+				fontSize: styles.$fontSize,
+				lineHeight: styles.$lineHeight,
+				marginTop: styles.$marginTop,
 				fontWeight: 'normal',
-				marginTop: 4,
 			},
 			tabStyle: {
 				flexDirection: 'column',

@@ -6,7 +6,6 @@ import Stars from 'react-native-stars';
 import ReactNative, {
 	ImageBackground,
 	FlatList,
-	StyleSheet,
 	TouchableOpacity,
 	View,
 	Dimensions,
@@ -21,56 +20,57 @@ import { BoxShadow } from 'react-native-shadow';
 import config from '../../config';
 import Price from '../components/Price';
 import Carousel from '../components/Carousel';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 Icon.loadFont();
 IonIcon.loadFont();
 
 const pagePadding = 13;
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
-		paddingTop: pagePadding,
+		paddingTop: `${pagePadding}rem`,
 		paddingHorizontal: 0,
 	},
 	item: {
-		width: 75,
-		height: 97,
-		borderRadius: 4,
+		width: '75rem',
+		height: '97rem',
+		borderRadius: '4rem',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		paddingTop: 7,
-		paddingBottom: 9,
-		paddingHorizontal: 7,
+		paddingTop: '7rem',
+		paddingBottom: '9rem',
+		paddingHorizontal: '7rem',
 	},
 	showMoreBtn: {
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
 	showMoreIconWrapper: {
-		width: 16,
-		height: 16,
-		marginLeft: 4,
+		width: '16rem',
+		height: '16rem',
+		marginLeft: '4rem',
 	},
 	showMoreIcon: {
 		position: 'absolute',
 		top: '50%',
 		left: '50%',
-		marginTop: -8,
-		marginLeft: -8,
+		marginTop: '-8rem',
+		marginLeft: '-8rem',
 	},
 	showMoreText: {
-		fontSize: 16,
-		lineHeight: 19,
+		fontSize: '16rem',
+		lineHeight: '19rem',
 		fontWeight: 'normal',
 		backgroundColor: 'rgba(0,0,0,0)',
 		color: '#F52D56',
 	},
 	header: {
-		height: 150,
-		marginBottom: 12,
-		paddingHorizontal: pagePadding,
+		height: '150rem',
+		marginBottom: '12rem',
+		paddingHorizontal: `${pagePadding}rem`,
 	},
 	section: {
 		marginBottom: 0,
@@ -81,9 +81,9 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	popularDishes: {
-		width: 250,
-		height: 211,
-		borderRadius: 4,
+		width: '250rem',
+		height: '211rem',
+		borderRadius: '4rem',
 		overflow: 'hidden',
 		backgroundColor: 'white',
 	},
@@ -91,10 +91,10 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		marginTop: 8,
+		marginTop: '8rem',
 	},
 	headerImage: {
-		borderRadius: 6,
+		borderRadius: '6rem',
 		overflow: 'hidden',
 		width: '100%',
 		height: '100%',
@@ -103,12 +103,42 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		marginBottom: 20,
-		paddingHorizontal: pagePadding,
+		marginBottom: '20rem',
+		paddingHorizontal: `${pagePadding}rem`,
+	},
+	$pagePadding: `${pagePadding}rem`,
+	$15: '15rem',
+	$size: '16rem',
+	$width: '75rem',
+	$height: '97rem',
+	$border: '3rem',
+	$radius: '4rem',
+	$3: '3rem',
+	$5: '5rem',
+	$10: '10rem',
+	$11: '11rem',
+	$150: '150rem',
+	$4: '4rem',
+	$6: '6rem',
+	$iconSize: '43rem',
+	$width2: '250rem',
+	$height2: '211rem',
+	$starSize: '14rem',
+	imageWithLoader: {
+		width: '100%',
+		height: '129rem',
+	},
+	contentContainerStyle1: {
+		height: '111rem',
+		paddingHorizontal: '8rem',
+	},
+	contentContainerStyle2: {
+		height: '223rem',
+		paddingHorizontal: '8rem',
 	},
 });
 
-const ItemSeparatorComponent = (props) => <View style={{width: props.width || 15}}/>;
+const ItemSeparatorComponent = (props) => <View style={{width: props.width || styles.$15}}/>;
 
 const ListEmptyComponent = () => (
 	<View style={styles.listEmptyComponent}>
@@ -128,7 +158,7 @@ const SectionHeader = (props) => (
 					<Icon
 						style={styles.showMoreIcon}
 						name="angle-double-right"
-						size={16}
+						size={styles.$size}
 						color={'#F52D56'}
 					/>
 				</View>
@@ -145,20 +175,20 @@ class HomeScreen extends Component {
 	};
 	
 	navigateToCategory = (id) => () => {
-		this.props.navigation.navigate('Category', {id})
+		this.props.navigation.navigate('Category', {id});
 	};
 	
 	renderMenuItem = ({item}) => {
 		const shadowOpt = {
-			width: 75,
-			height: 97,
+			width: styles.$width,
+			height: styles.$height,
+			border: styles.$border,
+			radius: styles.$radius,
 			color: '#000',
-			border: 3,
-			radius: 4,
 			opacity: config.shadowOptOpacity,
-			x: 3,
-			y: 3,
-			style: {marginHorizontal: 5},
+			x: styles.$3,
+			y: styles.$3,
+			style: {marginHorizontal: styles.$5},
 		};
 		
 		return (
@@ -168,7 +198,7 @@ class HomeScreen extends Component {
 						<CustomIcon
 							color={'white'}
 							name={item.icon}
-							size={43}/>
+							size={styles.$iconSize}/>
 						<LittleText style={{color: 'white'}}>{item.title}</LittleText>
 					</View>
 				</BoxShadow>
@@ -178,15 +208,15 @@ class HomeScreen extends Component {
 	
 	renderPopularDishes = ({item}) => {
 		const shadowOpt = {
-			width: 250,
-			height: 211,
+			width: styles.$width2,
+			height: styles.$height2,
 			color: '#000',
-			border: 3,
-			radius: 4,
+			border: styles.$border,
+			radius: styles.$radius,
 			opacity: config.shadowOptOpacity,
-			x: 3,
-			y: 3,
-			style: {marginHorizontal: 5},
+			x: styles.$3,
+			y: styles.$3,
+			style: {marginHorizontal: styles.$5},
 		};
 		return (
 			<BoxShadow setting={shadowOpt}>
@@ -194,21 +224,21 @@ class HomeScreen extends Component {
 					style={styles.popularDishes}>
 					<ImageWithLoader
 						resizeMode='cover'
-						style={{width: '100%', height: 129}}
+						style={styles.imageWithLoader}
 						source={{uri: item.image}}
 					/>
-					<View style={{padding: 11, flex: 1}}>
-						<Bold style={{marginBottom: 3}}>{item.title}</Bold>
+					<View style={{padding: styles.$11, flex: 1}}>
+						<Bold style={{marginBottom: styles.$3}}>{item.title}</Bold>
 						<MiddleText>{item.category}</MiddleText>
 						<View style={styles.popularDishesFooter}>
 							<Stars
 								disabled
 								default={item.rating}
 								count={5}
-								starSize={14}
-								spacing={3}
-								fullStar={<Icon size={14} color={'#FFC700'} name={'star'}/>}
-								emptyStar={<Icon size={14} color={'#DAD9E2'} name={'star'}/>}
+								starSize={styles.$starSize}
+								spacing={styles.$3}
+								fullStar={<Icon size={styles.$starSize} color={'#FFC700'} name={'star'}/>}
+								emptyStar={<Icon size={styles.$starSize} color={'#DAD9E2'} name={'star'}/>}
 							/>
 							<Price title={item.price}/>
 						</View>
@@ -220,20 +250,18 @@ class HomeScreen extends Component {
 	
 	keyExtractor = item => item.id;
 	
-	renderSeparator = width => () => (
-		<ItemSeparatorComponent width={width}/>
-	);
+	renderSeparator = () => <ItemSeparatorComponent width={styles.$10}/>;
 	
 	render() {
 		const shadowOpt = {
-			width: Dimensions.get('window').width - pagePadding * 2,
-			height: 150,
+			width: Dimensions.get('window').width - styles.$pagePadding * 2,
+			height: styles.$150,
 			color: '#000',
-			border: 4,
-			radius: 6,
+			border: styles.$4,
+			radius: styles.$6,
 			opacity: config.shadowOptOpacity,
 			x: 0,
-			y: 4,
+			y: styles.$4,
 		};
 		return (
 			<ScreenContainer style={styles.page}>
@@ -253,37 +281,37 @@ class HomeScreen extends Component {
 						<FlatList
 							data={this.props.categories}
 							horizontal
-							ItemSeparatorComponent={this.renderSeparator(10)}
+							ItemSeparatorComponent={this.renderSeparator}
 							renderItem={this.renderMenuItem}
 							keyExtractor={this.keyExtractor}
 							showsHorizontalScrollIndicator={false}
-							contentContainerStyle={{
-								height: 111,
-								paddingHorizontal: 8,
-								flex: !!this.props.categories.length ? 0 : 1,
-							}}
+							contentContainerStyle={[
+								styles.contentContainerStyle1,
+								{flex: !!this.props.categories.length ? 0 : 1},
+							]}
 							ListEmptyComponent={ListEmptyComponent}
 						/>
 					</View>
 					<View style={styles.section}>
-						<SectionHeader navigation={this.props.navigation} targetScreen='PopularDishes' title='Популярные блюда'/>
+						<SectionHeader navigation={this.props.navigation} targetScreen='PopularDishes'
+									   title='Популярные блюда'/>
 						<FlatList
 							data={this.props.popularDishes}
 							horizontal
-							ItemSeparatorComponent={this.renderSeparator(10)}
+							ItemSeparatorComponent={this.renderSeparator}
 							renderItem={this.renderPopularDishes}
 							keyExtractor={this.keyExtractor}
 							showsHorizontalScrollIndicator={false}
-							contentContainerStyle={{
-								height: 223,
-								paddingHorizontal: 8,
-								flex: !!this.props.popularDishes.length ? 0 : 1,
-							}}
+							contentContainerStyle={[
+								styles.contentContainerStyle2,
+								{flex: !!this.props.popularDishes.length ? 0 : 1},
+							]}
 							ListEmptyComponent={ListEmptyComponent}
 						/>
 					</View>
 					<View style={styles.section}>
-						<SectionHeader navigation={this.props.navigation} targetScreen='Branches' title='Наши заведения'/>
+						<SectionHeader navigation={this.props.navigation} targetScreen='Branches'
+									   title='Наши заведения'/>
 						<Carousel items={this.props.branches}/>
 					</View>
 				</ScrollView>

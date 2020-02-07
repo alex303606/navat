@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import CodeFiled from 'react-native-confirmation-code-field';
 import { H1, Text } from '../components/Texts';
 import Shadow from '../components/Shadow';
@@ -8,30 +8,31 @@ import Link from '../components/Link';
 import { bindActionCreators } from 'redux';
 import { signIn } from '../store/actions/profile';
 import { connect } from 'react-redux';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
-		paddingVertical: 5,
+		paddingVertical: '5rem',
 		justifyContent: 'flex-end',
 	},
 	pageInner: {
 		flex: 1,
-		marginTop: 10,
+		marginTop: '10rem',
 		backgroundColor: 'white',
-		borderRadius: 8,
-		paddingHorizontal: 18,
-		paddingTop: 49,
-		paddingBottom: 18,
+		borderRadius: '8rem',
+		paddingHorizontal: '18rem',
+		paddingTop: '49rem',
+		paddingBottom: '18rem',
 	},
 	inputWrapStyle: {
-		height: 60,
-		marginBottom: 38,
+		height: '60rem',
+		marginBottom: '38rem',
 	},
 	input: {
-		borderBottomWidth: 4,
+		borderBottomWidth: '4rem',
 		borderColor: '#EFEFF4',
 		color: '#fff',
-		fontSize: 30,
+		fontSize: '30rem',
 		fontWeight: '600',
 	},
 	inputNotEmpty: {
@@ -40,22 +41,23 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		textAlign: 'center',
-		marginBottom: 64,
+		marginBottom: '64rem',
 	},
 	resendCode: {
 		flexDirection: 'row',
 		justifyContent: 'center',
-		flexWrap: 'wrap'
+		flexWrap: 'wrap',
 	},
 	errorCode: {
 		flexDirection: 'row',
 		justifyContent: 'center',
-		marginBottom: 38,
+		marginBottom: '38rem',
 	},
 	errorText: {
 		color: 'red',
 		fontWeight: '600',
 	},
+	$size: '60rem',
 });
 
 class ConfirmCodeScreen extends Component {
@@ -99,7 +101,7 @@ class ConfirmCodeScreen extends Component {
 							caretHidden={true}
 							variant="border-b"
 							codeLength={4}
-							size={60}
+							size={styles.$size}
 							returnKeyType={(Platform.OS === 'ios') ? 'done' : 'next'}
 							keyboardType={'numeric'}
 							cellProps={this.cellProps}

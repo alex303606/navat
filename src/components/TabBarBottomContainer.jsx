@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import ReactNative, { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import ReactNative, { View, TouchableWithoutFeedback } from 'react-native';
 import { Text } from './Texts';
 import { translate } from '../localization/i18n';
 import CustomIcon from './CustomIcon';
 import { connect } from 'react-redux';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
 		flexDirection: 'column',
 	},
 	container: {
 		flexDirection: 'row',
-		paddingHorizontal: 15,
+		paddingHorizontal: '15rem',
 		backgroundColor: 'white',
 	},
 	tabbar: {
@@ -23,39 +24,41 @@ const styles = StyleSheet.create({
 			height: 0,
 		},
 		shadowOpacity: 0.2,
-		shadowRadius: 10,
-		elevation: 10,
+		shadowRadius: '10rem',
+		elevation: '10rem',
 		borderWidth: 0,
 	},
 	row: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		height: 16,
-		borderRadius: 8,
+		height: '16rem',
+		borderRadius: '8rem',
 		backgroundColor: '#F24444',
-		paddingHorizontal: 3,
+		paddingHorizontal: '3rem',
 		position: 'absolute',
-		top: 5,
+		top: '5rem',
 		right: 0,
 	},
 	price: {
 		color: 'white',
-		fontSize: 11,
-		lineHeight: 13,
+		fontSize: '11rem',
+		lineHeight: '13rem',
 		fontWeight: 'normal',
-		marginRight: 1,
+		marginRight: '1rem',
 	},
 	priceIcon: {
 		position: 'absolute',
 		top: '50%',
 		left: '50%',
-		marginTop: -4,
-		marginLeft: -4,
+		marginTop: '-4rem',
+		marginLeft: '-4rem',
 	},
 	priceIconContainer: {
-		height: 8,
-		width: 8,
+		height: '8rem',
+		width: '8rem',
 	},
+	$size30: '30rem',
+	$size8: '8rem',
 });
 
 const icons = {
@@ -85,7 +88,7 @@ class TabBarBottomContainer extends Component {
 					<CustomIcon
 						color={routeIndex === index ? activeTintColor : inactiveTintColor}
 						name={icons[route.routeName]}
-						size={30}/>
+						size={styles.$size30}/>
 					<Text
 						numberOfLines={1}
 						style={[
@@ -102,7 +105,7 @@ class TabBarBottomContainer extends Component {
 								style={styles.priceIcon}
 								color='white'
 								name={'price'}
-								size={8}/>
+								size={styles.$size8}/>
 						</View>
 					</View>
 					}

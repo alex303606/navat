@@ -1,12 +1,21 @@
 import React from 'react';
-import { View, ImageBackground, SafeAreaView, Image, StyleSheet, BackHandler, StatusBar } from 'react-native';
+import {
+	View,
+	ImageBackground,
+	SafeAreaView,
+	Image,
+	BackHandler,
+	StatusBar,
+} from 'react-native';
 import { switchLanguage } from '../localization/i18n';
 import Button from '../components/Button';
 import { H1 } from '../components/Texts';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 const backGround = require('../assets/images/background.png');
 const logo = require('../assets/images/logo.png');
-const styles = StyleSheet.create({
+
+const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
 	},
@@ -16,7 +25,7 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1,
-		paddingVertical: 30,
+		paddingVertical: '30rem',
 		flexDirection: 'column',
 		alignItems: 'center',
 	},
@@ -25,11 +34,13 @@ const styles = StyleSheet.create({
 		alignSelf: 'stretch',
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingHorizontal: 60,
+		paddingHorizontal: '60rem',
 	},
 	title: {
 		color: 'white',
 	},
+	$defaultMarginTop: '18rem',
+	$marginBottom: '13rem',
 });
 
 class SelectLanguageScreen extends React.Component {
@@ -60,30 +71,30 @@ class SelectLanguageScreen extends React.Component {
 						<Image source={logo} resizeMode='contain'/>
 						<View style={styles.containerInner}>
 							<H1 style={styles.title}>Выберите язык</H1>
-							<H1 style={[styles.title, {marginBottom: 13}]}>Select language</H1>
+							<H1 style={[styles.title, {marginBottom: styles.$marginBottom}]}>Select language</H1>
 							<Button
 								textStyle={{color: 'black'}}
-								buttonStyle={{backgroundColor: 'white', marginTop: 18}}
+								buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}
 								onPress={() => this.changeLang('ru')}
 								title='Русский'/>
 							<Button
 								textStyle={{color: 'black'}}
-								buttonStyle={{backgroundColor: 'white', marginTop: 18}}
+								buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}
 								onPress={() => this.changeLang('en')}
 								title='English'/>
 							<Button
 								textStyle={{color: 'black'}}
-								buttonStyle={{backgroundColor: 'white', marginTop: 18}}
+								buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}
 								onPress={() => this.changeLang('kg')}
 								title='Кыргыз тили'/>
 							<Button
 								textStyle={{color: 'black'}}
-								buttonStyle={{backgroundColor: 'white', marginTop: 18}}
+								buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}
 								onPress={() => this.changeLang('kz')}
 								title='Қазақ тілі'/>
 							<Button
 								textStyle={{color: 'black'}}
-								buttonStyle={{backgroundColor: 'white', marginTop: 18}}
+								buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}
 								onPress={() => this.changeLang('tr')}
 								title='Türk dili'/>
 						</View>

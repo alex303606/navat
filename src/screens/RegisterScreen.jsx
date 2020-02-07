@@ -2,61 +2,62 @@ import React, { Component } from 'react';
 import { Bold, H1, Text } from '../components/Texts';
 import ScreenContainer from '../components/ScreenContainer';
 import Button from '../components/Button';
-import ReactNative, { Image, ScrollView, View } from 'react-native';
+import { Image, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import { TextInputMask } from 'react-native-masked-text';
 import { countries } from '../../config';
 import Shadow from '../components/Shadow';
 import { translate } from '../localization/i18n';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = ReactNative.StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
-		paddingVertical: 5,
+		paddingVertical: '5rem',
 		justifyContent: 'flex-end',
 	},
 	pageInner: {
 		flex: 1,
-		marginTop: 10,
+		marginTop: '10rem',
 		backgroundColor: 'white',
-		borderRadius: 8,
-		padding: 18,
+		borderRadius: '8rem',
+		padding: '18rem',
 	},
 	phone: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		marginBottom: 34,
+		marginBottom: '34rem',
 	},
 	phoneCode: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		backgroundColor: 'rgba(30,129,73,0.1)',
-		borderRadius: 5,
-		paddingHorizontal: 10,
-		height: 36,
-		marginRight: 15,
+		borderRadius: '5rem',
+		paddingHorizontal: '10rem',
+		height: '36rem',
+		marginRight: '15rem',
 	},
 	flag: {
-		width: 33,
-		height: 20,
-		marginRight: 6,
+		width: '33rem',
+		height: '20rem',
+		marginRight: '6rem',
 	},
 	phoneInput: {
 		backgroundColor: 'rgba(30,129,73,0.1)',
-		height: 36,
-		paddingHorizontal: 10,
+		height: '36rem',
+		paddingHorizontal: '10rem',
 		paddingVertical: 0,
 		flexGrow: 1,
-		fontSize: 18,
+		fontSize: '18rem',
 	},
 	title: {
-		paddingTop: 48,
+		paddingTop: '48rem',
 		textAlign: 'center',
-		marginBottom: 64,
+		marginBottom: '64rem',
 	},
 	info: {
 		textAlign: 'center',
-		marginBottom: 34,
+		marginBottom: '34rem',
 	},
 	footer: {
 		flexGrow: 1,

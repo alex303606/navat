@@ -1,11 +1,12 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
+import { SafeAreaView, StatusBar, View } from 'react-native';
 import config from '../../config';
 import PropTypes from 'prop-types';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
 		backgroundColor: config.BackgroundColor,
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
 	innerPage: {
 		flex: 1,
 		backgroundColor: config.BackgroundColor,
-		paddingHorizontal: 10,
+		paddingHorizontal: '10rem',
 		flexDirection: 'column',
 		justifyContent: 'flex-start',
 	},

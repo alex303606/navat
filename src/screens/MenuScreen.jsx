@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { FlatList, TouchableOpacity, View } from 'react-native';
 import ScreenContainer from '../components/ScreenContainer';
 import Shadow from '../components/Shadow';
 import { Bold, H2 } from '../components/Texts';
@@ -7,36 +7,37 @@ import { translate } from '../localization/i18n';
 import { connect } from 'react-redux';
 import CustomIcon from '../components/CustomIcon';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
 	},
 	modal: {
 		backgroundColor: 'white',
-		paddingHorizontal: 33,
-		paddingTop: 13,
-		borderTopLeftRadius: 8,
-		borderTopRightRadius: 8,
+		paddingHorizontal: '33rem',
+		paddingTop: '13rem',
+		borderTopLeftRadius: '8rem',
+		borderTopRightRadius: '8rem',
 		flex: 1,
 	},
 	modalWrap: {
-		paddingBottom: 3,
+		paddingBottom: '3rem',
 		flex: 1,
-		marginTop: 10,
+		marginTop: '10rem',
 	},
 	title: {
 		textAlign: 'center',
-		marginBottom: 8,
+		marginBottom: '8rem',
 	},
 	separator: {
-		borderBottomWidth: 1,
+		borderBottomWidth: '1rem',
 		borderBottomColor: '#EFEFF4',
 	},
 	item: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		paddingVertical: 10,
+		paddingVertical: '10rem',
 		justifyContent: 'space-between',
 	},
 	itemLeft: {
@@ -44,12 +45,12 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	itemIcon: {
-		width: 65,
+		width: '65rem',
 	},
 	arrow: {
-		marginRight: 10,
+		marginRight: '10rem',
 	},
-	
+	$size: '35rem',
 });
 
 class MenuScreen extends Component {
@@ -80,9 +81,7 @@ class MenuScreen extends Component {
 	
 	keyExtractor = item => item.id;
 	
-	renderSeparator = () => (
-		<View style={styles.separator}/>
-	);
+	renderSeparator = () => <View style={styles.separator}/>;
 	
 	navigateToCategory = (id) => () => {
 		this.props.navigation.navigate('Category', {id})
@@ -97,14 +96,14 @@ class MenuScreen extends Component {
 							<CustomIcon
 								color={item.color}
 								name={item.icon}
-								size={35}/>
+								size={styles.$size}/>
 						</View>
 						<Bold>{item.title}</Bold>
 					</View>
 					<Icon
 						style={styles.arrow}
 						name="angle-right"
-						size={35}
+						size={styles.$size}
 						color={'#C8C7CC'}
 					/>
 				</View>

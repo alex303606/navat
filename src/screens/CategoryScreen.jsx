@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import config from '../../config';
 import { Description, Label } from '../components/Texts';
@@ -9,20 +9,21 @@ import Button from '../components/Button';
 import Price from '../components/Price';
 import { bindActionCreators } from 'redux';
 import { addToBasket } from '../store/actions/basket';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
 		backgroundColor: config.BackgroundColor,
-		padding: 10,
+		padding: '10rem',
 	},
 	row: {
 		flexDirection: 'row',
 		flex: 1,
 	},
 	image: {
-		width: 155,
-		marginRight: 18,
+		width: '155rem',
+		marginRight: '18rem',
 	},
 	info: {
 		flexDirection: 'column',
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
 		flexGrow: 1,
 	},
 	buttonStyle: {
-		width: 104,
+		width: '104rem',
 	},
 	footer: {
 		flexDirection: 'row',
@@ -41,11 +42,19 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 	},
 	textStyle: {
-		fontSize: 22,
-		lineHeight: 26,
+		fontSize: '22rem',
+		lineHeight: '22rem',
+		height: '19rem',
 	},
 	title: {
-		marginBottom: 15,
+		marginBottom: '15rem',
+	},
+	imageWithLoader: {
+		width: '100%',
+		height: '120rem',
+	},
+	separator: {
+		height: '10rem',
 	},
 });
 
@@ -83,7 +92,7 @@ class CategoryScreen extends Component {
 				<View style={styles.image}>
 					<ImageWithLoader
 						resizeMode='cover'
-						style={{width: '100%', height: 120}}
+						style={styles.imageWithLoader}
 						source={{uri: item.image}}
 					/>
 				</View>
@@ -98,14 +107,14 @@ class CategoryScreen extends Component {
 							onPress={this.addToBasket(item)}
 							title={translate('toBasket')}
 						/>
-						<Price style={{height: 25}} textStyle={styles.textStyle} title={item.price}/>
+						<Price textStyle={styles.textStyle} title={item.price}/>
 					</View>
 				</View>
 			</View>
 		);
 	};
 	
-	renderSeparator = () => <View style={{height: 10}}/>;
+	renderSeparator = () => <View style={styles.separator}/>;
 	
 	keyExtractor = (item) => item.id;
 }

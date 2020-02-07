@@ -1,4 +1,8 @@
 import config from '../../config';
+import EStyleSheet from 'react-native-extended-stylesheet';
+const styles = EStyleSheet.create({
+	$fontSize: '18rem',
+});
 
 const Header = {
 	headerStyle: {
@@ -14,7 +18,7 @@ const Header = {
 	},
 	headerTitleStyle: {
 		backgroundColor: config.BackgroundColor,
-		fontSize: 18,
+		fontSize: styles.$fontSize,
 		fontWeight: 'bold',
 		flex: 1,
 		textAlign: 'center',

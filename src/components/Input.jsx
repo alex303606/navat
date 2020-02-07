@@ -1,21 +1,22 @@
 import React from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import config from '../../config';
 import { Label } from './Texts';
 import PropTypes from 'prop-types';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	row: {
-		marginBottom: 10,
+		marginBottom: '10rem',
 	},
 	label: {
-		marginBottom: 10,
+		marginBottom: '10rem',
 	},
 	input: {
-		height: 30,
-		paddingHorizontal: 10,
+		height: '30rem',
+		paddingHorizontal: '10rem',
 		flexGrow: 1,
-		fontSize: 14,
+		fontSize: '14rem',
 		paddingVertical: 0,
 	},
 	inputWrapper: {

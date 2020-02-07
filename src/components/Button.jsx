@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Text } from './Texts';
 import config from '../../config';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	button: {
 		backgroundColor: config.MainColor,
-		height: 35,
-		borderRadius: 5,
+		height: '35rem',
+		borderRadius: '5rem',
 		width: '100%',
 		alignItems: 'center',
 		justifyContent: 'center',

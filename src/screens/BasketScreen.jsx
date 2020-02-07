@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactNative, { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
+import ReactNative, { FlatList, TouchableOpacity, View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { BoxShadow } from 'react-native-shadow';
 import { clearBasket, decreaseItem, deleteItem, increaseItem } from '../store/actions/basket';
@@ -12,23 +12,24 @@ import { translate } from '../localization/i18n';
 import Price from '../components/Price';
 import config from '../../config';
 import Icon from 'react-native-vector-icons/Ionicons';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 Icon.loadFont();
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
 		backgroundColor: config.BackgroundColor,
-		padding: 10,
+		padding: '10rem',
 	},
 	row: {
 		flexDirection: 'row',
 		flex: 1,
-		paddingVertical: 5,
+		paddingVertical: '5rem',
 	},
 	image: {
-		width: 155,
-		marginRight: 18,
+		width: '155rem',
+		marginRight: '18rem',
 	},
 	info: {
 		flexDirection: 'column',
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
 		flexGrow: 1,
 	},
 	buttonStyle: {
-		width: 104,
+		width: '104rem',
 	},
 	footer: {
 		flexDirection: 'row',
@@ -51,16 +52,17 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	textStyle: {
-		fontSize: 22,
-		lineHeight: 26,
+		fontSize: '22rem',
+		lineHeight: '22rem',
+		height: '19rem',
 	},
 	title: {
-		marginBottom: 15,
+		marginBottom: '15rem',
 	},
 	button: {
-		width: 36,
-		height: 36,
-		borderRadius: 18,
+		width: '36rem',
+		height: '36rem',
+		borderRadius: '18rem',
 		backgroundColor: 'white',
 		overflow: 'hidden',
 		position: 'relative',
@@ -68,22 +70,30 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	icon: {
-		width: 44,
-		height: 44,
+		width: '44rem',
+		height: '44rem',
 		textAlign: 'center',
 	},
 	amount: {
-		fontSize: 24,
+		fontSize: '24rem',
 		color: config.MainColor,
-		marginHorizontal: 11,
+		marginHorizontal: '11rem',
 	},
 	leftAction: {
 		backgroundColor: 'red',
-		marginVertical: 5,
-		paddingHorizontal: 5,
+		marginVertical: '5rem',
+		paddingHorizontal: '5rem',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	$shadowSize: '36rem',
+	$shadowRadius: '18rem',
+	$iconSize: '44rem',
+	$border: '4rem',
+	imageWithLoader: {
+		width: '100%',
+		height: '120rem',
 	},
 });
 
@@ -111,7 +121,7 @@ class BasketScreen extends Component {
 				<Icon
 					style={styles.icon}
 					name='ios-close-circle'
-					size={44}
+					size={styles.$iconSize}
 					color={'white'}
 				/>
 			</RectButton>
@@ -120,11 +130,11 @@ class BasketScreen extends Component {
 	
 	renderItem = ({item}) => {
 		const shadowOpt = {
-			width: 36,
-			height: 36,
+			width: styles.$shadowSize,
+			height: styles.$shadowSize,
 			color: '#000',
-			border: 4,
-			radius: 18,
+			border: styles.$border,
+			radius: styles.$shadowRadius,
 			opacity: config.shadowOptOpacity,
 			x: 0,
 			y: 0,
@@ -139,7 +149,7 @@ class BasketScreen extends Component {
 					<View style={styles.image}>
 						<ImageWithLoader
 							resizeMode='cover'
-							style={{width: '100%', height: 120}}
+							style={styles.imageWithLoader}
 							source={{uri: item.image}}
 						/>
 					</View>
@@ -158,7 +168,7 @@ class BasketScreen extends Component {
 										<Icon
 											style={styles.icon}
 											name='ios-add-circle-outline'
-											size={44}
+											size={styles.$iconSize}
 											color={config.MainColor}
 										/>
 									</TouchableOpacity>
@@ -172,14 +182,13 @@ class BasketScreen extends Component {
 										<Icon
 											style={styles.icon}
 											name='ios-remove-circle-outline'
-											size={44}
+											size={styles.$iconSize}
 											color={config.MainColor}
 										/>
 									</TouchableOpacity>
 								</BoxShadow>
 							</View>
 							<Price
-								style={{height: 25}}
 								textStyle={styles.textStyle}
 								title={item.price * item.amount}/>
 						</View>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, View } from 'react-native';
 import ScreenContainer from '../components/ScreenContainer';
 import Button from '../components/Button';
 import { translate } from '../localization/i18n';
@@ -7,6 +7,7 @@ import config from '../../config';
 import { bindActionCreators } from 'redux';
 import { setGuideIsViewed } from '../store/actions/profile';
 import { connect } from 'react-redux';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 const guides = {
 	1: require('../assets/images/guide1.png'),
@@ -15,15 +16,15 @@ const guides = {
 	4: require('../assets/images/guide4.png'),
 	5: require('../assets/images/guide5.png'),
 };
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		paddingVertical: 20,
+		paddingVertical: '20rem',
 	},
 	imageContainer: {
-		marginBottom: 14,
+		marginBottom: '14rem',
 		flex: 1,
 		position: 'relative',
 	},
@@ -32,19 +33,19 @@ const styles = StyleSheet.create({
 	},
 	progressBar: {
 		position: 'absolute',
-		bottom: 15,
+		bottom: '15rem',
 		left: 0,
 		right: 0,
-		zIndex: 20,
+		zIndex: '20rem',
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
 	circle: {
-		width: 12,
-		height: 12,
-		borderRadius: 6,
-		marginHorizontal: 11,
+		width: '12rem',
+		height: '12rem',
+		borderRadius: '6rem',
+		marginHorizontal: '11rem',
 	},
 });
 const GuideScreen = (props) => {

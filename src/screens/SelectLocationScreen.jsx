@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageBackground, SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
+import { Image, ImageBackground, SafeAreaView, StatusBar, View } from 'react-native';
 import { H1 } from '../components/Texts';
 import Button from '../components/Button';
 import { connect } from 'react-redux';
@@ -7,7 +7,9 @@ import { bindActionCreators } from 'redux';
 import { selectLocation } from '../store/actions/profile';
 import backGround from '../assets/images/background.png';
 import logo from '../assets/images/logo.png';
-const styles = StyleSheet.create({
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
 	},
@@ -17,7 +19,7 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1,
-		paddingVertical: 30,
+		paddingVertical: '30rem',
 		flexDirection: 'column',
 		alignItems: 'center',
 	},
@@ -26,12 +28,13 @@ const styles = StyleSheet.create({
 		alignSelf: 'stretch',
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingHorizontal: 60,
+		paddingHorizontal: '60rem',
 	},
 	title: {
 		color: 'white',
-		marginBottom: 13,
+		marginBottom: '13rem',
 	},
+	$18: '18rem',
 });
 
 class SelectLocationScreen extends React.Component {
@@ -53,7 +56,7 @@ class SelectLocationScreen extends React.Component {
 						<View style={styles.containerInner}>
 							<H1 style={styles.title}>Выберите город</H1>
 							<Button
-								buttonStyle={{marginBottom: 18, backgroundColor: 'white'}}
+								buttonStyle={{marginBottom: styles.$18, backgroundColor: 'white'}}
 								title='Алматы'
 								textStyle={{color: 'black'}}
 								onPress={this.selectLocation('KZ')}

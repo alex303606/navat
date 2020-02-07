@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Modal } from 'react-native';
+import { View, Modal } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import PropTypes from 'prop-types';
 import config from '../../config';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	modal: {
 		flex: 1,
 		flexDirection: 'column',
@@ -12,20 +13,20 @@ const styles = StyleSheet.create({
 		backgroundColor: 'transparent',
 	},
 	modalContainer: {
-		paddingHorizontal: 15,
-		paddingVertical: 25,
+		paddingHorizontal: '15rem',
+		paddingVertical: '25rem',
 		backgroundColor: 'white',
-		borderTopRightRadius: 8,
-		borderTopLeftRadius: 8,
-		margin: 6,
+		borderTopRightRadius: '8rem',
+		borderTopLeftRadius: '8rem',
+		margin: '6rem',
 		shadowColor: '#000',
 		shadowOffset: {
 			width: 0,
 			height: 0,
 		},
 		shadowOpacity: 0.2,
-		shadowRadius: 10,
-		elevation: 10,
+		shadowRadius: '10rem',
+		elevation: '10rem',
 		borderWidth: 0,
 	},
 });

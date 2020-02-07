@@ -1,59 +1,60 @@
 import React from 'react';
 import ReactNative from 'react-native';
 import { Platform } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = ReactNative.StyleSheet.create({
+const styles = EStyleSheet.create({
 	font: {
 		backgroundColor: 'rgba(0,0,0,0)',
 		color: 'black',
 	},
 	h1: {
-		fontSize: 24,
-		lineHeight: 29,
+		fontSize: '24rem',
+		lineHeight: '29rem',
 		fontWeight: Platform.select({
 			android: 'bold',
 			ios: '600',
 		}),
 	},
 	h2: {
-		fontSize: 20,
-		lineHeight: 24,
+		fontSize: '20rem',
+		lineHeight: '24rem',
 		fontWeight: Platform.select({
 			android: 'bold',
 			ios: '600',
 		}),
 	},
 	h3: {
-		fontSize: 14,
-		lineHeight: 17,
+		fontSize: '14rem',
+		lineHeight: '17rem',
 		fontWeight: 'bold',
 	},
 	text: {
-		fontSize: 18,
-		lineHeight: 21,
+		fontSize: '18rem',
+		lineHeight: '21rem',
 		fontWeight: 'normal',
 	},
 	smallText: {
-		fontSize: 14,
-		lineHeight: 17,
+		fontSize: '14rem',
+		lineHeight: '17rem',
 		fontWeight: 'normal',
 	},
 	label: {
-		fontSize: 15,
-		lineHeight: 18,
+		fontSize: '15rem',
+		lineHeight: '18rem',
 		fontWeight: 'normal',
 	},
 	bold: {
-		fontSize: 15,
-		lineHeight: 18,
+		fontSize: '15rem',
+		lineHeight: '18rem',
 		fontWeight: Platform.select({
 			android: 'bold',
 			ios: '500',
 		}),
 	},
 	littleText: {
-		fontSize: 12,
-		lineHeight: 14,
+		fontSize: '12rem',
+		lineHeight: '14rem',
 		fontWeight: Platform.select({
 			android: 'bold',
 			ios: '600',
@@ -61,13 +62,13 @@ const styles = ReactNative.StyleSheet.create({
 	},
 	middleText: {
 		color: '#9B9B9B',
-		fontSize: 13,
-		lineHeight: 16,
+		fontSize: '13rem',
+		lineHeight: '16rem',
 		fontWeight: 'normal',
 	},
 	description: {
-		fontSize: 10,
-		lineHeight: 12,
+		fontSize: '10rem',
+		lineHeight: '12rem',
 		fontWeight: Platform.select({
 			android: 'normal',
 			ios: '200',

@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
 	shadow: {
 		shadowColor: '#000',
 		shadowOffset: {
@@ -9,8 +10,8 @@ const styles = StyleSheet.create({
 			height: 0,
 		},
 		shadowOpacity: 0.2,
-		shadowRadius: 10,
-		elevation: 10,
+		shadowRadius: '10rem',
+		elevation: '10rem',
 		borderWidth: 0,
 	},
 });

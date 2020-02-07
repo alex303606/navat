@@ -2,11 +2,15 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import { persistor, store } from './store/configureStore';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, View, Dimensions } from 'react-native';
 import AppNavigationState from './navigation/AppNavigationState';
 import config from '../config';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const entireScreenWidth = Dimensions.get('window').width;
+EStyleSheet.build({$rem: entireScreenWidth / 414});
+
+const styles = EStyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: 'white',
@@ -32,3 +36,8 @@ export default class App extends React.Component {
 		);
 	}
 }
+
+module.hot.accept(() => {
+	EStyleSheet.clearCache();
+	EStyleSheet.build();
+});
