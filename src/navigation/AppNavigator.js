@@ -4,6 +4,10 @@ import SelectLanguageScreen from '../screens/SelectLanguageScreen';
 import SelectLocationScreen from '../screens/SelectLocationScreen';
 import GuideScreen from '../screens/GuideScreen';
 import AuthNavigator from './AuthNavigator';
+import { Dimensions } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
+const entireScreenWidth = Dimensions.get('window').width;
+EStyleSheet.build({$rem: entireScreenWidth / 414});
 
 const AppNavigator = createStackNavigator({
 		SelectLocation: {

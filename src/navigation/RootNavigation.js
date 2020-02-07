@@ -7,7 +7,11 @@ import SearchNavigator from './SearchNavigator';
 import BasketNavigator from './BasketNavigator';
 import config from '../../config';
 import TabBarBottomContainer from '../components/TabBarBottomContainer';
+import { Dimensions } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
+const entireScreenWidth = Dimensions.get('window').width;
+EStyleSheet.build({$rem: entireScreenWidth / 414});
+
 const styles = EStyleSheet.create({
 	$fontSize: '12rem',
 	$lineHeight: '14rem',

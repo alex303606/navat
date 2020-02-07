@@ -83,7 +83,7 @@ class TabBarBottomContainer extends Component {
 			<TouchableWithoutFeedback onPress={this.navigationHandler(route)} key={route.key}>
 				<View style={[
 					tabStyle,
-					{flex: routeIndex === 2 ? 5 : 3, position: 'relative'},
+					{flex: routeIndex === 2 ? 6 : 4, position: 'relative'},
 				]}>
 					<CustomIcon
 						color={routeIndex === index ? activeTintColor : inactiveTintColor}
