@@ -95,6 +95,9 @@ const styles = EStyleSheet.create({
 		width: '100%',
 		height: '120rem',
 	},
+	price: {
+		marginRight: '5rem',
+	},
 });
 
 class BasketScreen extends Component {
@@ -189,6 +192,7 @@ class BasketScreen extends Component {
 								</BoxShadow>
 							</View>
 							<Price
+								style={styles.price}
 								textStyle={styles.textStyle}
 								title={item.price * item.amount}/>
 						</View>
