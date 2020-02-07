@@ -123,7 +123,7 @@ export const Carousel = (props: any) => {
 					horizontal={false}
 					nestedScrollEnabled={true}
 					showsVerticalScrollIndicator={false}
-					snapToInterval={200}
+					snapToInterval={styles.$200}
 					snapToAlignment={'center'}
 					contentContainerStyle={props.vertical ? {
 						flexGrow: 1,
