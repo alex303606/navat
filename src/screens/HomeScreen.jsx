@@ -21,6 +21,8 @@ import config from '../../config';
 import Price from '../components/Price';
 import Carousel from '../components/Carousel';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { bindActionCreators } from 'redux';
+import { initMenu } from '../store/actions/menu';
 
 Icon.loadFont();
 IonIcon.loadFont();
@@ -174,8 +176,12 @@ class HomeScreen extends Component {
 		};
 	};
 	
-	navigateToCategory = (id) => () => {
-		this.props.navigation.navigate('Category', {id});
+	componentDidMount() {
+		this.props.initMenu();
+	}
+	
+	navigateToCategory = (item) => () => {
+		this.props.navigation.navigate('Category', {id: item.id, title: item.title});
 	};
 	
 	renderMenuItem = ({item}) => {
@@ -192,7 +198,7 @@ class HomeScreen extends Component {
 		};
 		
 		return (
-			<TouchableOpacity activeOpacity={0.3} onPress={this.navigateToCategory(item.id)}>
+			<TouchableOpacity activeOpacity={0.3} onPress={this.navigateToCategory(item)}>
 				<BoxShadow setting={shadowOpt}>
 					<View style={[styles.item, {backgroundColor: item.color}]}>
 						<CustomIcon
@@ -218,34 +224,49 @@ class HomeScreen extends Component {
 			y: styles.$3,
 			style: {marginHorizontal: styles.$5},
 		};
+		const parenCategory = this.props.categories.find(x => x.id === item.parentCategoryId);
+		const parenCategoryTitle = !!parenCategory ? parenCategory.title : '';
+		
 		return (
-			<BoxShadow setting={shadowOpt}>
-				<View
-					style={styles.popularDishes}>
-					<ImageWithLoader
-						resizeMode='cover'
-						style={styles.imageWithLoader}
-						source={{uri: item.image}}
-					/>
-					<View style={{padding: styles.$11, flex: 1}}>
-						<Bold style={{marginBottom: styles.$3}}>{item.title}</Bold>
-						<MiddleText>{item.category}</MiddleText>
-						<View style={styles.popularDishesFooter}>
-							<Stars
-								disabled
-								default={item.rating}
-								count={5}
-								starSize={styles.$starSize}
-								spacing={styles.$3}
-								fullStar={<Icon size={styles.$starSize} color={'#FFC700'} name={'star'}/>}
-								emptyStar={<Icon size={styles.$starSize} color={'#DAD9E2'} name={'star'}/>}
-							/>
-							<Price title={item.price}/>
+			<TouchableOpacity
+				activeOpacity={0.3}
+				onPress={this.navigateToDishScreen(item)}>
+				<BoxShadow setting={shadowOpt}>
+					<View
+						style={styles.popularDishes}>
+						<ImageWithLoader
+							resizeMode='cover'
+							style={styles.imageWithLoader}
+							source={{uri: item.image}}
+						/>
+						<View style={{padding: styles.$11, flex: 1}}>
+							<Bold style={{marginBottom: styles.$3}}>{item.title}</Bold>
+							<MiddleText>{parenCategoryTitle}</MiddleText>
+							<View style={styles.popularDishesFooter}>
+								<Stars
+									disabled
+									default={item.rating}
+									count={5}
+									starSize={styles.$starSize}
+									spacing={styles.$3}
+									fullStar={<Icon size={styles.$starSize} color={'#FFC700'} name={'star'}/>}
+									emptyStar={<Icon size={styles.$starSize} color={'#DAD9E2'} name={'star'}/>}
+								/>
+								<Price title={item.price}/>
+							</View>
 						</View>
 					</View>
-				</View>
-			</BoxShadow>
+				</BoxShadow>
+			</TouchableOpacity>
 		);
+	};
+	
+	navigateToDishScreen = (item) => () => {
+		this.props.navigation.navigate('Dish', {
+			id: item.id,
+			categoryId: item.parentCategoryId,
+			title: item.title,
+		});
 	};
 	
 	keyExtractor = item => item.id;
@@ -326,4 +347,11 @@ const mapStateToProps = state => ({
 	branches: state.menu.branches,
 });
 
-export default connect(mapStateToProps, null)(HomeScreen);
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			initMenu,
+		},
+		dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

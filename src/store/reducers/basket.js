@@ -66,7 +66,6 @@ const basketReducer = (state = initialState, action) => {
 		
 		case DECREASE_BASKET_ITEM:
 			const itemsAfterDecrease = getItemsAfterDecrease(state.items, action.id);
-			console.log(itemsAfterDecrease);
 			return {
 				...state,
 				items: itemsAfterDecrease,

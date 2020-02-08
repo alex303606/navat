@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import config from '../../config';
 import { Description, Label } from '../components/Texts';
@@ -61,10 +61,15 @@ const styles = EStyleSheet.create({
 class CategoryScreen extends Component {
 	componentDidMount() {
 		const id = this.props.navigation.getParam('id');
-		this.setState({dishes: this.props.categories[id].dishes});
+		const selectedCategory = this.props.categories.find(x => x.id === id);
+		this.setState({
+			dishes: selectedCategory.dishes,
+			categoryId: id,
+		});
 	}
 	
 	state = {
+		categoryId: '',
 		dishes: [],
 	};
 	
@@ -82,36 +87,48 @@ class CategoryScreen extends Component {
 		);
 	}
 	
+	renderItem = ({item}) => {
+		return (
+			<TouchableOpacity
+				activeOpacity={0.3}
+				onPress={this.navigateToDishScreen(item)}>
+				<View style={styles.row}>
+					<View style={styles.image}>
+						<ImageWithLoader
+							resizeMode='cover'
+							style={styles.imageWithLoader}
+							source={{uri: item.image}}
+						/>
+					</View>
+					<View style={styles.info}>
+						<View style={styles.infoTop}>
+							<Label numberOfLines={1} style={styles.title}>{item.title}</Label>
+							<Description numberOfLines={3}>{item.description}</Description>
+						</View>
+						<View style={styles.footer}>
+							<Button
+								buttonStyle={styles.buttonStyle}
+								onPress={this.addToBasket(item)}
+								title={translate('toBasket')}
+							/>
+							<Price textStyle={styles.textStyle} title={item.price}/>
+						</View>
+					</View>
+				</View>
+			</TouchableOpacity>
+		);
+	};
+	
 	addToBasket = (item) => () => {
 		return this.props.addToBasket(item);
 	};
 	
-	renderItem = ({item}) => {
-		return (
-			<View style={styles.row}>
-				<View style={styles.image}>
-					<ImageWithLoader
-						resizeMode='cover'
-						style={styles.imageWithLoader}
-						source={{uri: item.image}}
-					/>
-				</View>
-				<View style={styles.info}>
-					<View style={styles.infoTop}>
-						<Label numberOfLines={1} style={styles.title}>{item.title}</Label>
-						<Description numberOfLines={3}>{item.description}</Description>
-					</View>
-					<View style={styles.footer}>
-						<Button
-							buttonStyle={styles.buttonStyle}
-							onPress={this.addToBasket(item)}
-							title={translate('toBasket')}
-						/>
-						<Price textStyle={styles.textStyle} title={item.price}/>
-					</View>
-				</View>
-			</View>
-		);
+	navigateToDishScreen = (item) => () => {
+		this.props.navigation.navigate('Dish', {
+			id: item.id,
+			categoryId: this.state.categoryId,
+			title: item.title,
+		});
 	};
 	
 	renderSeparator = () => <View style={styles.separator}/>;

@@ -83,13 +83,13 @@ class MenuScreen extends Component {
 	
 	renderSeparator = () => <View style={styles.separator}/>;
 	
-	navigateToCategory = (id) => () => {
-		this.props.navigation.navigate('Category', {id})
+	navigateToCategory = (item) => () => {
+		this.props.navigation.navigate('Category', {id: item.id, title: item.title})
 	};
 	
 	renderMenuItem = ({item}) => {
 		return (
-			<TouchableOpacity activeOpacity={0.3} onPress={this.navigateToCategory(item.id)}>
+			<TouchableOpacity activeOpacity={0.3} onPress={this.navigateToCategory(item)}>
 				<View style={styles.item}>
 					<View style={styles.itemLeft}>
 						<View style={styles.itemIcon}>

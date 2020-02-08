@@ -1,5 +1,8 @@
 import config from '../../config';
+import { Dimensions } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
+const entireScreenWidth = Dimensions.get('window').width;
+EStyleSheet.build({$rem: entireScreenWidth / 414});
 const styles = EStyleSheet.create({
 	$fontSize: '18rem',
 });
@@ -19,7 +22,7 @@ const Header = {
 	headerTitleStyle: {
 		backgroundColor: config.BackgroundColor,
 		fontSize: styles.$fontSize,
-		fontWeight: 'bold',
+		fontWeight: '600',
 		flex: 1,
 		textAlign: 'center',
 	},

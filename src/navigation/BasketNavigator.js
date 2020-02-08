@@ -21,7 +21,7 @@ const BasketNavigator = createStackNavigator({
 				headerRight: navigation.isFirstRouteInParent() ? null : <View style={{flex: 1}}/>,
 				...Header,
 				gesturesEnabled: false,
-				headerBackTitle: '',
+				headerBackTitle: ' ',
 				headerTruncatedBackTitle: '',
 			};
 		},

@@ -1,9 +1,11 @@
+import { INIT_MENU } from '../actions/actionTypes';
+
 const popularDishes = [
 	{
 		id: '1',
 		title: 'Хан плов 1',
 		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
-		category: 'Эксклюзивные рецепты',
+		parentCategoryId: '1',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 200,
 		rating: 4.5,
@@ -12,7 +14,7 @@ const popularDishes = [
 		id: '2',
 		title: 'Хан самса мексиканская 1',
 		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
-		category: 'Эксклюзивные рецепты',
+		parentCategoryId: '2',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 620,
 		rating: 3,
@@ -21,7 +23,7 @@ const popularDishes = [
 		id: '3',
 		title: 'Плов Апашкин 1',
 		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
-		category: 'Эксклюзивные рецепты',
+		parentCategoryId: '3',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 150,
 		rating: 3,
@@ -30,7 +32,7 @@ const popularDishes = [
 		id: '4',
 		title: 'Хан плов 2',
 		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
-		category: 'Эксклюзивные рецепты',
+		parentCategoryId: '4',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 200,
 		rating: 4.5,
@@ -39,7 +41,7 @@ const popularDishes = [
 		id: '5',
 		title: 'Хан самса мексиканская 2',
 		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
-		category: 'Эксклюзивные рецепты',
+		parentCategoryId: '5',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 620,
 		rating: 3,
@@ -48,7 +50,7 @@ const popularDishes = [
 		id: '6',
 		title: 'Плов Апашкин 2',
 		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
-		category: 'Эксклюзивные рецепты',
+		parentCategoryId: '6',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 150,
 		rating: 3,
@@ -57,7 +59,7 @@ const popularDishes = [
 		id: '7',
 		title: 'Хан плов 3',
 		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
-		category: 'Эксклюзивные рецепты',
+		parentCategoryId: '7',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 200,
 		rating: 4.5,
@@ -66,7 +68,7 @@ const popularDishes = [
 		id: '8',
 		title: 'Хан самса мексиканская 3',
 		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
-		category: 'Эксклюзивные рецепты',
+		parentCategoryId: '8',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 620,
 		rating: 3,
@@ -75,7 +77,82 @@ const popularDishes = [
 		id: '9',
 		title: 'Плов Апашкин 3',
 		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
-		category: 'Эксклюзивные рецепты',
+		parentCategoryId: '9',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 150,
+		rating: 3,
+	},
+];
+
+const dishes = [
+	{
+		id: '1',
+		title: 'Хан плов 1',
+		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 200,
+		rating: 4.5,
+	},
+	{
+		id: '2',
+		title: 'Хан самса мексиканская 1',
+		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 620,
+		rating: 3,
+	},
+	{
+		id: '3',
+		title: 'Плов Апашкин 1',
+		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 150,
+		rating: 3,
+	},
+	{
+		id: '4',
+		title: 'Хан плов 2',
+		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 200,
+		rating: 4.5,
+	},
+	{
+		id: '5',
+		title: 'Хан самса мексиканская 2',
+		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 620,
+		rating: 3,
+	},
+	{
+		id: '6',
+		title: 'Плов Апашкин 2',
+		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 150,
+		rating: 3,
+	},
+	{
+		id: '7',
+		title: 'Хан плов 3',
+		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 200,
+		rating: 4.5,
+	},
+	{
+		id: '8',
+		title: 'Хан самса мексиканская 3',
+		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 620,
+		rating: 3,
+	},
+	{
+		id: '9',
+		title: 'Плов Апашкин 3',
+		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 150,
 		rating: 3,
@@ -88,126 +165,98 @@ const categories = [
 		title: 'Завтраки',
 		icon: 'breakfast',
 		color: '#F2994A',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '2',
 		title: 'Закуски',
 		icon: 'snack',
 		color: '#A67E6C',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '3',
 		title: 'Салаты',
 		icon: 'salads',
 		color: '#1E8149',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '4',
 		title: 'Супы',
 		icon: 'soups',
 		color: '#F52D56',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '5',
 		title: 'Хан самса',
 		icon: 'hansamsi',
 		color: '#5552D3',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '6',
 		title: 'Вторые блюда',
 		icon: 'second',
 		color: '#2F80ED',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '7',
 		title: 'Плов',
 		icon: 'pilaf',
 		color: '#9B51E0',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '8',
 		title: 'Гарниры',
 		icon: 'side-dishes',
 		color: '#FFC700',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '9',
 		title: 'Шашлыки',
 		icon: 'barbecue',
 		color: '#5C4135',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '10',
 		title: 'Домашняя выпечка',
 		icon: 'bakery',
 		color: '#A3A0FF',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '11',
 		title: 'Банкетное меню',
 		icon: 'banquet-menu',
 		color: '#EB5757',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '12',
 		title: 'Десерты',
 		icon: 'dessert',
 		color: '#65DA65',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '13',
 		title: 'Соусы',
 		icon: 'sauces',
 		color: '#56CCF2',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 	{
 		id: '14',
 		title: 'Напитки',
 		icon: 'drinks',
 		color: '#BDBDBD',
-		dishes: [
-			...popularDishes,
-		],
+		dishes: dishes,
 	},
 ];
 
@@ -280,19 +329,15 @@ const branches = [
 ];
 
 const initialState = {
-	popularDishes: [
-		...popularDishes,
-	],
-	categories: [
-		...categories,
-	],
-	branches: [
-		...branches,
-	],
+	popularDishes: [],
+	categories: [],
+	branches: [],
 };
 
 const menuReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case INIT_MENU:
+			return {...state, popularDishes, branches, categories};
 		default:
 			return state;
 	}
