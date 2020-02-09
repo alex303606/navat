@@ -49,12 +49,12 @@ const styles = EStyleSheet.create({
 class DishScreen extends Component {
 	
 	componentDidMount = () => {
-		const dishId = this.props.navigation.getParam('id');
-		const categoryId = this.props.navigation.getParam('categoryId');
-		const selectedCategory = this.props.categories.find(x => x.id === categoryId);
-		const item = selectedCategory.dishes.find(x => x.id === dishId);
-		this.setState({item});
+		this.setSelectedDish();
 	};
+	
+	componentDidUpdate(prevProps, prevState) {
+		this.setSelectedDish();
+	}
 	
 	state = {
 		item: {},
@@ -62,7 +62,7 @@ class DishScreen extends Component {
 	
 	render() {
 		const {item} = this.state;
-		console.log(item);
+
 		return (
 			<View style={styles.page}>
 				<ScrollView
@@ -88,6 +88,17 @@ class DishScreen extends Component {
 			</View>
 		);
 	}
+	
+	setSelectedDish = () => {
+		const dishId = this.props.navigation.getParam('id');
+		const categoryId = this.props.navigation.getParam('categoryId');
+		if (dishId === this.state.item.id) {
+			return
+		}
+		const selectedCategory = this.props.categories.find(x => x.id === categoryId);
+		const item = selectedCategory.dishes.find(x => x.id === dishId);
+		this.setState({item});
+	};
 	
 	addToBasket = (item) => () => {
 		return this.props.addToBasket(item);

@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { Dimensions, FlatList, View } from 'react-native';
+import { Dimensions, FlatList, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Bold, H2, MiddleText } from '../components/Texts';
 import config from '../../config';
@@ -116,34 +116,47 @@ class PopularDishesScreen extends Component {
 	
 	renderItem = ({item}) => {
 		return (
-			<Wrapper>
-				<View style={styles.popularDishes}>
-					<ImageWithLoader
-						resizeMode='cover'
-						style={styles.imageWithLoader}
-						source={{uri: item.image}}
-					/>
-					<View style={{padding: styles.$11, flex: 1}}>
-						<Bold style={styles.bold}>{item.title}</Bold>
-						<MiddleText>{item.category}</MiddleText>
-						<View style={styles.popularDishesFooter}>
-							<View style={{marginRight: styles.$5}}>
-								<Stars
-									disabled
-									default={item.rating}
-									count={5}
-									starSize={styles.starSize}
-									spacing={styles.$3}
-									fullStar={<Icon size={styles.starSize} color={'#FFC700'} name={'star'}/>}
-									emptyStar={<Icon size={styles.starSize} color={'#DAD9E2'} name={'star'}/>}
-								/>
+				<Wrapper>
+			<TouchableOpacity
+				style={{flex: 1}}
+				activeOpacity={0.3}
+				onPress={this.navigateToDishScreen(item)}>
+					<View style={styles.popularDishes}>
+						<ImageWithLoader
+							resizeMode='cover'
+							style={styles.imageWithLoader}
+							source={{uri: item.image}}
+						/>
+						<View style={{padding: styles.$11, flex: 1}}>
+							<Bold style={styles.bold}>{item.title}</Bold>
+							<MiddleText>{item.category}</MiddleText>
+							<View style={styles.popularDishesFooter}>
+								<View style={{marginRight: styles.$5}}>
+									<Stars
+										disabled
+										default={item.rating}
+										count={5}
+										starSize={styles.starSize}
+										spacing={styles.$3}
+										fullStar={<Icon size={styles.starSize} color={'#FFC700'} name={'star'}/>}
+										emptyStar={<Icon size={styles.starSize} color={'#DAD9E2'} name={'star'}/>}
+									/>
+								</View>
+								<Price title={item.price}/>
 							</View>
-							<Price title={item.price}/>
 						</View>
 					</View>
-				</View>
-			</Wrapper>
+			</TouchableOpacity>
+				</Wrapper>
 		);
+	};
+	
+	navigateToDishScreen = (item) => () => {
+		this.props.navigation.navigate('Dish', {
+			id: item.id,
+			categoryId: item.parentCategoryId,
+			title: item.title,
+		});
 	};
 	
 	renderSeparator = () => <View style={{height: styles.$18}}/>;
