@@ -74,7 +74,7 @@ const basketReducer = (state = initialState, action) => {
 		
 		case DELETE_BASKET_ITEM:
 			const filteredItems = [...state.items.filter(item => item.id !== action.id)];
-			return {...state, items: filteredItems, totalPrice: 0};
+			return {...state, items: filteredItems, totalPrice: getTotalPrice(filteredItems)};
 		
 		case INCREASE_BASKET_ITEM:
 			const itemsAfterIncrease = getItemsAfterIncrease(state.items, action.id);
