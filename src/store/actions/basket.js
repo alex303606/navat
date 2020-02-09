@@ -1,8 +1,8 @@
 import { CLEAR_BASKET, ADD_TO_BASKET, INCREASE_BASKET_ITEM, DECREASE_BASKET_ITEM, DELETE_BASKET_ITEM } from './actionTypes';
 
-export const addToBasket = item => {
+export const addToBasket = (item, additionalItem) => {
 	return dispatch => {
-		dispatch({type: ADD_TO_BASKET, item});
+		dispatch({type: ADD_TO_BASKET, item, additionalItem});
 	};
 };
 

@@ -6,13 +6,15 @@ import { clearBasket, decreaseItem, deleteItem, increaseItem } from '../store/ac
 import { connect } from 'react-redux';
 import { RectButton, Swipeable } from 'react-native-gesture-handler';
 import ImageWithLoader from '../components/ImageWithLoader';
-import { Description, Label } from '../components/Texts';
+import { Description, Label, LittleText, SmallText } from '../components/Texts';
 import Button from '../components/Button';
 import { translate } from '../localization/i18n';
 import Price from '../components/Price';
 import config from '../../config';
 import Icon from 'react-native-vector-icons/Ionicons';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { assemble, normalizeHeight } from '../utils/utils';
+import CustomIcon from '../components/CustomIcon';
 
 Icon.loadFont();
 
@@ -20,12 +22,12 @@ const styles = EStyleSheet.create({
 	page: {
 		flex: 1,
 		backgroundColor: config.BackgroundColor,
-		padding: '10rem',
+		paddingVertical: normalizeHeight(10),
 	},
 	row: {
 		flexDirection: 'row',
 		flex: 1,
-		paddingVertical: '5rem',
+		paddingVertical: normalizeHeight(5),
 	},
 	image: {
 		width: '155rem',
@@ -57,7 +59,10 @@ const styles = EStyleSheet.create({
 		height: '19rem',
 	},
 	title: {
-		marginBottom: '15rem',
+		marginBottom: normalizeHeight(2),
+	},
+	additionalTitle: {
+		marginBottom: normalizeHeight(4),
 	},
 	button: {
 		width: '36rem',
@@ -81,7 +86,7 @@ const styles = EStyleSheet.create({
 	},
 	leftAction: {
 		backgroundColor: 'red',
-		marginVertical: '5rem',
+		marginVertical: normalizeHeight(5),
 		paddingHorizontal: '5rem',
 		flexDirection: 'column',
 		justifyContent: 'center',
@@ -93,15 +98,80 @@ const styles = EStyleSheet.create({
 	$border: '4rem',
 	imageWithLoader: {
 		width: '100%',
-		height: '120rem',
+		height: normalizeHeight(120),
 	},
 	price: {
 		marginRight: '5rem',
 	},
+	basketFooter: {
+		paddingHorizontal: '13rem',
+		paddingTop: normalizeHeight(10),
+		borderTopWidth: 1,
+		borderColor: config.GreyColor,
+		minHeight: normalizeHeight(115),
+		flexDirection: 'column',
+		justifyContent: 'flex-end',
+	},
+	basketFooterInfo: {
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		flexGrow: 1,
+		marginBottom: normalizeHeight(10),
+	},
+	contentContainerStyle: {
+		paddingHorizontal: '10rem',
+	},
+	emptyBasket: {
+		flex: 1,
+		paddingHorizontal: '10rem',
+		paddingVertical: normalizeHeight(10),
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 });
 
 class BasketScreen extends Component {
+	componentDidMount() {
+		if (this.props.items.length > 0) {
+			this.props.navigation.setParams({clearBasket: this.props.clearBasket});
+		}
+	}
+	
+	componentDidUpdate(prevProps, prevState) {
+		if (this.props.items.length !== prevProps.items.length) {
+			this.props.navigation.setParams({clearBasket: this.props.items.length > 0 ? this.props.clearBasket : undefined});
+		}
+	}
+	
+	
 	render() {
+		const totalAmount = this.props.items.reduce((acc, item) => {
+			return acc + item.amount;
+		}, 0);
+		
+		const shippingPrice = this.props.totalPrice >= this.props.freeShippingThreshold ? 0 : this.props.shippingPrice;
+		const totalPrice = this.props.totalPrice + shippingPrice;
+		
+		if (!this.props.items.length) {
+			return (
+				<View style={styles.page}>
+					<View style={styles.emptyBasket}>
+						<CustomIcon
+							color={config.GreyColor}
+							name={'empty'}
+							size={253}/>
+					</View>
+					<View style={styles.basketFooter}>
+						<Button
+							onPress={this.navigateToMenu}
+							title={translate('navigateToMenu')}
+						/>
+					</View>
+				</View>
+			);
+		}
+		
 		return (
 			<View style={styles.page}>
 				<FlatList
@@ -109,11 +179,23 @@ class BasketScreen extends Component {
 					renderItem={this.renderItem}
 					keyExtractor={this.keyExtractor}
 					showsVerticalScrollIndicator={false}
+					contentContainerStyle={styles.contentContainerStyle}
 				/>
-				<Button
-					onPress={this.clearBasket}
-					title={translate('clearBasket')}
-				/>
+				<View style={styles.basketFooter}>
+					<View style={styles.basketFooterInfo}>
+						{
+							this.props.totalPrice >= this.props.freeShippingThreshold ?
+								<SmallText>{translate('freeShipping')}</SmallText> :
+								<SmallText>{assemble(translate('shippingPrice'), {price: this.props.shippingPrice})}</SmallText>
+						}
+						<SmallText>{assemble(translate('numberOfContainers'), {amount: 7})}</SmallText>
+						<SmallText>{assemble(translate('itemsInBasket'), {totalAmount})}</SmallText>
+					</View>
+					<Button
+						onPress={() => null}
+						title={assemble(translate('order'), {sum: totalPrice})}
+					/>
+				</View>
 			</View>
 		);
 	}
@@ -130,6 +212,8 @@ class BasketScreen extends Component {
 			</RectButton>
 		);
 	};
+	
+	navigateToMenu = () => this.props.navigation.navigate('Menu');
 	
 	renderItem = ({item}) => {
 		const shadowOpt = {
@@ -159,6 +243,10 @@ class BasketScreen extends Component {
 					<View style={styles.info}>
 						<View style={styles.infoTop}>
 							<Label numberOfLines={1} style={styles.title}>{item.title}</Label>
+							{!!item.additionalTitle &&
+							<LittleText numberOfLines={1}
+										style={styles.additionalTitle}>{item.additionalTitle}</LittleText>
+							}
 							<Description numberOfLines={3}>{item.description}</Description>
 						</View>
 						<View style={styles.footer}>
@@ -215,6 +303,9 @@ class BasketScreen extends Component {
 
 const mapStateToProps = state => ({
 	items: state.basket.items,
+	totalPrice: state.basket.totalPrice,
+	freeShippingThreshold: state.menu.freeShippingThreshold,
+	shippingPrice: state.menu.shippingPrice,
 });
 
 const mapDispatchToProps = dispatch => {

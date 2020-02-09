@@ -41,6 +41,26 @@ const basketReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_TO_BASKET:
 			const items = [...state.items];
+			
+			if (action.additionalItem) {
+				const additionalIndex = state.items.findIndex(x => x.id === action.additionalItem.id);
+				if (additionalIndex >= 0) {
+					++items[additionalIndex].amount;
+				} else {
+					const item = {
+						title: action.item.title,
+						image: action.item.image,
+						description: action.item.description,
+						rating: action.item.rating,
+						amount: 1,
+						id: action.additionalItem.id,
+						additionalTitle: action.additionalItem.additionalTitle,
+						price: action.additionalItem.price,
+					};
+					items.push({...item});
+				}
+				return {...state, items, totalPrice: getTotalPrice(items)};
+			}
 			const index = state.items.findIndex(x => x.id === action.item.id);
 			if (index >= 0) {
 				++items[index].amount;

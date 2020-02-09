@@ -43,7 +43,7 @@ const RootNavigation = createBottomTabNavigator({
 		swipeEnabled: false,
 		tabBarOptions: {
 			activeTintColor: config.MainColor,
-			inactiveTintColor: '#C1C0C9',
+			inactiveTintColor: config.GreyColor,
 			showIcon: false,
 			labelStyle: {
 				fontSize: styles.$fontSize,

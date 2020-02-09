@@ -4,11 +4,12 @@ import { TouchableOpacity } from 'react-native';
 import { Text } from './Texts';
 import config from '../../config';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { normalizeHeight } from '../utils/utils';
 
 const styles = EStyleSheet.create({
 	button: {
 		backgroundColor: config.MainColor,
-		height: '35rem',
+		height: normalizeHeight(35),
 		borderRadius: '5rem',
 		width: '100%',
 		alignItems: 'center',
@@ -29,6 +30,7 @@ const Button = props => {
 			]}
 			onPress={pressHandler}>
 			<Text
+				numberOfLines={1}
 				style={[
 					{color: props.disabled ? config.MainColor : 'white'},
 					props.textStyle,

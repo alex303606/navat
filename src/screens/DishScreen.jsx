@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { bindActionCreators } from 'redux';
 import { addToBasket } from '../store/actions/basket';
 import { connect } from 'react-redux';
 import ImageWithLoader from '../components/ImageWithLoader';
-import { Text } from '../components/Texts';
+import { LittleText, Text } from '../components/Texts';
 import Button from '../components/Button';
 import { translate } from '../localization/i18n';
 import Price from '../components/Price';
+import config from '../../config';
+import { normalizeHeight } from '../utils/utils';
+
+const paddingHorizontal = 27;
 
 const styles = EStyleSheet.create({
+	$width: `100% - ${paddingHorizontal * 2}rem`,
 	page: {
 		flex: 1,
-		paddingVertical: '15rem',
+		paddingVertical: normalizeHeight(15),
 	},
 	contentContainerStyle: {
-		paddingHorizontal: '27rem',
+		paddingHorizontal: `${paddingHorizontal}rem`,
 		flexGrow: 1,
 	},
 	imageWithLoader: {
 		width: '100%',
-		height: '250rem',
-		marginBottom: '40rem',
+		height: '$width * 0.7',
+		marginBottom: normalizeHeight(40),
 	},
 	description: {
 		textAlign: 'center',
@@ -31,9 +36,9 @@ const styles = EStyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingTop: '12rem',
+		paddingTop: normalizeHeight(12),
 		borderTopWidth: 1,
-		borderColor: '#C1C0C9',
+		borderColor: config.GreyColor,
 	},
 	buttonStyle: {
 		width: '104rem',
@@ -43,6 +48,22 @@ const styles = EStyleSheet.create({
 		fontSize: '22rem',
 		lineHeight: '22rem',
 		height: '19rem',
+	},
+	switch: {
+		borderColor: config.MainColor,
+		borderWidth: 1,
+		borderRadius: '5rem',
+		height: normalizeHeight(24),
+		flexDirection: 'row',
+		overflow: 'hidden',
+	},
+	switchContainer: {
+		paddingBottom: normalizeHeight(30),
+		paddingHorizontal: '42rem',
+	},
+	switchTitle: {
+		textAlign: 'center',
+		marginBottom: normalizeHeight(15),
 	},
 });
 
@@ -58,11 +79,15 @@ class DishScreen extends Component {
 	
 	state = {
 		item: {},
+		view: 'main',
 	};
 	
 	render() {
 		const {item} = this.state;
-
+		const additionalTitle = this.state.view === 'main' ? item.additionalTitle : item.additionalItem ? item.additionalItem.additionalTitle : '';
+		const price = this.state.view === 'main' ? item.price : item.additionalItem.price;
+		const color = this.state.view === 'main' ? 'white' : config.MainColor;
+		const additionalColor = this.state.view === 'additional' ? 'white' : config.MainColor;
 		return (
 			<View style={styles.page}>
 				<ScrollView
@@ -77,31 +102,73 @@ class DishScreen extends Component {
 					/>
 					<Text style={styles.description}>{item.description}</Text>
 				</ScrollView>
+				{item.additionalItem &&
+				<View style={styles.switchContainer}>
+					<Text style={styles.switchTitle}>
+						{additionalTitle || 'Порция'}
+					</Text>
+					<View style={styles.switch}>
+						<TouchableOpacity
+							activeOpacity={0.3}
+							style={{
+								width: '50%',
+								alignItems: 'center',
+								justifyContent: 'center',
+								backgroundColor: color,
+							}}
+							onPress={this.switchHandler('additional')}>
+							<LittleText
+								style={{color: additionalColor}}>{item.additionalItem.additionalTitle || '1 шт'}</LittleText>
+						</TouchableOpacity>
+						<TouchableOpacity
+							activeOpacity={0.3}
+							style={{
+								width: '50%',
+								alignItems: 'center',
+								justifyContent: 'center',
+								backgroundColor: additionalColor,
+							}}
+							onPress={this.switchHandler('main')}>
+							<LittleText style={{color}}>{item.additionalTitle || 'Порция'}</LittleText>
+						</TouchableOpacity>
+					</View>
+				</View>
+				}
 				<View style={styles.footer}>
 					<Button
 						buttonStyle={styles.buttonStyle}
-						onPress={this.addToBasket(item)}
+						onPress={this.addToBasket}
 						title={translate('toBasket')}
 					/>
-					<Price textStyle={styles.textStyle} title={item.price}/>
+					<Price textStyle={styles.textStyle} title={price}/>
 				</View>
 			</View>
 		);
 	}
 	
+	switchHandler = view => () => {
+		this.setState({view});
+	};
+	
 	setSelectedDish = () => {
 		const dishId = this.props.navigation.getParam('id');
 		const categoryId = this.props.navigation.getParam('categoryId');
 		if (dishId === this.state.item.id) {
-			return
+			return;
 		}
 		const selectedCategory = this.props.categories.find(x => x.id === categoryId);
 		const item = selectedCategory.dishes.find(x => x.id === dishId);
 		this.setState({item});
 	};
 	
-	addToBasket = (item) => () => {
-		return this.props.addToBasket(item);
+	addToBasket = () => {
+		const {item} = this.state;
+		return this.props.addToBasket({
+			...this.state.item,
+			price: this.state.view === 'main' ? item.price : item.additionalItem.price,
+			id: this.state.view === 'main' ? item.id : item.additionalItem.id,
+			additionalTitle: this.state.view === 'main' ? item.additionalTitle : item.additionalItem.additionalTitle,
+		});
 	};
 }
 

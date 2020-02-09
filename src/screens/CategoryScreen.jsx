@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import config from '../../config';
@@ -36,6 +36,18 @@ const styles = EStyleSheet.create({
 	buttonStyle: {
 		width: '104rem',
 	},
+	smallButtonStyle: {
+		width: '62rem',
+	},
+	buttonTextStyle: {
+		fontSize: '14rem',
+	},
+	buttonContainer: {
+		width: '134rem',
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+	},
 	footer: {
 		flexDirection: 'row',
 		alignItems: 'center',
@@ -45,6 +57,11 @@ const styles = EStyleSheet.create({
 		fontSize: '22rem',
 		lineHeight: '22rem',
 		height: '19rem',
+	},
+	smallTextStyle: {
+		fontSize: '13rem',
+		lineHeight: '13rem',
+		height: '13rem',
 	},
 	title: {
 		marginBottom: '15rem',
@@ -56,6 +73,11 @@ const styles = EStyleSheet.create({
 	separator: {
 		height: '10rem',
 	},
+	prices: {
+		flexDirection: 'column',
+		alignItems: 'flex-end',
+	},
+	$2: '2rem',
 });
 
 class CategoryScreen extends Component {
@@ -106,12 +128,38 @@ class CategoryScreen extends Component {
 							<Description numberOfLines={3}>{item.description}</Description>
 						</View>
 						<View style={styles.footer}>
-							<Button
-								buttonStyle={styles.buttonStyle}
-								onPress={this.addToBasket(item)}
-								title={translate('toBasket')}
-							/>
-							<Price textStyle={styles.textStyle} title={item.price}/>
+							{item.additionalItem ?
+								<Fragment>
+									<View style={styles.buttonContainer}>
+										<Button
+											textStyle={styles.buttonTextStyle}
+											buttonStyle={styles.smallButtonStyle}
+											onPress={this.addToBasket(item, item.additionalItem)}
+											title={item.additionalItem.additionalTitle}
+										/>
+										<Button
+											textStyle={styles.buttonTextStyle}
+											buttonStyle={styles.smallButtonStyle}
+											onPress={this.addToBasket(item)}
+											title={item.additionalTitle || translate('toBasket')}
+										/>
+									</View>
+									<View style={styles.prices}>
+										<Price style={{marginBottom: styles.$2}} textStyle={styles.smallTextStyle}
+											   title={item.additionalItem.price}/>
+										<Price textStyle={styles.textStyle} title={item.price}/>
+									</View>
+								</Fragment> :
+								<Fragment>
+									<Button
+										textStyle={styles.buttonTextStyle}
+										buttonStyle={styles.buttonStyle}
+										onPress={this.addToBasket(item)}
+										title={translate('toBasket')}
+									/>
+									<Price textStyle={styles.textStyle} title={item.price}/>
+								</Fragment>
+							}
 						</View>
 					</View>
 				</View>
@@ -119,8 +167,8 @@ class CategoryScreen extends Component {
 		);
 	};
 	
-	addToBasket = (item) => () => {
-		return this.props.addToBasket(item);
+	addToBasket = (item, additionalItem) => () => {
+		return this.props.addToBasket(item, additionalItem);
 	};
 	
 	navigateToDishScreen = (item) => () => {

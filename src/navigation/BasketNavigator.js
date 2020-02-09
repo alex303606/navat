@@ -1,10 +1,36 @@
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { translate } from '../localization/i18n';
 import Header from '../components/Header';
 import BasketScreen from '../screens/BasketScreen';
+import { H2 } from '../components/Texts';
+import EStyleSheet from 'react-native-extended-stylesheet';
+import config from '../../config';
+
+const styles = EStyleSheet.create({
+	clearButton: {
+		marginRight: '15rem',
+	},
+	clearButtonText: {
+		color: config.MainColor,
+	},
+});
+
+const HeaderClearButton = props => {
+	const navigationBackHandler = () => props.onPress();
+	if (props.showClearButton) {
+		return (
+			<TouchableOpacity
+				onPress={navigationBackHandler}
+				style={styles.clearButton}>
+				<H2 style={styles.clearButtonText}>{translate('clearBasket')}</H2>
+			</TouchableOpacity>
+		);
+	}
+	return <View style={{flex: 1}}/>;
+};
 
 const BasketNavigator = createStackNavigator({
 		Basket: {
@@ -16,9 +42,15 @@ const BasketNavigator = createStackNavigator({
 		headerMode: 'float',
 		initialRouteName: 'Basket',
 		defaultNavigationOptions: ({navigation}) => {
+			const {state: {params}} = navigation;
+			const showClearButton = !!params && !!params.clearBasket;
+			const clearBasket = () => {
+				return showClearButton ? params.clearBasket() : null;
+			};
 			return {
 				headerTitle: translate('tabbar.Basket'),
-				headerRight: navigation.isFirstRouteInParent() ? null : <View style={{flex: 1}}/>,
+				headerRight: <HeaderClearButton showClearButton={showClearButton} onPress={clearBasket}/>,
+				headerLeft: <View style={{flex: 1}}/>,
 				...Header,
 				gesturesEnabled: false,
 				headerBackTitle: ' ',

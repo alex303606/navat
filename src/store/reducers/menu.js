@@ -1,6 +1,25 @@
 import { INIT_MENU } from '../actions/actionTypes';
 
+const freeShippingThreshold = 1000;
+
+const shippingPrice = 200;
+
 const popularDishes = [
+	{
+		id: '0',
+		title: 'Манты с мясом',
+		image: 'http://navat.kg/dostavka/files/products/manty-s-myasom.800x600w.jpg',
+		parentCategoryId: '6',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 180,
+		rating: 5,
+		additionalTitle: 'Порция',
+		additionalItem: {
+			id: '10',
+			additionalTitle: '1 шт',
+			price: 40,
+		},
+	},
 	{
 		id: '1',
 		title: 'Хан плов 1',
@@ -86,6 +105,20 @@ const popularDishes = [
 
 const dishes = [
 	{
+		id: '0',
+		title: 'Манты с мясом',
+		image: 'http://navat.kg/dostavka/files/products/manty-s-myasom.800x600w.jpg',
+		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
+		price: 180,
+		rating: 5,
+		additionalTitle: 'Порция',
+		additionalItem: {
+			id: '10',
+			additionalTitle: '1 шт',
+			price: 40,
+		},
+	},
+	{
 		id: '1',
 		title: 'Хан плов 1',
 		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
@@ -127,11 +160,17 @@ const dishes = [
 	},
 	{
 		id: '6',
-		title: 'Плов Апашкин 2',
-		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 150,
-		rating: 3,
+		title: 'Лагман',
+		image: 'http://navat.kg/dostavka/files/products/boso-lagman.800x600w.jpg',
+		description: 'Яркое насыщенное блюдо с мясом телятины, овощей и домашней лапши с пикантно острыми специями',
+		price: 230,
+		rating: 5,
+		additionalTitle: 'Порция',
+		additionalItem: {
+			id: '11',
+			additionalTitle: '0.5',
+			price: 150,
+		},
 	},
 	{
 		id: '7',
@@ -332,12 +371,13 @@ const initialState = {
 	popularDishes: [],
 	categories: [],
 	branches: [],
+	freeShippingThreshold: 0,
 };
 
 const menuReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case INIT_MENU:
-			return {...state, popularDishes, branches, categories};
+			return {...state, popularDishes, branches, categories, freeShippingThreshold, shippingPrice};
 		default:
 			return state;
 	}

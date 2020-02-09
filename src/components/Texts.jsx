@@ -34,11 +34,6 @@ const styles = EStyleSheet.create({
 		lineHeight: '21rem',
 		fontWeight: 'normal',
 	},
-	smallText: {
-		fontSize: '14rem',
-		lineHeight: '17rem',
-		fontWeight: 'normal',
-	},
 	label: {
 		fontSize: '15rem',
 		lineHeight: '18rem',
@@ -51,6 +46,11 @@ const styles = EStyleSheet.create({
 			android: 'bold',
 			ios: '500',
 		}),
+	},
+	smallText: {
+		fontSize: '14rem',
+		lineHeight: '17rem',
+		fontWeight: 'normal',
 	},
 	littleText: {
 		fontSize: '12rem',
@@ -67,7 +67,7 @@ const styles = EStyleSheet.create({
 		fontWeight: 'normal',
 	},
 	description: {
-		fontSize: '10rem',
+		fontSize: '11rem',
 		lineHeight: '12rem',
 		fontWeight: Platform.select({
 			android: 'normal',
