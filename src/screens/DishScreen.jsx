@@ -163,12 +163,10 @@ class DishScreen extends Component {
 	
 	addToBasket = () => {
 		const {item} = this.state;
-		return this.props.addToBasket({
-			...this.state.item,
-			price: this.state.view === 'main' ? item.price : item.additionalItem.price,
-			id: this.state.view === 'main' ? item.id : item.additionalItem.id,
-			additionalTitle: this.state.view === 'main' ? item.additionalTitle : item.additionalItem.additionalTitle,
-		});
+		return this.props.addToBasket(
+			this.state.item,
+			this.state.view === 'additional' ? item.additionalItem : undefined,
+		);
 	};
 }
 

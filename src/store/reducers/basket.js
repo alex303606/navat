@@ -72,6 +72,10 @@ const basketReducer = (state = initialState, action) => {
 						id: action.additionalItem.id,
 						additionalTitle: action.additionalItem.additionalTitle,
 						price: action.additionalItem.price,
+						container: {
+							price: action.additionalItem.container.price,
+							amount: action.additionalItem.container.amount,
+						},
 					};
 					items.push({...item});
 				}

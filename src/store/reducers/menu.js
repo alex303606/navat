@@ -20,6 +20,10 @@ const popularDishes = [
 			id: '10',
 			additionalTitle: '1 шт',
 			price: 40,
+			container: {
+				amount: 0,
+				price: 0,
+			},
 		},
 		container: {
 			amount: 1,
@@ -159,8 +163,8 @@ const dishes = [
 			additionalTitle: '1 шт',
 			price: 40,
 			container: {
-				amount: 1,
-				price: containerPrice,
+				amount: 0,
+				price: 0,
 			},
 		},
 		container: {
@@ -240,6 +244,10 @@ const dishes = [
 			id: '11',
 			additionalTitle: '0.5',
 			price: 150,
+			container: {
+				amount: 1,
+				price: containerPrice,
+			},
 		},
 		container: {
 			amount: 2,
