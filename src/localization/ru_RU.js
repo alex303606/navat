@@ -20,10 +20,12 @@ export const ru = {
 	toBasket: 'В корзину',
 	clearBasket: 'Очистить',
 	order: 'Оформить заказ на \${sum} ⊆',
+	addItemsToBasket: 'Добавьте товары в корзину',
 	freeShipping: 'Бесплатная доставка',
 	shippingPrice: 'Цена доставки: \${price} ⊆',
 	itemsInBasket: 'Товаров в корзине: \${totalAmount}',
 	numberOfContainers: 'Одноразовая посуда и контейнеры: \${amount}',
+	containersPrice: 'Цена посуды: \${price}',
 	navigateToMenu: 'Перейти в меню',
 	tabbar: {
 		Home: 'Главная',

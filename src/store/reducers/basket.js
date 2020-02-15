@@ -9,6 +9,10 @@ import {
 const initialState = {
 	items: [],
 	totalPrice: 0,
+	containers: {
+		price: 0,
+		amount: 0,
+	},
 };
 
 const basketReducer = (state = initialState, action) => {
@@ -21,6 +25,18 @@ const basketReducer = (state = initialState, action) => {
 		};
 		
 		return items.reduce(reducer, 0);
+	};
+	
+	const getContainers = (items) => {
+		const reducer = (acc, item) => {
+			if (!!item.amount && !!item.container && !!item.container.price && !!item.container.amount) {
+				acc.price += (item.amount * (item.container.amount * item.container.price));
+				acc.amount += item.amount * item.container.amount;
+			}
+			return acc;
+		};
+		
+		return items.reduce(reducer, {amount: 0, price: 0});
 	};
 	
 	const getItemsAfterDecrease = (items, id) => {
@@ -59,7 +75,12 @@ const basketReducer = (state = initialState, action) => {
 					};
 					items.push({...item});
 				}
-				return {...state, items, totalPrice: getTotalPrice(items)};
+				return {
+					...state,
+					items,
+					totalPrice: getTotalPrice(items),
+					containers: getContainers(items),
+				};
 			}
 			const index = state.items.findIndex(x => x.id === action.item.id);
 			if (index >= 0) {
@@ -68,13 +89,28 @@ const basketReducer = (state = initialState, action) => {
 				items.push({...action.item, amount: 1});
 			}
 			
-			return {...state, items, totalPrice: getTotalPrice(items)};
+			return {
+				...state,
+				items,
+				totalPrice: getTotalPrice(items),
+				containers: getContainers(items),
+			};
 		case CLEAR_BASKET:
-			return {...state, items: [], totalPrice: 0};
+			return {
+				...state,
+				items: initialState.items,
+				totalPrice: initialState.totalPrice,
+				containers: initialState.containers,
+			};
 		
 		case DELETE_BASKET_ITEM:
 			const filteredItems = [...state.items.filter(item => item.id !== action.id)];
-			return {...state, items: filteredItems, totalPrice: getTotalPrice(filteredItems)};
+			return {
+				...state,
+				items: filteredItems,
+				totalPrice: getTotalPrice(filteredItems),
+				containers: getContainers(filteredItems),
+			};
 		
 		case INCREASE_BASKET_ITEM:
 			const itemsAfterIncrease = getItemsAfterIncrease(state.items, action.id);
@@ -82,6 +118,7 @@ const basketReducer = (state = initialState, action) => {
 				...state,
 				items: itemsAfterIncrease,
 				totalPrice: getTotalPrice(itemsAfterIncrease),
+				containers: getContainers(itemsAfterIncrease),
 			};
 		
 		case DECREASE_BASKET_ITEM:
@@ -90,6 +127,7 @@ const basketReducer = (state = initialState, action) => {
 				...state,
 				items: itemsAfterDecrease,
 				totalPrice: getTotalPrice(itemsAfterDecrease),
+				containers: getContainers(itemsAfterDecrease),
 			};
 		default:
 			return state;

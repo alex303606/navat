@@ -20,10 +20,12 @@ export const en = {
 	toBasket: 'Add to cart',
 	clearBasket: 'Clear',
 	order: 'Order at \${sum} ⊆',
+	addItemsToBasket: 'Add items to basket',
 	freeShipping: 'free shipping',
 	shippingPrice: 'Shipping price: \${price} ⊆',
 	itemsInBasket: 'Items in basket: \${totalAmount}',
 	numberOfContainers: 'Number of containers: \${amount}',
+	containersPrice: 'The price of containers: \${price}',
 	navigateToMenu: 'Go to menu',
 	tabbar: {
 		Home: 'Home',

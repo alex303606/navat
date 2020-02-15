@@ -4,6 +4,8 @@ const freeShippingThreshold = 1000;
 
 const shippingPrice = 200;
 
+const containerPrice = 20;
+
 const popularDishes = [
 	{
 		id: '0',
@@ -19,6 +21,10 @@ const popularDishes = [
 			additionalTitle: '1 шт',
 			price: 40,
 		},
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '1',
@@ -28,6 +34,10 @@ const popularDishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 200,
 		rating: 4.5,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '2',
@@ -37,6 +47,10 @@ const popularDishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 620,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '3',
@@ -46,6 +60,10 @@ const popularDishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 150,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '4',
@@ -55,6 +73,10 @@ const popularDishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 200,
 		rating: 4.5,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '5',
@@ -64,6 +86,10 @@ const popularDishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 620,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '6',
@@ -73,6 +99,10 @@ const popularDishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 150,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '7',
@@ -82,6 +112,10 @@ const popularDishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 200,
 		rating: 4.5,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '8',
@@ -91,6 +125,10 @@ const popularDishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 620,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '9',
@@ -100,6 +138,10 @@ const popularDishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 150,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 ];
 
@@ -116,6 +158,14 @@ const dishes = [
 			id: '10',
 			additionalTitle: '1 шт',
 			price: 40,
+			container: {
+				amount: 1,
+				price: containerPrice,
+			},
+		},
+		container: {
+			amount: 1,
+			price: containerPrice,
 		},
 	},
 	{
@@ -125,6 +175,10 @@ const dishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 200,
 		rating: 4.5,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '2',
@@ -133,6 +187,10 @@ const dishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 620,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '3',
@@ -141,6 +199,10 @@ const dishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 150,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '4',
@@ -149,6 +211,10 @@ const dishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 200,
 		rating: 4.5,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '5',
@@ -157,6 +223,10 @@ const dishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 620,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '6',
@@ -171,6 +241,10 @@ const dishes = [
 			additionalTitle: '0.5',
 			price: 150,
 		},
+		container: {
+			amount: 2,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '7',
@@ -179,6 +253,10 @@ const dishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 200,
 		rating: 4.5,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '8',
@@ -187,6 +265,10 @@ const dishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 620,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 	{
 		id: '9',
@@ -195,6 +277,10 @@ const dishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 150,
 		rating: 3,
+		container: {
+			amount: 1,
+			price: containerPrice,
+		},
 	},
 ];
 

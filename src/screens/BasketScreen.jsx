@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactNative, { FlatList, TouchableOpacity, View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { BoxShadow } from 'react-native-shadow';
@@ -115,7 +115,7 @@ const styles = EStyleSheet.create({
 	basketFooterInfo: {
 		flexDirection: 'column',
 		alignItems: 'center',
-		justifyContent: 'space-between',
+		justifyContent: 'center',
 		flexGrow: 1,
 		marginBottom: normalizeHeight(10),
 	},
@@ -151,7 +151,8 @@ class BasketScreen extends Component {
 		}, 0);
 		
 		const shippingPrice = this.props.totalPrice >= this.props.freeShippingThreshold ? 0 : this.props.shippingPrice;
-		const totalPrice = this.props.totalPrice + shippingPrice;
+		const totalPrice = this.props.totalPrice + shippingPrice + this.props.containers.price;
+		const disabledOrderButton = !totalAmount;
 		
 		if (!this.props.items.length) {
 			return (
@@ -181,24 +182,40 @@ class BasketScreen extends Component {
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={styles.contentContainerStyle}
 				/>
-				<View style={styles.basketFooter}>
+				<View style={[styles.basketFooter, disabledOrderButton && {minHeight: 'auto', borderTopWidth: 0}]}>
 					<View style={styles.basketFooterInfo}>
-						{
-							this.props.totalPrice >= this.props.freeShippingThreshold ?
-								<SmallText>{translate('freeShipping')}</SmallText> :
-								<SmallText>{assemble(translate('shippingPrice'), {price: this.props.shippingPrice})}</SmallText>
+						{!!this.props.totalPrice &&
+						<SmallText>
+							{this.props.totalPrice >= this.props.freeShippingThreshold ?
+								translate('freeShipping') :
+								assemble(translate('shippingPrice'), {price: this.props.shippingPrice})}
+						</SmallText>
 						}
-						<SmallText>{assemble(translate('numberOfContainers'), {amount: 7})}</SmallText>
+						{!!this.props.containers.amount && !!this.props.containers.price &&
+						<Fragment>
+							<SmallText>{assemble(translate('numberOfContainers'), {amount: this.props.containers.amount})}</SmallText>
+							<SmallText>{assemble(translate('containersPrice'), {price: this.props.containers.price})}</SmallText>
+						</Fragment>
+						}
+						{!!totalAmount &&
 						<SmallText>{assemble(translate('itemsInBasket'), {totalAmount})}</SmallText>
+						}
 					</View>
 					<Button
-						onPress={() => null}
-						title={assemble(translate('order'), {sum: totalPrice})}
+						onPress={this.completeOrderHandler(disabledOrderButton)}
+						title={disabledOrderButton ?
+							translate('addItemsToBasket') :
+							assemble(translate('order'), {sum: totalPrice})
+						}
 					/>
 				</View>
 			</View>
 		);
 	}
+	
+	completeOrderHandler = (disabledOrderButton) => () => {
+		return disabledOrderButton ? this.navigateToMenu() : alert('order is completed');
+	};
 	
 	renderLeftActions = (id) => () => {
 		return (
@@ -304,6 +321,7 @@ class BasketScreen extends Component {
 const mapStateToProps = state => ({
 	items: state.basket.items,
 	totalPrice: state.basket.totalPrice,
+	containers: state.basket.containers,
 	freeShippingThreshold: state.menu.freeShippingThreshold,
 	shippingPrice: state.menu.shippingPrice,
 });
