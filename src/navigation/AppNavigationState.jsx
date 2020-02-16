@@ -2,20 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import NavigationService from '../utils/NavigationService';
 import AppNavigator from './AppNavigator';
-import RootNavigation from './RootNavigation';
+import AppWithNavigationState from './AppWithNavigationState';
 
 const AppNavigationState = (props) => {
 	if (props.profile && props.profile.userIsLoggedIn && props.profile.guideViewed) {
-		return (
-			<RootNavigation/>
-		);
+		return <AppWithNavigationState/>;
 	}
 	return (
-		<AppNavigator
-			ref={navigatorRef => {
-				NavigationService.setTopLevelNavigator(navigatorRef);
-			}}
-		/>
+		<AppNavigator ref={navigatorRef => {
+			NavigationService.setTopLevelNavigator(navigatorRef);
+		}}/>
 	);
 };
 

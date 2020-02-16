@@ -138,6 +138,7 @@ class SearchScreen extends Component {
 			id: item.id,
 			categoryId: '1',
 			title: item.title,
+			prevScreen: 'Search',
 		});
 	};
 	

@@ -141,7 +141,7 @@ const styles = EStyleSheet.create({
 
 class BasketScreen extends Component {
 	componentDidMount() {
-		if (this.props.items.length > 0) {
+		if (this.props.items.length > 0 && !this.props.navigation.getParam('clearBasket')) {
 			this.props.navigation.setParams({clearBasket: this.props.clearBasket});
 		}
 	}

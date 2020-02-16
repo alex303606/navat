@@ -181,7 +181,7 @@ class HomeScreen extends Component {
 	}
 	
 	navigateToCategory = (item) => () => {
-		this.props.navigation.navigate('Category', {id: item.id, title: item.title});
+		this.props.navigation.navigate('Category', {id: item.id, title: item.title, prevScreen: 'Home'});
 	};
 	
 	renderMenuItem = ({item}) => {
@@ -266,6 +266,7 @@ class HomeScreen extends Component {
 			id: item.id,
 			categoryId: item.parentCategoryId,
 			title: item.title,
+			prevScreen: 'Home',
 		});
 	};
 	
@@ -298,7 +299,10 @@ class HomeScreen extends Component {
 						</BoxShadow>
 					</View>
 					<View style={styles.section}>
-						<SectionHeader navigation={this.props.navigation} targetScreen='Menu' title='Меню'/>
+						<SectionHeader
+							navigation={this.props.navigation}
+							targetScreen='Menu'
+							title='Меню'/>
 						<FlatList
 							data={this.props.categories}
 							horizontal
@@ -314,8 +318,10 @@ class HomeScreen extends Component {
 						/>
 					</View>
 					<View style={styles.section}>
-						<SectionHeader navigation={this.props.navigation} targetScreen='PopularDishes'
-									   title='Популярные блюда'/>
+						<SectionHeader
+							navigation={this.props.navigation}
+							targetScreen='PopularDishes'
+							title='Популярные блюда'/>
 						<FlatList
 							data={this.props.popularDishes}
 							horizontal
