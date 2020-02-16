@@ -27,7 +27,11 @@ const styles = EStyleSheet.create({
 	row: {
 		flexDirection: 'row',
 		flex: 1,
-		paddingVertical: normalizeHeight(5),
+		backgroundColor: 'white',
+	},
+	itemWrapper: {
+		paddingHorizontal: '10rem',
+		backgroundColor: 'white',
 	},
 	image: {
 		width: '155rem',
@@ -86,7 +90,6 @@ const styles = EStyleSheet.create({
 	},
 	leftAction: {
 		backgroundColor: 'red',
-		marginVertical: normalizeHeight(5),
 		paddingHorizontal: '5rem',
 		flexDirection: 'column',
 		justifyContent: 'center',
@@ -120,7 +123,8 @@ const styles = EStyleSheet.create({
 		marginBottom: normalizeHeight(10),
 	},
 	contentContainerStyle: {
-		paddingHorizontal: '10rem',
+		paddingVertical: '10rem',
+		backgroundColor: 'white',
 	},
 	emptyBasket: {
 		flex: 1,
@@ -128,6 +132,10 @@ const styles = EStyleSheet.create({
 		paddingVertical: normalizeHeight(10),
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	separator: {
+		height: '10rem',
+		backgroundColor: 'white',
 	},
 });
 
@@ -181,6 +189,7 @@ class BasketScreen extends Component {
 					keyExtractor={this.keyExtractor}
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={styles.contentContainerStyle}
+					ItemSeparatorComponent={this.renderSeparator}
 				/>
 				<View style={[styles.basketFooter, disabledOrderButton && {minHeight: 'auto', borderTopWidth: 0}]}>
 					<View style={styles.basketFooterInfo}>
@@ -212,6 +221,8 @@ class BasketScreen extends Component {
 			</View>
 		);
 	}
+	
+	renderSeparator = () => <View style={styles.separator}/>;
 	
 	completeOrderHandler = (disabledOrderButton) => () => {
 		return disabledOrderButton ? this.navigateToMenu() : alert('order is completed');
@@ -245,65 +256,68 @@ class BasketScreen extends Component {
 		};
 		
 		return (
-			<Swipeable
-				renderLeftActions={this.renderLeftActions(item.id)}
-				overshootLeft={false}
-			>
-				<View style={styles.row}>
-					<View style={styles.image}>
-						<ImageWithLoader
-							resizeMode='cover'
-							style={styles.imageWithLoader}
-							source={{uri: item.image}}
-						/>
-					</View>
-					<View style={styles.info}>
-						<View style={styles.infoTop}>
-							<Label numberOfLines={1} style={styles.title}>{item.title}</Label>
-							{!!item.additionalTitle &&
-							<LittleText numberOfLines={1}
-										style={styles.additionalTitle}>{item.additionalTitle}</LittleText>
-							}
-							<Description numberOfLines={3}>{item.description}</Description>
+			<View style={styles.itemWrapper}>
+				<Swipeable
+					renderLeftActions={this.renderLeftActions(item.id)}
+					overshootLeft={false}
+				>
+					<View style={styles.row}>
+						<View style={styles.image}>
+							<ImageWithLoader
+								resizeMode='cover'
+								style={styles.imageWithLoader}
+								source={{uri: item.image}}
+							/>
 						</View>
-						<View style={styles.footer}>
-							<View style={styles.footerLeft}>
-								<BoxShadow setting={shadowOpt}>
-									<TouchableOpacity
-										activeOpacity={0.3}
-										style={styles.button}
-										onPress={this.increaseItem(item.id)}>
-										<Icon
-											style={styles.icon}
-											name='ios-add-circle-outline'
-											size={styles.$iconSize}
-											color={config.MainColor}
-										/>
-									</TouchableOpacity>
-								</BoxShadow>
-								<ReactNative.Text style={styles.amount}>{item.amount}</ReactNative.Text>
-								<BoxShadow setting={shadowOpt}>
-									<TouchableOpacity
-										activeOpacity={0.3}
-										style={styles.button}
-										onPress={this.decreaseItem(item.id)}>
-										<Icon
-											style={styles.icon}
-											name='ios-remove-circle-outline'
-											size={styles.$iconSize}
-											color={config.MainColor}
-										/>
-									</TouchableOpacity>
-								</BoxShadow>
+						<View style={styles.info}>
+							<View style={styles.infoTop}>
+								<Label numberOfLines={1} style={styles.title}>{item.title}</Label>
+								{!!item.additionalTitle &&
+								<LittleText numberOfLines={1}
+											style={styles.additionalTitle}>{item.additionalTitle}</LittleText>
+								}
+								<Description numberOfLines={3}>{item.description}</Description>
 							</View>
-							<Price
-								style={styles.price}
-								textStyle={styles.textStyle}
-								title={item.price * item.amount}/>
+							<View style={styles.footer}>
+								<View style={styles.footerLeft}>
+									<BoxShadow setting={shadowOpt}>
+										<TouchableOpacity
+											activeOpacity={0.3}
+											style={styles.button}
+											onPress={this.increaseItem(item.id)}>
+											<Icon
+												style={styles.icon}
+												name='ios-add-circle-outline'
+												size={styles.$iconSize}
+												color={config.MainColor}
+											/>
+										</TouchableOpacity>
+									</BoxShadow>
+									<ReactNative.Text style={styles.amount}>{item.amount}</ReactNative.Text>
+									<BoxShadow setting={shadowOpt}>
+										<TouchableOpacity
+											activeOpacity={0.3}
+											style={styles.button}
+											onPress={this.decreaseItem(item.id)}>
+											<Icon
+												style={styles.icon}
+												name='ios-remove-circle-outline'
+												size={styles.$iconSize}
+												color={config.MainColor}
+											/>
+										</TouchableOpacity>
+									</BoxShadow>
+								</View>
+								<Price
+									style={styles.price}
+									textStyle={styles.textStyle}
+									title={item.price * item.amount}/>
+							</View>
 						</View>
 					</View>
-				</View>
-			</Swipeable>
+				</Swipeable>
+			</View>
+		
 		);
 	};
 	

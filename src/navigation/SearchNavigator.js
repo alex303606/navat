@@ -2,19 +2,19 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { translate } from '../localization/i18n';
 import Header from '../components/Header';
-import HomeScreen from '../screens/HomeScreen';
 import { View } from 'react-native';
 import React from 'react';
+import SearchScreen from '../screens/SearchScreen';
 
 const SearchNavigator = createStackNavigator({
-		HomeScreen: {
-			screen: HomeScreen,
+		SearchScreen: {
+			screen: SearchScreen,
 		},
 	},
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'HomeScreen',
+		initialRouteName: 'SearchScreen',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.Search'),
