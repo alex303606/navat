@@ -2,6 +2,7 @@ import React from 'react';
 import ReactNative from 'react-native';
 import { Platform } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { getCustomFontFamilyByFontWeight } from '../utils/utils';
 
 const styles = EStyleSheet.create({
 	font: {
@@ -11,18 +12,12 @@ const styles = EStyleSheet.create({
 	h1: {
 		fontSize: '24rem',
 		lineHeight: '29rem',
-		fontWeight: Platform.select({
-			android: 'bold',
-			ios: '600',
-		}),
+		fontFamily: getCustomFontFamilyByFontWeight(600),
 	},
 	h2: {
 		fontSize: '20rem',
 		lineHeight: '24rem',
-		fontWeight: Platform.select({
-			android: 'bold',
-			ios: '600',
-		}),
+		fontFamily: getCustomFontFamilyByFontWeight(600),
 	},
 	h3: {
 		fontSize: '14rem',
@@ -42,10 +37,7 @@ const styles = EStyleSheet.create({
 	bold: {
 		fontSize: '15rem',
 		lineHeight: '18rem',
-		fontWeight: Platform.select({
-			android: 'bold',
-			ios: '500',
-		}),
+		fontFamily: getCustomFontFamilyByFontWeight(500),
 	},
 	smallText: {
 		fontSize: '14rem',
@@ -55,10 +47,7 @@ const styles = EStyleSheet.create({
 	littleText: {
 		fontSize: '12rem',
 		lineHeight: '14rem',
-		fontWeight: Platform.select({
-			android: 'bold',
-			ios: '600',
-		}),
+		fontFamily: getCustomFontFamilyByFontWeight(600),
 	},
 	middleText: {
 		color: '#9B9B9B',
@@ -69,10 +58,7 @@ const styles = EStyleSheet.create({
 	description: {
 		fontSize: '11rem',
 		lineHeight: '12rem',
-		fontWeight: Platform.select({
-			android: 'normal',
-			ios: '200',
-		}),
+		fontFamily: getCustomFontFamilyByFontWeight(200),
 	},
 });
 

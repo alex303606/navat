@@ -13,6 +13,7 @@ import { bindActionCreators } from 'redux';
 import { signIn } from '../store/actions/profile';
 import { connect } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { getCustomFontFamilyByFontWeight } from '../utils/utils';
 
 Icon.loadFont();
 IonIcon.loadFont();
@@ -24,7 +25,7 @@ const styles = EStyleSheet.create({
 		justifyContent: 'flex-end',
 	},
 	textStyle: {
-		fontWeight: '500',
+		fontFamily: getCustomFontFamilyByFontWeight(500),
 		fontSize: '15rem',
 		lineHeight: '18rem',
 		color: 'white',
@@ -147,7 +148,7 @@ class LoginScreen extends Component {
 							{translate('loginOrRegister')}
 						</SmallText>
 					</View>
-					< Button
+					<Button
 						buttonStyle={{backgroundColor: config.MainColor}}
 						textStyle={styles.textStyle}
 						onPress={this.toggleModal}

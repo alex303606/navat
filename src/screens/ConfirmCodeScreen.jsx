@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import { signIn } from '../store/actions/profile';
 import { connect } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { getCustomFontFamilyByFontWeight } from '../utils/utils';
 
 const styles = EStyleSheet.create({
 	page: {
@@ -33,7 +34,7 @@ const styles = EStyleSheet.create({
 		borderColor: '#EFEFF4',
 		color: '#fff',
 		fontSize: '30rem',
-		fontWeight: '600',
+		fontFamily: getCustomFontFamilyByFontWeight(600),
 	},
 	inputNotEmpty: {
 		backgroundColor: 'white',
@@ -55,7 +56,7 @@ const styles = EStyleSheet.create({
 	},
 	errorText: {
 		color: 'red',
-		fontWeight: '600',
+		fontFamily: getCustomFontFamilyByFontWeight(600),
 	},
 	$size: '60rem',
 });

@@ -56,6 +56,18 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>icomoon.ttf</string>
+		<string>SFUIText-Bold.ttf</string>
+		<string>SFUIText-BoldItalic.ttf</string>
+		<string>SFUIText-Heavy.ttf</string>
+		<string>SFUIText-HeavyItalic.ttf</string>
+		<string>SFUIText-Light.ttf</string>
+		<string>SFUIText-LightItalic.ttf</string>
+		<string>SFUIText-Medium.ttf</string>
+		<string>SFUIText-MediumItalic.ttf</string>
+		<string>SFUIText-Regular.ttf</string>
+		<string>SFUIText-RegularItalic.ttf</string>
+		<string>SFUIText-Semibold.ttf</string>
+		<string>SFUIText-SemiboldItalic.ttf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>

@@ -1,6 +1,7 @@
 import config from '../../config';
 import { Dimensions } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { getCustomFontFamilyByFontWeight } from '../utils/utils';
 const entireScreenWidth = Dimensions.get('window').width;
 EStyleSheet.build({$rem: entireScreenWidth / 414});
 const styles = EStyleSheet.create({
@@ -22,7 +23,7 @@ const Header = {
 	headerTitleStyle: {
 		backgroundColor: config.BackgroundColor,
 		fontSize: styles.$fontSize,
-		fontWeight: '600',
+		fontFamily: getCustomFontFamilyByFontWeight(600),
 		flex: 1,
 		textAlign: 'center',
 	},
