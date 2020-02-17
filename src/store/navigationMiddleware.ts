@@ -1,23 +1,29 @@
 import { StackActions, NavigationActions } from 'react-navigation';
 
 function getCurrentRouteParamPrevScreen(navState) {
-  if (navState.hasOwnProperty('index')) {
-    return getCurrentRouteParamPrevScreen(navState.routes[navState.index]);
-  } else {
-    if (navState.params && !!navState.params.prevScreen) {
-        return navState.params.prevScreen;
+    if (navState.hasOwnProperty('index')) {
+        return getCurrentRouteParamPrevScreen(navState.routes[navState.index]);
+    } else {
+        if (navState.params && !!navState.params.prevScreen) {
+            const {searchValue, prevScreen} = navState.params;
+            return {searchValue, prevScreen};
+        }
     }
-  }
 }
 
 const navigationMiddleware = ({dispatch, getState}) => next => async (action) => {
     switch (action.type) {
         case NavigationActions.BACK:
             const store = getState();
-            const routeName = getCurrentRouteParamPrevScreen(store.nav);
-            if (!!routeName) {
+            const routeParams = getCurrentRouteParamPrevScreen(store.nav);
+            if (routeParams && !!routeParams.prevScreen) {
                 dispatch(StackActions.popToTop());
-                return dispatch(NavigationActions.navigate({routeName}));
+                return dispatch(NavigationActions.navigate({
+                    routeName: routeParams.prevScreen,
+                    params: {
+                        searchValue: routeParams.searchValue,
+                    },
+                }));
             }
             return next(action);
 

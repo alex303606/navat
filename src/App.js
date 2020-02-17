@@ -37,7 +37,7 @@ export default class App extends React.Component {
 	}
 }
 
-module.hot.accept(() => {
-	EStyleSheet.clearCache();
-	EStyleSheet.build();
-});
+// module.hot.accept(() => {
+// 	EStyleSheet.clearCache();
+// 	EStyleSheet.build();
+// });

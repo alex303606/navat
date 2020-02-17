@@ -73,6 +73,17 @@ const ListEmptyComponent = () => (
 );
 
 class SearchScreen extends Component {
+	componentDidMount() {
+		const value = this.props.navigation.getParam('searchValue');
+		if (!!value) {
+			this.globalSearch(value);
+		}
+	}
+	
+	componentWillUnmount() {
+		this.props.navigation.setParams({searchValue: this.state.value});
+	}
+	
 	state = {
 		value: '',
 		filteredItems: [],
@@ -138,7 +149,8 @@ class SearchScreen extends Component {
 			id: item.id,
 			categoryId: '1',
 			title: item.title,
-			prevScreen: 'Search',
+			prevScreen: 'SearchScreen',
+			searchValue: this.state.value,
 		});
 	};
 	

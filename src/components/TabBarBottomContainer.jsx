@@ -6,6 +6,7 @@ import { translate } from '../localization/i18n';
 import CustomIcon from './CustomIcon';
 import { connect } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { StackActions } from 'react-navigation';
 
 const styles = EStyleSheet.create({
 	page: {
@@ -125,6 +126,9 @@ class TabBarBottomContainer extends Component {
 	}
 	
 	navigationHandler = ({routeName}) => () => {
+		if (this.props.navigation.isFocused(routeName)) {
+			return this.props.navigation.dispatch(StackActions.popToTop());
+		}
 		this.props.navigation.navigate(routeName);
 	};
 }
