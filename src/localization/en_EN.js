@@ -37,5 +37,7 @@ export const en = {
 	navigationTitle: {
 		Branches: 'Our establishments',
 		PopularDishes: 'Popular dishes',
+		Profile: 'Personal Area',
+		PersonalData: 'Your data',
 	},
 };

@@ -37,5 +37,7 @@ export const ru = {
 	navigationTitle: {
 		Branches: 'Наши заведения',
 		PopularDishes: 'Популярные блюда',
+		Profile: 'Личный Кабинет',
+		PersonalData: 'Ваши данные',
 	},
 };

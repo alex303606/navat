@@ -129,10 +129,12 @@ const styles = EStyleSheet.create({
 });
 
 const ProfileScreen = (props) => {
-	const editProfile = () => null;
+	const editProfile = () => props.navigation.navigate('PersonalData');
+	const navigateToItemSettings = () => props.signOut();
+	
 	const renderSettingsItem = (item, index) => {
 		return (
-			<TouchableOpacity key={index} activeOpacity={0.3} onPress={() => null}>
+			<TouchableOpacity key={index} activeOpacity={0.3} onPress={navigateToItemSettings}>
 				<View style={[styles.item, {borderBottomWidth: (settings.length - 1) === index ? 0 : 1}]}>
 					<View style={styles.itemLeft}>
 						{item.icon && <View style={styles.itemIcon}>{item.icon()}</View>}

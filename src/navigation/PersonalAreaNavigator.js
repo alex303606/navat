@@ -5,10 +5,14 @@ import Header from '../components/Header';
 import { View } from 'react-native';
 import React from 'react';
 import ProfileScreen from '../screens/ProfileScreen';
+import PersonalDataScreen from '../screens/PersonalDataScreen';
 
 const PersonalAreaNavigator = createStackNavigator({
 		Profile: {
 			screen: ProfileScreen,
+		},
+		PersonalData: {
+			screen: PersonalDataScreen,
 		},
 	},
 	{
@@ -16,8 +20,9 @@ const PersonalAreaNavigator = createStackNavigator({
 		headerMode: 'float',
 		initialRouteName: 'Profile',
 		defaultNavigationOptions: ({navigation}) => {
+			const {state: {routeName}} = navigation;
 			return {
-				headerTitle: translate('tabbar.PersonalArea'),
+				headerTitle: translate(`navigationTitle.${routeName}`),
 				headerRight: navigation.isFirstRouteInParent() ? null : <View style={{flex: 1}}/>,
 				...Header,
 				gesturesEnabled: false,
