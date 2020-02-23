@@ -175,6 +175,7 @@ class LoginScreen extends Component {
 						<ScrollView
 							keyboardShouldPersistTaps='handled'
 							scrollEnabled={true}
+							showsVerticalScrollIndicator={false}
 							contentContainerStyle={{flexGrow: 1}}
 						>
 							<H1 style={styles.modalTitle}>{translate('enter')}</H1>

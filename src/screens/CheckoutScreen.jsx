@@ -6,7 +6,9 @@ import ReactNative, {
 	View,
 	Dimensions,
 	NativeModules,
-	TouchableOpacity, FlatList,
+	TouchableOpacity,
+	FlatList,
+	ScrollView,
 } from 'react-native';
 import { connect } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -62,7 +64,7 @@ const styles = EStyleSheet.create({
 		flex: 1,
 		paddingHorizontal: '10rem',
 		paddingBottom: '20rem',
-		marginTop: -normalizeHeight(60),
+		marginTop: -60,
 	},
 	modal: {
 		backgroundColor: 'white',
@@ -317,14 +319,21 @@ const CheckoutScreen = (props) => {
 			{renderHeader()}
 			<View style={styles.content}>
 				<Shadow style={styles.modal}>
-					{renderDeliveryAddress()}
-					{renderPaymentMethod()}
-					<View style={styles.footer}>
-						<Button
-							onPress={navigateToReadyScreen}
-							title={'ОПЛАТИТЬ'}
-						/>
-					</View>
+					<ScrollView
+						keyboardShouldPersistTaps='handled'
+						scrollEnabled={true}
+						showsVerticalScrollIndicator={false}
+						contentContainerStyle={{flexGrow: 1}}
+					>
+						{renderDeliveryAddress()}
+						{renderPaymentMethod()}
+						<View style={styles.footer}>
+							<Button
+								onPress={navigateToReadyScreen}
+								title={'ОПЛАТИТЬ'}
+							/>
+						</View>
+					</ScrollView>
 				</Shadow>
 			</View>
 		</View>
