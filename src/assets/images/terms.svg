@@ -1,0 +1,27 @@
+<svg id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <mask id="mask" x="0" y="0" width="30" height="30" maskUnits="userSpaceOnUse">
+      <g transform="translate(-37.5 19.11)">
+        <g id="mask0">
+          <path d="M52.5,7.89a12,12,0,0,1-12-12,12,12,0,0,1,12-12,12,12,0,0,1,12,12A12,12,0,0,1,52.5,7.89ZM51-2.61a1.5,1.5,0,0,0,1.5,1.5A1.51,1.51,0,0,0,54-2.61v-7.5a1.5,1.5,0,0,0-1.5-1.5,1.5,1.5,0,0,0-1.5,1.5Zm0,4.47a1.5,1.5,0,1,1,1.5,1.5A1.5,1.5,0,0,1,51,1.86Z" style="fill: #fff"/>
+        </g>
+      </g>
+    </mask>
+    <linearGradient id="Безымянный_градиент" data-name="Безымянный градиент" x1="73.49" y1="53.07" x2="31.48" y2="19.15" gradientTransform="matrix(1, 0, 0, -1, -37.5, 51.11)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00ca9d"/>
+      <stop offset="0.69" stop-color="#aeefaa"/>
+      <stop offset="1" stop-color="#fbffc1"/>
+    </linearGradient>
+    <clipPath id="clip-path" transform="translate(-37.5 19.11)">
+      <circle cx="52.5" cy="1.48" r="1.5" style="fill: none"/>
+    </clipPath>
+  </defs>
+  <title>terms</title>
+  <g style="mask: url(#mask)">
+    <rect width="30" height="30" style="fill: url(#Безымянный_градиент)"/>
+  </g>
+  <g style="clip-path: url(#clip-path)">
+    <circle cx="15" cy="14.62" r="12" style="fill: #fff"/>
+    <path d="M51-3a1.5,1.5,0,0,0,1.5,1.5A1.5,1.5,0,0,0,54-3v-7.5A1.5,1.5,0,0,0,52.5-12a1.5,1.5,0,0,0-1.5,1.5Z" transform="translate(-37.5 19.11)" style="fill: #fff"/>
+  </g>
+</svg>

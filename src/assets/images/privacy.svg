@@ -1,0 +1,19 @@
+<svg id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <mask id="mask" x="0" y="0" width="30" height="30" maskUnits="userSpaceOnUse">
+      <g transform="translate(-18.99 49.26)">
+        <g id="mask0">
+          <path d="M40.66-37.62h2a1.94,1.94,0,0,1,2,1.92v11.52a1.94,1.94,0,0,1-2,1.92H25a1.94,1.94,0,0,1-2-1.92V-35.7a1.94,1.94,0,0,1,2-1.92h2v-1.92a6.8,6.8,0,0,1,6.87-6.72,6.8,6.8,0,0,1,6.87,6.72Zm-6.87-6.72a4.86,4.86,0,0,0-4.91,4.8v1.92H38.7v-1.92A4.86,4.86,0,0,0,33.79-44.34Z" style="fill: #fff"/>
+        </g>
+      </g>
+    </mask>
+    <linearGradient id="Безымянный_градиент" data-name="Безымянный градиент" x1="25.99" y1="58.7" x2="49.4" y2="80.83" gradientTransform="matrix(1, 0, 0, -1, -18.99, 81.26)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f9c91d"/>
+      <stop offset="1" stop-color="#ff4e08"/>
+    </linearGradient>
+  </defs>
+  <title>privacy</title>
+  <g style="mask: url(#mask)">
+    <rect width="30" height="30" style="fill: url(#Безымянный_градиент)"/>
+  </g>
+</svg>
