@@ -3,6 +3,7 @@ import {
 	SELECT_LOCATION,
 	SIGN_IN,
 	SIGN_OUT,
+	CHANGED_AVATAR,
 } from './actionTypes';
 import NavigationService from '../../utils/NavigationService';
 
@@ -28,5 +29,12 @@ export const signOut = () => {
 export const setGuideIsViewed = () => {
 	return dispatch => {
 		dispatch({type: GUIDE_VIEWED});
+	};
+};
+
+export const savePhoto = (avatar: { uri: string }) => {
+	return {
+		avatar,
+		type: CHANGED_AVATAR,
 	};
 };

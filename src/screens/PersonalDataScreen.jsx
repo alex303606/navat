@@ -1,10 +1,12 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
-import { H1 } from '../components/Texts';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
 import Shadow from '../components/Shadow';
 import PickerImage from '../components/PickerImage';
+import { bindActionCreators } from 'redux';
+import { savePhoto } from '../store/actions/profile';
+import { connect } from 'react-redux';
 
 const styles = EStyleSheet.create({
 	page: {
@@ -21,7 +23,8 @@ const styles = EStyleSheet.create({
 	},
 	header: {
 		borderBottomWidth: 1,
-		borderBottomColor: '#EFEFF4'
+		borderBottomColor: '#EFEFF4',
+		paddingBottom: '20rem',
 	},
 });
 
@@ -35,15 +38,27 @@ const PersonalDataScreen = (props) => {
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{flexGrow: 1}}
 				>
-				<View style={styles.header}>
-				<PickerImage
-					// avatar={this.props.photo} savePhoto={this.props.savePhoto}
-				/>
-				</View>
+					<View style={styles.header}>
+						<PickerImage
+							avatar={props.profile.avatar}
+							savePhoto={props.savePhoto}
+						/>
+					</View>
 				</ScrollView>
 			</Shadow>
 		</View>
 	);
 };
 
-export default PersonalDataScreen;
+const mapStateToProps = state => ({
+	profile: state.profile,
+});
+
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			savePhoto,
+		},
+		dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalDataScreen);

@@ -82,6 +82,7 @@ const styles = EStyleSheet.create({
 		marginRight: '14rem',
 		alignItems: 'center',
 		justifyContent: 'center',
+		overflow: 'hidden',
 	},
 	description: {
 		color: '#9B9B9B',
@@ -161,12 +162,19 @@ const ProfileScreen = (props) => {
 			<Shadow style={[styles.modal, styles.topModal]}>
 				<View style={styles.top}>
 					<View style={styles.avatar}>
-						<Icon
-							style={styles.icon}
-							name='user'
-							size={40}
-							color={'white'}
-						/>
+						{!!props.profile.avatar && props.profile.avatar.uri ?
+							<Image
+								style={{width: '100%', height: '100%'}}
+								resizeMode='contain'
+								source={props.profile.avatar}
+							/> :
+							<Icon
+								style={styles.icon}
+								name='user'
+								size={40}
+								color={'white'}
+							/>
+						}
 					</View>
 					<View>
 						<ReactNative.Text style={styles.userName}>Василий Петров</ReactNative.Text>
