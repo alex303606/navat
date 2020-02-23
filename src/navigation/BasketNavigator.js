@@ -9,6 +9,7 @@ import { H2 } from '../components/Texts';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
 import CheckoutScreen from '../screens/CheckoutScreen';
+import CheckoutReadyScreen from '../screens/CheckoutReadyScreen';
 
 const styles = EStyleSheet.create({
 	clearButton: {
@@ -39,6 +40,9 @@ const BasketNavigator = createStackNavigator({
 		},
 		Checkout: {
 			screen: CheckoutScreen,
+		},
+		Ready: {
+			screen: CheckoutReadyScreen,
 		},
 	},
 	{

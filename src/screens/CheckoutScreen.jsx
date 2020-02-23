@@ -19,6 +19,8 @@ import Button from '../components/Button';
 import CustomIcon from '../components/CustomIcon';
 import CustomModal from '../components/CustomModal';
 import backGround from '../assets/images/checkout-header-background.png';
+import { bindActionCreators } from 'redux';
+import { clearBasket } from '../store/actions/basket';
 
 const {StatusBarManager} = NativeModules;
 const styles = EStyleSheet.create({
@@ -57,8 +59,8 @@ const styles = EStyleSheet.create({
 		fontFamily: getCustomFontFamilyByFontWeight(900),
 	},
 	content: {
-		paddingHorizontal: '10rem',
 		flex: 1,
+		paddingHorizontal: '10rem',
 		paddingBottom: '20rem',
 		marginTop: -normalizeHeight(60),
 	},
@@ -79,6 +81,7 @@ const styles = EStyleSheet.create({
 		flexGrow: 1,
 		flexDirection: 'column',
 		justifyContent: 'flex-end',
+		paddingTop: '20rem',
 	},
 	selectedItem: {
 		borderRadius: '6rem',
@@ -152,6 +155,10 @@ const CheckoutScreen = (props) => {
 	}
 	
 	const navigationBack = () => props.navigation.goBack();
+	const navigateToReadyScreen = () => {
+		props.clearBasket();
+		props.navigation.navigate('Ready', {prevScreen: 'Home'});
+	};
 	
 	const renderHeader = () => (
 		<ImageBackground
@@ -314,7 +321,7 @@ const CheckoutScreen = (props) => {
 					{renderPaymentMethod()}
 					<View style={styles.footer}>
 						<Button
-							onPress={navigationBack}
+							onPress={navigateToReadyScreen}
 							title={'ОПЛАТИТЬ'}
 						/>
 					</View>
@@ -335,4 +342,11 @@ const mapStateToProps = state => ({
 	addresses: state.profile.addresses,
 });
 
-export default connect(mapStateToProps, null)(CheckoutScreen);
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			clearBasket,
+		},
+		dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutScreen);
