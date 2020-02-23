@@ -8,6 +8,7 @@ import BasketScreen from '../screens/BasketScreen';
 import { H2 } from '../components/Texts';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
+import CheckoutScreen from '../screens/CheckoutScreen';
 
 const styles = EStyleSheet.create({
 	clearButton: {
@@ -35,6 +36,9 @@ const HeaderClearButton = props => {
 const BasketNavigator = createStackNavigator({
 		Basket: {
 			screen: BasketScreen,
+		},
+		Checkout: {
+			screen: CheckoutScreen,
 		},
 	},
 	{

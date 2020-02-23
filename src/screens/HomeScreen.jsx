@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import IonIcon from 'react-native-vector-icons/Ionicons';
 import Stars from 'react-native-stars';
 import ReactNative, {
 	ImageBackground,
@@ -25,7 +24,6 @@ import { bindActionCreators } from 'redux';
 import { initMenu } from '../store/actions/menu';
 
 Icon.loadFont();
-IonIcon.loadFont();
 
 const pagePadding = 13;
 

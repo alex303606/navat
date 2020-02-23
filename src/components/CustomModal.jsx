@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, Modal } from 'react-native';
+import React from 'react';
+import { View, Modal, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import PropTypes from 'prop-types';
 import config from '../../config';
@@ -9,16 +9,15 @@ const styles = EStyleSheet.create({
 	modal: {
 		flex: 1,
 		flexDirection: 'column',
-		justifyContent: 'flex-end',
-		backgroundColor: 'transparent',
+		justifyContent: 'center',
+		backgroundColor: config.InactiveColorFunc(0.8),
 	},
 	modalContainer: {
 		paddingHorizontal: '15rem',
 		paddingVertical: '25rem',
 		backgroundColor: 'white',
-		borderTopRightRadius: '8rem',
-		borderTopLeftRadius: '8rem',
-		margin: '6rem',
+		borderRadius: '8rem',
+		margin: '10rem',
 		shadowColor: '#000',
 		shadowOffset: {
 			width: 0,
@@ -31,30 +30,31 @@ const styles = EStyleSheet.create({
 	},
 });
 
-class CustomModal extends Component {
-	static propTypes = {
-		setModalVisible: PropTypes.func.isRequired,
-		modalVisible: PropTypes.bool.isRequired,
-		keyboardIsVisible: PropTypes.bool,
-		modalStyle: PropTypes.object,
-	};
-	
-	render() {
-		return (
-			<Modal
-				animationType='none'
-				transparent={true}
-				visible={this.props.modalVisible}>
-				<SafeAreaView
-					forceInset={{bottom: 'always', top: 'always'}}
-					style={[styles.modal, {marginBottom: this.props.keyboardIsVisible ? 0 : config.TabBarHeight}]}>
-					<View style={[styles.modalContainer, this.props.modalStyle]}>
-						{this.props.children}
-					</View>
+const CustomModal = (props) => {
+	const emptyMethod = () => null;
+	return (
+		<Modal
+			animationType='fade'
+			transparent={true}
+			visible={props.modalVisible}>
+			<TouchableOpacity activeOpacity={1} style={{flex: 1}} onPress={props.setModalVisible}>
+				<SafeAreaView forceInset={{bottom: 'always', top: 'never'}} style={styles.modal}>
+					<TouchableWithoutFeedback style={{flex: 1}} onPress={emptyMethod}>
+						<View style={styles.modalContainer}>
+							{props.children}
+						</View>
+					</TouchableWithoutFeedback>
 				</SafeAreaView>
-			</Modal>
-		);
-	}
-}
+			</TouchableOpacity>
+		</Modal>
+	);
+};
+
+CustomModal.propTypes = {
+	setModalVisible: PropTypes.func.isRequired,
+	modalVisible: PropTypes.bool.isRequired,
+	keyboardIsVisible: PropTypes.bool,
+	modalStyle: PropTypes.object,
+};
 
 export default CustomModal;

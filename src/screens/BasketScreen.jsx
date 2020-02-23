@@ -225,7 +225,10 @@ class BasketScreen extends Component {
 	renderSeparator = () => <View style={styles.separator}/>;
 	
 	completeOrderHandler = (disabledOrderButton) => () => {
-		return disabledOrderButton ? this.navigateToMenu() : alert('order is completed');
+		if (disabledOrderButton) {
+			return this.navigateToMenu();
+		}
+		return this.props.navigation.navigate('Checkout');
 	};
 	
 	renderLeftActions = (id) => () => {
