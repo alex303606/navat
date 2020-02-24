@@ -33,6 +33,11 @@ const styles = EStyleSheet.create({
 		lineHeight: '18rem',
 		fontWeight: 'normal',
 	},
+	sampleText: {
+		fontSize: '15rem',
+		lineHeight: '18rem',
+		fontFamily: getCustomFontFamilyByFontWeight(200),
+	},
 	bold: {
 		fontSize: '15rem',
 		lineHeight: '18rem',
@@ -101,6 +106,10 @@ const Description = props => (
 	<ReactNative.Text {...props} style={[styles.font, styles.description, props.style]}/>
 );
 
+const SampleText = props => (
+	<ReactNative.Text {...props} style={[styles.font, styles.sampleText, props.style]}/>
+);
+
 export {
 	H1,
 	H2,
@@ -112,4 +121,5 @@ export {
 	LittleText,
 	MiddleText,
 	Description,
+	SampleText,
 };

@@ -135,7 +135,7 @@ const styles = EStyleSheet.create({
 
 const ProfileScreen = (props) => {
 	const editProfile = () => props.navigation.navigate('PersonalData');
-	const navigateToItemSettings = () => props.signOut();
+	const navigateToItemSettings = () => props.navigation.navigate('Terms');
 	
 	const renderSettingsItem = (item, index) => {
 		return (

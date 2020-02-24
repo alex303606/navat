@@ -6,6 +6,7 @@ import { View } from 'react-native';
 import React from 'react';
 import ProfileScreen from '../screens/ProfileScreen';
 import PersonalDataScreen from '../screens/PersonalDataScreen';
+import TermsScreen from '../screens/TermsScreen';
 
 const PersonalAreaNavigator = createStackNavigator({
 		Profile: {
@@ -13,6 +14,9 @@ const PersonalAreaNavigator = createStackNavigator({
 		},
 		PersonalData: {
 			screen: PersonalDataScreen,
+		},
+		Terms: {
+			screen: TermsScreen,
 		},
 	},
 	{

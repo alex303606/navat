@@ -49,5 +49,6 @@ export const ru = {
 		PopularDishes: 'Популярные блюда',
 		Profile: 'Личный Кабинет',
 		PersonalData: 'Ваши данные',
+		Terms: 'Условия использования',
 	},
 };

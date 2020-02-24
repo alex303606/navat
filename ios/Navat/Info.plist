@@ -27,13 +27,13 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSPhotoLibraryUsageDescription</key>
-        <string>$(PRODUCT_NAME) would like access to your photo gallery</string>
-        <key>NSCameraUsageDescription</key>
-        <string>$(PRODUCT_NAME) would like to use your camera</string>
-        <key>NSPhotoLibraryAddUsageDescription</key>
-        <string>$(PRODUCT_NAME) would like to save photos to your photo gallery</string>
-        <key>NSMicrophoneUsageDescription</key>
-        <string>$(PRODUCT_NAME) would like to use your microphone (for videos)</string>
+		<string>$(PRODUCT_NAME) would like access to your photo gallery</string>
+		<key>NSCameraUsageDescription</key>
+		<string>$(PRODUCT_NAME) would like to use your camera</string>
+		<key>NSPhotoLibraryAddUsageDescription</key>
+		<string>$(PRODUCT_NAME) would like to save photos to your photo gallery</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>$(PRODUCT_NAME) would like to use your microphone (for videos)</string>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 		<key>NSExceptionDomains</key>
@@ -45,10 +45,10 @@
 			</dict>
 		</dict>
 	</dict>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>$(PRODUCT_NAME) would like access to your photo gallery to change your profile picture</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>$(PRODUCT_NAME) would like access to your photo gallery to change your profile picture</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like access to your photo gallery to change your profile picture</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like access to your photo gallery to change your profile picture</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
 	<key>UIAppFonts</key>

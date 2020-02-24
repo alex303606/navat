@@ -49,5 +49,6 @@ export const en = {
 		PopularDishes: 'Popular dishes',
 		Profile: 'Personal Area',
 		PersonalData: 'Your data',
+		Terms: 'Terms of Use',
 	},
 };
