@@ -3,8 +3,8 @@ import { ScrollView, View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
 import Shadow from '../components/Shadow';
-import { SampleText } from '../components/Texts';
 import ControlledSwitch from '../components/ControlledSwitch';
+import { Bold, MiddleText } from '../components/Texts';
 
 const styles = EStyleSheet.create({
 	page: {
@@ -15,11 +15,49 @@ const styles = EStyleSheet.create({
 	modal: {
 		flex: 1,
 		backgroundColor: 'white',
-		paddingHorizontal: '20rem',
-		paddingVertical: '25rem',
+		paddingHorizontal: '25rem',
+		paddingVertical: '15rem',
 		borderRadius: '8rem',
 	},
+	row: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		paddingVertical: '10rem',
+		borderBottomWidth: 1,
+		borderBottomColor: '#EFEFF4',
+	},
+	leftSide: {
+		flexGrow: 1,
+	},
+	title: {
+		marginBottom: '7rem',
+		flex: 1,
+		flexWrap: 'wrap',
+	},
+	text: {
+		flex: 1,
+		flexWrap: 'wrap',
+	},
 });
+
+const settings = [
+	{
+		title: 'PUSH уведомления',
+		description: 'Статус доставки, сообщения от курьера',
+	},
+	{
+		title: 'Email рассылка',
+		description: 'Статус доставки, сообщения от курьера',
+	},
+	{
+		title: 'Ваш город',
+		description: 'Выбран: Бишкек',
+	},
+	{
+		title: 'Выбор языка',
+		description: 'Выбран: русский',
+	},
+];
 
 const SettingsScreen = () => {
 	return (
@@ -31,14 +69,43 @@ const SettingsScreen = () => {
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{flexGrow: 1}}
 				>
-					<View>
-						<ControlledSwitch />
+					<View style={styles.row}>
+						<View style={styles.leftSide}>
+							<View style={{flexDirection: 'row'}}>
+								<Bold style={styles.title}>PUSH уведомления</Bold>
+							</View>
+							<View style={{flexDirection: 'row'}}>
+								<MiddleText style={styles.text}>Статус доставки, сообщения от курьера</MiddleText>
+							</View>
+						</View>
+						<ControlledSwitch/>
 					</View>
-					<View>
-						<ControlledSwitch />
+					<View style={styles.row}>
+						<View style={styles.leftSide}>
+							<View style={{flexDirection: 'row'}}>
+								<Bold style={styles.title}>Email рассылка</Bold>
+							</View>
+							<View style={{flexDirection: 'row'}}>
+								<MiddleText style={styles.text}>Статус доставки, сообщения от курьера</MiddleText>
+							</View>
+						</View>
+						<ControlledSwitch/>
 					</View>
-					<View>
-						<ControlledSwitch />
+					<View style={styles.row}>
+						<View style={styles.leftSide}>
+							<Bold style={styles.title}>Ваш город</Bold>
+							<View style={{flexDirection: 'row'}}>
+								<MiddleText style={styles.text}>Выбран: Бишкек</MiddleText>
+							</View>
+						</View>
+					</View>
+					<View style={styles.row}>
+						<View style={styles.leftSide}>
+							<Bold style={styles.title}>Выбор языка</Bold>
+							<View style={{flexDirection: 'row'}}>
+								<MiddleText style={styles.text}>Выбран: русский</MiddleText>
+							</View>
+						</View>
 					</View>
 				</ScrollView>
 			</Shadow>
