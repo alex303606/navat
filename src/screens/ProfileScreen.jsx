@@ -37,7 +37,7 @@ const settings = [
 	{
 		title: 'Служба поддержки',
 		icon: () => <Support/>,
-		targetScreen: 'PrivacyPolicy',
+		targetScreen: 'Help',
 	},
 	{
 		title: 'Настройки',
@@ -175,7 +175,7 @@ const ProfileScreen = (props) => {
 		);
 	};
 	
-	const dataIsValid = !!props.profile.phone.phone && !!props.profile.fio && !!props.profile.email;
+	const dataIsValid = !!props.profile.phone && !!props.profile.phone.phone && !!props.profile.fio && !!props.profile.email;
 	
 	return (
 		<View style={styles.page}>

@@ -112,7 +112,7 @@ const defaultDate = moment(`${currentYear - 30}-01-01`).format('DD/MM/YYYY');
 
 const PersonalDataScreen = (props) => {
 	const [fio, changeFio] = useState(props.profile.fio || '');
-	const [phone, changePhone] = useState(props.profile.phone.phone || '');
+	const [phone, changePhone] = useState((props.profile.phone && props.profile.phone.phone) ? props.profile.phone.phone : '');
 	const [birthday, changeBirthday] = useState(props.profile.birthday || defaultDate);
 	const [email, changeEmail] = useState(props.profile.email || '');
 	

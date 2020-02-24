@@ -140,9 +140,10 @@ const styles = EStyleSheet.create({
 });
 
 const CheckoutScreen = (props) => {
+	const defaultAddress = props.addresses && !!props.addresses.length ? props.addresses[0] : undefined;
 	const [statusBarHeight, setStatusBarHeight] = useState(0);
 	const [modalVisible, setModalVisible] = useState(false);
-	const [selectedAddress, changeSelectedAddress] = useState(props.addresses[0]);
+	const [selectedAddress, changeSelectedAddress] = useState(defaultAddress);
 	const [paymentMethod, changePaymentMethod] = useState('card');
 	const toggleModal = () => setModalVisible(!modalVisible);
 	
@@ -325,7 +326,7 @@ const CheckoutScreen = (props) => {
 						showsVerticalScrollIndicator={false}
 						contentContainerStyle={{flexGrow: 1}}
 					>
-						{renderDeliveryAddress()}
+						{selectedAddress && renderDeliveryAddress()}
 						{renderPaymentMethod()}
 						<View style={styles.footer}>
 							<Button
