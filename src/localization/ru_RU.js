@@ -52,5 +52,6 @@ export const ru = {
 		PersonalData: 'Ваши данные',
 		Terms: 'Условия использования',
 		PrivacyPolicy: 'Политика конфиденциальности',
+		Settings: 'Настройки',
 	},
 };

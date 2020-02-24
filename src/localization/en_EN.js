@@ -52,5 +52,6 @@ export const en = {
 		PersonalData: 'Your data',
 		Terms: 'Terms of Use',
 		PrivacyPolicy: 'Privacy policy',
+		Settings: 'Settings',
 	},
 };

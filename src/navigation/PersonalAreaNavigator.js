@@ -8,6 +8,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import PersonalDataScreen from '../screens/PersonalDataScreen';
 import TermsScreen from '../screens/TermsScreen';
 import PrivacyPolicyScreen from '../screens/PrivacyPolicyScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const PersonalAreaNavigator = createStackNavigator({
 		Profile: {
@@ -21,6 +22,9 @@ const PersonalAreaNavigator = createStackNavigator({
 		},
 		PrivacyPolicy: {
 			screen: PrivacyPolicyScreen,
+		},
+		Settings: {
+			screen: SettingsScreen,
 		},
 	},
 	{

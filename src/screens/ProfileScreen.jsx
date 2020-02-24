@@ -42,7 +42,7 @@ const settings = [
 	{
 		title: 'Настройки',
 		icon: () => <Settings/>,
-		targetScreen: 'PrivacyPolicy',
+		targetScreen: 'Settings',
 	},
 	{
 		title: 'Условия использования',
