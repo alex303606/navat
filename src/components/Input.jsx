@@ -24,21 +24,26 @@ const styles = EStyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		borderColor: config.GreyColor,
-	}
+	},
 });
 
 const Input = props => {
 	return (
-		<View style={styles.row}>
+		<View style={[styles.row, props.rowStyle]}>
 			<Label style={styles.label}>{props.label}</Label>
-			<View style={styles.inputWrapper}>
+			<View style={[styles.inputWrapper, props.style]}>
 				<TextInput
 					autoFocus={props.autoFocus}
-					style={styles.input}
+					autoCompleteType={props.autoCompleteType}
+					keyboardType={props.keyboardType}
+					textContentType={props.textContentType}
+					style={[styles.input, props.inputStyle]}
 					value={props.value}
 					onChangeText={props.onChangeText}
 					underlineColorAndroid='transparent'
 					secureTextEntry={!!props.secure}
+					placeholder={props.placeholder}
+					placeholderTextColor={config.GreyColor}
 				/>
 				{
 					props.renderRightButton && props.renderRightButton()
@@ -55,6 +60,13 @@ Input.propTypes = {
 	label: PropTypes.string.isRequired,
 	secure: PropTypes.bool,
 	autoFocus: PropTypes.bool,
+	placeholder: PropTypes.string,
+	autoCompleteType: PropTypes.string,
+	keyboardType: PropTypes.string,
+	textContentType: PropTypes.string,
+	style: PropTypes.any,
+	inputStyle: PropTypes.any,
+	rowStyle: PropTypes.any,
 };
 
 export default Input;

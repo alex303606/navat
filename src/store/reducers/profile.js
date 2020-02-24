@@ -4,6 +4,9 @@ import {
 	SIGN_OUT,
 	GUIDE_VIEWED,
 	CHANGED_AVATAR,
+	CHANGED_BIRTHDAY,
+	CHANGED_FIO,
+	CHANGED_PHONE, CHANGED_EMAIL,
 } from '../actions/actionTypes';
 import config from '../../../config';
 
@@ -16,6 +19,10 @@ const initialState = {
 	avatar: {
 		uri: '',
 	},
+	birthday: '',
+	fio: '',
+	phone: '',
+	email: '',
 };
 
 const addresses = [
@@ -47,6 +54,14 @@ const userReducer = (state = initialState, action) => {
 			return {...state, guideViewed: true};
 		case CHANGED_AVATAR:
 			return {...state, avatar: action.avatar};
+		case CHANGED_BIRTHDAY:
+			return {...state, birthday: action.birthday};
+		case CHANGED_FIO:
+			return {...state, fio: action.fio};
+		case CHANGED_PHONE:
+			return {...state, phone: action.phone};
+		case CHANGED_EMAIL:
+			return {...state, email: action.email};
 		default:
 			return state;
 	}

@@ -4,6 +4,10 @@ import {
 	SIGN_IN,
 	SIGN_OUT,
 	CHANGED_AVATAR,
+	CHANGED_BIRTHDAY,
+	CHANGED_PHONE,
+	CHANGED_FIO,
+	CHANGED_EMAIL,
 } from './actionTypes';
 import NavigationService from '../../utils/NavigationService';
 
@@ -36,5 +40,33 @@ export const savePhoto = (avatar: { uri: string }) => {
 	return {
 		avatar,
 		type: CHANGED_AVATAR,
+	};
+};
+
+export const changeBirthday = (birthday: string) => {
+	return {
+		birthday,
+		type: CHANGED_BIRTHDAY,
+	};
+};
+
+export const changeFio = (fio: string) => {
+	return {
+		fio,
+		type: CHANGED_FIO,
+	};
+};
+
+export const changePhone = (phone: string) => {
+	return {
+		phone,
+		type: CHANGED_PHONE,
+	};
+};
+
+export const changeEmail = (email: string) => {
+	return {
+		email,
+		type: CHANGED_EMAIL,
 	};
 };

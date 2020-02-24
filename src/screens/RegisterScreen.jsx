@@ -63,6 +63,7 @@ const styles = EStyleSheet.create({
 		flexGrow: 1,
 		flexDirection: 'column',
 		justifyContent: 'flex-end',
+		paddingTop: '20rem',
 	},
 });
 

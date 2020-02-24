@@ -10,6 +10,7 @@ import { addToBasket } from '../store/actions/basket';
 import { connect } from 'react-redux';
 import Item from '../components/Item';
 import { H2 } from '../components/Texts';
+import ScreenContainer from '../components/ScreenContainer';
 
 const styles = EStyleSheet.create({
 	$size25: '25rem',
@@ -91,7 +92,7 @@ class SearchScreen extends Component {
 	
 	render() {
 		return (
-			<View style={styles.page}>
+			<ScreenContainer style={styles.page}>
 				<View style={styles.searchHeader}>
 					<View style={styles.searchInput}>
 						<CustomIcon
@@ -128,7 +129,7 @@ class SearchScreen extends Component {
 						{flex: 1, backgroundColor: 'white'}}
 					ListEmptyComponent={ListEmptyComponent}
 				/>
-			</View>
+			</ScreenContainer>
 		);
 	}
 	
