@@ -30,8 +30,41 @@ const TermsScreen = () => {
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{flexGrow: 1}}
 				>
-					<SampleText>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet culpa esse fuga impedit incidunt iusto maiores mollitia odio perspiciatis voluptatem. Adipisci autem consectetur consequuntur ducimus quia reiciendis reprehenderit, ut voluptatibus.
+					<SampleText style={{marginBottom: 20}}>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
+						sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+						magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+						qui officia deserunt mollit anim id est laborum.
+					</SampleText>
+					<SampleText style={{marginBottom: 20}}>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
+						sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+						magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+						qui officia deserunt mollit anim id est laborum.
+					</SampleText>
+					<SampleText style={{marginBottom: 20}}>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
+						sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+						magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+						qui officia deserunt mollit anim id est laborum.
 					</SampleText>
 				</ScrollView>
 			</Shadow>
