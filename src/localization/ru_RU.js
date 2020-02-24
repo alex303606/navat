@@ -37,6 +37,7 @@ export const ru = {
 	numberOfContainers: 'Одноразовая посуда и контейнеры: \${amount}',
 	containersPrice: 'Цена посуды: \${price}',
 	navigateToMenu: 'Перейти в меню',
+	exitFromApp: 'Выйти из приложения',
 	tabbar: {
 		Home: 'Главная',
 		Menu: 'Меню',
@@ -50,5 +51,6 @@ export const ru = {
 		Profile: 'Личный Кабинет',
 		PersonalData: 'Ваши данные',
 		Terms: 'Условия использования',
+		PrivacyPolicy: 'Политика конфиденциальности',
 	},
 };

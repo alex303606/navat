@@ -37,6 +37,7 @@ export const en = {
 	numberOfContainers: 'Number of containers: \${amount}',
 	containersPrice: 'The price of containers: \${price}',
 	navigateToMenu: 'Go to menu',
+	exitFromApp: 'Exit from application',
 	tabbar: {
 		Home: 'Home',
 		Menu: 'Menu',
@@ -50,5 +51,6 @@ export const en = {
 		Profile: 'Personal Area',
 		PersonalData: 'Your data',
 		Terms: 'Terms of Use',
+		PrivacyPolicy: 'Privacy policy',
 	},
 };

@@ -15,35 +15,44 @@ import Settings from '../assets/images/settings.svg';
 import Support from '../assets/images/support.svg';
 import Privacy from '../assets/images/privacy.svg';
 import Terms from '../assets/images/terms.svg';
+import Button from '../components/Button';
+import { translate } from '../localization/i18n';
 
 const settings = [
 	{
 		title: 'Платежная информация',
 		description: 'Добавьте свою платежную карту',
+		targetScreen: 'PrivacyPolicy',
 	},
 	{
 		title: 'Адреса доставки',
 		description: 'Добавляйте или удаляте ваши адреса',
+		targetScreen: 'PrivacyPolicy',
 	},
 	{
 		title: 'Приведи друга',
 		description: 'Получи 500 сом в подарок',
+		targetScreen: 'PrivacyPolicy',
 	},
 	{
 		title: 'Служба поддержки',
 		icon: () => <Support/>,
+		targetScreen: 'PrivacyPolicy',
 	},
 	{
 		title: 'Настройки',
 		icon: () => <Settings/>,
+		targetScreen: 'PrivacyPolicy',
 	},
 	{
 		title: 'Условия использования',
 		icon: () => <Terms/>,
+		targetScreen: 'Terms',
 	},
 	{
 		title: 'Политика конфиденциальности',
 		icon: () => <Privacy/>,
+		targetScreen: 'PrivacyPolicy',
 	},
 ];
 
@@ -129,17 +138,22 @@ const styles = EStyleSheet.create({
 	$size: '35rem',
 	centerVertical: {
 		flexDirection: 'column',
-		justifyContent: 'center'
-	}
+		justifyContent: 'center',
+	},
+	footer: {
+		flexDirection: 'column',
+		justifyContent: 'flex-end',
+		paddingTop: '20rem',
+	},
 });
 
 const ProfileScreen = (props) => {
 	const editProfile = () => props.navigation.navigate('PersonalData');
-	const navigateToItemSettings = () => props.navigation.navigate('Terms');
+	const navigateToItemSettings = targetScreen => () => props.navigation.navigate(targetScreen);
 	
 	const renderSettingsItem = (item, index) => {
 		return (
-			<TouchableOpacity key={index} activeOpacity={0.3} onPress={navigateToItemSettings}>
+			<TouchableOpacity key={index} activeOpacity={0.3} onPress={navigateToItemSettings(item.targetScreen)}>
 				<View style={[styles.item, {borderBottomWidth: (settings.length - 1) === index ? 0 : 1}]}>
 					<View style={styles.itemLeft}>
 						{item.icon && <View style={styles.itemIcon}>{item.icon()}</View>}
@@ -223,6 +237,12 @@ const ProfileScreen = (props) => {
 					{settings.map(renderSettingsItem)}
 				</ScrollView>
 			</Shadow>
+			<View style={styles.footer}>
+				<Button
+					onPress={() => props.signOut()}
+					title={translate('exitFromApp')}
+				/>
+			</View>
 		</View>
 	);
 };
