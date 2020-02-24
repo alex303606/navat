@@ -127,6 +127,10 @@ const styles = EStyleSheet.create({
 		marginRight: '10rem',
 	},
 	$size: '35rem',
+	centerVertical: {
+		flexDirection: 'column',
+		justifyContent: 'center'
+	}
 });
 
 const ProfileScreen = (props) => {
@@ -157,6 +161,8 @@ const ProfileScreen = (props) => {
 		);
 	};
 	
+	const dataIsValid = !!props.profile.phone.phone && !!props.profile.fio && !!props.profile.email;
+	
 	return (
 		<View style={styles.page}>
 			<Shadow style={[styles.modal, styles.topModal]}>
@@ -176,11 +182,22 @@ const ProfileScreen = (props) => {
 							/>
 						}
 					</View>
-					<View>
-						<ReactNative.Text style={styles.userName}>Василий Петров</ReactNative.Text>
-						<Label style={styles.description}>+996 706 11 00 24</Label>
-						<Label style={styles.description}>petrov_vasilii@gmail.com</Label>
-					</View>
+					{dataIsValid ?
+						<View style={styles.centerVertical}>
+							<ReactNative.Text style={styles.userName}>{props.profile.fio}</ReactNative.Text>
+							<Label style={styles.description}>
+								{`+${props.profile.phone.code} ${props.profile.phone.phone}`}
+							</Label>
+							<Label style={styles.description}>{props.profile.email}</Label>
+						</View> :
+						<View style={styles.centerVertical}>
+							<TouchableOpacity
+								activeOpacity={0.3}
+								onPress={editProfile}>
+								<Bold style={{color: 'red'}}>Заполните ваши данные</Bold>
+							</TouchableOpacity>
+						</View>
+					}
 				</View>
 				<View style={styles.bottom}>
 					<Bold style={{color: '#9B9B9B'}}>Ваша скидка</Bold>

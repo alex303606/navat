@@ -21,7 +21,10 @@ const initialState = {
 	},
 	birthday: '',
 	fio: '',
-	phone: '',
+	phone: {
+		phone: '',
+		code: '',
+	},
 	email: '',
 };
 
