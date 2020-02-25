@@ -9,6 +9,7 @@ import config from '../../config';
 import TabBarBottomContainer from '../components/TabBarBottomContainer';
 import { Dimensions } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import ProfileNavigationState from './ProfileNavigationState';
 const entireScreenWidth = Dimensions.get('window').width;
 EStyleSheet.build({$rem: entireScreenWidth / 414});
 
@@ -26,7 +27,7 @@ const RootNavigation = createBottomTabNavigator({
 			screen: MenuNavigator,
 		},
 		PersonalArea: {
-			screen: PersonalAreaNavigator,
+			screen: ProfileNavigationState,
 		},
 		Search: {
 			screen: SearchNavigator,

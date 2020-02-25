@@ -5,7 +5,7 @@ import AppNavigator from './AppNavigator';
 import AppWithNavigationState from './AppWithNavigationState';
 
 const AppNavigationState = (props) => {
-	if (props.profile && props.profile.userIsLoggedIn && props.profile.guideViewed) {
+	if (props.profile && props.profile.guideViewed) {
 		return <AppWithNavigationState/>;
 	}
 	return (

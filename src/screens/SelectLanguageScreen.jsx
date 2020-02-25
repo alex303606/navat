@@ -46,7 +46,7 @@ const styles = EStyleSheet.create({
 class SelectLanguageScreen extends React.Component {
 	changeLang = value => {
 		switchLanguage(value, this);
-		this.props.navigation.navigate('Auth');
+		this.props.navigation.navigate('Guide');
 	};
 	
 	componentDidMount() {
