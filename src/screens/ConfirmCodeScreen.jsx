@@ -64,15 +64,12 @@ const styles = EStyleSheet.create({
 class ConfirmCodeScreen extends Component {
 	
 	state = {
-		codeIsSuccessful: false,
 		codeIsInvalid: false,
 	};
 	
 	onFinishCheckingCode = code => {
 		if (code === '1234') {
 			this.props.signIn();
-			//this.props.navigation.navigate('Guide');
-			// return this.setState({codeIsSuccessful: true});
 		}
 		
 		return this.setState({codeIsInvalid: true}, () => this.codeInputRef.current.clear());
@@ -120,7 +117,6 @@ class ConfirmCodeScreen extends Component {
 						</View>
 						{/*<View style={styles.footer}>*/}
 						{/*	<Button*/}
-						{/*		disabled={!this.state.codeIsSuccessful}*/}
 						{/*		buttonStyle={{marginTop: 41}}*/}
 						{/*		onPress={() => null}*/}
 						{/*		title='Продолжить'/>*/}

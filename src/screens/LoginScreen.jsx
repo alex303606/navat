@@ -105,7 +105,6 @@ class LoginScreen extends Component {
 		password: '',
 	};
 	
-	//signInHandler = () => this.props.navigation.navigate('Guide');
 	signInHandler = () => this.props.signIn();
 	
 	toggleModal = () => this.setState({modalVisible: !this.state.modalVisible});

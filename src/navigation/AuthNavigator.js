@@ -9,7 +9,7 @@ import LoginScreen from '../screens/LoginScreen';
 import ConfirmCodeScreen from '../screens/ConfirmCodeScreen';
 
 const AuthNavigator = createStackNavigator({
-		Profile: {
+		Login: {
 			screen: LoginScreen,
 		},
 		Register: {
@@ -22,7 +22,7 @@ const AuthNavigator = createStackNavigator({
 	{
 		swipeEnabled: false,
 		headerMode: 'float',
-		initialRouteName: 'Profile',
+		initialRouteName: 'Login',
 		defaultNavigationOptions: ({navigation}) => {
 			return {
 				headerTitle: translate('tabbar.PersonalArea'),
