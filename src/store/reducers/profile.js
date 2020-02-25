@@ -10,24 +10,6 @@ import {
 } from '../actions/actionTypes';
 import config from '../../../config';
 
-const initialState = {
-	location: config.InitLocation,
-	user: {},
-	userIsLoggedIn: false,
-	guideViewed: false,
-	addresses: [],
-	avatar: {
-		uri: '',
-	},
-	birthday: '',
-	fio: '',
-	phone: {
-		phone: '',
-		code: '',
-	},
-	email: '',
-};
-
 const addresses = [
 	{
 		id: '1',
@@ -45,12 +27,30 @@ const addresses = [
 	},
 ];
 
+const initialState = {
+	location: config.InitLocation,
+	user: {},
+	userIsLoggedIn: false,
+	guideViewed: false,
+	addresses: addresses,
+	avatar: {
+		uri: '',
+	},
+	birthday: '',
+	fio: '',
+	phone: {
+		phone: '',
+		code: '',
+	},
+	email: '',
+};
+
 const userReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SELECT_LOCATION:
 			return {...state, location: action.location};
 		case SIGN_IN:
-			return {...state, user: action.user, userIsLoggedIn: true, addresses};
+			return {...state, user: action.user, userIsLoggedIn: true};
 		case SIGN_OUT:
 			return initialState;
 		case GUIDE_VIEWED:

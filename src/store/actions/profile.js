@@ -20,7 +20,6 @@ export const selectLocation = location => {
 export const signIn = () => {
 	return dispatch => {
 		dispatch({type: SIGN_IN, user: {}});
-		NavigationService.navigate('Guide');
 	};
 };
 
