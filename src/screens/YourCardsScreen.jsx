@@ -20,7 +20,7 @@ const styles = EStyleSheet.create({
 });
 
 const YourCardsScreen = (props) => {
-	const navigateToAddCard = () => props.navigation.navigate('AddCard');
+	const navigateToAddCard = () => props.navigation.navigate('AddCard', {prevScreen: 'YourCards'});
 	
 	return (
 		<View style={styles.page}>
