@@ -9,7 +9,7 @@ import {
 	CHANGED_FIO,
 	CHANGED_EMAIL,
 } from './actionTypes';
-import NavigationService from '../../utils/NavigationService';
+import { NavigationActions } from 'react-navigation';
 
 export const selectLocation = location => {
 	return dispatch => {
@@ -20,6 +20,7 @@ export const selectLocation = location => {
 export const signIn = () => {
 	return dispatch => {
 		dispatch({type: SIGN_IN, user: {}});
+		dispatch(NavigationActions.navigate({routeName: 'Profile'}));
 	};
 };
 

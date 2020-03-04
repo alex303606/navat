@@ -53,5 +53,6 @@ export const en = {
 		Terms: 'Terms of Use',
 		PrivacyPolicy: 'Privacy policy',
 		Settings: 'Settings',
+		Help: 'Help',
 	},
 };

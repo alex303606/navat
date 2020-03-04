@@ -49,8 +49,8 @@ const styles = EStyleSheet.create({
 		fontWeight: 'normal',
 	},
 	littleText: {
-		fontSize: '12rem',
-		lineHeight: '14rem',
+		fontSize: '11rem',
+		lineHeight: '13rem',
 		fontFamily: getCustomFontFamilyByFontWeight(600),
 	},
 	middleText: {

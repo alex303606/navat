@@ -31,7 +31,7 @@ const styles = EStyleSheet.create({
 		marginBottom: '8rem',
 	},
 	separator: {
-		borderBottomWidth: '1rem',
+		borderBottomWidth: 1,
 		borderBottomColor: '#EFEFF4',
 	},
 	item: {

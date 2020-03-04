@@ -203,7 +203,7 @@ class HomeScreen extends Component {
 							color={'white'}
 							name={item.icon}
 							size={styles.$iconSize}/>
-						<LittleText style={{color: 'white'}}>{item.title}</LittleText>
+						<LittleText style={{color: 'white', textAlign: 'center'}}>{item.title}</LittleText>
 					</View>
 				</BoxShadow>
 			</TouchableOpacity>

@@ -9,9 +9,10 @@ import PersonalDataScreen from '../screens/PersonalDataScreen';
 import TermsScreen from '../screens/TermsScreen';
 import PrivacyPolicyScreen from '../screens/PrivacyPolicyScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import HelpScreen from '../screens/HelpScreen';
+import HelpScreenNavigator from './HelpScreenNavigator';
+import AuthNavigator from './AuthNavigator';
 
-const PersonalAreaNavigator = createStackNavigator({
+const ProfileNavigator = createStackNavigator({
 		Profile: {
 			screen: ProfileScreen,
 		},
@@ -28,7 +29,10 @@ const PersonalAreaNavigator = createStackNavigator({
 			screen: SettingsScreen,
 		},
 		Help: {
-			screen: HelpScreen,
+			screen: HelpScreenNavigator,
+		},
+		Auth: {
+			screen: AuthNavigator,
 		},
 	},
 	{
@@ -46,7 +50,6 @@ const PersonalAreaNavigator = createStackNavigator({
 				headerTruncatedBackTitle: '',
 			};
 		},
-		header: null,
 	});
 
-export default createAppContainer(PersonalAreaNavigator);
+export default createAppContainer(ProfileNavigator);

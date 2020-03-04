@@ -53,5 +53,6 @@ export const ru = {
 		Terms: 'Условия использования',
 		PrivacyPolicy: 'Политика конфиденциальности',
 		Settings: 'Настройки',
+		Help: 'Помощь',
 	},
 };

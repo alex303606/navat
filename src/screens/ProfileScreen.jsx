@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import ReactNative, { View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import config from '../../config';
@@ -17,6 +17,7 @@ import Privacy from '../assets/images/privacy.svg';
 import Terms from '../assets/images/terms.svg';
 import Button from '../components/Button';
 import { translate } from '../localization/i18n';
+import Loader from '../components/Loader';
 
 const settings = [
 	{
@@ -148,6 +149,15 @@ const styles = EStyleSheet.create({
 });
 
 const ProfileScreen = (props) => {
+	const [loading, setLoading] = useState(true);
+	
+	useEffect(() => {
+		if (!props.profile || !props.profile.userIsLoggedIn) {
+			props.navigation.navigate('Auth');
+		}
+		setLoading(false);
+	}, []);
+	
 	const editProfile = () => props.navigation.navigate('PersonalData');
 	const navigateToItemSettings = targetScreen => () => props.navigation.navigate(targetScreen);
 	
@@ -176,6 +186,10 @@ const ProfileScreen = (props) => {
 	};
 	
 	const dataIsValid = !!props.profile.phone && !!props.profile.phone.phone && !!props.profile.fio && !!props.profile.email;
+	
+	if (loading) {
+		return <Loader/>;
+	}
 	
 	return (
 		<View style={styles.page}>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AuthNavigator from './AuthNavigator';
-import PersonalAreaNavigator from './PersonalAreaNavigator';
+import ProfileNavigator from './ProfileNavigator';
 
 const ProfileNavigationState = (props) => {
 	if (props.profile && props.profile.userIsLoggedIn) {
-		return <PersonalAreaNavigator/>;
+		return <ProfileNavigator/>;
 	}
 	return <AuthNavigator/>;
 };
