@@ -54,5 +54,6 @@ export const ru = {
 		PrivacyPolicy: 'Политика конфиденциальности',
 		Settings: 'Настройки',
 		Help: 'Помощь',
+		BillingInformation: 'Ваши карты',
 	},
 };

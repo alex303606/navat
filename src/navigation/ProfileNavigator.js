@@ -11,10 +11,14 @@ import PrivacyPolicyScreen from '../screens/PrivacyPolicyScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import HelpScreenNavigator from './HelpScreenNavigator';
 import AuthNavigator from './AuthNavigator';
+import MyCardsNavigator from './MyCardsNavigator';
 
 const ProfileNavigator = createStackNavigator({
 		Profile: {
 			screen: ProfileScreen,
+		},
+		MyCards: {
+			screen: MyCardsNavigator,
 		},
 		PersonalData: {
 			screen: PersonalDataScreen,
@@ -40,9 +44,16 @@ const ProfileNavigator = createStackNavigator({
 		headerMode: 'float',
 		initialRouteName: 'Profile',
 		defaultNavigationOptions: ({navigation}) => {
-			const {state: {routeName}} = navigation;
+			const {state: {routeName, index, routes}} = navigation;
+			let headerTitle = translate(`navigationTitle.${routeName}`);
+			if (index && routes && !!routes.length && routes[index].params) {
+				const {item} = routes[index].params;
+				if (item && !!item.title) {
+					headerTitle = item.title;
+				}
+			}
 			return {
-				headerTitle: translate(`navigationTitle.${routeName}`),
+				headerTitle: headerTitle,
 				headerRight: navigation.isFirstRouteInParent() ? null : <View style={{flex: 1}}/>,
 				...Header,
 				gesturesEnabled: false,

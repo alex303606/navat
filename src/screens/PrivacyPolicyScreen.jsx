@@ -4,7 +4,6 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
 import Shadow from '../components/Shadow';
 import { SampleText } from '../components/Texts';
-import { getCustomFontFamilyByFontWeight } from '../utils/utils';
 import Header from '../components/Header';
 
 const styles = EStyleSheet.create({

@@ -23,7 +23,7 @@ const settings = [
 	{
 		title: 'Платежная информация',
 		description: 'Добавьте свою платежную карту',
-		targetScreen: 'PrivacyPolicy',
+		targetScreen: 'MyCards',
 	},
 	{
 		title: 'Адреса доставки',
@@ -33,7 +33,8 @@ const settings = [
 	{
 		title: 'Приведи друга',
 		description: 'Получи 500 сом в подарок',
-		targetScreen: 'PrivacyPolicy',
+		targetScreen: 'Template',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda dolorem dolores doloribus excepturi fugiat, id itaque labore laborum modi nisi nobis obcaecati quae reiciendis rem temporibus, vero voluptas, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem consequatur doloremque eius facere facilis, fugiat hic ipsam iste labore, laudantium magnam molestias mollitia, praesentium rerum sequi sunt veritatis voluptatibus!'
 	},
 	{
 		title: 'Служба поддержки',
@@ -159,11 +160,11 @@ const ProfileScreen = (props) => {
 	}, []);
 	
 	const editProfile = () => props.navigation.navigate('PersonalData');
-	const navigateToItemSettings = targetScreen => () => props.navigation.navigate(targetScreen);
+	const navigateToItemSettings = item => () => props.navigation.navigate(item.targetScreen, {item, prevScreen: 'Profile'});
 	
 	const renderSettingsItem = (item, index) => {
 		return (
-			<TouchableOpacity key={index} activeOpacity={0.3} onPress={navigateToItemSettings(item.targetScreen)}>
+			<TouchableOpacity key={index} activeOpacity={0.3} onPress={navigateToItemSettings(item)}>
 				<View style={[styles.item, {borderBottomWidth: (settings.length - 1) === index ? 0 : 1}]}>
 					<View style={styles.itemLeft}>
 						{item.icon && <View style={styles.itemIcon}>{item.icon()}</View>}

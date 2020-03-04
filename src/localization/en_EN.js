@@ -54,5 +54,6 @@ export const en = {
 		PrivacyPolicy: 'Privacy policy',
 		Settings: 'Settings',
 		Help: 'Help',
+		BillingInformation: 'Your cards',
 	},
 };
