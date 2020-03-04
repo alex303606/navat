@@ -151,7 +151,7 @@ class CCF extends Component {
 							 additionalInputProps={{
 								 autoFocus: true,
 								 autoCompleteType: 'off',
-								 maxLength: 19
+								 maxLength: 19,
 							 }}
 							 containerStyle={[s.inputContainer, inputContainerStyle]}/>
 					{requiresName &&
