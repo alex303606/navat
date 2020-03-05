@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import Item from '../components/Item';
 import { H2 } from '../components/Texts';
 import ScreenContainer from '../components/ScreenContainer';
+import { translate } from '../localization/i18n';
 
 const styles = EStyleSheet.create({
 	$size25: '25rem',
@@ -67,9 +68,9 @@ const styles = EStyleSheet.create({
 	},
 });
 
-const ListEmptyComponent = () => (
+const ListEmptyComponent = ({value}) => (
 	<View style={styles.listEmptyComponent}>
-		<H2>Введите название блюда</H2>
+		<H2>{translate(value.length > 1 ? 'emptySearch' : 'enterDishName')}</H2>
 	</View>
 );
 
@@ -127,7 +128,7 @@ class SearchScreen extends Component {
 					contentContainerStyle={!!this.state.filteredItems.length ?
 						styles.contentContainerStyle :
 						{flex: 1, backgroundColor: 'white'}}
-					ListEmptyComponent={ListEmptyComponent}
+					ListEmptyComponent={<ListEmptyComponent value={this.state.value}/>}
 				/>
 			</ScreenContainer>
 		);

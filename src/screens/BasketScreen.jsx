@@ -6,7 +6,7 @@ import { clearBasket, decreaseItem, deleteItem, increaseItem } from '../store/ac
 import { connect } from 'react-redux';
 import { RectButton, Swipeable } from 'react-native-gesture-handler';
 import ImageWithLoader from '../components/ImageWithLoader';
-import { Description, Label, LittleText, SmallText } from '../components/Texts';
+import { Bold, Description, Label, LittleText, SmallText } from '../components/Texts';
 import Button from '../components/Button';
 import { translate } from '../localization/i18n';
 import Price from '../components/Price';
@@ -90,7 +90,8 @@ const styles = EStyleSheet.create({
 	},
 	leftAction: {
 		backgroundColor: 'red',
-		paddingHorizontal: '5rem',
+		paddingRight: '10rem',
+		paddingLeft: '10rem',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -137,9 +138,15 @@ const styles = EStyleSheet.create({
 		height: '10rem',
 		backgroundColor: 'white',
 	},
+	header: {
+		paddingHorizontal: '50rem',
+		marginBottom: '10rem',
+	},
 });
 
 class BasketScreen extends Component {
+	row: Array<any> = [];
+	prevOpenedRow = undefined;
 	componentDidMount() {
 		if (this.props.items.length > 0 && !this.props.navigation.getParam('clearBasket')) {
 			this.props.navigation.setParams({clearBasket: this.props.clearBasket});
@@ -183,6 +190,9 @@ class BasketScreen extends Component {
 		
 		return (
 			<View style={styles.page}>
+				<View style={styles.header}>
+					<Bold style={{textAlign: 'center'}}>{translate('swipeRightDescription')}</Bold>
+				</View>
 				<FlatList
 					data={this.props.items}
 					renderItem={this.renderItem}
@@ -246,7 +256,7 @@ class BasketScreen extends Component {
 	
 	navigateToMenu = () => this.props.navigation.navigate('Menu');
 	
-	renderItem = ({item}) => {
+	renderItem = (value) => {
 		const shadowOpt = {
 			width: styles.$shadowSize,
 			height: styles.$shadowSize,
@@ -257,12 +267,17 @@ class BasketScreen extends Component {
 			x: 0,
 			y: 0,
 		};
+		const {item, index} = value;
 		
 		return (
 			<View style={styles.itemWrapper}>
 				<Swipeable
 					renderLeftActions={this.renderLeftActions(item.id)}
 					overshootLeft={false}
+					ref={ref => this.row[index] = ref}
+					friction={2}
+					rightThreshold={20}
+					onSwipeableOpen={() => this.closeRow(index)}
 				>
 					<View style={styles.row}>
 						<View style={styles.image}>
@@ -322,6 +337,13 @@ class BasketScreen extends Component {
 			</View>
 		
 		);
+	};
+	
+	closeRow = (index) => {
+		if (this.prevOpenedRow && this.prevOpenedRow !== this.row[index]) {
+			this.prevOpenedRow.close();
+		}
+		this.prevOpenedRow = this.row[index];
 	};
 	
 	increaseItem = id => () => this.props.increaseItem(id);

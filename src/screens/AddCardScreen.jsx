@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import { View, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, ScrollView, Alert } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
 import Button from '../components/Button';
 import { CreditCardInput } from '../components/CreditCardInput';
 import ScreenContainer from '../components/ScreenContainer';
 import { getCustomFontFamilyByFontWeight } from '../utils/utils';
-
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { saveCard } from '../store/actions/profile';
+import { translate } from '../localization/i18n';
 
 const styles = EStyleSheet.create({
 	page: {
@@ -41,12 +44,34 @@ const styles = EStyleSheet.create({
 	},
 });
 
-const AddCardScreen = () => {
-	const [valid, changeValid] = useState(false);
-	const onChange = form => changeValid(form.valid);
+const AddCardScreen = (props) => {
+	useEffect(() => {
+		const {state: {params}} = props.navigation;
+		if (params) {
+			const {card} = params;
+			if (card) {
+				setCard(card);
+			}
+		}
+	}, []);
 	
-	const addCard = () => {
-		return null;
+	const [valid, changeValid] = useState(false);
+	const [card, setCard] = useState({});
+	const onChange = form => {
+		changeValid(form.valid);
+		if (form.valid) {
+			setCard(form.values);
+		}
+	};
+	
+	const saveCardHandler = () => {
+		const index = props.cards.findIndex(x => x.number === card.number);
+		if (index > -1) {
+			Alert.alert(translate('cardIsExist'));
+			return;
+		}
+		props.saveCard({...card, default: false});
+		props.navigation.goBack();
 	};
 	
 	return (
@@ -60,17 +85,33 @@ const AddCardScreen = () => {
 				>
 					<View style={styles.container}>
 						<CreditCardInput
+							valuesForEdit={{...card}}
 							inputContainerStyle={styles.inputContainerStyle}
 							labelStyle={styles.labelStyle}
 							inputStyle={styles.inputStyle}
 							requiresName={true}
 							onChange={onChange}/>
 					</View>
-					<Button onPress={addCard} disabled={!valid} title={'Сохранить карту'}/>
+					<Button
+						onPress={saveCardHandler}
+						disabled={!valid}
+						title={translate('saveCard')}
+					/>
 				</ScrollView>
 			</View>
 		</ScreenContainer>
 	);
 };
 
-export default AddCardScreen;
+const mapStateToProps = state => ({
+	cards: state.profile.cards,
+});
+
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			saveCard,
+		},
+		dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddCardScreen);

@@ -1,12 +1,12 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import React from 'react';
-import YourCardsScreen from '../screens/YourCardsScreen';
+import MyCardsScreen from '../screens/MyCardsScreen';
 import AddCardScreen from '../screens/AddCardScreen';
 
 const MyCardsNavigator = createStackNavigator({
 		YourCards: {
-			screen: YourCardsScreen,
+			screen: MyCardsScreen,
 		},
 		AddCard: {
 			screen: AddCardScreen,
@@ -16,7 +16,7 @@ const MyCardsNavigator = createStackNavigator({
 		swipeEnabled: false,
 		headerMode: 'float',
 		initialRouteName: 'YourCards',
-		defaultNavigationOptions: ({navigation}) => {
+		defaultNavigationOptions: () => {
 			return {
 				header: null,
 				gesturesEnabled: false,

@@ -6,7 +6,7 @@ import {
 	CHANGED_AVATAR,
 	CHANGED_BIRTHDAY,
 	CHANGED_FIO,
-	CHANGED_PHONE, CHANGED_EMAIL,
+	CHANGED_PHONE, CHANGED_EMAIL, SAVE_CARD, SET_DEFAULT_CARD, DELETE_CARD,
 } from '../actions/actionTypes';
 import config from '../../../config';
 
@@ -33,19 +33,47 @@ const initialState = {
 	userIsLoggedIn: false,
 	guideViewed: false,
 	addresses: addresses,
-	avatar: {
-		uri: '',
-	},
-	birthday: '',
 	fio: '',
+	email: '',
+	avatar: {uri: ''},
+	birthday: '',
 	phone: {
 		phone: '',
 		code: '',
 	},
-	email: '',
+	cards: [],
 };
 
 const userReducer = (state = initialState, action) => {
+	const saveCard = (state, action) => {
+		const cards = [...state.cards];
+		if (!cards.length) {
+			action.card.default = true;
+		}
+		cards.push(action.card);
+		return cards;
+	};
+	
+	const setDefaultCard = (state, action) => {
+		const cards = [...state.cards];
+		return cards.map(card => {
+			card.default = card.number === action.card.number;
+			return card;
+		});
+	};
+	
+	const deleteCard = (state, action) => {
+		const cards = [...state.cards];
+		const index = cards.findIndex(card => card.number === action.card.number);
+		if (index > -1) {
+			cards.splice(index, 1);
+		}
+		if (cards.length === 1) {
+			cards[0].default = true;
+		}
+		return cards;
+	};
+	
 	switch (action.type) {
 		case SELECT_LOCATION:
 			return {...state, location: action.location};
@@ -65,6 +93,12 @@ const userReducer = (state = initialState, action) => {
 			return {...state, phone: action.phone};
 		case CHANGED_EMAIL:
 			return {...state, email: action.email};
+		case SAVE_CARD:
+			return {...state, cards: saveCard(state, action)};
+		case SET_DEFAULT_CARD:
+			return {...state, cards: setDefaultCard(state, action)};
+		case DELETE_CARD:
+			return {...state, cards: deleteCard(state, action)};
 		default:
 			return state;
 	}

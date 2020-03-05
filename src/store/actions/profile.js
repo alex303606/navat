@@ -8,6 +8,9 @@ import {
 	CHANGED_PHONE,
 	CHANGED_FIO,
 	CHANGED_EMAIL,
+	SAVE_CARD,
+	SET_DEFAULT_CARD,
+	DELETE_CARD,
 } from './actionTypes';
 import { NavigationActions } from 'react-navigation';
 
@@ -68,5 +71,26 @@ export const changeEmail = (email: string) => {
 	return {
 		email,
 		type: CHANGED_EMAIL,
+	};
+};
+
+export const saveCard = (card: { [key: string]: string }) => {
+	return {
+		card,
+		type: SAVE_CARD,
+	};
+};
+
+export const setDefaultCard = (card: { [key: string]: string }) => {
+	return {
+		card,
+		type: SET_DEFAULT_CARD,
+	};
+};
+
+export const deleteCard = (card: { [key: string]: string }) => {
+	return {
+		card,
+		type: DELETE_CARD,
 	};
 };

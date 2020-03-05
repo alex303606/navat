@@ -13,4 +13,7 @@ export const CHANGED_BIRTHDAY = 'CHANGED_BIRTHDAY';
 export const CHANGED_FIO = 'CHANGED_FIO';
 export const CHANGED_PHONE = 'CHANGED_PHONE';
 export const CHANGED_EMAIL = 'CHANGED_EMAIL';
+export const SAVE_CARD = 'SAVE_CARD';
+export const SET_DEFAULT_CARD = 'SET_DEFAULT_CARD';
+export const DELETE_CARD = 'DELETE_CARD';
 
