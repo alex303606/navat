@@ -112,7 +112,7 @@ const styles = EStyleSheet.create({
 		paddingTop: normalizeHeight(10),
 		borderTopWidth: 1,
 		borderColor: config.GreyColor,
-		minHeight: normalizeHeight(115),
+		//minHeight: normalizeHeight(115),
 		flexDirection: 'column',
 		justifyContent: 'flex-end',
 	},
@@ -202,24 +202,32 @@ class BasketScreen extends Component {
 					ItemSeparatorComponent={this.renderSeparator}
 				/>
 				<View style={[styles.basketFooter, disabledOrderButton && {minHeight: 'auto', borderTopWidth: 0}]}>
-					<View style={styles.basketFooterInfo}>
-						{!!this.props.totalPrice &&
-						<SmallText>
-							{this.props.totalPrice >= this.props.freeShippingThreshold ?
-								translate('freeShipping') :
-								assemble(translate('shippingPrice'), {price: this.props.shippingPrice})}
-						</SmallText>
-						}
-						{!!this.props.containers.amount && !!this.props.containers.price &&
-						<Fragment>
-							<SmallText>{assemble(translate('numberOfContainers'), {amount: this.props.containers.amount})}</SmallText>
-							<SmallText>{assemble(translate('containersPrice'), {price: this.props.containers.price})}</SmallText>
-						</Fragment>
-						}
-						{!!totalAmount &&
-						<SmallText>{assemble(translate('itemsInBasket'), {totalAmount})}</SmallText>
-						}
-					</View>
+					{(!!this.props.totalPrice || !!this.props.containers.amount || !!totalAmount) &&
+						<View style={styles.basketFooterInfo}>
+							{!!this.props.totalPrice &&
+								<SmallText>
+									{this.props.totalPrice >= this.props.freeShippingThreshold ?
+										translate('freeShipping') :
+										assemble(translate('shippingPrice'), {price: this.props.shippingPrice})}
+								</SmallText>
+							}
+							{!!this.props.containers.amount && !!this.props.containers.price &&
+								<Fragment>
+									<SmallText>
+										{assemble(translate('numberOfContainers'), {amount: this.props.containers.amount})}
+									</SmallText>
+									<SmallText>
+										{assemble(translate('containersPrice'), {price: this.props.containers.price})}
+									</SmallText>
+								</Fragment>
+							}
+							{!!totalAmount &&
+								<SmallText>
+									{assemble(translate('itemsInBasket'), {totalAmount})}
+								</SmallText>
+							}
+						</View>
+					}
 					<Button
 						onPress={this.completeOrderHandler(disabledOrderButton)}
 						title={disabledOrderButton ?
