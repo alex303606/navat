@@ -6,33 +6,34 @@ import {
 	CHANGED_AVATAR,
 	CHANGED_BIRTHDAY,
 	CHANGED_FIO,
-	CHANGED_PHONE, CHANGED_EMAIL, SAVE_CARD, SET_DEFAULT_CARD, DELETE_CARD,
+	CHANGED_PHONE,
+	CHANGED_EMAIL,
+	SAVE_CARD,
+	SET_DEFAULT_CARD,
+	DELETE_CARD,
+	SAVE_ADDRESSES,
 } from '../actions/actionTypes';
 import config from '../../../config';
-
-const addresses = [
-	{
-		id: '1',
-		type: 'home',
-		city: 'Бишкек',
-		address: 'ул. Байтик-баатыра 106 кв. 187',
-		description: 'Дом',
-	},
-	{
-		id: '2',
-		type: 'office',
-		city: 'Бишкек',
-		address: 'ул. Донецкая 1Б кв. 3',
-		description: 'Работа',
-	},
-];
 
 const initialState = {
 	location: config.InitLocation,
 	user: {},
 	userIsLoggedIn: false,
 	guideViewed: false,
-	addresses: addresses,
+	addresses: [
+		{
+			type: 'home',
+			city: '',
+			address: '',
+			description: '',
+		},
+		{
+			type: 'office',
+			city: '',
+			address: '',
+			description: '',
+		},
+	],
 	fio: '',
 	email: '',
 	avatar: {uri: ''},
@@ -99,6 +100,8 @@ const userReducer = (state = initialState, action) => {
 			return {...state, cards: setDefaultCard(state, action)};
 		case DELETE_CARD:
 			return {...state, cards: deleteCard(state, action)};
+		case SAVE_ADDRESSES:
+			return {...state, addresses: action.addresses};
 		default:
 			return state;
 	}

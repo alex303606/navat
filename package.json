@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "androidReleaseBuild": "cd android && ./gradlew clean && ./gradlew bundleRelease",
-    "androidApkBuild": "cd android && ./gradlew clean && ./gradlew assembleRelease",
+    "androidApkBuild": "cd android && ./gradlew clean && ./gradlew bundleRelease",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",

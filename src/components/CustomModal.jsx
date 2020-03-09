@@ -13,8 +13,7 @@ const styles = EStyleSheet.create({
 		backgroundColor: config.InactiveColorFunc(0.8),
 	},
 	modalContainer: {
-		paddingHorizontal: '15rem',
-		paddingVertical: '25rem',
+		paddingTop: '20rem',
 		backgroundColor: 'white',
 		borderRadius: '8rem',
 		margin: '10rem',

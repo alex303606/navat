@@ -16,4 +16,5 @@ export const CHANGED_EMAIL = 'CHANGED_EMAIL';
 export const SAVE_CARD = 'SAVE_CARD';
 export const SET_DEFAULT_CARD = 'SET_DEFAULT_CARD';
 export const DELETE_CARD = 'DELETE_CARD';
+export const SAVE_ADDRESSES = 'SAVE_ADDRESSES';
 

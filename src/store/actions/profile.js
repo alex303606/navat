@@ -11,6 +11,7 @@ import {
 	SAVE_CARD,
 	SET_DEFAULT_CARD,
 	DELETE_CARD,
+	SAVE_ADDRESSES,
 } from './actionTypes';
 import { NavigationActions } from 'react-navigation';
 
@@ -92,5 +93,12 @@ export const deleteCard = (card: { [key: string]: string }) => {
 	return {
 		card,
 		type: DELETE_CARD,
+	};
+};
+
+export const saveAddresses = addresses => {
+	return {
+		addresses,
+		type: SAVE_ADDRESSES,
 	};
 };

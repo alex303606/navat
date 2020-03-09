@@ -33,6 +33,7 @@ const Input = props => {
 			<Label style={styles.label}>{props.label}</Label>
 			<View style={[styles.inputWrapper, props.style]}>
 				<TextInput
+					multiline={props.multiline}
 					autoFocus={props.autoFocus}
 					autoCompleteType={props.autoCompleteType}
 					keyboardType={props.keyboardType}
@@ -67,6 +68,7 @@ Input.propTypes = {
 	style: PropTypes.any,
 	inputStyle: PropTypes.any,
 	rowStyle: PropTypes.any,
+	multiline: PropTypes.bool,
 };
 
 export default Input;

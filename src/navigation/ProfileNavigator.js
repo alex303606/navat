@@ -12,6 +12,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import HelpScreenNavigator from './HelpScreenNavigator';
 import AuthNavigator from './AuthNavigator';
 import MyCardsNavigator from './MyCardsNavigator';
+import MyAddressesNavigator from './MyAddressesNavigator';
 
 const ProfileNavigator = createStackNavigator({
 		Profile: {
@@ -19,6 +20,9 @@ const ProfileNavigator = createStackNavigator({
 		},
 		MyCards: {
 			screen: MyCardsNavigator,
+		},
+		MyAddresses: {
+			screen: MyAddressesNavigator,
 		},
 		PersonalData: {
 			screen: PersonalDataScreen,

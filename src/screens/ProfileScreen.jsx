@@ -28,7 +28,7 @@ const settings = [
 	{
 		title: 'Адреса доставки',
 		description: 'Добавляйте или удаляте ваши адреса',
-		targetScreen: 'PrivacyPolicy',
+		targetScreen: 'MyAddresses',
 	},
 	{
 		title: 'Приведи друга',

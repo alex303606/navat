@@ -25,7 +25,7 @@ const styles = EStyleSheet.create({
 const PrivacyPolicyScreen = () => {
 	return (
 		<View style={styles.page}>
-			<Shadow style={[styles.modal]}>
+			<Shadow style={styles.modal}>
 				<ScrollView
 					keyboardShouldPersistTaps='handled'
 					scrollEnabled={true}

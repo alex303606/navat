@@ -23,7 +23,7 @@ const styles = EStyleSheet.create({
 const ScreenContainer = props => {
 	const space = Platform.select({
 		ios: -(config.TabBarHeight + getBottomSpace()),
-		android: -40,
+		android: -50,
 	});
 	
 	return (
