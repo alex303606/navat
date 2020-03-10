@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import {
 	View,
 	ScrollView,
@@ -13,6 +13,8 @@ import { clearBasket } from '../store/actions/basket';
 import DeliveryAddress from '../components/DeliveryAddress';
 import PaymentMethod from '../components/PaymentMethod';
 import CheckoutScreenHeader from '../components/CheckoutScreenHeader';
+import { translate } from '../localization/i18n';
+import CheckoutFields from '../components/CheckoutFields';
 
 
 const styles = EStyleSheet.create({
@@ -43,7 +45,24 @@ const styles = EStyleSheet.create({
 });
 
 const CheckoutScreen = (props) => {
+	const fieldsIsValid = () => (!!name.trim() && !!phone.trim() && !!address.trim());
+	const [name, changeName] = useState('');
+	const [phone, changePhone] = useState('');
+	const [address, changeAddress] = useState('');
+	const [description, changeDescription] = useState('');
+	const [fieldsErrors, setFieldsErrors] = useState({
+		nameError: false,
+		phoneError: false,
+		addressError: false,
+	});
 	const navigateToReadyScreen = () => {
+		if (!fieldsIsValid()) {
+			return setFieldsErrors({
+				nameError: !name.trim(),
+				phoneError: !phone.trim(),
+				addressError: !address.trim(),
+			});
+		}
 		props.clearBasket();
 		props.navigation.navigate('Ready', {prevScreen: 'Home'});
 	};
@@ -60,9 +79,17 @@ const CheckoutScreen = (props) => {
 	);
 	
 	const renderWithoutAuth = () => (
-		<View>
-		
-		</View>
+		<CheckoutFields
+			name={name}
+			phone={phone}
+			address={address}
+			fieldsErrors={fieldsErrors}
+			description={description}
+			changeName={changeName}
+			changePhone={changePhone}
+			changeAddress={changeAddress}
+			changeDescription={changeDescription}
+		/>
 	);
 	
 	return (
@@ -82,7 +109,7 @@ const CheckoutScreen = (props) => {
 						<View style={styles.footer}>
 							<Button
 								onPress={navigateToReadyScreen}
-								title={'ОПЛАТИТЬ'}
+								title={translate('pay')}
 							/>
 						</View>
 					</ScrollView>

@@ -206,7 +206,7 @@ const PersonalDataScreen = (props) => {
 								value={phone}
 								onChangeText={changePhoneHandler}
 								style={styles.phoneInput}
-								placeholder={translate('phonePlaceholder')}
+								placeholder={translate('phoneExamplePlaceholder')}
 							/>
 						</View>
 						<Label style={styles.label}>{translate('birthdayDate')}</Label>

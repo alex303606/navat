@@ -83,4 +83,7 @@ export const ru = {
 	addressNotes: 'Заметки',
 	addressPlaceholder: 'например,  мкрн. 11, дом 12, кв. 55',
 	addressNotesPlaceholder: 'подъезд, этаж, код от замка...',
+	pay: 'Оплптить',
+	name: 'Ваше имя:',
+	phone: 'Ваш телефон:',
 };
