@@ -22,6 +22,7 @@ import Carousel from '../components/Carousel';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { bindActionCreators } from 'redux';
 import { initMenu } from '../store/actions/menu';
+import { translate } from '../localization/i18n';
 
 Icon.loadFont();
 
@@ -153,7 +154,9 @@ const SectionHeader = (props) => (
 			activeOpacity={0.3}
 			onPress={() => props.navigation.navigate(props.targetScreen)}>
 			<View style={styles.showMoreBtn}>
-				<ReactNative.Text style={styles.showMoreText}>Показать все</ReactNative.Text>
+				<ReactNative.Text style={styles.showMoreText}>
+					{translate('showAll')}
+				</ReactNative.Text>
 				<View style={styles.showMoreIconWrapper}>
 					<Icon
 						style={styles.showMoreIcon}
@@ -300,7 +303,7 @@ class HomeScreen extends Component {
 						<SectionHeader
 							navigation={this.props.navigation}
 							targetScreen='Menu'
-							title='Меню'/>
+							title={translate('navigationTitle.Menu')}/>
 						<FlatList
 							data={this.props.categories}
 							horizontal
@@ -319,7 +322,7 @@ class HomeScreen extends Component {
 						<SectionHeader
 							navigation={this.props.navigation}
 							targetScreen='PopularDishes'
-							title='Популярные блюда'/>
+							title={translate('navigationTitle.PopularDishes')}/>
 						<FlatList
 							data={this.props.popularDishes}
 							horizontal
@@ -335,8 +338,9 @@ class HomeScreen extends Component {
 						/>
 					</View>
 					<View style={styles.section}>
-						<SectionHeader navigation={this.props.navigation} targetScreen='Branches'
-									   title='Наши заведения'/>
+						<SectionHeader
+							navigation={this.props.navigation} targetScreen='Branches'
+							title={translate('navigationTitle.Branches')}/>
 						<Carousel items={this.props.branches}/>
 					</View>
 				</ScrollView>

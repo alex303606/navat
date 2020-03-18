@@ -1,6 +1,7 @@
 import I18n from 'react-native-i18n';
 import { ru } from './ru_RU';
 import { en } from './en_EN';
+import { kz } from './kk_KZ';
 
 I18n.fallbacks = true;
 
@@ -9,11 +10,13 @@ I18n.missingBehaviour = 'guess';
 I18n.translations = {
 	ru,
 	en,
+	kz,
 };
 
 I18n.langs = [
-	'en',
 	'ru',
+	'en',
+	'kz',
 ];
 
 export const translate = (msg = '', options) => {

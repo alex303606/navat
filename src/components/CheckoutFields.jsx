@@ -65,7 +65,7 @@ const CheckoutFields = (props) => {
 				onChangeText={value => props.changeDescription(value)}
 				value={props.description}
 				label={translate('addressNotes')}/>
-			{!fieldsIsValid() && <H2 style={styles.error}>Заполните обязательные поля</H2>}
+			{!fieldsIsValid() && <H2 style={styles.error}>{translate('fillRequiredFields')}</H2>}
 		</Fragment>
 	);
 };

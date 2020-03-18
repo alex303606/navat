@@ -23,13 +23,11 @@ const initialState = {
 	addresses: [
 		{
 			type: 'home',
-			city: '',
 			address: '',
 			description: '',
 		},
 		{
 			type: 'office',
-			city: '',
 			address: '',
 			description: '',
 		},

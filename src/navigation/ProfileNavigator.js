@@ -53,7 +53,7 @@ const ProfileNavigator = createStackNavigator({
 			if (index && routes && !!routes.length && routes[index].params) {
 				const {item} = routes[index].params;
 				if (item && !!item.title) {
-					headerTitle = item.title;
+					headerTitle = translate(item.title);
 				}
 			}
 			return {

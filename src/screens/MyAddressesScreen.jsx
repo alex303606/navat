@@ -42,7 +42,7 @@ const MyAddressesScreen = (props) => {
 	const deleteAddress = (type) => {
 		const addresses = [...props.addresses];
 		const index = addresses.findIndex(x => x.type === type);
-		addresses[index] = {...addresses[index], city: '', address: '', description: ''};
+		addresses[index] = {...addresses[index], address: '', description: ''};
 		props.saveAddresses(addresses);
 	};
 	

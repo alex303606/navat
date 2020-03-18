@@ -4,8 +4,6 @@ const freeShippingThreshold = 1000;
 
 const shippingPrice = 200;
 
-const containerPrice = 20;
-
 const popularDishes = [
 	{
 		id: '0',
@@ -15,10 +13,10 @@ const popularDishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 180,
 		rating: 5,
-		additionalTitle: 'Порция',
+		additionalTitle: 'portion',
 		additionalItem: {
 			id: '10',
-			additionalTitle: '1 шт',
+			additionalTitle: 'pc',
 			price: 40,
 			container: {
 				amount: 0,
@@ -27,7 +25,7 @@ const popularDishes = [
 		},
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -40,7 +38,7 @@ const popularDishes = [
 		rating: 4.5,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -53,7 +51,7 @@ const popularDishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -66,7 +64,7 @@ const popularDishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -79,7 +77,7 @@ const popularDishes = [
 		rating: 4.5,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -92,7 +90,7 @@ const popularDishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -105,7 +103,7 @@ const popularDishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -118,7 +116,7 @@ const popularDishes = [
 		rating: 4.5,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -131,7 +129,7 @@ const popularDishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -144,7 +142,7 @@ const popularDishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 ];
@@ -157,10 +155,10 @@ const dishes = [
 		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
 		price: 180,
 		rating: 5,
-		additionalTitle: 'Порция',
+		additionalTitle: 'portion',
 		additionalItem: {
 			id: '10',
-			additionalTitle: '1 шт',
+			additionalTitle: 'pc',
 			price: 40,
 			container: {
 				amount: 0,
@@ -169,7 +167,7 @@ const dishes = [
 		},
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -181,7 +179,7 @@ const dishes = [
 		rating: 4.5,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -193,7 +191,7 @@ const dishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -205,7 +203,7 @@ const dishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -217,7 +215,7 @@ const dishes = [
 		rating: 4.5,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -229,7 +227,7 @@ const dishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -239,19 +237,19 @@ const dishes = [
 		description: 'Яркое насыщенное блюдо с мясом телятины, овощей и домашней лапши с пикантно острыми специями',
 		price: 230,
 		rating: 5,
-		additionalTitle: 'Порция',
+		additionalTitle: 'portion',
 		additionalItem: {
 			id: '11',
 			additionalTitle: '0.5',
 			price: 150,
 			container: {
 				amount: 1,
-				price: containerPrice,
+				price: 20,
 			},
 		},
 		container: {
 			amount: 2,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -263,7 +261,7 @@ const dishes = [
 		rating: 4.5,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -275,7 +273,7 @@ const dishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 	{
@@ -287,7 +285,7 @@ const dishes = [
 		rating: 3,
 		container: {
 			amount: 1,
-			price: containerPrice,
+			price: 20,
 		},
 	},
 ];

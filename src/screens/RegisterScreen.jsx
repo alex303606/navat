@@ -127,7 +127,7 @@ class RegisterScreen extends Component {
 							<Button
 								disabled={!this.state.phoneIsValid}
 								onPress={this.confirmCode}
-								title='Получить код'/>
+								title={translate('getCode')}/>
 						</View>
 					</ScrollView>
 				</Shadow>

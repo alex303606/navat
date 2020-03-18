@@ -12,6 +12,7 @@ import ReactNative, {
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { getCustomFontFamilyByFontWeight, normalizeHeight } from '../utils/utils';
+import { translate } from '../localization/i18n';
 
 const {StatusBarManager} = NativeModules;
 
@@ -81,9 +82,13 @@ const CheckoutScreenHeader = (props) => {
 						size={styles.$backIconSize}
 						color={'white'}
 					/>
-					<ReactNative.Text style={styles.backButtonText}>Назад</ReactNative.Text>
+					<ReactNative.Text style={styles.backButtonText}>
+						{translate('back')}
+					</ReactNative.Text>
 				</TouchableOpacity>
-				<ReactNative.Text style={styles.title}>Оформить заказ</ReactNative.Text>
+				<ReactNative.Text style={styles.title}>
+					{translate('checkout')}
+				</ReactNative.Text>
 			</View>
 		</ImageBackground>
 	);

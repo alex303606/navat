@@ -97,7 +97,7 @@ class AddAddressScreen extends Component {
 	}
 	
 	state = {
-		addresses: this.props.addresses.map(x => ({...x, city: countries[this.props.location].city})),
+		addresses: this.props.addresses,
 		selectedAddressIndex: 0,
 	};
 	

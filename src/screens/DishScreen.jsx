@@ -105,7 +105,7 @@ class DishScreen extends Component {
 				{item.additionalItem &&
 				<View style={styles.switchContainer}>
 					<Text style={styles.switchTitle}>
-						{additionalTitle || 'Порция'}
+						{!!additionalTitle ? translate(additionalTitle) : translate('portion')}
 					</Text>
 					<View style={styles.switch}>
 						<TouchableOpacity
@@ -118,7 +118,9 @@ class DishScreen extends Component {
 							}}
 							onPress={this.switchHandler('additional')}>
 							<LittleText
-								style={{color: additionalColor}}>{item.additionalItem.additionalTitle || '1 шт'}</LittleText>
+								style={{color: additionalColor}}>
+								{item.additionalItem.additionalTitle ? translate(item.additionalItem.additionalTitle) : translate('pc')}
+							</LittleText>
 						</TouchableOpacity>
 						<TouchableOpacity
 							activeOpacity={0.3}
@@ -129,7 +131,9 @@ class DishScreen extends Component {
 								backgroundColor: additionalColor,
 							}}
 							onPress={this.switchHandler('main')}>
-							<LittleText style={{color}}>{item.additionalTitle || 'Порция'}</LittleText>
+							<LittleText style={{color}}>
+								{item.additionalTitle ? translate(item.additionalTitle) : translate('portion')}
+							</LittleText>
 						</TouchableOpacity>
 					</View>
 				</View>

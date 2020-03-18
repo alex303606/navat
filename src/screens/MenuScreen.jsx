@@ -28,7 +28,10 @@ const styles = EStyleSheet.create({
 	},
 	title: {
 		textAlign: 'center',
-		marginBottom: '8rem',
+	},
+	contentContainerStyle: {
+		flexGrow: 1,
+		paddingVertical: '8rem',
 	},
 	separator: {
 		borderBottomWidth: 1,
@@ -68,6 +71,7 @@ class MenuScreen extends Component {
 						<H2 style={styles.title}>{translate('tabbar.Menu')}</H2>
 						<FlatList
 							data={this.props.categories}
+							contentContainerStyle={styles.contentContainerStyle}
 							ItemSeparatorComponent={this.renderSeparator}
 							renderItem={this.renderMenuItem}
 							keyExtractor={this.keyExtractor}

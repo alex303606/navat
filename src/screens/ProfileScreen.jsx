@@ -21,38 +21,38 @@ import Loader from '../components/Loader';
 
 const settings = [
 	{
-		title: 'Платежная информация',
-		description: 'Добавьте свою платежную карту',
+		title: 'billingInformation',
+		description: 'addYourCard',
 		targetScreen: 'MyCards',
 	},
 	{
-		title: 'Адреса доставки',
-		description: 'Добавляйте или удаляте ваши адреса',
+		title: 'deliveryAddresses',
+		description: 'addYourAddresses',
 		targetScreen: 'MyAddresses',
 	},
 	{
-		title: 'Приведи друга',
-		description: 'Получи 500 сом в подарок',
+		title: 'bringFriend',
+		description: 'getGift',
 		targetScreen: 'Template',
 		text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda dolorem dolores doloribus excepturi fugiat, id itaque labore laborum modi nisi nobis obcaecati quae reiciendis rem temporibus, vero voluptas, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem consequatur doloremque eius facere facilis, fugiat hic ipsam iste labore, laudantium magnam molestias mollitia, praesentium rerum sequi sunt veritatis voluptatibus!'
 	},
 	{
-		title: 'Служба поддержки',
+		title: 'supportService',
 		icon: () => <Support/>,
 		targetScreen: 'Help',
 	},
 	{
-		title: 'Настройки',
+		title: 'settings',
 		icon: () => <Settings/>,
 		targetScreen: 'Settings',
 	},
 	{
-		title: 'Условия использования',
+		title: 'termsOfUse',
 		icon: () => <Terms/>,
 		targetScreen: 'Terms',
 	},
 	{
-		title: 'Политика конфиденциальности',
+		title: 'privacyPolicy',
 		icon: () => <Privacy/>,
 		targetScreen: 'PrivacyPolicy',
 	},
@@ -169,9 +169,11 @@ const ProfileScreen = (props) => {
 					<View style={styles.itemLeft}>
 						{item.icon && <View style={styles.itemIcon}>{item.icon()}</View>}
 						<View>
-							<Bold>{item.title}</Bold>
+							<Bold>{translate(item.title)}</Bold>
 							{!!item.description &&
-							<MiddleText style={{marginTop: 3}}>{item.description}</MiddleText>
+							<MiddleText style={{marginTop: 3}}>
+								{translate(item.description)}
+							</MiddleText>
 							}
 						</View>
 					</View>
@@ -223,13 +225,13 @@ const ProfileScreen = (props) => {
 							<TouchableOpacity
 								activeOpacity={0.3}
 								onPress={editProfile}>
-								<Bold style={{color: 'red'}}>Заполните ваши данные</Bold>
+								<Bold style={{color: 'red'}}>{translate('fillYourDetails')}</Bold>
 							</TouchableOpacity>
 						</View>
 					}
 				</View>
 				<View style={styles.bottom}>
-					<Bold style={{color: '#9B9B9B'}}>Ваша скидка</Bold>
+					<Bold style={{color: '#9B9B9B'}}>{translate('yourDiscount')}</Bold>
 					<H1 style={{color: config.MainColor}}>5%</H1>
 				</View>
 				<TouchableOpacity

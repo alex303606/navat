@@ -4,6 +4,7 @@ import config from '../../config';
 import Shadow from '../components/Shadow';
 import { ScrollView, View } from 'react-native';
 import { Bold, SampleText } from '../components/Texts';
+import { translate } from '../localization/i18n';
 
 const styles = EStyleSheet.create({
 	page: {
@@ -51,7 +52,7 @@ const TemplateScreen = (props) => {
 					contentContainerStyle={{flexGrow: 1}}
 				>
 					<View style={styles.header}>
-						<Bold>{title}</Bold>
+						<Bold>{translate(title)}</Bold>
 					</View>
 					<View style={styles.content}>
 						<SampleText>{text}</SampleText>

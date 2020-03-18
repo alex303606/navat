@@ -75,9 +75,6 @@ const AddressItem = (props) => {
 				size={styles.$addressIconSize}/>
 			<View style={styles.selectedItemAddress}>
 				<View style={{flexDirection: 'row'}}>
-					<Text numberOfLines={1} style={styles.address}>{address.city}</Text>
-				</View>
-				<View style={{flexDirection: 'row'}}>
 					<Text numberOfLines={2} style={styles.address}>{address.address}</Text>
 				</View>
 			</View>

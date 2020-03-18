@@ -6,6 +6,7 @@ import { Text } from '../components/Texts';
 import config from '../../config';
 import CustomIcon from '../components/CustomIcon';
 import Button from '../components/Button';
+import { translate } from '../localization/i18n';
 
 const {StatusBarManager} = NativeModules;
 
@@ -77,20 +78,23 @@ const CheckoutReadyScreen = (props) => {
 			<View style={styles.page}>
 				<Shadow style={styles.pageInner}>
 					<View style={styles.content}>
-						<ReactNative.Text style={styles.title}>Ваш заказ принят</ReactNative.Text>
+						<ReactNative.Text style={styles.title}>
+							{translate('orderAccepted')}
+						</ReactNative.Text>
 						<CustomIcon
 							style={styles.checkoutReadyIcon}
 							color={config.GreyColor}
 							name={'checkout-ready'}
 							size={styles.$checkoutReadyIconSize}/>
-						<Text>Номер заказа:
+						<Text>
+							{translate('orderNumber')}
 							<Text style={{color: config.MainColor}}>{' ' + '123456789'}</Text>
 						</Text>
 					</View>
 					<View style={styles.footer}>
 						<Button
 							onPress={navigateToHome}
-							title={'Вернуться на гланую'}
+							title={translate('returnToHome')}
 						/>
 					</View>
 				</Shadow>

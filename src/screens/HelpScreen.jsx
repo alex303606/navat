@@ -7,6 +7,7 @@ import CustomIcon from '../components/CustomIcon';
 import { getCustomFontFamilyByFontWeight } from '../utils/utils';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Bold, MiddleText } from '../components/Texts';
+import { translate } from '../localization/i18n';
 
 const styles = EStyleSheet.create({
 	$marginBottom: '13rem',
@@ -144,7 +145,9 @@ const HelpScreen = (props) => {
 						size={styles.$50}/>
 				</View>
 				<View style={[styles.centerView, styles.hasBorderBottom]}>
-					<ReactNative.Text style={styles.title}>Отзывы и предложения:</ReactNative.Text>
+					<ReactNative.Text style={styles.title}>
+						{translate('commentsSuggestions')}
+					</ReactNative.Text>
 					<View style={styles.row}>
 						<Icon
 							style={styles.iconPhone}
@@ -160,7 +163,9 @@ const HelpScreen = (props) => {
 					</View>
 				</View>
 				<View style={styles.centerView}>
-					<ReactNative.Text style={styles.title}>Служба доставки:</ReactNative.Text>
+					<ReactNative.Text style={styles.title}>
+						{translate('deliveryService')}
+					</ReactNative.Text>
 					<View style={styles.row}>
 						<Icon
 							style={styles.iconPhone}

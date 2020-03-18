@@ -147,6 +147,7 @@ const styles = EStyleSheet.create({
 class BasketScreen extends Component {
 	row: Array<any> = [];
 	prevOpenedRow = undefined;
+	
 	componentDidMount() {
 		if (this.props.items.length > 0 && !this.props.navigation.getParam('clearBasket')) {
 			this.props.navigation.setParams({clearBasket: this.props.clearBasket});
@@ -203,30 +204,30 @@ class BasketScreen extends Component {
 				/>
 				<View style={[styles.basketFooter, disabledOrderButton && {minHeight: 'auto', borderTopWidth: 0}]}>
 					{(!!this.props.totalPrice || !!this.props.containers.amount || !!totalAmount) &&
-						<View style={styles.basketFooterInfo}>
-							{!!this.props.totalPrice &&
-								<SmallText>
-									{this.props.totalPrice >= this.props.freeShippingThreshold ?
-										translate('freeShipping') :
-										assemble(translate('shippingPrice'), {price: this.props.shippingPrice})}
-								</SmallText>
-							}
-							{!!this.props.containers.amount && !!this.props.containers.price &&
-								<Fragment>
-									<SmallText>
-										{assemble(translate('numberOfContainers'), {amount: this.props.containers.amount})}
-									</SmallText>
-									<SmallText>
-										{assemble(translate('containersPrice'), {price: this.props.containers.price})}
-									</SmallText>
-								</Fragment>
-							}
-							{!!totalAmount &&
-								<SmallText>
-									{assemble(translate('itemsInBasket'), {totalAmount})}
-								</SmallText>
-							}
-						</View>
+					<View style={styles.basketFooterInfo}>
+						{!!this.props.totalPrice &&
+						<SmallText>
+							{this.props.totalPrice >= this.props.freeShippingThreshold ?
+								translate('freeShipping') :
+								assemble(translate('shippingPrice'), {price: this.props.shippingPrice})}
+						</SmallText>
+						}
+						{!!this.props.containers.amount && !!this.props.containers.price &&
+						<Fragment>
+							<SmallText>
+								{assemble(translate('numberOfContainers'), {amount: this.props.containers.amount})}
+							</SmallText>
+							<SmallText>
+								{assemble(translate('containersPrice'), {price: this.props.containers.price})}
+							</SmallText>
+						</Fragment>
+						}
+						{!!totalAmount &&
+						<SmallText>
+							{assemble(translate('itemsInBasket'), {totalAmount})}
+						</SmallText>
+						}
+					</View>
 					}
 					<Button
 						onPress={this.completeOrderHandler(disabledOrderButton)}
@@ -299,8 +300,11 @@ class BasketScreen extends Component {
 							<View style={styles.infoTop}>
 								<Label numberOfLines={1} style={styles.title}>{item.title}</Label>
 								{!!item.additionalTitle &&
-								<LittleText numberOfLines={1}
-											style={styles.additionalTitle}>{item.additionalTitle}</LittleText>
+								<LittleText
+									numberOfLines={1}
+									style={styles.additionalTitle}>
+									{translate(item.additionalTitle)}
+								</LittleText>
 								}
 								<Description numberOfLines={3}>{item.description}</Description>
 							</View>

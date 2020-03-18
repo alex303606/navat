@@ -5,6 +5,8 @@ import config from '../../config';
 import Shadow from '../components/Shadow';
 import ControlledSwitch from '../components/ControlledSwitch';
 import { Bold, MiddleText } from '../components/Texts';
+import { translate } from '../localization/i18n';
+import { assemble } from '../utils/utils';
 
 const styles = EStyleSheet.create({
 	page: {
@@ -72,38 +74,50 @@ const SettingsScreen = () => {
 					<View style={styles.row}>
 						<View style={styles.leftSide}>
 							<View style={{flexDirection: 'row'}}>
-								<Bold style={styles.title}>PUSH уведомления</Bold>
+								<Bold style={styles.title}>
+									{translate('pushNotifications')}
+								</Bold>
 							</View>
 							<View style={{flexDirection: 'row'}}>
-								<MiddleText style={styles.text}>Статус доставки, сообщения от курьера</MiddleText>
-							</View>
-						</View>
-						<ControlledSwitch/>
-					</View>
-					<View style={styles.row}>
-						<View style={styles.leftSide}>
-							<View style={{flexDirection: 'row'}}>
-								<Bold style={styles.title}>Email рассылка</Bold>
-							</View>
-							<View style={{flexDirection: 'row'}}>
-								<MiddleText style={styles.text}>Статус доставки, сообщения от курьера</MiddleText>
+								<MiddleText style={styles.text}>
+									{translate('pushNotificationsDescription')}
+								</MiddleText>
 							</View>
 						</View>
 						<ControlledSwitch/>
 					</View>
 					<View style={styles.row}>
 						<View style={styles.leftSide}>
-							<Bold style={styles.title}>Ваш город</Bold>
 							<View style={{flexDirection: 'row'}}>
-								<MiddleText style={styles.text}>Выбран: Бишкек</MiddleText>
+								<Bold style={styles.title}>
+									{translate('emailNewsletter')}
+								</Bold>
+							</View>
+							<View style={{flexDirection: 'row'}}>
+								<MiddleText style={styles.text}>
+									{translate('emailNewsletterDescription')}
+								</MiddleText>
+							</View>
+						</View>
+						<ControlledSwitch/>
+					</View>
+					<View style={styles.row}>
+						<View style={styles.leftSide}>
+							<Bold style={styles.title}>{translate('yourCity')}</Bold>
+							<View style={{flexDirection: 'row'}}>
+								<MiddleText style={styles.text}>
+									{assemble(translate('selected'), {value: 'Бишкек'})}
+								</MiddleText>
 							</View>
 						</View>
 					</View>
 					<View style={styles.row}>
 						<View style={styles.leftSide}>
-							<Bold style={styles.title}>Выбор языка</Bold>
+							<Bold style={styles.title}>{translate('languageSelection')}</Bold>
 							<View style={{flexDirection: 'row'}}>
-								<MiddleText style={styles.text}>Выбран: русский</MiddleText>
+								<MiddleText style={styles.text}>
+									{assemble(translate('selected'), {value: 'русский'})}
+								</MiddleText>
 							</View>
 						</View>
 					</View>
