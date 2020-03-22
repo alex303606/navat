@@ -180,6 +180,9 @@ class HomeScreen extends Component {
 	};
 	
 	renderMenuItem = ({item, index}) => {
+		if (!item.dishes || !item.dishes.length) {
+			return <View/>;
+		}
 		const shadowOpt = {
 			width: styles.$width,
 			height: styles.$height,

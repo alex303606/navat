@@ -92,6 +92,9 @@ class MenuScreen extends Component {
 	};
 	
 	renderMenuItem = ({item, index}) => {
+		if (!item.dishes || !item.dishes.length) {
+			return <View/>;
+		}
 		return (
 			<TouchableOpacity activeOpacity={0.3} onPress={this.navigateToCategory(item, index)}>
 				<View style={styles.item}>
