@@ -1,4 +1,5 @@
-import { INIT_MENU } from '../actions/actionTypes';
+import { INIT_MENU, SELECT_LOCATION } from '../actions/actionTypes';
+import { countries } from '../../../config';
 
 const freeShippingThreshold = 1000;
 
@@ -77,74 +78,6 @@ const cat = [
 	},
 ];
 
-const branches = [
-	{
-		id: '1',
-		name: 'Чайхана Нават на Киевской',
-		address: 'Киевская 141/1 / Тоголоко-Молдо',
-		time: '',
-		images: [
-			'https://teletype.in/files/40/40820609-0d4e-4b99-b469-e151f1020f5c.jpeg',
-			'https://teletype.in/files/fa/fa0c61e6-bb49-4a0a-81f8-9b2ca4ae2435.jpeg',
-			'https://teletype.in/files/ab/ab3710e0-bf03-480e-9b9d-2d6dd5bc6d94.jpeg',
-			'https://teletype.in/files/40/4081f400-63b0-4f59-9789-8daeddf1a1b4.jpeg',
-		],
-		rating: 4,
-	},
-	{
-		id: '2',
-		name: 'Чайхана Нават на Ибраимова',
-		address: 'Ибраимова 42 / Московская',
-		time: '',
-		images: [
-			'https://teletype.in/files/40/4081f400-63b0-4f59-9789-8daeddf1a1b4.jpeg',
-			'https://teletype.in/files/fa/fa0c61e6-bb49-4a0a-81f8-9b2ca4ae2435.jpeg',
-			'https://teletype.in/files/40/40820609-0d4e-4b99-b469-e151f1020f5c.jpeg',
-			'https://teletype.in/files/ab/ab3710e0-bf03-480e-9b9d-2d6dd5bc6d94.jpeg',
-		],
-		rating: 4,
-	},
-	{
-		id: '3',
-		name: 'Чайхана Нават на Токомбаева',
-		address: 'ул.Токомбаева, 32/4 / Байтик Баатыра',
-		time: '',
-		images: [
-			'https://teletype.in/files/40/40820609-0d4e-4b99-b469-e151f1020f5c.jpeg',
-			'https://teletype.in/files/ab/ab3710e0-bf03-480e-9b9d-2d6dd5bc6d94.jpeg',
-			'https://teletype.in/files/40/4081f400-63b0-4f59-9789-8daeddf1a1b4.jpeg',
-			'https://teletype.in/files/fa/fa0c61e6-bb49-4a0a-81f8-9b2ca4ae2435.jpeg',
-		],
-		rating: 4,
-	},
-	{
-		id: '4',
-		name: 'Чайхана Нават на Малдыбаева',
-		address: 'ул.Токомбаева, 32/4 / Байтик Баатыра',
-		time: '',
-		images: [
-			'https://teletype.in/files/40/40820609-0d4e-4b99-b469-e151f1020f5c.jpeg',
-			'https://teletype.in/files/ab/ab3710e0-bf03-480e-9b9d-2d6dd5bc6d94.jpeg',
-			'https://teletype.in/files/40/4081f400-63b0-4f59-9789-8daeddf1a1b4.jpeg',
-			'https://teletype.in/files/fa/fa0c61e6-bb49-4a0a-81f8-9b2ca4ae2435.jpeg',
-		],
-		rating: 5,
-	},
-	{
-		id: '5',
-		name: 'Чайхана Нават на Советской',
-		address: 'ул.Токомбаева, 32/4 / Байтик Баатыра',
-		time: '',
-		images: [
-			'https://teletype.in/files/40/40820609-0d4e-4b99-b469-e151f1020f5c.jpeg',
-			'https://teletype.in/files/ab/ab3710e0-bf03-480e-9b9d-2d6dd5bc6d94.jpeg',
-			'https://teletype.in/files/40/4081f400-63b0-4f59-9789-8daeddf1a1b4.jpeg',
-			'https://teletype.in/files/fa/fa0c61e6-bb49-4a0a-81f8-9b2ca4ae2435.jpeg',
-		],
-		rating: 2,
-	},
-];
-
 const initialState = {
 	popularDishes: [],
 	categories: [],
@@ -164,9 +97,9 @@ const getPopularDishes = (categories) => {
 	const dishes = [];
 	categories.forEach((cat, index) => {
 		if (!!cat.dishes && !!cat.dishes.length) {
-			cat.dishes.forEach((dish, id) => {
+			cat.dishes.forEach((dish) => {
 				if (dish && dish.featured === '1') {
-					dishes.push({...dish, parentCategoryId: index, id });
+					dishes.push({...dish, parentCategoryId: index});
 				}
 			})
 		}
@@ -181,11 +114,13 @@ const menuReducer = (state = initialState, action) => {
 			return {
 				...state,
 				popularDishes: getPopularDishes(action.categories),
-				branches,
 				categories: addIcons(action.categories),
 				freeShippingThreshold,
 				shippingPrice,
 			};
+		case SELECT_LOCATION:
+			const branches = countries[action.location].branches;
+			return {...state, branches};
 		default:
 			return state;
 	}

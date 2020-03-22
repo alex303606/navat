@@ -52,11 +52,11 @@ class CategoryScreen extends Component {
 		);
 	}
 	
-	renderItem = ({item, index}) => {
+	renderItem = ({item}) => {
 		return <Item
 			location={this.props.profile.location}
 			item={item}
-			onPress={this.navigateToDishScreen(index)}
+			onPress={this.navigateToDishScreen}
 			addToBasket={this.addToBasket}
 		/>
 	};
@@ -65,9 +65,9 @@ class CategoryScreen extends Component {
 		return this.props.addToBasket(item, additionalItem);
 	};
 	
-	navigateToDishScreen = index => (item) => () => {
+	navigateToDishScreen = (item) => () => {
 		this.props.navigation.navigate('Dish', {
-			id: index,
+			id: item.id,
 			categoryId: this.state.categoryId,
 			title: item.title,
 		});

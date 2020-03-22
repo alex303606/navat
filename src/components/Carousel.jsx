@@ -113,8 +113,8 @@ const Slide = (props: any) => {
 
 export const Carousel = (props: any) => {
 	const {items} = props;
-	const renderSlide = item => (
-		<Slide key={item.id} {...item}/>
+	const renderSlide = (item, index) => (
+		<Slide key={index} {...item}/>
 	);
 	if (Platform.OS === 'android' || props.vertical) {
 		return (

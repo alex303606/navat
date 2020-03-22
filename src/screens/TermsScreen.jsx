@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
 import Shadow from '../components/Shadow';
-import { SampleText } from '../components/Texts';
+import { Bold, SampleText } from '../components/Texts';
 
 const styles = EStyleSheet.create({
 	page: {
@@ -30,41 +30,71 @@ const TermsScreen = () => {
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{flexGrow: 1}}
 				>
-					<SampleText style={{marginBottom: 20}}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-						sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-						qui officia deserunt mollit anim id est laborum.
+					<Bold style={{marginBottom: 10}}>ОФЕРТА</Bold>
+					<Bold style={{marginBottom: 10}}>УСЛОВИЯ ОПЛАТЫ</Bold>
+					<Bold style={{marginBottom: 10}}>СОГЛАШЕНИЯ ОБ УСЛОВИЯХ ЭЛЕКТРОННОЙ ОПЛАТЫ ПО ПРОЖДАЖЕ ПРОДУКЦИИ
+						УКАЗАННОЙ НА ИНТЕРНЕТ САЙТЕ</Bold>
+					<SampleText style={{marginBottom: 10}}>
+						Настоящий документ «Соглашение об условиях электронной оплаты по продаже продукции указанной на
+						интернет сайте WWW.DOSTAVKA-NAVAT.KZ, является публичной офертой ТОО «ЧАЙХАНА NAVAT»
+						адресованной физическим лицам-заказчикам (далее «КЛИЕНТ») заключить настоящее соглашение на ниже
+						изложенных условиях:
+					</SampleText>
+					<SampleText style={{marginBottom: 10}}>
+						Совершая действия по заказу / покупке / оплате продукции по доставке через официальный сайт
+						доставки ТОО «ЧАЙХАНА NAVAT» WWW.DOSTAVKA-NAVAT.KZ «КЛИЕНТ» тем самым полностью принимает
+						условия настоящего соглашения.
+						
+						Для заказа доставки необходимых блюд «КЛИЕНТу» необходимо:
+						выбрать интересующие позиции, после выбора необходимо нажать кнопку «КУПИТЬ», после чего
+						выбранные позиции откладываются в «КОРЗИНУ»!
+						необходимо открыть корзину, проверить свой заказ и выбрать способ оплаты;
+						после выбора способа оплаты необходимо нажать кнопку «ОПЛАТИТЬ».
+						«ЧАЙХАНА NAVAT» не несет ответственности за:
+						действия и использования карт оплаты третьими лицами;
+						правильность введения при выборе блюд и формировании заказа на сайте WWW.DOSTAVKA-NAVAT.KZ,;
+						за сбой интернет системы третьими лицами или погодными условиями (форс мажор) при формировании
+						заказа.
+						«ЧАЙХАНА NAVAT» обязуется привести заказ в течении 90 минут с момента принятия заказа. В случае
+						непредвиденной задержки (форс-мажор, автомобильные пробки, аварии на дорогах) оператор кол
+						центра службы доставки от «ЧАЙХАНА NAVAT» ОБЯЗАН созвониться с «КЛИЕНТОМ» и предупредить его о
+						задержке доставки заказа.
+						«ЧАЙХАНА NAVAT» не несет ответственность за нарушение времени доставки заказа и температуру
+						доставляемых блюд!
+					</SampleText>
+					<SampleText style={{marginBottom: 10}}>
+						В случае несоответствия качества продукции (недовес, пережаренное, сырое, cухое,
+						несоответствующий внешний вид) ТОО «ЧАЙХАНА NAVAT» обязуются «КЛИЕНТУ» заменить блюдо или
+						вернуть оплату, только наличными денежными средствами, не в зависимости от формы оплаты с
+						стороны «КЛИЕНТА».
+						Услуга банковских издержек закрепляется сторонами на основании договора между банком и
+						«КЛИЕНТОМ» и банком и ТОО «ЧАЙХАНА NAVAT».
+						Бесплатная доставка осуществляется только в черте города, при заказе на сумму не менее, чем 5000
+						тенге!
+						Доставка производиться в одноразовых контейнерах, цена которых не входит в цену за блюдо.
+						Одноразовую посуду необходимо оплачивать отдельно:
+					</SampleText>
+					<SampleText style={{marginBottom: 10}}>
+						* большой контейнер -
+					</SampleText>
+					<SampleText style={{marginBottom: 10}}>
+						* средний для вторых блюд -
+					</SampleText>
+					<SampleText style={{marginBottom: 10}}>
+						* круглый суповой -
+					</SampleText>
+					<SampleText style={{marginBottom: 10}}>
+						* соусник -
+					</SampleText>
+					<SampleText style={{marginBottom: 10}}>
+						* литровая бутылка для напитков -
 					</SampleText>
 					<SampleText style={{marginBottom: 20}}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-						sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-						qui officia deserunt mollit anim id est laborum.
-					</SampleText>
-					<SampleText style={{marginBottom: 20}}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-						sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-						qui officia deserunt mollit anim id est laborum.
+						При заказе заказных и банкетных блюд украшения к блюду доставляются в отдельных контейнерах.
+						При заказе любого вида заказного плова, стоимость за контейнер не взимается.
+						В случае некорректного обращения сотрудников ТОО «ЧАЙХАНА NAVAT» обращаться по телефону +7 777
+						825 11 11 .
+						Режим работы с 11.00 до 23.00
 					</SampleText>
 				</ScrollView>
 			</Shadow>

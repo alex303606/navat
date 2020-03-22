@@ -165,8 +165,7 @@ class DishScreen extends Component {
 			return;
 		}
 		const selectedCategory = this.props.categories[categoryId];
-		const item = selectedCategory.dishes[dishId];
-		item.id = dishId;
+		const item = selectedCategory.dishes.find(x => x.id === dishId);
 		this.setState({item});
 	};
 	

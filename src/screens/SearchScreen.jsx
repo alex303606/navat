@@ -80,8 +80,8 @@ class SearchScreen extends Component {
 		const value = this.props.navigation.getParam('searchValue');
 		this.props.categories.forEach((cat, index) => {
 			if (!!cat.dishes && !!cat.dishes.length) {
-				cat.dishes.forEach((dish, id) => {
-					dishes.push({...dish, parentCategoryId: index, id });
+				cat.dishes.forEach((dish) => {
+					dishes.push({...dish, parentCategoryId: index });
 				})
 			}
 		});
