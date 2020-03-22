@@ -33,6 +33,7 @@ const Input = props => {
 			<Label style={styles.label}>{props.label}</Label>
 			<View style={[styles.inputWrapper, props.style]}>
 				<TextInput
+					{...props}
 					multiline={props.multiline}
 					autoFocus={props.autoFocus}
 					autoCompleteType={props.autoCompleteType}

@@ -13,11 +13,9 @@ import {
 	DELETE_CARD,
 	SAVE_ADDRESSES,
 } from '../actions/actionTypes';
-import config from '../../../config';
 
 const initialState = {
-	location: config.InitLocation,
-	user: {},
+	location: '',
 	userIsLoggedIn: false,
 	guideViewed: false,
 	addresses: [
@@ -36,10 +34,7 @@ const initialState = {
 	email: '',
 	avatar: {uri: ''},
 	birthday: '',
-	phone: {
-		phone: '',
-		code: '',
-	},
+	phone: '',
 	cards: [],
 };
 
@@ -77,7 +72,7 @@ const userReducer = (state = initialState, action) => {
 		case SELECT_LOCATION:
 			return {...state, location: action.location};
 		case SIGN_IN:
-			return {...state, user: action.user, userIsLoggedIn: true};
+			return {...state, userIsLoggedIn: true};
 		case SIGN_OUT:
 			return initialState;
 		case GUIDE_VIEWED:

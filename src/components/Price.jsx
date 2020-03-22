@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactNative from 'react-native';
-import CustomIcon from './CustomIcon';
 import { View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
@@ -22,13 +21,10 @@ const styles = EStyleSheet.create({
 });
 
 const Price = (props) => {
+	const price = props.title ? parseInt(props.title, 10) : '';
 	return (
 		<View style={[styles.row, props.style]}>
-			<ReactNative.Text style={[styles.price, props.textStyle]}>{`${props.title} `}</ReactNative.Text>
-			<CustomIcon
-				color={'#1E8149'}
-				name={'price'}
-				size={styles.$iconSize}/>
+			<ReactNative.Text style={[styles.price, props.textStyle]}>{`${price} ₸`}</ReactNative.Text>
 		</View>
 	);
 };

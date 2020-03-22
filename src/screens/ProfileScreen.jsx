@@ -20,32 +20,32 @@ import { translate } from '../localization/i18n';
 import Loader from '../components/Loader';
 
 const settings = [
-	{
-		title: 'billingInformation',
-		description: 'addYourCard',
-		targetScreen: 'MyCards',
-	},
-	{
-		title: 'deliveryAddresses',
-		description: 'addYourAddresses',
-		targetScreen: 'MyAddresses',
-	},
-	{
-		title: 'bringFriend',
-		description: 'getGift',
-		targetScreen: 'Template',
-		text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda dolorem dolores doloribus excepturi fugiat, id itaque labore laborum modi nisi nobis obcaecati quae reiciendis rem temporibus, vero voluptas, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem consequatur doloremque eius facere facilis, fugiat hic ipsam iste labore, laudantium magnam molestias mollitia, praesentium rerum sequi sunt veritatis voluptatibus!'
-	},
+	// {
+	// 	title: 'billingInformation',
+	// 	description: 'addYourCard',
+	// 	targetScreen: 'MyCards',
+	// },
+	// {
+	// 	title: 'deliveryAddresses',
+	// 	description: 'addYourAddresses',
+	// 	targetScreen: 'MyAddresses',
+	// },
+	// {
+	// 	title: 'bringFriend',
+	// 	description: 'getGift',
+	// 	targetScreen: 'Template',
+	// 	text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda dolorem dolores doloribus excepturi fugiat, id itaque labore laborum modi nisi nobis obcaecati quae reiciendis rem temporibus, vero voluptas, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem consequatur doloremque eius facere facilis, fugiat hic ipsam iste labore, laudantium magnam molestias mollitia, praesentium rerum sequi sunt veritatis voluptatibus!'
+	// },
 	{
 		title: 'supportService',
 		icon: () => <Support/>,
 		targetScreen: 'Help',
 	},
-	{
-		title: 'settings',
-		icon: () => <Settings/>,
-		targetScreen: 'Settings',
-	},
+	// {
+	// 	title: 'settings',
+	// 	icon: () => <Settings/>,
+	// 	targetScreen: 'Settings',
+	// },
 	{
 		title: 'termsOfUse',
 		icon: () => <Terms/>,
@@ -154,7 +154,7 @@ const ProfileScreen = (props) => {
 	
 	useEffect(() => {
 		if (!props.profile || !props.profile.userIsLoggedIn) {
-			props.navigation.navigate('Auth');
+			//props.navigation.navigate('Auth');
 		}
 		setLoading(false);
 	}, []);
@@ -194,56 +194,60 @@ const ProfileScreen = (props) => {
 		return <Loader/>;
 	}
 	
-	return (
-		<View style={styles.page}>
-			<Shadow style={[styles.modal, styles.topModal]}>
-				<View style={styles.top}>
-					<View style={styles.avatar}>
-						{!!props.profile.avatar && props.profile.avatar.uri ?
-							<Image
-								style={{width: '100%', height: '100%'}}
-								resizeMode='contain'
-								source={props.profile.avatar}
-							/> :
-							<Icon
-								style={styles.icon}
-								name='user'
-								size={40}
-								color={'white'}
-							/>
-						}
-					</View>
-					{dataIsValid ?
-						<View style={styles.centerVertical}>
-							<ReactNative.Text style={styles.userName}>{props.profile.fio}</ReactNative.Text>
-							<Label style={styles.description}>
-								{`+${props.profile.phone.code} ${props.profile.phone.phone}`}
-							</Label>
-							<Label style={styles.description}>{props.profile.email}</Label>
-						</View> :
-						<View style={styles.centerVertical}>
-							<TouchableOpacity
-								activeOpacity={0.3}
-								onPress={editProfile}>
-								<Bold style={{color: 'red'}}>{translate('fillYourDetails')}</Bold>
-							</TouchableOpacity>
-						</View>
+	const renderHeader = () => (
+		<Shadow style={[styles.modal, styles.topModal]}>
+			<View style={styles.top}>
+				<View style={styles.avatar}>
+					{!!props.profile.avatar && props.profile.avatar.uri ?
+						<Image
+							style={{width: '100%', height: '100%'}}
+							resizeMode='contain'
+							source={props.profile.avatar}
+						/> :
+						<Icon
+							style={styles.icon}
+							name='user'
+							size={40}
+							color={'white'}
+						/>
 					}
 				</View>
-				<View style={styles.bottom}>
-					<Bold style={{color: '#9B9B9B'}}>{translate('yourDiscount')}</Bold>
-					<H1 style={{color: config.MainColor}}>5%</H1>
-				</View>
-				<TouchableOpacity
-					style={styles.editProfile}
-					activeOpacity={0.3}
-					onPress={editProfile}>
-					<CustomIcon
-						color={'#1E8149'}
-						name={'pencil'}
-						size={20}/>
-				</TouchableOpacity>
-			</Shadow>
+				{dataIsValid ?
+					<View style={styles.centerVertical}>
+						<ReactNative.Text style={styles.userName}>{props.profile.fio}</ReactNative.Text>
+						<Label style={styles.description}>
+							{`+${props.profile.phone.code} ${props.profile.phone.phone}`}
+						</Label>
+						<Label style={styles.description}>{props.profile.email}</Label>
+					</View> :
+					<View style={styles.centerVertical}>
+						<TouchableOpacity
+							activeOpacity={0.3}
+							onPress={editProfile}>
+							<Bold style={{color: 'red'}}>{translate('fillYourDetails')}</Bold>
+						</TouchableOpacity>
+					</View>
+				}
+			</View>
+			<View style={styles.bottom}>
+				<Bold style={{color: '#9B9B9B'}}>{translate('yourDiscount')}</Bold>
+				<H1 style={{color: config.MainColor}}>5%</H1>
+			</View>
+			<TouchableOpacity
+				style={styles.editProfile}
+				activeOpacity={0.3}
+				onPress={editProfile}>
+				<CustomIcon
+					color={'#1E8149'}
+					name={'pencil'}
+					size={20}/>
+			</TouchableOpacity>
+		</Shadow>
+	);
+	
+	return (
+		<View style={styles.page}>
+			{/*{renderHeader()}*/}
 			<Shadow style={[styles.modal, styles.bottomModal]}>
 				<ScrollView
 					keyboardShouldPersistTaps='handled'

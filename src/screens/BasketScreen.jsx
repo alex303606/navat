@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import ReactNative, { FlatList, TouchableOpacity, View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { BoxShadow } from 'react-native-shadow';
@@ -167,7 +167,8 @@ class BasketScreen extends Component {
 		}, 0);
 		
 		const shippingPrice = this.props.totalPrice >= this.props.freeShippingThreshold ? 0 : this.props.shippingPrice;
-		const totalPrice = this.props.totalPrice + shippingPrice + this.props.containers.price;
+		//const totalPrice = this.props.totalPrice + shippingPrice + this.props.containers.price;
+		const totalPrice = this.props.totalPrice + shippingPrice;
 		const disabledOrderButton = !totalAmount;
 		
 		if (!this.props.items.length) {
@@ -212,16 +213,16 @@ class BasketScreen extends Component {
 								assemble(translate('shippingPrice'), {price: this.props.shippingPrice})}
 						</SmallText>
 						}
-						{!!this.props.containers.amount && !!this.props.containers.price &&
-						<Fragment>
-							<SmallText>
-								{assemble(translate('numberOfContainers'), {amount: this.props.containers.amount})}
-							</SmallText>
-							<SmallText>
-								{assemble(translate('containersPrice'), {price: this.props.containers.price})}
-							</SmallText>
-						</Fragment>
-						}
+						{/*{!!this.props.containers.amount && !!this.props.containers.price &&*/}
+						{/*<Fragment>*/}
+						{/*	<SmallText>*/}
+						{/*		{assemble(translate('numberOfContainers'), {amount: this.props.containers.amount})}*/}
+						{/*	</SmallText>*/}
+						{/*	<SmallText>*/}
+						{/*		{assemble(translate('containersPrice'), {price: this.props.containers.price})}*/}
+						{/*	</SmallText>*/}
+						{/*</Fragment>*/}
+						{/*}*/}
 						{!!totalAmount &&
 						<SmallText>
 							{assemble(translate('itemsInBasket'), {totalAmount})}
@@ -293,7 +294,7 @@ class BasketScreen extends Component {
 							<ImageWithLoader
 								resizeMode='cover'
 								style={styles.imageWithLoader}
-								source={{uri: item.image}}
+								source={item.image}
 							/>
 						</View>
 						<View style={styles.info}>
@@ -366,7 +367,7 @@ class BasketScreen extends Component {
 	
 	clearBasket = () => this.props.clearBasket();
 	
-	keyExtractor = (item) => item.id;
+	keyExtractor = (item) => item.title;
 }
 
 const mapStateToProps = state => ({
@@ -375,6 +376,7 @@ const mapStateToProps = state => ({
 	containers: state.basket.containers,
 	freeShippingThreshold: state.menu.freeShippingThreshold,
 	shippingPrice: state.menu.shippingPrice,
+	location: state.profile.location,
 });
 
 const mapDispatchToProps = dispatch => {

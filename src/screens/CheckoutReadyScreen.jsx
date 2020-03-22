@@ -7,6 +7,9 @@ import config from '../../config';
 import CustomIcon from '../components/CustomIcon';
 import Button from '../components/Button';
 import { translate } from '../localization/i18n';
+import { bindActionCreators } from 'redux';
+import { clearBasket } from '../store/actions/basket';
+import { connect } from 'react-redux';
 
 const {StatusBarManager} = NativeModules;
 
@@ -47,7 +50,7 @@ const styles = EStyleSheet.create({
 
 const CheckoutReadyScreen = (props) => {
 	const [statusBarHeight, setStatusBarHeight] = useState(0);
-	
+	const OrderID = props.navigation.getParam('OrderID');
 	if (!statusBarHeight) {
 		if (Platform.OS === 'ios') {
 			StatusBarManager.getHeight(({height}) => {
@@ -88,7 +91,7 @@ const CheckoutReadyScreen = (props) => {
 							size={styles.$checkoutReadyIconSize}/>
 						<Text>
 							{translate('orderNumber')}
-							<Text style={{color: config.MainColor}}>{' ' + '123456789'}</Text>
+							<Text style={{color: config.MainColor}}>{' ' + OrderID}</Text>
 						</Text>
 					</View>
 					<View style={styles.footer}>
@@ -109,4 +112,11 @@ CheckoutReadyScreen.navigationOptions = () => {
 	};
 };
 
-export default CheckoutReadyScreen;
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			clearBasket,
+		},
+		dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(CheckoutReadyScreen);

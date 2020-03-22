@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import NavigationService from '../utils/NavigationService';
 import AppNavigator from './AppNavigator';
 import AppWithNavigationState from './AppWithNavigationState';
+import { bindActionCreators } from 'redux';
+import { initMenu } from '../store/actions/menu';
+import { countries } from '../../config';
+import axios from 'axios';
 
 const AppNavigationState = (props) => {
+	useEffect(() => {
+		if(!!props.profile.location) {
+			axios.defaults.baseURL = countries[props.profile.location].apiUrl;
+			props.initMenu();
+		}
+	});
+	
 	if (props.profile && props.profile.guideViewed) {
-		return <AppWithNavigationState/>;
+		return (
+			<AppWithNavigationState/>
+		);
 	}
 	return (
-		<AppNavigator ref={navigatorRef => {
-			NavigationService.setTopLevelNavigator(navigatorRef);
-		}}/>
+		<AppNavigator/>
 	);
 };
 
@@ -19,4 +29,11 @@ const mapStateToProps = state => ({
 	profile: state.profile,
 });
 
-export default connect(mapStateToProps, null)(AppNavigationState);
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			initMenu,
+		},
+		dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppNavigationState);

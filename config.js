@@ -1,6 +1,4 @@
 export default {
-	apiUrl: `http://localhost:8000`,
-	InitLocation: 'KG',
 	shadowOptOpacity: 0.15,
 	TabBarHeight: 64,
 	MainColor: '#1E8149',
@@ -11,16 +9,20 @@ export default {
 };
 
 export const countries = {
-	KG: {
-		flag: require('./src/assets/images/kg.jpg'),
-		code: '996',
-		phoneMask: '999 99-99-99',
-		city: 'Бишкек',
-	},
-	KZ: {
+	Almaty: {
 		flag: require('./src/assets/images/kz.jpg'),
 		code: '7',
-		phoneMask: '999 999-99-99',
+		phoneMask: '+7 999 999-99-99',
+		city: 'Нур-Султан',
+		apiUrl: 'http://dostavka-navat.kz/app',
+		imageUrl: 'http://dostavka-navat.kz/files/products/',
+	},
+	NurSultan: {
+		flag: require('./src/assets/images/kz.jpg'),
+		code: '7',
+		phoneMask: '+7 999 999-99-99',
 		city: 'Алматы',
+		apiUrl: 'http://dostavka-navat.kz/app',
+		imageUrl: 'http://dostavka-navat.kz/files/products/',
 	},
 };

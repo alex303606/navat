@@ -9,12 +9,15 @@ import config from '../../config';
 import Shadow from '../components/Shadow';
 import Button from '../components/Button';
 import { bindActionCreators } from 'redux';
-import { clearBasket } from '../store/actions/basket';
+import { checkout, clearBasket } from '../store/actions/basket';
 import DeliveryAddress from '../components/DeliveryAddress';
 import PaymentMethod from '../components/PaymentMethod';
 import CheckoutScreenHeader from '../components/CheckoutScreenHeader';
 import { translate } from '../localization/i18n';
 import CheckoutFields from '../components/CheckoutFields';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { changeEmail, changeFio, changePhone } from '../store/actions/profile';
 
 
 const styles = EStyleSheet.create({
@@ -46,14 +49,16 @@ const styles = EStyleSheet.create({
 
 const CheckoutScreen = (props) => {
 	const fieldsIsValid = () => (!!name.trim() && !!phone.trim() && !!address.trim());
-	const [name, changeName] = useState('');
-	const [phone, changePhone] = useState('');
+	const [name, changeName] = useState(props.profile.fio || '');
+	const [email, changeEmail] = useState(props.profile.email || '');
+	const [phone, changePhone] = useState(props.profile.phone || '');
 	const [address, changeAddress] = useState('');
 	const [description, changeDescription] = useState('');
 	const [fieldsErrors, setFieldsErrors] = useState({
 		nameError: false,
 		phoneError: false,
 		addressError: false,
+		emailError: false,
 	});
 	const navigateToReadyScreen = () => {
 		if (!fieldsIsValid()) {
@@ -61,10 +66,33 @@ const CheckoutScreen = (props) => {
 				nameError: !name.trim(),
 				phoneError: !phone.trim(),
 				addressError: !address.trim(),
+				emailError: !address.trim(),
 			});
 		}
-		props.clearBasket();
-		props.navigation.navigate('Ready', {prevScreen: 'Home'});
+		const data = {
+			payment_method_id: '1',
+			delivery_id: '1',
+			name,
+			email,
+			address,
+			phone,
+			comment: description,
+			ip: '',
+			items: props.items,
+		};
+		props.changeFio(name);
+		props.changePhone(phone);
+		props.changeEmail(email);
+		props.checkout(data).then((res) => {
+			props.clearBasket().then(() => {
+				setTimeout(() => {
+					props.navigation.navigate('Ready', {
+						prevScreen: 'Home',
+						OrderID: res.OrderID,
+					});
+				});
+			});
+		});
 	};
 	
 	const renderWithAuth = () => (
@@ -81,6 +109,7 @@ const CheckoutScreen = (props) => {
 	const renderWithoutAuth = () => (
 		<CheckoutFields
 			name={name}
+			email={email}
 			phone={phone}
 			address={address}
 			fieldsErrors={fieldsErrors}
@@ -89,8 +118,15 @@ const CheckoutScreen = (props) => {
 			changePhone={changePhone}
 			changeAddress={changeAddress}
 			changeDescription={changeDescription}
+			changeEmail={changeEmail}
+			location={props.location}
 		/>
 	);
+	
+	const space = Platform.select({
+		ios: -(config.TabBarHeight + getBottomSpace()),
+		android: -50,
+	});
 	
 	return (
 		<View style={styles.page}>
@@ -115,6 +151,10 @@ const CheckoutScreen = (props) => {
 					</ScrollView>
 				</Shadow>
 			</View>
+			<KeyboardSpacer
+				style={{backgroundColor: config.BackgroundColor}}
+				topSpacing={space}
+			/>
 		</View>
 	);
 };
@@ -129,11 +169,18 @@ const mapStateToProps = state => ({
 	addresses: state.profile.addresses,
 	cards: state.profile.cards,
 	userIsLoggedIn: state.profile.userIsLoggedIn,
+	items: state.basket.items,
+	location: state.profile.location,
+	profile: state.profile,
 });
 
 const mapDispatchToProps = dispatch => {
 	return bindActionCreators({
 			clearBasket,
+			checkout,
+			changeFio,
+			changePhone,
+			changeEmail,
 		},
 		dispatch);
 };

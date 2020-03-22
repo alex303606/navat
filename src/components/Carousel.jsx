@@ -73,6 +73,7 @@ const Slide = (props: any) => {
 			<View key={index} style={styles.slidePhoto}>
 				<ImageWithLoader
 					resizeMode='cover'
+					static
 					style={styles.imageWithLoader}
 					source={{uri: url}}
 				/>

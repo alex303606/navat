@@ -76,10 +76,20 @@ const ListEmptyComponent = ({value}) => (
 
 class SearchScreen extends Component {
 	componentDidMount() {
+		const dishes = [];
 		const value = this.props.navigation.getParam('searchValue');
-		if (!!value) {
-			this.globalSearch(value);
-		}
+		this.props.categories.forEach((cat, index) => {
+			if (!!cat.dishes && !!cat.dishes.length) {
+				cat.dishes.forEach((dish, id) => {
+					dishes.push({...dish, parentCategoryId: index, id });
+				})
+			}
+		});
+		this.setState({dishes}, () =>{
+			if (!!value) {
+				this.globalSearch(value);
+			}
+		});
 	}
 	
 	componentWillUnmount() {
@@ -87,6 +97,7 @@ class SearchScreen extends Component {
 	}
 	
 	state = {
+		dishes: [],
 		value: '',
 		filteredItems: [],
 	};
@@ -149,7 +160,7 @@ class SearchScreen extends Component {
 	navigateToDishScreen = (item) => () => {
 		this.props.navigation.navigate('Dish', {
 			id: item.id,
-			categoryId: '1',
+			categoryId: item.parentCategoryId,
 			title: item.title,
 			prevScreen: 'SearchScreen',
 			searchValue: this.state.value,
@@ -158,10 +169,10 @@ class SearchScreen extends Component {
 	
 	renderSeparator = () => <View style={styles.separator}/>;
 	
-	keyExtractor = (item) => item.id;
+	keyExtractor = (item) => `${item.id}${item.parentCategoryId}`;
 	
 	globalSearch = value => {
-		const filteredItems = value.length > 1 ? this.props.categories[0].dishes.filter(x => {
+		const filteredItems = value.length > 1 ? this.state.dishes.filter(x => {
 			return x.title.toLowerCase().includes(value.toLowerCase());
 		}) : [];
 		this.setState({value, filteredItems});

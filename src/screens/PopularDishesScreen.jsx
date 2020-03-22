@@ -116,16 +116,16 @@ class PopularDishesScreen extends Component {
 	
 	renderItem = ({item}) => {
 		return (
-				<Wrapper>
-			<TouchableOpacity
-				style={{flex: 1}}
-				activeOpacity={0.3}
-				onPress={this.navigateToDishScreen(item)}>
+			<Wrapper>
+				<TouchableOpacity
+					style={{flex: 1}}
+					activeOpacity={0.3}
+					onPress={this.navigateToDishScreen(item)}>
 					<View style={styles.popularDishes}>
 						<ImageWithLoader
 							resizeMode='cover'
 							style={styles.imageWithLoader}
-							source={{uri: item.image}}
+							source={item.image}
 						/>
 						<View style={{padding: styles.$11, flex: 1}}>
 							<Bold style={styles.bold}>{item.title}</Bold>
@@ -146,8 +146,8 @@ class PopularDishesScreen extends Component {
 							</View>
 						</View>
 					</View>
-			</TouchableOpacity>
-				</Wrapper>
+				</TouchableOpacity>
+			</Wrapper>
 		);
 	};
 	
@@ -156,12 +156,13 @@ class PopularDishesScreen extends Component {
 			id: item.id,
 			categoryId: item.parentCategoryId,
 			title: item.title,
+			prevScreen: 'PopularDishes',
 		});
 	};
 	
 	renderSeparator = () => <View style={{height: styles.$18}}/>;
 	
-	keyExtractor = (item) => item.id;
+	keyExtractor = (item) => item.title;
 }
 
 const mapStateToProps = state => ({

@@ -20,8 +20,6 @@ import config from '../../config';
 import Price from '../components/Price';
 import Carousel from '../components/Carousel';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { bindActionCreators } from 'redux';
-import { initMenu } from '../store/actions/menu';
 import { translate } from '../localization/i18n';
 
 Icon.loadFont();
@@ -83,7 +81,7 @@ const styles = EStyleSheet.create({
 	},
 	popularDishes: {
 		width: '250rem',
-		height: '211rem',
+		height: '230rem',
 		borderRadius: '4rem',
 		overflow: 'hidden',
 		backgroundColor: 'white',
@@ -123,7 +121,7 @@ const styles = EStyleSheet.create({
 	$6: '6rem',
 	$iconSize: '43rem',
 	$width2: '250rem',
-	$height2: '211rem',
+	$height2: '230rem',
 	$starSize: '14rem',
 	imageWithLoader: {
 		width: '100%',
@@ -134,7 +132,7 @@ const styles = EStyleSheet.create({
 		paddingHorizontal: '8rem',
 	},
 	contentContainerStyle2: {
-		height: '223rem',
+		height: '242rem',
 		paddingHorizontal: '8rem',
 	},
 });
@@ -177,15 +175,11 @@ class HomeScreen extends Component {
 		};
 	};
 	
-	componentDidMount() {
-		this.props.initMenu();
-	}
-	
-	navigateToCategory = (item) => () => {
-		this.props.navigation.navigate('Category', {id: item.id, title: item.title, prevScreen: 'Home'});
+	navigateToCategory = (item, index) => () => {
+		this.props.navigation.navigate('Category', {id: index, title: item.title, prevScreen: 'Home'});
 	};
 	
-	renderMenuItem = ({item}) => {
+	renderMenuItem = ({item, index}) => {
 		const shadowOpt = {
 			width: styles.$width,
 			height: styles.$height,
@@ -197,9 +191,9 @@ class HomeScreen extends Component {
 			y: styles.$3,
 			style: {marginHorizontal: styles.$5},
 		};
-		
+
 		return (
-			<TouchableOpacity activeOpacity={0.3} onPress={this.navigateToCategory(item)}>
+			<TouchableOpacity activeOpacity={0.3} onPress={this.navigateToCategory(item, index)}>
 				<BoxShadow setting={shadowOpt}>
 					<View style={[styles.item, {backgroundColor: item.color}]}>
 						<CustomIcon
@@ -225,9 +219,9 @@ class HomeScreen extends Component {
 			y: styles.$3,
 			style: {marginHorizontal: styles.$5},
 		};
-		const parenCategory = this.props.categories.find(x => x.id === item.parentCategoryId);
+		const parenCategory = this.props.categories[item.parentCategoryId];
 		const parenCategoryTitle = !!parenCategory ? parenCategory.title : '';
-		
+
 		return (
 			<TouchableOpacity
 				activeOpacity={0.3}
@@ -238,15 +232,17 @@ class HomeScreen extends Component {
 						<ImageWithLoader
 							resizeMode='cover'
 							style={styles.imageWithLoader}
-							source={{uri: item.image}}
+							source={item.image}
 						/>
 						<View style={{padding: styles.$11, flex: 1}}>
-							<Bold style={{marginBottom: styles.$3}}>{item.title}</Bold>
-							<MiddleText>{parenCategoryTitle}</MiddleText>
+							<View style={{flexGrow: 1}}>
+								<Bold numberOfLines={2} style={{marginBottom: styles.$3}}>{item.title}</Bold>
+								<MiddleText numberOfLines={1}>{parenCategoryTitle}</MiddleText>
+							</View>
 							<View style={styles.popularDishesFooter}>
 								<Stars
 									disabled
-									default={item.rating}
+									default={5}
 									count={5}
 									starSize={styles.$starSize}
 									spacing={styles.$3}
@@ -271,7 +267,7 @@ class HomeScreen extends Component {
 		});
 	};
 	
-	keyExtractor = item => item.id;
+	keyExtractor = item => item.title;
 	
 	renderSeparator = () => <ItemSeparatorComponent width={styles.$10}/>;
 	
@@ -355,11 +351,4 @@ const mapStateToProps = state => ({
 	branches: state.menu.branches,
 });
 
-const mapDispatchToProps = dispatch => {
-	return bindActionCreators({
-			initMenu,
-		},
-		dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, null)(HomeScreen);

@@ -2,8 +2,9 @@ import React, { Fragment } from 'react';
 import Input from './Input';
 import { translate } from '../localization/i18n';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import config from '../../config';
+import config, { countries } from '../../config';
 import { H2 } from './Texts';
+import { TextInputMask } from 'react-native-masked-text';
 
 const styles = EStyleSheet.create({
 	inputStyle: {
@@ -29,10 +30,18 @@ const styles = EStyleSheet.create({
 		borderWidth: 1,
 		borderColor: 'red',
 	},
+	phoneInput: {
+		backgroundColor: 'rgba(30,129,73,0.1)',
+		height: '36rem',
+		paddingHorizontal: '10rem',
+		paddingVertical: 0,
+		fontSize: '18rem',
+		marginBottom: '10rem',
+	},
 });
 
 const CheckoutFields = (props) => {
-	const fieldsIsValid = () => !props.fieldsErrors.nameError && !props.fieldsErrors.phoneError && !props.fieldsErrors.addressError;
+	const fieldsIsValid = () => !props.fieldsErrors.emailError && !props.fieldsErrors.nameError && !props.fieldsErrors.phoneError && !props.fieldsErrors.addressError;
 	
 	return (
 		<Fragment>
@@ -42,21 +51,37 @@ const CheckoutFields = (props) => {
 				placeholder={translate('fioPlaceholder')}
 				onChangeText={value => props.changeName(value)}
 				value={props.name}
+				autoCompleteType={'name'}
 				label={translate('name')}/>
-			<Input
-				style={[styles.inputWrapper, props.fieldsErrors.phoneError && styles.inputError]}
-				inputStyle={styles.inputStyle}
-				placeholder={translate('phoneExamplePlaceholder')}
+			<TextInputMask
+				keyboardType='phone-pad'
+				underlineColorAndroid='transparent'
+				autoCorrect={false}
+				type={'custom'}
+				options={{mask: countries[props.location].phoneMask}}
 				onChangeText={value => props.changePhone(value)}
 				value={props.phone}
-				label={translate('phone')}/>
+				style={[styles.phoneInput, props.fieldsErrors.phoneError && styles.inputError]}
+				autoCompleteType={'tel'}
+			/>
 			<Input
 				style={[styles.inputWrapper, props.fieldsErrors.addressError && styles.inputError]}
 				inputStyle={styles.inputStyle}
 				placeholder={translate('addressPlaceholder')}
 				onChangeText={value => props.changeAddress(value)}
 				value={props.address}
+				autoCompleteType={'street-address'}
 				label={translate('address')}/>
+			<Input
+				style={[styles.inputWrapper, props.fieldsErrors.emailError && styles.inputError]}
+				inputStyle={styles.inputStyle}
+				placeholder={translate('emailAddressPlaceholder')}
+				onChangeText={value => props.changeEmail(value)}
+				value={props.email}
+				autoCompleteType={'email'}
+				autoCapitalize={'none'}
+				keyboardType={'email-address'}
+				label={translate('emailAddress')}/>
 			<Input
 				style={styles.inputWrapper}
 				inputStyle={[styles.inputStyle, styles.notes]}

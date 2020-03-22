@@ -20,7 +20,7 @@ const styles = EStyleSheet.create({
     },
     imageWithLoader: {
         width: '100%',
-        height: '120rem',
+        height: '145rem',
     },
     info: {
         flexDirection: 'column',
@@ -43,6 +43,7 @@ const styles = EStyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        paddingTop: '15rem',
     },
     smallButtonStyle: {
         width: '62rem',
@@ -71,7 +72,6 @@ const styles = EStyleSheet.create({
 });
 const Item = (props) => {
     const {item} = props;
-    
     return (
         <TouchableOpacity
             activeOpacity={0.3}
@@ -81,12 +81,12 @@ const Item = (props) => {
                     <ImageWithLoader
                         resizeMode='cover'
                         style={styles.imageWithLoader}
-                        source={{uri: item.image}}
+                        source={item.image}
                     />
                 </View>
                 <View style={styles.info}>
                     <View style={styles.infoTop}>
-                        <Label numberOfLines={1} style={styles.title}>{item.title}</Label>
+                        <Label numberOfLines={2} style={styles.title}>{item.title}</Label>
                         <Description numberOfLines={3}>{item.description}</Description>
                     </View>
                     <View style={styles.footer}>

@@ -88,6 +88,7 @@ class DishScreen extends Component {
 		const price = this.state.view === 'main' ? item.price : item.additionalItem.price;
 		const color = this.state.view === 'main' ? 'white' : config.MainColor;
 		const additionalColor = this.state.view === 'additional' ? 'white' : config.MainColor;
+
 		return (
 			<View style={styles.page}>
 				<ScrollView
@@ -97,10 +98,13 @@ class DishScreen extends Component {
 				>
 					<ImageWithLoader
 						resizeMode='cover'
+						size={'.1000x1000.'}
 						style={styles.imageWithLoader}
-						source={{uri: item.image}}
+						source={item.image}
 					/>
-					<Text style={styles.description}>{item.description}</Text>
+					<Text style={styles.description}>
+						{item.description ? item.description.replace(/&nbsp;/g, ' ') : ''}
+					</Text>
 				</ScrollView>
 				{item.additionalItem &&
 				<View style={styles.switchContainer}>
@@ -160,8 +164,9 @@ class DishScreen extends Component {
 		if (dishId === this.state.item.id) {
 			return;
 		}
-		const selectedCategory = this.props.categories.find(x => x.id === categoryId);
-		const item = selectedCategory.dishes.find(x => x.id === dishId);
+		const selectedCategory = this.props.categories[categoryId];
+		const item = selectedCategory.dishes[dishId];
+		item.id = dishId;
 		this.setState({item});
 	};
 	
@@ -176,6 +181,7 @@ class DishScreen extends Component {
 
 const mapStateToProps = state => ({
 	categories: state.menu.categories,
+	location: state.profile.location,
 });
 
 const mapDispatchToProps = dispatch => {

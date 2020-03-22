@@ -25,7 +25,7 @@ const styles = EStyleSheet.create({
 class CategoryScreen extends Component {
 	componentDidMount() {
 		const id = this.props.navigation.getParam('id');
-		const selectedCategory = this.props.categories.find(x => x.id === id);
+		const selectedCategory = this.props.categories[id];
 		this.setState({
 			dishes: selectedCategory.dishes,
 			categoryId: id,
@@ -52,10 +52,11 @@ class CategoryScreen extends Component {
 		);
 	}
 	
-	renderItem = ({item}) => {
+	renderItem = ({item, index}) => {
 		return <Item
+			location={this.props.profile.location}
 			item={item}
-			onPress={this.navigateToDishScreen}
+			onPress={this.navigateToDishScreen(index)}
 			addToBasket={this.addToBasket}
 		/>
 	};
@@ -64,9 +65,9 @@ class CategoryScreen extends Component {
 		return this.props.addToBasket(item, additionalItem);
 	};
 	
-	navigateToDishScreen = (item) => () => {
+	navigateToDishScreen = index => (item) => () => {
 		this.props.navigation.navigate('Dish', {
-			id: item.id,
+			id: index,
 			categoryId: this.state.categoryId,
 			title: item.title,
 		});
@@ -74,11 +75,12 @@ class CategoryScreen extends Component {
 	
 	renderSeparator = () => <View style={styles.separator}/>;
 	
-	keyExtractor = (item) => item.id;
+	keyExtractor = (item) => item.title;
 }
 
 const mapStateToProps = state => ({
 	categories: state.menu.categories,
+	profile: state.profile,
 });
 
 const mapDispatchToProps = dispatch => {

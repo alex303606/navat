@@ -4,390 +4,76 @@ const freeShippingThreshold = 1000;
 
 const shippingPrice = 200;
 
-const popularDishes = [
+const cat = [
 	{
-		id: '0',
-		title: 'Манты с мясом',
-		image: 'http://navat.kg/dostavka/files/products/manty-s-myasom.800x600w.jpg',
-		parentCategoryId: '6',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 180,
-		rating: 5,
-		additionalTitle: 'portion',
-		additionalItem: {
-			id: '10',
-			additionalTitle: 'pc',
-			price: 40,
-			container: {
-				amount: 0,
-				price: 0,
-			},
-		},
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '1',
-		title: 'Хан плов 1',
-		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
-		parentCategoryId: '1',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 200,
-		rating: 4.5,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '2',
-		title: 'Хан самса мексиканская 1',
-		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
-		parentCategoryId: '2',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 620,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '3',
-		title: 'Плов Апашкин 1',
-		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
-		parentCategoryId: '3',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 150,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '4',
-		title: 'Хан плов 2',
-		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
-		parentCategoryId: '4',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 200,
-		rating: 4.5,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '5',
-		title: 'Хан самса мексиканская 2',
-		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
-		parentCategoryId: '5',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 620,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '6',
-		title: 'Плов Апашкин 2',
-		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
-		parentCategoryId: '6',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 150,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '7',
-		title: 'Хан плов 3',
-		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
-		parentCategoryId: '7',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 200,
-		rating: 4.5,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '8',
-		title: 'Хан самса мексиканская 3',
-		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
-		parentCategoryId: '8',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 620,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '9',
-		title: 'Плов Апашкин 3',
-		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
-		parentCategoryId: '9',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 150,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-];
-
-const dishes = [
-	{
-		id: '0',
-		title: 'Манты с мясом',
-		image: 'http://navat.kg/dostavka/files/products/manty-s-myasom.800x600w.jpg',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 180,
-		rating: 5,
-		additionalTitle: 'portion',
-		additionalItem: {
-			id: '10',
-			additionalTitle: 'pc',
-			price: 40,
-			container: {
-				amount: 0,
-				price: 0,
-			},
-		},
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '1',
-		title: 'Хан плов 1',
-		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 200,
-		rating: 4.5,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '2',
-		title: 'Хан самса мексиканская 1',
-		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 620,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '3',
-		title: 'Плов Апашкин 1',
-		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 150,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '4',
-		title: 'Хан плов 2',
-		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 200,
-		rating: 4.5,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '5',
-		title: 'Хан самса мексиканская 2',
-		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 620,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '6',
-		title: 'Лагман',
-		image: 'http://navat.kg/dostavka/files/products/boso-lagman.800x600w.jpg',
-		description: 'Яркое насыщенное блюдо с мясом телятины, овощей и домашней лапши с пикантно острыми специями',
-		price: 230,
-		rating: 5,
-		additionalTitle: 'portion',
-		additionalItem: {
-			id: '11',
-			additionalTitle: '0.5',
-			price: 150,
-			container: {
-				amount: 1,
-				price: 20,
-			},
-		},
-		container: {
-			amount: 2,
-			price: 20,
-		},
-	},
-	{
-		id: '7',
-		title: 'Хан плов 3',
-		image: 'http://navat.kg/dostavka/files/products/hanplov.800x600w.jpg',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 200,
-		rating: 4.5,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '8',
-		title: 'Хан самса мексиканская 3',
-		image: 'http://navat.kg/dostavka/files/products/meksikanskaya-han-samsa.800x600w.jpg',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 620,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-	{
-		id: '9',
-		title: 'Плов Апашкин 3',
-		image: 'http://navat.kg/dostavka/files/products/111-apashkin-plov.800x600w.jpg',
-		description: 'Нежное тесто с тыквенно-овощной начинкой, готовящиеся на пару с соусом на томатной основе',
-		price: 150,
-		rating: 3,
-		container: {
-			amount: 1,
-			price: 20,
-		},
-	},
-];
-
-const categories = [
-	{
-		id: '1',
 		title: 'Завтраки',
 		icon: 'breakfast',
 		color: '#F2994A',
-		dishes: dishes,
 	},
 	{
-		id: '2',
 		title: 'Закуски',
 		icon: 'snack',
 		color: '#A67E6C',
-		dishes: dishes,
 	},
 	{
-		id: '3',
 		title: 'Салаты',
 		icon: 'salads',
 		color: '#1E8149',
-		dishes: dishes,
 	},
 	{
-		id: '4',
 		title: 'Супы',
 		icon: 'soups',
 		color: '#F52D56',
-		dishes: dishes,
 	},
 	{
-		id: '5',
 		title: 'Хан самса',
 		icon: 'hansamsi',
 		color: '#5552D3',
-		dishes: dishes,
 	},
 	{
-		id: '6',
 		title: 'Вторые блюда',
 		icon: 'second',
 		color: '#2F80ED',
-		dishes: dishes,
 	},
 	{
-		id: '7',
 		title: 'Плов',
 		icon: 'pilaf',
 		color: '#9B51E0',
-		dishes: dishes,
 	},
 	{
-		id: '8',
 		title: 'Гарниры',
 		icon: 'side-dishes',
 		color: '#FFC700',
-		dishes: dishes,
 	},
 	{
-		id: '9',
 		title: 'Шашлыки',
 		icon: 'barbecue',
 		color: '#5C4135',
-		dishes: dishes,
 	},
 	{
-		id: '10',
 		title: 'Домашняя выпечка',
 		icon: 'bakery',
 		color: '#A3A0FF',
-		dishes: dishes,
 	},
 	{
-		id: '11',
 		title: 'Банкетное меню',
 		icon: 'banquet-menu',
 		color: '#EB5757',
-		dishes: dishes,
 	},
 	{
-		id: '12',
 		title: 'Десерты',
 		icon: 'dessert',
 		color: '#65DA65',
-		dishes: dishes,
 	},
 	{
-		id: '13',
 		title: 'Соусы',
 		icon: 'sauces',
 		color: '#56CCF2',
-		dishes: dishes,
 	},
 	{
-		id: '14',
 		title: 'Напитки',
 		icon: 'drinks',
 		color: '#BDBDBD',
-		dishes: dishes,
 	},
 ];
 
@@ -466,10 +152,40 @@ const initialState = {
 	freeShippingThreshold: 0,
 };
 
+const addIcons = categories => {
+	return categories.map((x, index) => {
+		x.icon = cat[index] && cat[index].icon ? cat[index].icon : 'breakfast';
+		x.color = cat[index] && cat[index].color ? cat[index].color : '#BDBDBD';
+		return x;
+	});
+};
+
+const getPopularDishes = (categories) => {
+	const dishes = [];
+	categories.forEach((cat, index) => {
+		if (!!cat.dishes && !!cat.dishes.length) {
+			cat.dishes.forEach((dish, id) => {
+				if (dish && dish.featured === '1') {
+					dishes.push({...dish, parentCategoryId: index, id });
+				}
+			})
+		}
+	});
+	
+	return dishes;
+};
+
 const menuReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case INIT_MENU:
-			return {...state, popularDishes, branches, categories, freeShippingThreshold, shippingPrice};
+			return {
+				...state,
+				popularDishes: getPopularDishes(action.categories),
+				branches,
+				categories: addIcons(action.categories),
+				freeShippingThreshold,
+				shippingPrice,
+			};
 		default:
 			return state;
 	}

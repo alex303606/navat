@@ -23,7 +23,7 @@ export const selectLocation = location => {
 
 export const signIn = () => {
 	return dispatch => {
-		dispatch({type: SIGN_IN, user: {}});
+		dispatch({type: SIGN_IN});
 		dispatch(NavigationActions.navigate({routeName: 'Profile'}));
 	};
 };

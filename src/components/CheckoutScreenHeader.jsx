@@ -48,9 +48,9 @@ const styles = EStyleSheet.create({
 	},
 });
 
-const CheckoutScreenHeader = (props) => {
+const CheckoutScreenHeader = ({navigation}) => {
 	const [statusBarHeight, setStatusBarHeight] = useState(0);
-	const navigationBack = () => props.navigation.goBack();
+	const navigationBack = () => navigation.goBack();
 	
 	if (!statusBarHeight) {
 		if (Platform.OS === 'ios') {
@@ -61,7 +61,7 @@ const CheckoutScreenHeader = (props) => {
 			setStatusBarHeight(StatusBarManager.HEIGHT);
 		}
 	}
-	
+
 	return (
 		<ImageBackground
 			source={backGround}
