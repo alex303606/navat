@@ -16,6 +16,16 @@ export const countries = {
 		city: 'Нур-Султан',
 		apiUrl: 'http://dostavka-navat.kz/app',
 		imageUrl: 'http://dostavka-navat.kz/files/products/',
+		phones: {
+			deliveryService: {
+				call: '+77719311111',
+				display: '+7 771 931 11 11'
+			},
+			commentsSuggestions: {
+				call: '+77778251111',
+				display: '+7 777 825 11 11'
+			},
+		},
 		branches: [
 			{
 				name: 'Чайхана Navat на Сейфуллина',
@@ -78,6 +88,16 @@ export const countries = {
 		city: 'Алматы',
 		apiUrl: 'http://dostavka-navat.kz/app',
 		imageUrl: 'http://dostavka-navat.kz/files/products/',
+		phones: {
+			deliveryService: {
+				call: '+77719311111',
+				display: '+7 771 931 11 11'
+			},
+			commentsSuggestions: {
+				call: '+77778251111',
+				display: '+7 777 825 11 11'
+			},
+		},
 		branches: [
 			{
 				name: 'Чайхана Navat',

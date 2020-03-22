@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactNative, { ScrollView, View, Linking, TouchableOpacity } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import config from '../../config';
+import config, { countries } from '../../config';
 import Shadow from '../components/Shadow';
 import CustomIcon from '../components/CustomIcon';
 import { getCustomFontFamilyByFontWeight } from '../utils/utils';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Bold, MiddleText } from '../components/Texts';
 import { translate } from '../localization/i18n';
+import { connect } from 'react-redux';
 
 const styles = EStyleSheet.create({
 	$marginBottom: '13rem',
@@ -156,9 +157,9 @@ const HelpScreen = (props) => {
 							color={config.GreyColor}
 						/>
 						<ReactNative.Text
-							onPress={pressCall('+996555555555')}
+							onPress={pressCall(countries[props.location].phones.commentsSuggestions.call)}
 							style={styles.text}>
-							+996 555 55-55-55
+							{countries[props.location].phones.commentsSuggestions.display}
 						</ReactNative.Text>
 					</View>
 				</View>
@@ -174,9 +175,9 @@ const HelpScreen = (props) => {
 							color={config.GreyColor}
 						/>
 						<ReactNative.Text
-							onPress={pressCall('+996555555555')}
+							onPress={pressCall(countries[props.location].phones.deliveryService.call)}
 							style={styles.text}>
-							+996 555 55-55-55
+							{countries[props.location].phones.deliveryService.display}
 						</ReactNative.Text>
 					</View>
 				</View>
@@ -195,4 +196,8 @@ const HelpScreen = (props) => {
 	);
 };
 
-export default HelpScreen;
+const mapStateToProps = state => ({
+	location: state.profile.location,
+});
+
+export default connect(mapStateToProps, null)(HelpScreen);
