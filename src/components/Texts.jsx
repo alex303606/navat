@@ -19,8 +19,8 @@ const styles = EStyleSheet.create({
 		fontFamily: getCustomFontFamilyByFontWeight(600),
 	},
 	h3: {
-		fontSize: '14rem',
-		lineHeight: '17rem',
+		fontSize: '18rem',
+		lineHeight: '21rem',
 		fontWeight: 'bold',
 	},
 	text: {

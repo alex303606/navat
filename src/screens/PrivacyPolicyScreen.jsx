@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
 import Shadow from '../components/Shadow';
-import { SampleText } from '../components/Texts';
+import { Bold, H2, H3, SampleText } from '../components/Texts';
 import Header from '../components/Header';
 
 const styles = EStyleSheet.create({
@@ -20,6 +20,10 @@ const styles = EStyleSheet.create({
 		borderRadius: '8rem',
 	},
 	$fontSize: '14rem',
+	center: {
+		textAlign: 'center',
+		marginBottom: '20rem',
+	}
 });
 
 const PrivacyPolicyScreen = () => {
@@ -32,42 +36,406 @@ const PrivacyPolicyScreen = () => {
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{flexGrow: 1}}
 				>
-					<SampleText style={{marginBottom: 20}}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-						sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-						qui officia deserunt mollit anim id est laborum.
-					</SampleText>
-					<SampleText style={{marginBottom: 20}}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-						sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-						qui officia deserunt mollit anim id est laborum.
-					</SampleText>
-					<SampleText style={{marginBottom: 20}}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-						sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-						qui officia deserunt mollit anim id est laborum.
-					</SampleText>
+					<H2 style={styles.center}>Политика Конфиденциальности
+						для мобильного приложения «Navat»
+					</H2>
+					<View style={{marginBottom: 20}}>
+						<H3 style={{marginBottom: 10}}>Оператор данных и владелец</H3>
+						<Bold style={{marginBottom: 10}}>Типы собираемых данных</Bold>
+						<SampleText style={{marginBottom: 10}}>
+							Приложение собирает следующие данные (само по себе или через третьи стороны) :
+							гео-положение (местоположение на карте) , данные Cookie и другие персональные данные,
+							собранные здесь,
+							могут быть описаны в разделах данной Политики Конфиденциальности или выделены пояснительным
+							текстом, контекстуально со сбором данных.
+						</SampleText>
+						<SampleText style={{marginBottom: 10}}>
+							Личные данные могут быть предоставлены Пользователем или собираться автоматически при
+							использовании этого приложения.
+						</SampleText>
+						<SampleText style={{marginBottom: 10}}>
+							Любое использование Cookies или других инструментов отслеживания с помощью этого приложения
+							или через владельцев услуг - третьих лиц, если не указано иное, служит для идентификации
+							пользователей и их предпочтений, с единственной целью предоставления требуемых услуг и
+							улучшения качества обслуживания Пользователя.
+						</SampleText>
+						<SampleText>
+							Пользователь берет на себя ответственность за персональные данные третьих лиц,
+							опубликованные или совместно используемые им через это приложение.
+						</SampleText>
+					</View>
+					<View style={{marginBottom: 20}}>
+						<H3 style={{marginBottom: 10}}>Режим и место обработки данных</H3>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Методы обработки</Bold>
+							<SampleText style={{marginBottom: 10}}>
+								Оператор данных обрабатывает данные Пользователей в надлежащем порядке и принимает
+								надлежащие меры безопасности для предотвращения несанкционированного доступа, раскрытия,
+								модификации или несанкционированного уничтожения данных.
+							</SampleText>
+							<SampleText style={{marginBottom: 10}}>
+								Обработка данных осуществляется с помощью компьютеров и / или ИТ-инструментов включены
+								следующие организационные процедуры и режимы строго связанные с указанными целями.
+							</SampleText>
+							<SampleText style={{marginBottom: 10}}>
+								Кроме Оператора данных, в некоторых случаях данные могут быть доступны для определенных
+								лиц, ответственных за работу сайта (администрирование, продажи, маркетинг, юридические
+								услуги, система управления) или внешних сервисов (например, поставщики технических
+								услуг, операторы почты, хостинг-провайдеры, ИТ-компании, коммуникационные агентства)
+								назначенных, в
+								случае необходимости, в качестве обработчиков данных Владельцем.
+							</SampleText>
+							<SampleText>
+								Обновленный список этих сторон может быть запрошен у Оператора данных в любое время.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Место</Bold>
+							<SampleText>
+								Данные обрабатываются в операционных офисах Оператором данных и в любых других местах,
+								где расположены стороны, участвующие в обработке. Для получения дополнительной
+								информации, пожалуйста, свяжитесь с Оператором данных.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Время удержания</Bold>
+							<SampleText>
+								Данные хранятся в течение времени, необходимого для предоставления услуги, запрошенной
+								Пользователем, или заявленной в соответствии с целями, изложенными в данном документе, и
+								Пользователь всегда может потребовать, чтобы Оператор данных приостановил или удалил
+								данные.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Использование собранных данных</Bold>
+							<SampleText style={{marginBottom: 10}}>
+								Данные, касающиеся Пользователя собираются, чтобы разрешить приложению предоставлять
+								свои услуги, а также для следующих целей:
+							</SampleText>
+							<SampleText style={{marginBottom: 10}}>
+								Доступ услуги к счетам третьих лиц , основанные на взаимодействии с местоположением,
+							</SampleText>
+							<SampleText style={{marginBottom: 10}}>
+								Содержание комментариев, связанных с внешними социальными сетями и платформами.
+							</SampleText>
+							<SampleText>
+								Личные данные, используемые для каждой из этих целей изложены в соответствующих
+								разделах настоящего документа.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Местоположение, геолокация</Bold>
+							<SampleText>
+								Это приложение может собирать, использовать и обмениваться данными о местоположении
+								пользователя, чтобы обеспечить услуги на основе определения местоположения. Большинство
+								браузеров и устройств предоставляют инструменты, чтобы отказаться от этой функции по
+								умолчанию. Если явное разрешение было предоставлено, данные о местоположении
+								Пользователя могут быть отслежены с помощью этого приложения. Собираемые данные:
+								географическое положение.
+							</SampleText>
+						</View>
+					</View>
+					<View style={{marginBottom: 20}}>
+						<H3 style={{marginBottom: 10}}>Дополнительная информация о сборе и обработке данных</H3>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Судебный иск</Bold>
+							<SampleText>
+								Персональные данные Пользователя могут быть использованы для юридических целей
+								Оператором
+								данных, в суде или на стадиях, приводящих к возможным судебным искам, возникающим из-за
+								неправильного использования этого приложения или связанных с ним услуг. Пользователь
+								осознает тот факт, Оператор данных может потребоваться раскрыть личные данные по запросу
+								государственных органов.
+							</SampleText>
+						</View>
+						
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>
+								Дополнительная информация для Пользователя о персональных данных
+							</Bold>
+							<SampleText>
+								В дополнение к информации, содержащейся в настоящей Политике Конфиденциальности, это
+								приложение может предоставить Пользователю дополнительные и контекстную информацию,
+								касающуюся конкретных услуг или сбор и обработку персональных данных по запросу.
+							</SampleText>
+						</View>
+						
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>
+								Системные журналы и техническое обслуживание
+							</Bold>
+							<SampleText>
+								Для целей эксплуатации и технического обслуживания, это приложение и любые услуги
+								третьих лиц могут собирать файлы, записи взаимодействия с этим приложением (системные
+								журналы) или использовать для этой цели другие персональные данные (например, IP-адрес).
+							</SampleText>
+						</View>
+						
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>
+								Информация, не содержащаяся в этой Политике
+							</Bold>
+							<SampleText>
+								Дополнительные подробности, касающиеся сбора или обработки персональных данных, которые
+								могут быть запрошены от Оператора данных в любое время. Пожалуйста, смотрите контактную
+								информацию в начале этого документа.
+							</SampleText>
+						</View>
+						
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>
+								Права пользователей
+							</Bold>
+							<SampleText>
+								Пользователи имеют право в любое время узнать, были ли сохранены их персональные данные
+								и может проконсультироваться с Оператором данных о их содержании и происхождении,
+								проверить их точность или попросить об их дополнении, отмене, обновлении, исправлении,
+								преобразовании в анонимную форму или блокировании любых данных, хранящихся в нарушении
+								закона. Запросы следует направлять Оператору данных по контактной информации, изложенной
+								выше. Это приложение не поддерживает запросы "Не отслеживать". Для того, чтобы
+								определить, использует ли какая-либо из услуга третьих лиц запросы "Не отслеживать",
+								пожалуйста, ознакомьтесь с Политикой Конфиденциальности..
+							</SampleText>
+						</View>
+						
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>
+								Изменения в Политике Конфиденциальности
+							</Bold>
+							<SampleText>
+								Оператор данных оставляет за собой право вносить изменения в Политику Конфиденциальности
+								в любое время путем уведомления пользователей на этой странице. Настоятельно
+								рекомендуется проверять эту страницу часто, дата последней модификации указана внизу
+								страницы. Если Пользователь возражает против каких-либо изменений в Политике, он должен
+								прекратить использование этого приложения и может потребовать, чтобы Оператор данных
+								удалил его данные. Если не указано иное, то тогда текущая Политика Конфиденциальности
+								распространяется на все персональные данные Оператора данные о Пользователе.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>
+								Разрешения для приложения
+							</Bold>
+							<SampleText style={{marginBottom: 10}}>При установке приложение просит у Пользователя
+								разрешение на доступ к следующим функциям на устройстве:</SampleText>
+							<SampleText style={{marginBottom: 10}}>Местоположение – нужно для рекомендации ближайших к
+								Пользователю точек обслуживания и навигиции маршрута к выбранному пункту.</SampleText>
+							<SampleText style={{marginBottom: 10}}>Фото/мультимедиа-файлы – нужны для отправки
+								фотографий и файлов из Библиотеки при заполнении форм обратной связи.</SampleText>
+							<SampleText>Камера – нужна для отправки снимков Камеры в формах обратной связи</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Принципы</Bold>
+							<SampleText style={{marginBottom: 20}}>
+								1. Сбор информации
+							</SampleText>
+							<SampleText>
+								Мы собираем информацию, когда вы регистрируетесь в мобильном приложении, делаете заказ и
+								заходите в свой аккаунт, совершаете покупку, участвуете в акции и/или выходите из
+								аккаунта. Информация включает ваше имя, адрес электронной почты, номер телефона, адрес
+								доставки , местоположение, дата и время, количество гостей и другие данные, касающиеся
+								данного заказа, а так же данные по кредитной карте,в случае если пользователь выбирает
+								этот способ оплаты, а так же разрешения и информацию об устройстве (например, камера,
+								микрофон, учетные записи, контакты или телефон), которые запрашивает мобильное
+								приложение при установке из Google Play.
+							</SampleText>
+							
+							<SampleText style={{marginVertical: 10}}>
+								2. Использование информации
+							</SampleText>
+							<SampleText style={{marginBottom: 10}}>Информация, которую мы получаем от вас, может быть
+								использована, чтобы:</SampleText>
+							<SampleText style={{marginBottom: 10}}>Сделать услуги соответствующими вашим индивидуальным
+								запросам.</SampleText>
+							<SampleText style={{marginBottom: 10}}>Предложить удобный для вас способ обслуживания и
+								доставки.</SampleText>
+							<SampleText style={{marginBottom: 10}}>Улучшить работу мобильного приложения.</SampleText>
+							<SampleText style={{marginBottom: 10}}>Улучшить систему поддержки
+								пользователей.</SampleText>
+							<SampleText style={{marginBottom: 10}}>Связаться с вами по электронной почте или по
+								телефону.</SampleText>
+							<SampleText style={{marginBottom: 10}}>Устроить акцию, конкурс или организовать
+								исследование.</SampleText>
+							<SampleText>
+								Отправить фото-, аудио- и видео-файлов из мобильного приложения в службу контроля
+								качества или другие службы поддержки клиентов.
+							</SampleText>
+							
+							<SampleText style={{marginVertical: 10}}>
+								3. Защита личных данных при онлайн-продажах
+							</SampleText>
+							<SampleText>
+								Мы являемся единственным владельцем информации, собранной в мобильном приложении. Ваши
+								личные данные не будут проданы или каким-либо образом переданы третьим лицам по
+								каким-либо причинам, за исключением необходимых данных для выполнения запроса или
+								транзакции, например, при отправке заказа.
+							</SampleText>
+							
+							<SampleText style={{marginVertical: 10}}>
+								4. Раскрытие информации третьим лицам
+							</SampleText>
+							
+							<SampleText style={{marginBottom: 10}}>
+								Мы не продаем, не обмениваем и не передаем личные данные сторонним компаниям. Мы готовы
+								делиться информацией, чтобы предотвратить преступления или помочь в их расследовании,
+								если речь идет о подозрении в мошенничестве, действиях, физически угрожающих
+								безопасности людей, нарушениях правил использования или в случаях, когда это
+								предусмотрено законом.
+							</SampleText>
+							<SampleText>
+								Неконфиденциальная информация может быть предоставлена другим компаниям в целях
+								маркетинга, рекламы и т.д.
+							</SampleText>
+							
+							<SampleText style={{marginVertical: 10}}>
+								5. Защита информации
+							</SampleText>
+							
+							<SampleText style={{marginBottom: 10}}>
+								Мы используем различные средства безопасности, чтобы гарантировать сохранность ваших
+								личных данных. Только те сотрудники, которые работают с конкретным заданием (например,
+								техническая поддержка, обработка заказа или проведение оплаты) получают доступ к личным
+								данным.
+								Сервера и компьютеры, на которых записана конфиденциальная информация, находятся в
+								безопасном
+								окружении.
+							</SampleText>
+							<SampleText style={{marginBottom: 10}}>
+								Использование файлов “Сookie”
+							</SampleText>
+							<SampleText>
+								Наши файлы “Сookie” используются для улучшения доступа и определения повторных
+								посещений. Кроме того, они позволяют отследить наиболее интересующие запросы. Файлы
+								“Сookie” не
+								передают никакую конфиденциальную информацию.
+							</SampleText>
+							
+							<SampleText style={{marginVertical: 10}}>
+								6. Отказ от подписки
+							</SampleText>
+							
+							<SampleText style={{marginBottom: 10}}>
+								Мы используем электронную почту и телефон, чтобы предоставить вам информацию по вашему
+								заказу, новостям компании, информации по продуктам и т.д. Если вы желаете отказаться от
+								подписки, в каждом письме даны подробные инструкции, как вы можете это сделать.
+							</SampleText>
+							<SampleText>
+								Так же мы обязуемся уничтожить всю информацию, касающуюся ваших персональных данных по
+								первому вашему требованию.
+							</SampleText>
+							
+							<SampleText style={{marginVertical: 10}}>
+								7. Согласие
+							</SampleText>
+							<SampleText>
+								Пользуясь услугами мобильного приложения, вы автоматически соглашаетесь с нашей
+								Политикой конфиденциальности
+							</SampleText>
+						</View>
+					</View>
+					<View style={{marginBottom: 20}}>
+						<H3 style={{marginBottom: 10}}>Оператор данных и владелец</H3>
+						<Bold style={{marginBottom: 10}}>Типы собираемых данных</Bold>
+						<SampleText style={{marginBottom: 10}}>
+							Приложение собирает следующие данные (само по себе или через третьи стороны) :
+							гео-положение (местоположение на карте) , данные Cookie и другие персональные данные,
+							собранные здесь,
+							могут быть описаны в разделах данной Политики Конфиденциальности или выделены пояснительным
+							текстом, контекстуально со сбором данных.
+						</SampleText>
+						<SampleText style={{marginBottom: 10}}>
+							Личные данные могут быть предоставлены Пользователем или собираться автоматически при
+							использовании этого приложения.
+						</SampleText>
+						<SampleText style={{marginBottom: 10}}>
+							Любое использование Cookies или других инструментов отслеживания с помощью этого приложения
+							или через владельцев услуг - третьих лиц, если не указано иное, служит для идентификации
+							пользователей и их предпочтений, с единственной целью предоставления требуемых услуг и
+							улучшения качества обслуживания Пользователя.
+						</SampleText>
+						<SampleText>
+							Пользователь берет на себя ответственность за персональные данные третьих лиц,
+							опубликованные или совместно используемые им через это приложение.
+						</SampleText>
+					</View>
+					<View style={{marginBottom: 20}}>
+						<H3 style={{marginBottom: 10}}>Определения и значения терминов</H3>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Личные данные (или данные)</Bold>
+							<SampleText>
+								Любая информация, касающаяся физического лица, юридического лица, учреждения или
+								ассоциации, которая может быть, идентифицированна, даже косвенно, посредством ссылки на
+								какую-либо другую информацию, в том числе персональный идентификационный номер.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Данные об использовании</Bold>
+							<SampleText>
+								Информация, собранная автоматически из этого приложения (или для услуг третьих лиц,
+								предоставляемых в данном приложении), включает в себя: IP-адреса или доменные имена
+								компьютеров, используемых Пользователями, которые используют это приложение, URI-адреса
+								(Uniform Resource Identifier -унифицированный идентификатор ресурса ), время запроса,
+								метод используемый для отправки запроса на сервер, размер файла, полученного в ответ,
+								цифровой код, обозначающий статус ответа сервера (успешный исход, ошибки и т.д.), страна
+								происхождения, особенности браузера и операционной системы, используемой пользователем,
+								различные детали времени за одно посещение (например, время, проведенное на каждой
+								странице внутри приложения), а также подробности о переходах внутри приложения со
+								специальной ссылкой на последовательности посещенных страниц и другие параметры об
+								операционной системе устройства и / или ИТ-среды пользователя.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Пользователь</Bold>
+							<SampleText>
+								Физическое лицо, использующее это приложение, которое должно совпадать или быть
+								санкционировано с субъектом данных, к которым относятся персональные данные.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Субъект данных</Bold>
+							<SampleText>
+								Юридическое или физическое лицо, которое ссылается на Личные данные.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Процессор данных</Bold>
+							<SampleText>
+								Физическое лицо, юридическое лицо, орган государственного управления или любой другой
+								орган, ассоциация или организация, уполномоченная Оператором данных для обработки
+								персональных данных в соответствии с данной Политикой Конфиденциальности.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Оператор данных</Bold>
+							<SampleText>
+								Физическое лицо, юридическое лицо, государственное учреждение или любой другой орган или
+								организация принимающая и обрабатывающая персональные данные, используемые в этом
+								приложениии, а так же, обеспечивающее эксплуатацию и меры безопасности приложения.
+								Оператор данных, если не указано иное, является владельцем этого приложения.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Приложение</Bold>
+							<SampleText>
+								Аппаратное или программное средство, с помощью которого собирают персональные данные
+								Пользователя.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Cookie</Bold>
+							<SampleText>
+								Небольшой фрагмент данных, хранящихся в устройстве пользователя.
+							</SampleText>
+						</View>
+						<View style={{marginBottom: 20}}>
+							<Bold style={{marginBottom: 10}}>Контактная информация</Bold>
+							<SampleText style={{marginBottom: 10}}>Последнее обновление: 28 мая 2019 года.</SampleText>
+							<SampleText style={{marginBottom: 10}}>Мы ответим на все Ваши вопросы в течении 24
+								ч.</SampleText>
+							<SampleText style={{marginBottom: 10}}>Контактная информация на сайте:</SampleText>
+							<SampleText>navat.kg</SampleText>
+						</View>
+					</View>
 				</ScrollView>
 			</Shadow>
 		</View>
