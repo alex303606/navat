@@ -32,7 +32,7 @@ export const en = {
 	order: 'Order at \${sum} ₸',
 	addItemsToBasket: 'Add items to basket',
 	freeShipping: 'Cost of delivery: ',
-	shippingPrice: 'Shipping price: \${price} ₸',
+	shippingPrice: 'Cost of delivery: \${price} ₸',
 	itemsInBasket: 'Items in basket: \${totalAmount}',
 	numberOfContainers: 'Number of containers: \${amount}',
 	containersPrice: 'The price of containers: \${price}',

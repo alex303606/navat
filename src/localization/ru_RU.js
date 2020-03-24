@@ -32,7 +32,7 @@ export const ru = {
 	order: 'Оформить заказ на \${sum} ₸',
 	addItemsToBasket: 'Добавьте товары в корзину',
 	freeShipping: 'Стоимость доставки: ',
-	shippingPrice: 'Цена доставки: \${price} ₸',
+	shippingPrice: 'Стоимость доставки: \${price} ₸',
 	itemsInBasket: 'Товаров в корзине: \${totalAmount}',
 	numberOfContainers: 'Одноразовая посуда и контейнеры: \${amount}',
 	containersPrice: 'Цена посуды: \${price}',
