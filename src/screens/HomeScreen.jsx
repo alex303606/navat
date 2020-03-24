@@ -302,7 +302,7 @@ class HomeScreen extends Component {
 						<SectionHeader
 							navigation={this.props.navigation}
 							targetScreen='Menu'
-							title={translate('navigationTitle.Menu')}/>
+							title={translate('tabbar.Menu')}/>
 						<FlatList
 							data={this.props.categories}
 							horizontal

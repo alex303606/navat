@@ -13,8 +13,8 @@ const guides = {
 	1: require('../assets/images/guide1.png'),
 	2: require('../assets/images/guide2.png'),
 	3: require('../assets/images/guide3.png'),
-	4: require('../assets/images/guide4.png'),
-	5: require('../assets/images/guide5.png'),
+	4: require('../assets/images/guide5.png'),
+	//5: require('../assets/images/guide5.png'),
 };
 const styles = EStyleSheet.create({
 	page: {

@@ -83,25 +83,25 @@ const styles = EStyleSheet.create({
 const items = [
 	{
 		key: '0',
-		title: 'Как заказать?',
-		description: 'Все шаги от заказа до получения',
-		targetScreen: 'Template',
+		title: 'Оферта',
+		description: 'Условия использования',
+		targetScreen: 'Terms',
 		text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda dolorem dolores doloribus excepturi fugiat, id itaque labore laborum modi nisi nobis obcaecati quae reiciendis rem temporibus, vero voluptas, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem consequatur doloremque eius facere facilis, fugiat hic ipsam iste labore, laudantium magnam molestias mollitia, praesentium rerum sequi sunt veritatis voluptatibus!'
 	},
-	{
-		key: '1',
-		title: 'Вопрос 1',
-		description: 'Краткое описание',
-		targetScreen: 'Template',
-		text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda dolorem dolores doloribus excepturi fugiat, id itaque labore laborum modi nisi nobis obcaecati quae reiciendis rem temporibus, vero voluptas, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem consequatur doloremque eius facere facilis, fugiat hic ipsam iste labore, laudantium magnam molestias mollitia, praesentium rerum sequi sunt veritatis voluptatibus!'
-	},
-	{
-		key: '2',
-		title: 'Вопрос 2',
-		description: 'Краткое описание',
-		targetScreen: 'Template',
-		text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda dolorem dolores doloribus excepturi fugiat, id itaque labore laborum modi nisi nobis obcaecati quae reiciendis rem temporibus, vero voluptas, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem consequatur doloremque eius facere facilis, fugiat hic ipsam iste labore, laudantium magnam molestias mollitia, praesentium rerum sequi sunt veritatis voluptatibus!'
-	},
+	// {
+	// 	key: '1',
+	// 	title: 'Вопрос 1',
+	// 	description: 'Краткое описание',
+	// 	targetScreen: 'Template',
+	// 	text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda dolorem dolores doloribus excepturi fugiat, id itaque labore laborum modi nisi nobis obcaecati quae reiciendis rem temporibus, vero voluptas, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem consequatur doloremque eius facere facilis, fugiat hic ipsam iste labore, laudantium magnam molestias mollitia, praesentium rerum sequi sunt veritatis voluptatibus!'
+	// },
+	// {
+	// 	key: '2',
+	// 	title: 'Вопрос 2',
+	// 	description: 'Краткое описание',
+	// 	targetScreen: 'Template',
+	// 	text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda dolorem dolores doloribus excepturi fugiat, id itaque labore laborum modi nisi nobis obcaecati quae reiciendis rem temporibus, vero voluptas, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem consequatur doloremque eius facere facilis, fugiat hic ipsam iste labore, laudantium magnam molestias mollitia, praesentium rerum sequi sunt veritatis voluptatibus!'
+	// },
 ];
 
 const HelpScreen = (props) => {

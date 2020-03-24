@@ -77,26 +77,26 @@ class SelectLanguageScreen extends React.Component {
 								buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}
 								onPress={() => this.changeLang('ru')}
 								title='Русский'/>
-							<Button
-								textStyle={{color: 'black'}}
-								buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}
-								onPress={() => this.changeLang('en')}
-								title='English'/>
-							<Button
-								textStyle={{color: 'black'}}
-								buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}
-								onPress={() => this.changeLang('kg')}
-								title='Кыргыз тили'/>
-							<Button
-								textStyle={{color: 'black'}}
-								buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}
-								onPress={() => this.changeLang('kz')}
-								title='Қазақ тілі'/>
-							<Button
-								textStyle={{color: 'black'}}
-								buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}
-								onPress={() => this.changeLang('tr')}
-								title='Türk dili'/>
+							{/*<Button*/}
+							{/*	textStyle={{color: 'black'}}*/}
+							{/*	buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}*/}
+							{/*	onPress={() => this.changeLang('en')}*/}
+							{/*	title='English'/>*/}
+							{/*<Button*/}
+							{/*	textStyle={{color: 'black'}}*/}
+							{/*	buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}*/}
+							{/*	onPress={() => this.changeLang('kg')}*/}
+							{/*	title='Кыргыз тили'/>*/}
+							{/*<Button*/}
+							{/*	textStyle={{color: 'black'}}*/}
+							{/*	buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}*/}
+							{/*	onPress={() => this.changeLang('kz')}*/}
+							{/*	title='Қазақ тілі'/>*/}
+							{/*<Button*/}
+							{/*	textStyle={{color: 'black'}}*/}
+							{/*	buttonStyle={{backgroundColor: 'white', marginTop: styles.$defaultMarginTop}}*/}
+							{/*	onPress={() => this.changeLang('tr')}*/}
+							{/*	title='Türk dili'/>*/}
 						</View>
 					</View>
 				</SafeAreaView>
