@@ -1,8 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import {
-	View,
-	ScrollView,
-} from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
@@ -18,6 +15,7 @@ import CheckoutFields from '../components/CheckoutFields';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { changeEmail, changeFio, changePhone } from '../store/actions/profile';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 
 const styles = EStyleSheet.create({
@@ -47,8 +45,17 @@ const styles = EStyleSheet.create({
 	},
 });
 
+const phoneIsValid = (phone) => {
+	const phoneNumber = parsePhoneNumberFromString(phone);
+	if (phoneNumber) {
+		return phoneNumber.isValid();
+	}
+	return false;
+};
+
+let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const CheckoutScreen = (props) => {
-	const fieldsIsValid = () => (!!name.trim() && !!phone.trim() && !!address.trim());
+	const fieldsIsValid = () => (name.trim().length >= 2 && phoneIsValid(phone) && reg.test(email.trim()) && address.trim().length >= 5);
 	const [name, changeName] = useState(props.profile.fio || '');
 	const [email, changeEmail] = useState(props.profile.email || '');
 	const [phone, changePhone] = useState(props.profile.phone || '');
@@ -63,10 +70,10 @@ const CheckoutScreen = (props) => {
 	const navigateToReadyScreen = () => {
 		if (!fieldsIsValid()) {
 			return setFieldsErrors({
-				nameError: !name.trim(),
-				phoneError: !phone.trim(),
-				addressError: !address.trim(),
-				emailError: !address.trim(),
+				nameError: name.trim().length < 2,
+				phoneError: !phoneIsValid(phone),
+				addressError: address.trim().length < 5,
+				emailError: !reg.test(email.trim()),
 			});
 		}
 		const data = {
