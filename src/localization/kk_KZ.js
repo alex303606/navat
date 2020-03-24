@@ -31,7 +31,7 @@ export const kz = {
 	clearBasket: 'тазарту',
 	order: '\${sum} құрылғыға тапсырыс ресімдеу',
 	addItemsToBasket: 'себетке тауарларды қосыңыз',
-	freeShipping: 'тегін жеткізу',
+	freeShipping: 'Жеткізу құны: ',
 	shippingPrice: 'жеткізу бағасы: \ $ {price}',
 	itemsInBasket: 'себетте тауарлар: \ $ {totalAmount}',
 	numberOfContainers: 'бір реттік ыдыс-аяқ және контейнерлер: \ $ {amount}',

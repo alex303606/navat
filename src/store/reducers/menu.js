@@ -1,10 +1,6 @@
 import { INIT_MENU, SELECT_LOCATION } from '../actions/actionTypes';
 import { countries } from '../../../config';
 
-const freeShippingThreshold = 1000;
-
-const shippingPrice = 200;
-
 const cat = [
 	{
 		title: 'Завтраки',
@@ -82,7 +78,6 @@ const initialState = {
 	popularDishes: [],
 	categories: [],
 	branches: [],
-	freeShippingThreshold: 0,
 };
 
 const addIcons = categories => {
@@ -115,8 +110,6 @@ const menuReducer = (state = initialState, action) => {
 				...state,
 				popularDishes: getPopularDishes(action.categories),
 				categories: addIcons(action.categories),
-				freeShippingThreshold,
-				shippingPrice,
 			};
 		case SELECT_LOCATION:
 			const branches = countries[action.location].branches;

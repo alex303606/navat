@@ -11,7 +11,7 @@ import ReactNative, {
 	ScrollView,
 } from 'react-native';
 import CustomIcon from '../components/CustomIcon';
-import stock from '../assets/images/temporaryPictures/stock.png';
+import stock from '../assets/images/temporaryPictures/stock.jpg';
 import { Bold, H2, LittleText, MiddleText } from '../components/Texts';
 import ScreenContainer from '../components/ScreenContainer';
 import ImageWithLoader from '../components/ImageWithLoader';

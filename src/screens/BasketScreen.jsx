@@ -10,7 +10,7 @@ import { Bold, Description, Label, LittleText, SmallText } from '../components/T
 import Button from '../components/Button';
 import { translate } from '../localization/i18n';
 import Price from '../components/Price';
-import config from '../../config';
+import config, { countries } from '../../config';
 import Icon from 'react-native-vector-icons/Ionicons';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { assemble, normalizeHeight } from '../utils/utils';
@@ -166,7 +166,10 @@ class BasketScreen extends Component {
 			return acc + item.amount;
 		}, 0);
 		
-		const shippingPrice = this.props.totalPrice >= this.props.freeShippingThreshold ? 0 : this.props.shippingPrice;
+		let shippingPrice = countries[this.props.location].deliveryPrice;
+		if (this.props.totalPrice > countries[this.props.location].deliveryThreshold) {
+			shippingPrice = countries[this.props.location].deliveryAfterSalePrice;
+		}
 		//const totalPrice = this.props.totalPrice + shippingPrice + this.props.containers.price;
 		const totalPrice = this.props.totalPrice + shippingPrice;
 		const disabledOrderButton = !totalAmount;
@@ -208,9 +211,7 @@ class BasketScreen extends Component {
 					<View style={styles.basketFooterInfo}>
 						{!!this.props.totalPrice &&
 						<SmallText>
-							{this.props.totalPrice >= this.props.freeShippingThreshold ?
-								translate('freeShipping') :
-								assemble(translate('shippingPrice'), {price: this.props.shippingPrice})}
+							{assemble(translate('shippingPrice'), {price: shippingPrice})}
 						</SmallText>
 						}
 						{/*{!!this.props.containers.amount && !!this.props.containers.price &&*/}
@@ -374,8 +375,6 @@ const mapStateToProps = state => ({
 	items: state.basket.items,
 	totalPrice: state.basket.totalPrice,
 	containers: state.basket.containers,
-	freeShippingThreshold: state.menu.freeShippingThreshold,
-	shippingPrice: state.menu.shippingPrice,
 	location: state.profile.location,
 });
 

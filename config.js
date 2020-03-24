@@ -16,6 +16,9 @@ export const countries = {
 		city: 'Нур-Султан',
 		apiUrl: 'http://dostavka-navat.kz/app',
 		imageUrl: 'http://dostavka-navat.kz/files/products/',
+		deliveryThreshold: 5000,
+		deliveryPrice: 1200,
+		deliveryAfterSalePrice: 1000,
 		phones: {
 			deliveryService: {
 				call: '+77719311111',
@@ -88,6 +91,9 @@ export const countries = {
 		city: 'Алматы',
 		apiUrl: 'http://dostavka-navat.kz/app',
 		imageUrl: 'http://dostavka-navat.kz/files/products/',
+		deliveryThreshold: 5000,
+		deliveryPrice: 1500,
+		deliveryAfterSalePrice: 1200,
 		phones: {
 			deliveryService: {
 				call: '+77719311111',
