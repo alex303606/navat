@@ -61,12 +61,12 @@ class SelectLocationScreen extends React.Component {
 								textStyle={{color: 'black'}}
 								onPress={this.selectLocation('Almaty')}
 							/>
-							<Button
-								buttonStyle={{backgroundColor: 'white'}}
-								title='Нур-Султан'
-								textStyle={{color: 'black'}}
-								onPress={this.selectLocation('NurSultan')}
-							/>
+							{/*<Button*/}
+							{/*	buttonStyle={{backgroundColor: 'white'}}*/}
+							{/*	title='Нур-Султан'*/}
+							{/*	textStyle={{color: 'black'}}*/}
+							{/*	onPress={this.selectLocation('NurSultan')}*/}
+							{/*/>*/}
 						</View>
 					</View>
 				</SafeAreaView>

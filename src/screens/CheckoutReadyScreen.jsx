@@ -89,10 +89,12 @@ const CheckoutReadyScreen = (props) => {
 							color={config.GreyColor}
 							name={'checkout-ready'}
 							size={styles.$checkoutReadyIconSize}/>
-						<Text>
-							{translate('orderNumber')}
-							<Text style={{color: config.MainColor}}>{' ' + OrderID}</Text>
-						</Text>
+						{!!OrderID ?
+							<Text>
+								{translate('orderNumber')}
+								<Text style={{color: config.MainColor}}>{' ' + OrderID}</Text>
+							</Text> : <View/>
+						}
 					</View>
 					<View style={styles.footer}>
 						<Button
