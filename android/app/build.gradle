@@ -132,7 +132,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         vectorDrawables.useSupportLibrary = true
-        versionCode 5
+        versionCode 1
         versionName "1.0"
     }
     splits {
@@ -169,6 +169,13 @@ android {
         }
          debug {
             signingConfig signingConfigs.debug
+        }
+    }
+    flavorDimensions "default"
+    productFlavors {
+        kz {
+            applicationId "com.navat.kz"
+            resValue "string", "app_name","Чайхана Navat Казахстан"
         }
     }
     // applicationVariants are e.g. debug, release

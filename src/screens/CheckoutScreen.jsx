@@ -95,7 +95,7 @@ const CheckoutScreen = (props) => {
 				setTimeout(() => {
 					props.navigation.navigate('Ready', {
 						prevScreen: 'Home',
-						OrderID: res.OrderID || '',
+						OrderID: (res && res.OrderID) ? res.OrderID : '',
 					});
 				});
 			});
