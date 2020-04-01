@@ -10,6 +10,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import config from '../../config';
 import CheckoutScreen from '../screens/CheckoutScreen';
 import CheckoutReadyScreen from '../screens/CheckoutReadyScreen';
+import SelectAddressScreen from '../screens/SelectAddressScreen';
 
 const styles = EStyleSheet.create({
 	clearButton: {
@@ -38,6 +39,9 @@ const BasketNavigator = createStackNavigator({
 		Basket: {
 			screen: BasketScreen,
 		},
+		SelectAddress: {
+			screen: SelectAddressScreen,
+		},
 		Checkout: {
 			screen: CheckoutScreen,
 		},
@@ -58,14 +62,13 @@ const BasketNavigator = createStackNavigator({
 			return {
 				headerTitle: translate('tabbar.Basket'),
 				headerRight: <HeaderClearButton showClearButton={showClearButton} onPress={clearBasket}/>,
-				headerLeft: <View style={{flex: 1}}/>,
+				headerLeft: showClearButton && <View style={{flex: 1}}/>,
 				...Header,
 				gesturesEnabled: false,
 				headerBackTitle: ' ',
 				headerTruncatedBackTitle: '',
 			};
 		},
-		header: null,
 	});
 
 export default createAppContainer(BasketNavigator);

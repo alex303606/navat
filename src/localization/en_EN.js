@@ -33,6 +33,7 @@ export const en = {
 	addItemsToBasket: 'Add items to basket',
 	freeShipping: 'Cost of delivery: ',
 	shippingPrice: 'Cost of delivery: \${price} ₸',
+	totalPrice: 'Total price: \${price} ₸',
 	itemsInBasket: 'Items in basket: \${totalAmount}',
 	numberOfContainers: 'Number of containers: \${amount}',
 	containersPrice: 'The price of containers: \${price}',

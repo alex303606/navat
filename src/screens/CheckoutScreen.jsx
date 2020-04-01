@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -55,6 +55,17 @@ const phoneIsValid = (phone) => {
 
 let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const CheckoutScreen = (props) => {
+	const [deliveryId, setDeliveryId] = useState(4);
+	useEffect(() => {
+		const {state: {params}} = props.navigation;
+		if (params) {
+			const {deliveryId} = params;
+			if (!!deliveryId) {
+				setDeliveryId(deliveryId);
+			}
+		}
+	}, []);
+	
 	const fieldsIsValid = () => (name.trim().length >= 2 && phoneIsValid(phone) && reg.test(email.trim()) && address.trim().length >= 5);
 	const [name, changeName] = useState(props.profile.fio || '');
 	const [email, changeEmail] = useState(props.profile.email || '');
@@ -78,7 +89,7 @@ const CheckoutScreen = (props) => {
 		}
 		const data = {
 			payment_method_id: '1',
-			delivery_id: '1',
+			delivery_id: deliveryId,
 			name,
 			email,
 			address,

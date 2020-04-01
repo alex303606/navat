@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "react-native run-android --variant=kzDebug",
     "androidReleaseBuild": "cd android && ./gradlew clean && ./gradlew bundleKzRelease",
     "androidApkBuild": "cd android && ./gradlew clean && ./gradlew bundleKzRelease",
     "ios": "react-native run-ios",

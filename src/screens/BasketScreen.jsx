@@ -171,7 +171,7 @@ class BasketScreen extends Component {
 			shippingPrice = countries[this.props.location].deliveryAfterSalePrice;
 		}
 		//const totalPrice = this.props.totalPrice + shippingPrice + this.props.containers.price;
-		const totalPrice = this.props.totalPrice + shippingPrice;
+		const totalPrice = this.props.totalPrice;
 		const disabledOrderButton = !totalAmount;
 		
 		if (!this.props.items.length) {
@@ -209,11 +209,11 @@ class BasketScreen extends Component {
 				<View style={[styles.basketFooter, disabledOrderButton && {minHeight: 'auto', borderTopWidth: 0}]}>
 					{(!!this.props.totalPrice || !!this.props.containers.amount || !!totalAmount) &&
 					<View style={styles.basketFooterInfo}>
-						{!!this.props.totalPrice &&
-						<SmallText>
-							{assemble(translate('shippingPrice'), {price: shippingPrice})}
-						</SmallText>
-						}
+						{/*{!!this.props.totalPrice &&*/}
+						{/*<SmallText>*/}
+						{/*	{assemble(translate('shippingPrice'), {price: shippingPrice})}*/}
+						{/*</SmallText>*/}
+						{/*}*/}
 						{/*{!!this.props.containers.amount && !!this.props.containers.price &&*/}
 						{/*<Fragment>*/}
 						{/*	<SmallText>*/}
@@ -232,7 +232,7 @@ class BasketScreen extends Component {
 					</View>
 					}
 					<Button
-						onPress={this.completeOrderHandler(disabledOrderButton)}
+						onPress={this.selectAddress(disabledOrderButton)}
 						title={disabledOrderButton ?
 							translate('addItemsToBasket') :
 							assemble(translate('order'), {sum: totalPrice})
@@ -245,11 +245,11 @@ class BasketScreen extends Component {
 	
 	renderSeparator = () => <View style={styles.separator}/>;
 	
-	completeOrderHandler = (disabledOrderButton) => () => {
+	selectAddress = (disabledOrderButton) => () => {
 		if (disabledOrderButton) {
 			return this.navigateToMenu();
 		}
-		return this.props.navigation.navigate('Checkout');
+		return this.props.navigation.navigate('SelectAddress');
 	};
 	
 	renderLeftActions = (id) => () => {
