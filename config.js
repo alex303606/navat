@@ -13,7 +13,7 @@ export const countries = {
 		flag: require('./src/assets/images/kz.jpg'),
 		code: '7',
 		phoneMask: '+7 999 999-99-99',
-		city: 'Нур-Султан',
+		city: 'Алматы',
 		apiUrl: 'http://dostavka-navat.kz/app',
 		imageUrl: 'http://dostavka-navat.kz/files/products/',
 		deliveryThreshold: 5000,
@@ -32,7 +32,7 @@ export const countries = {
 		branches: [
 			{
 				name: 'Чайхана Navat на Сейфуллина',
-				address: 'Казахстан, Алматы, проспект Достык 48 ',
+				address: 'Казахстан, Алматы, проспект Сейфуллина 500/79',
 				time: '10:00 - 24:00',
 				images: [
 					'http://navat.com.kz/app/rest/img01.jpg',
@@ -45,7 +45,7 @@ export const countries = {
 			},
 			{
 				name: 'Чайхана Navat на пр. Достык',
-				address: 'Казахстан, Алматы, проспект Сейфуллина 500/79 ',
+				address: 'Казахстан, Алматы, проспект Достык 48',
 				time: '10:00 - 24:00',
 				images: [
 					'http://navat.com.kz/app/rest/img11.jpg',
@@ -88,7 +88,7 @@ export const countries = {
 		flag: require('./src/assets/images/kz.jpg'),
 		code: '7',
 		phoneMask: '+7 999 999-99-99',
-		city: 'Алматы',
+		city: 'Нур-Султан',
 		apiUrl: 'http://nur-sultan.dostavka-navat.kz/app',
 		imageUrl: 'http://nur-sultan.dostavka-navat.kz/files/products/',
 		deliveryThreshold: 5000,

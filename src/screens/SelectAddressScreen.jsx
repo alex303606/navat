@@ -65,11 +65,11 @@ const SelectAddressScreen = (props) => {
 	};
 	const [free, setFree] = useState(false);
 	let shippingPrice = countries[props.location].deliveryPrice;
-	if (props.totalPrice > countries[props.location].deliveryThreshold) {
-		shippingPrice = countries[props.location].deliveryAfterSalePrice;
-	}
 	if (free) {
-		shippingPrice = 0;
+		shippingPrice = countries[props.location].deliveryAfterSalePrice;
+		if (props.totalPrice > countries[props.location].deliveryThreshold) {
+			shippingPrice = 0
+		}
 	}
 	const totalPrice = props.totalPrice + shippingPrice;
 	
