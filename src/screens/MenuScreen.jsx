@@ -46,6 +46,7 @@ const styles = EStyleSheet.create({
 	itemLeft: {
 		flexDirection: 'row',
 		alignItems: 'center',
+		flex: 1,
 	},
 	itemIcon: {
 		width: '65rem',
@@ -105,7 +106,14 @@ class MenuScreen extends Component {
 								name={item.icon}
 								size={styles.$size}/>
 						</View>
-						<Bold>{item.title}</Bold>
+						<View style={{flexGrow: 1, marginRight: 10}}>
+							<View style={{flexDirection: 'row'}}>
+								<Bold
+									numberOfLines={2}
+									style={{flex: 1, flexWrap: 'wrap'}}
+								>{item.title}</Bold>
+							</View>
+						</View>
 					</View>
 					<Icon
 						style={styles.arrow}
