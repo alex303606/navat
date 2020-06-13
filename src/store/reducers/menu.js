@@ -1,5 +1,4 @@
-import { INIT_MENU, SELECT_LOCATION } from '../actions/actionTypes';
-import { countries } from '../../../config';
+import { GET_BRANCHES_SUCCESS, INIT_MENU } from '../actions/actionTypes';
 
 const cat = [
 	{
@@ -86,7 +85,7 @@ const initialState = {
 };
 
 const addIcons = categories => {
-	return categories.map((x, index) => {
+	return categories.map((x) => {
 		const item = cat.find(y => y.title === x.title);
 		x.icon = item && item.icon ? item.icon : 'banquet-menu';
 		x.color = item && item.color ? item.color : '#BDBDBD';
@@ -117,9 +116,8 @@ const menuReducer = (state = initialState, action) => {
 				popularDishes: getPopularDishes(action.categories),
 				categories: addIcons(action.categories),
 			};
-		case SELECT_LOCATION:
-			const branches = countries[action.location].branches;
-			return {...state, branches};
+		case GET_BRANCHES_SUCCESS:
+			return {...state, branches: action.branches};
 		default:
 			return state;
 	}

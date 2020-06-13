@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import AppNavigator from './AppNavigator';
 import AppWithNavigationState from './AppWithNavigationState';
 import { bindActionCreators } from 'redux';
-import { initMenu } from '../store/actions/menu';
+import { getBranches, initMenu } from '../store/actions/menu';
 import { countries } from '../../config';
 import axios from 'axios';
 
@@ -12,6 +12,7 @@ const AppNavigationState = (props) => {
 		if(!!props.profile.location) {
 			axios.defaults.baseURL = countries[props.profile.location].apiUrl;
 			props.initMenu();
+			props.getBranches();
 		}
 	});
 	
@@ -32,6 +33,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
 	return bindActionCreators({
 			initMenu,
+			getBranches,
 		},
 		dispatch);
 };
