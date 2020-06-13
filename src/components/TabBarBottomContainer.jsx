@@ -100,7 +100,7 @@ class TabBarBottomContainer extends Component {
 					</Text>
 					{(route.routeName === 'Basket' && !!this.props.totalPrice) &&
 					<View style={styles.row}>
-						<ReactNative.Text style={styles.price}>{this.props.totalPrice} ₸</ReactNative.Text>
+						<ReactNative.Text style={styles.price}>{this.props.totalPrice} с</ReactNative.Text>
 					</View>
 					}
 				</View>

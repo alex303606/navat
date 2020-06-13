@@ -42,7 +42,7 @@ const styles = EStyleSheet.create({
 
 const CheckoutFields = (props) => {
 	const fieldsIsValid = () => !props.fieldsErrors.emailError && !props.fieldsErrors.nameError && !props.fieldsErrors.phoneError && !props.fieldsErrors.addressError;
-	
+
 	return (
 		<Fragment>
 			<Input

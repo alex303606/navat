@@ -108,7 +108,7 @@ const SelectAddressScreen = (props) => {
 						<SampleText style={styles.text}>
 							{assemble(translate('shippingPrice'), {price: shippingPrice})}
 						</SampleText>
-						<Label style={styles.text}>Итоговая сумма: {totalPrice} тг</Label>
+						<Label style={styles.text}>Итоговая сумма: {totalPrice} с</Label>
 						<SampleText style={styles.text}>
 							В случае неправильного выбора зоны,
 							доплата производится курьеру при получении.

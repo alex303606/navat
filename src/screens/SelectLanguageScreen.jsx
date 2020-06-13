@@ -11,6 +11,9 @@ import { switchLanguage } from '../localization/i18n';
 import Button from '../components/Button';
 import { H1 } from '../components/Texts';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { bindActionCreators } from 'redux';
+import { selectLocation } from '../store/actions/profile';
+import { connect } from 'react-redux';
 
 const backGround = require('../assets/images/background.png');
 const logo = require('../assets/images/logo.png');
@@ -50,6 +53,7 @@ class SelectLanguageScreen extends React.Component {
 	};
 	
 	componentDidMount() {
+		this.props.selectLocation('Bishkek');
 		BackHandler.addEventListener('hardwareBackPress', this.onBackButtonPressed);
 	}
 	
@@ -104,5 +108,11 @@ class SelectLanguageScreen extends React.Component {
 		);
 	}
 }
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+			selectLocation,
+		},
+		dispatch);
+};
 
-export default SelectLanguageScreen;
+export default connect(null, mapDispatchToProps)(SelectLanguageScreen);

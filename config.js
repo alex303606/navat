@@ -9,11 +9,11 @@ export default {
 };
 
 export const countries = {
-	Almaty: {
-		flag: require('./src/assets/images/kz.jpg'),
-		code: '7',
-		phoneMask: '+7 999 999-99-99',
-		city: 'Алматы',
+	Bishkek: {
+		flag: require('./src/assets/images/kg.jpg'),
+		code: '996',
+		phoneMask: '0 999 99-99-99',
+		city: 'Бишкек',
 		apiUrl: 'http://dostavka-navat.kz/app',
 		imageUrl: 'http://dostavka-navat.kz/files/products/',
 		deliveryThreshold: 5000,
@@ -83,41 +83,5 @@ export const countries = {
 				rating: 5
 			},
 		],
-	},
-	NurSultan: {
-		flag: require('./src/assets/images/kz.jpg'),
-		code: '7',
-		phoneMask: '+7 999 999-99-99',
-		city: 'Нур-Султан',
-		apiUrl: 'http://nur-sultan.dostavka-navat.kz/app',
-		imageUrl: 'http://nur-sultan.dostavka-navat.kz/files/products/',
-		deliveryThreshold: 5000,
-		deliveryPrice: 1500,
-		deliveryAfterSalePrice: 1200,
-		phones: {
-			deliveryService: {
-				call: '+77719311111',
-				display: '+7 771 931 11 11'
-			},
-			commentsSuggestions: {
-				call: '+77778251111',
-				display: '+7 777 825 11 11'
-			},
-		},
-		branches: [
-			{
-				name: 'Чайхана Navat',
-				address: 'Казахстан, Нур-Султан, Қабанбай батыр проспект, 21',
-				time: '10:00 - 24:00',
-				images: [
-					'http://navat.com.kz/app/rest/img51.jpg',
-					'http://navat.com.kz/app/rest/img52.jpg',
-					'http://navat.com.kz/app/rest/img53.jpg',
-					'http://navat.com.kz/app/rest/img54.jpg',
-					'http://navat.com.kz/app/rest/img55.jpg'
-				],
-				rating: 5
-			}
-		]
 	},
 };

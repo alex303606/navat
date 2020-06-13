@@ -24,7 +24,7 @@ const Price = (props) => {
 	const price = props.title ? parseInt(props.title, 10) : '';
 	return (
 		<View style={[styles.row, props.style]}>
-			<ReactNative.Text style={[styles.price, props.textStyle]}>{`${price} ₸`}</ReactNative.Text>
+			<ReactNative.Text style={[styles.price, props.textStyle]}>{`${price} с`}</ReactNative.Text>
 		</View>
 	);
 };

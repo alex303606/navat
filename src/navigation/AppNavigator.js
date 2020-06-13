@@ -1,7 +1,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import SelectLanguageScreen from '../screens/SelectLanguageScreen';
-import SelectLocationScreen from '../screens/SelectLocationScreen';
 import GuideScreen from '../screens/GuideScreen';
 import { Dimensions } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -9,9 +8,6 @@ const entireScreenWidth = Dimensions.get('window').width;
 EStyleSheet.build({$rem: entireScreenWidth / 414});
 
 const AppNavigator = createStackNavigator({
-		SelectLocation: {
-			screen: SelectLocationScreen,
-		},
 		SelectLanguage: {
 			screen: SelectLanguageScreen,
 		},
@@ -20,7 +16,7 @@ const AppNavigator = createStackNavigator({
 		},
 	},
 	{
-		initialRouteName: 'SelectLocation',
+		initialRouteName: 'SelectLanguage',
 		swipeEnabled: false,
 		defaultNavigationOptions: {
 			header: null,

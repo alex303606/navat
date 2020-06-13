@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import config from '../../config';
+import config, { countries } from '../../config';
 import Shadow from '../components/Shadow';
 import Button from '../components/Button';
 import { bindActionCreators } from 'redux';
@@ -66,7 +66,7 @@ const CheckoutScreen = (props) => {
 		}
 	}, []);
 	
-	const fieldsIsValid = () => (name.trim().length >= 2 && phoneIsValid(phone) && reg.test(email.trim()) && address.trim().length >= 5);
+	const fieldsIsValid = () => (name.trim().length >= 2 && phoneIsValid(`+${countries[props.location].code}${phone.replace('0', '')}`) && reg.test(email.trim()) && address.trim().length >= 5);
 	const [name, changeName] = useState(props.profile.fio || '');
 	const [email, changeEmail] = useState(props.profile.email || '');
 	const [phone, changePhone] = useState(props.profile.phone || '');
@@ -82,7 +82,7 @@ const CheckoutScreen = (props) => {
 		if (!fieldsIsValid()) {
 			return setFieldsErrors({
 				nameError: name.trim().length < 2,
-				phoneError: !phoneIsValid(phone),
+				phoneError: !phoneIsValid(`+${countries[props.location].code}${phone.replace('0', '')}`),
 				addressError: address.trim().length < 5,
 				emailError: !reg.test(email.trim()),
 			});
