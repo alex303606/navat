@@ -134,7 +134,7 @@ class PopularDishesScreen extends Component {
 								<View style={{marginRight: styles.$5}}>
 									<Stars
 										disabled
-										default={item.rating}
+										default={5}
 										count={5}
 										starSize={styles.starSize}
 										spacing={styles.$3}

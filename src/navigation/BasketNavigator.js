@@ -39,9 +39,6 @@ const BasketNavigator = createStackNavigator({
 		Basket: {
 			screen: BasketScreen,
 		},
-		SelectAddress: {
-			screen: SelectAddressScreen,
-		},
 		Checkout: {
 			screen: CheckoutScreen,
 		},

@@ -14,19 +14,19 @@ export const countries = {
 		code: '996',
 		phoneMask: '0 999 99-99-99',
 		city: 'Бишкек',
-		apiUrl: 'http://dostavka-navat.kz/app',
-		imageUrl: 'http://dostavka-navat.kz/files/products/',
-		deliveryThreshold: 5000,
-		deliveryPrice: 1200,
-		deliveryAfterSalePrice: 1000,
+		apiUrl: 'http://navat.kg/dostavka/app',
+		imageUrl: 'http://navat.kg/dostavka/files/products/',
+		deliveryThreshold: 250,
+		deliveryPrice: 200,
+		deliveryAfterSalePrice: 0,
 		phones: {
 			deliveryService: {
-				call: '+77719311111',
-				display: '+7 771 931 11 11'
+				call: '+996551641111',
+				display: '+996 551 64-11-11'
 			},
 			commentsSuggestions: {
-				call: '+77778251111',
-				display: '+7 777 825 11 11'
+				call: '+996551631111',
+				display: '+996 551 63-11-11'
 			},
 		},
 		branches: [

@@ -17,7 +17,6 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { changeEmail, changeFio, changePhone } from '../store/actions/profile';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
-
 const styles = EStyleSheet.create({
 	page: {
 		flex: 1,

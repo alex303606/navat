@@ -6,7 +6,7 @@ import { clearBasket, decreaseItem, deleteItem, increaseItem } from '../store/ac
 import { connect } from 'react-redux';
 import { RectButton, Swipeable } from 'react-native-gesture-handler';
 import ImageWithLoader from '../components/ImageWithLoader';
-import { Bold, Description, Label, LittleText, SmallText } from '../components/Texts';
+import { Bold, Description, H2, Label, LittleText, SmallText, Text } from '../components/Texts';
 import Button from '../components/Button';
 import { translate } from '../localization/i18n';
 import Price from '../components/Price';
@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { assemble, normalizeHeight } from '../utils/utils';
 import CustomIcon from '../components/CustomIcon';
+import CustomModal from '../components/CustomModal';
 
 Icon.loadFont();
 
@@ -148,6 +149,10 @@ class BasketScreen extends Component {
 	row: Array<any> = [];
 	prevOpenedRow = undefined;
 	
+	state = {
+		modalVisible: false,
+	};
+	
 	componentDidMount() {
 		if (this.props.items.length > 0 && !this.props.navigation.getParam('clearBasket')) {
 			this.props.navigation.setParams({clearBasket: this.props.clearBasket});
@@ -166,11 +171,6 @@ class BasketScreen extends Component {
 			return acc + item.amount;
 		}, 0);
 		
-		let shippingPrice = countries[this.props.location].deliveryPrice;
-		if (this.props.totalPrice > countries[this.props.location].deliveryThreshold) {
-			shippingPrice = countries[this.props.location].deliveryAfterSalePrice;
-		}
-		//const totalPrice = this.props.totalPrice + shippingPrice + this.props.containers.price;
 		const totalPrice = this.props.totalPrice;
 		const disabledOrderButton = !totalAmount;
 		
@@ -209,21 +209,6 @@ class BasketScreen extends Component {
 				<View style={[styles.basketFooter, disabledOrderButton && {minHeight: 'auto', borderTopWidth: 0}]}>
 					{(!!this.props.totalPrice || !!this.props.containers.amount || !!totalAmount) &&
 					<View style={styles.basketFooterInfo}>
-						{/*{!!this.props.totalPrice &&*/}
-						{/*<SmallText>*/}
-						{/*	{assemble(translate('shippingPrice'), {price: shippingPrice})}*/}
-						{/*</SmallText>*/}
-						{/*}*/}
-						{/*{!!this.props.containers.amount && !!this.props.containers.price &&*/}
-						{/*<Fragment>*/}
-						{/*	<SmallText>*/}
-						{/*		{assemble(translate('numberOfContainers'), {amount: this.props.containers.amount})}*/}
-						{/*	</SmallText>*/}
-						{/*	<SmallText>*/}
-						{/*		{assemble(translate('containersPrice'), {price: this.props.containers.price})}*/}
-						{/*	</SmallText>*/}
-						{/*</Fragment>*/}
-						{/*}*/}
 						{!!totalAmount &&
 						<SmallText>
 							{assemble(translate('itemsInBasket'), {totalAmount})}
@@ -239,9 +224,21 @@ class BasketScreen extends Component {
 						}
 					/>
 				</View>
+				<CustomModal
+					setModalVisible={this.toggleModal}
+					modalVisible={this.state.modalVisible}>
+					<View style={{paddingHorizontal: 20, paddingBottom: 20}}>
+						<H2 style={{textAlign: 'center', marginBottom: 20}}>Доставка</H2>
+						<Text style={{textAlign: 'center'}}>
+							{`Доставка осуществляется бесплатно, \n если Ваш заказ составляет выше \n 250 cом.`}
+						</Text>
+					</View>
+				</CustomModal>
 			</View>
 		);
 	}
+	
+	toggleModal = () => this.setState({modalVisible: !this.state.modalVisible});
 	
 	renderSeparator = () => <View style={styles.separator}/>;
 	
@@ -249,7 +246,10 @@ class BasketScreen extends Component {
 		if (disabledOrderButton) {
 			return this.navigateToMenu();
 		}
-		return this.props.navigation.navigate('SelectAddress');
+		if (this.props.totalPrice < countries[this.props.location].deliveryThreshold) {
+			return this.toggleModal();
+		}
+		return this.props.navigation.navigate('Checkout');
 	};
 	
 	renderLeftActions = (id) => () => {
@@ -349,7 +349,6 @@ class BasketScreen extends Component {
 					</View>
 				</Swipeable>
 			</View>
-		
 		);
 	};
 	

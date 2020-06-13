@@ -23,7 +23,7 @@ const cat = [
 		color: '#F52D56',
 	},
 	{
-		title: 'Хан самса',
+		title: 'Хан-Самсы',
 		icon: 'hansamsi',
 		color: '#5552D3',
 	},
@@ -68,7 +68,12 @@ const cat = [
 		color: '#56CCF2',
 	},
 	{
-		title: 'Напитки',
+		title: 'Спиртные напитки',
+		icon: 'banquet-menu',
+		color: '#BDBDBD',
+	},
+	{
+		title: 'Бар',
 		icon: 'drinks',
 		color: '#BDBDBD',
 	},
@@ -82,8 +87,9 @@ const initialState = {
 
 const addIcons = categories => {
 	return categories.map((x, index) => {
-		x.icon = cat[index] && cat[index].icon ? cat[index].icon : 'breakfast';
-		x.color = cat[index] && cat[index].color ? cat[index].color : '#BDBDBD';
+		const item = cat.find(y => y.title === x.title);
+		x.icon = item && item.icon ? item.icon : 'banquet-menu';
+		x.color = item && item.color ? item.color : '#BDBDBD';
 		return x;
 	});
 };
