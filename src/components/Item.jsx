@@ -53,8 +53,7 @@ const styles = EStyleSheet.create({
     },
     textStyle: {
         fontSize: '22rem',
-        lineHeight: '22rem',
-        height: '19rem',
+        lineHeight: '30rem',
     },
     smallTextStyle: {
         fontSize: '13rem',

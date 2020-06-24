@@ -41,7 +41,9 @@ const styles = EStyleSheet.create({
 		borderColor: config.GreyColor,
 	},
 	buttonStyle: {
-		width: '104rem',
+		minWidth: '104rem',
+		width: 'auto',
+		paddingHorizontal: '10rem',
 		marginRight: '40rem',
 	},
 	textStyle: {
