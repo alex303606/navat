@@ -288,6 +288,9 @@ class HomeScreen extends Component {
 			x: 0,
 			y: styles.$4,
 		};
+		
+		const banner = (this.props.banners && !!this.props.banners.length && !!this.props.banners[0]) ? {uri: this.props.banners[0]} : stock;
+		
 		return (
 			<ScreenContainer style={styles.page}>
 				<ScrollView
@@ -298,7 +301,7 @@ class HomeScreen extends Component {
 				>
 					<View style={styles.header}>
 						<BoxShadow setting={shadowOpt}>
-							<ImageBackground source={stock} style={styles.headerImage}/>
+							<ImageBackground source={banner} style={styles.headerImage}/>
 						</BoxShadow>
 					</View>
 					<View style={styles.section}>
@@ -355,6 +358,7 @@ const mapStateToProps = state => ({
 	popularDishes: state.menu.popularDishes,
 	categories: state.menu.categories,
 	branches: state.menu.branches,
+	banners: state.menu.banners,
 });
 
 export default connect(mapStateToProps, null)(HomeScreen);

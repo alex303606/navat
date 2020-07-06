@@ -82,6 +82,7 @@ const initialState = {
 	popularDishes: [],
 	categories: [],
 	branches: [],
+	banners: [],
 };
 
 const addIcons = categories => {
@@ -117,7 +118,7 @@ const menuReducer = (state = initialState, action) => {
 				categories: addIcons(action.categories),
 			};
 		case GET_BRANCHES_SUCCESS:
-			return {...state, branches: action.branches};
+			return {...state, branches: action.data.branches, banners: action.data.banners};
 		default:
 			return state;
 	}

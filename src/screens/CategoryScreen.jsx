@@ -75,7 +75,9 @@ class CategoryScreen extends Component {
 	
 	renderSeparator = () => <View style={styles.separator}/>;
 	
-	keyExtractor = (item) => item.title;
+	keyExtractor = (item) => {
+		return item.id;
+	}
 }
 
 const mapStateToProps = state => ({

@@ -24,7 +24,7 @@ export const getBranches = () => {
 		return axios.get('/branches.json').then(
 			response => {
 				if (response && response.data && response.data.branches) {
-					return dispatch(getBranchesSuccess(response.data.branches));
+					return dispatch(getBranchesSuccess(response.data));
 				}
 			},
 			error => {
@@ -34,8 +34,8 @@ export const getBranches = () => {
 	};
 };
 
-const getBranchesSuccess = branches => {
-	return {type: GET_BRANCHES_SUCCESS, branches};
+const getBranchesSuccess = data => {
+	return {type: GET_BRANCHES_SUCCESS, data};
 };
 
 const getBranchesFailure = error => {
