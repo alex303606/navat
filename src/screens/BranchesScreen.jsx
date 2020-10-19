@@ -27,7 +27,7 @@ const styles = EStyleSheet.create({
 });
 
 const BranchesScreen = props => {
-    const branch = props.navigation.getParam('branch');
+    const branch = props.branches[0];
 
     return (
         <View style={styles.page}>

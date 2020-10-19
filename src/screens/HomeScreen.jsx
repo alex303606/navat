@@ -356,7 +356,7 @@ class HomeScreen extends Component {
                             navigation={this.props.navigation} targetScreen='Branches'
                             title={translate('navigationTitle.Branches')}/>
                         <Slide
-                            onPress={() => this.props.navigation.navigate('Branches', {branch: this.props.branches[0]})}
+                            onPress={() => this.props.navigation.navigate('Branches')}
                             {...this.props.branches[0]}
                         />
                     </View>
