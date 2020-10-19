@@ -1,11 +1,11 @@
 {
-  "name": "Navat",
+  "name": "Skyberry",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "android": "react-native run-android --variant=kgDebug",
-    "androidReleaseBuild": "cd android && ./gradlew clean && ./gradlew bundleKgRelease",
-    "androidApkBuild": "cd android && ./gradlew clean && ./gradlew bundleKgRelease",
+    "android": "react-native run-android --variant=skyberryDebug",
+    "androidReleaseBuild": "cd android && ./gradlew clean && ./gradlew bundleSkyberryRelease",
+    "androidApkBuild": "cd android && ./gradlew clean && ./gradlew bundleSkyberryRelease",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
@@ -27,6 +27,7 @@
     "react-native-i18n": "^2.0.15",
     "react-native-image-crop-picker": "^0.28.0",
     "react-native-image-progress": "^1.1.1",
+    "react-native-image-slider-box": "^1.0.12",
     "react-native-iphone-x-helper": "^1.2.1",
     "react-native-keyboard-spacer": "^0.4.1",
     "react-native-masked-text": "^1.13.0",

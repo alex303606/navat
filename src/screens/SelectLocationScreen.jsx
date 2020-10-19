@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectLocation } from '../store/actions/profile';
 import backGround from '../assets/images/background.png';
-import logo from '../assets/images/logo.png';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const styles = EStyleSheet.create({
@@ -52,7 +51,6 @@ class SelectLocationScreen extends React.Component {
 				/>
 				<SafeAreaView forceInset={{bottom: 'always', top: 'never'}} style={styles.page}>
 					<View style={styles.container}>
-						<Image source={logo} resizeMode='contain'/>
 						<View style={styles.containerInner}>
 							<H1 style={styles.title}>Выберите город</H1>
 							<Button

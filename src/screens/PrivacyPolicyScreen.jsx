@@ -37,7 +37,7 @@ const PrivacyPolicyScreen = () => {
 					contentContainerStyle={{flexGrow: 1}}
 				>
 					<H2 style={styles.center}>Политика Конфиденциальности
-						для мобильного приложения «Navat»
+						для мобильного приложения «SKYBERRY.KG»
 					</H2>
 					<View style={{marginBottom: 20}}>
 						<H3 style={{marginBottom: 10}}>Оператор данных и владелец</H3>
@@ -426,14 +426,6 @@ const PrivacyPolicyScreen = () => {
 							<SampleText>
 								Небольшой фрагмент данных, хранящихся в устройстве пользователя.
 							</SampleText>
-						</View>
-						<View style={{marginBottom: 20}}>
-							<Bold style={{marginBottom: 10}}>Контактная информация</Bold>
-							<SampleText style={{marginBottom: 10}}>Последнее обновление: 28 мая 2019 года.</SampleText>
-							<SampleText style={{marginBottom: 10}}>Мы ответим на все Ваши вопросы в течении 24
-								ч.</SampleText>
-							<SampleText style={{marginBottom: 10}}>Контактная информация на сайте:</SampleText>
-							<SampleText>navat.kg</SampleText>
 						</View>
 					</View>
 				</ScrollView>

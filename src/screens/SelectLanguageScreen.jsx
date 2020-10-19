@@ -16,7 +16,6 @@ import { selectLocation } from '../store/actions/profile';
 import { connect } from 'react-redux';
 
 const backGround = require('../assets/images/background.png');
-const logo = require('../assets/images/logo.png');
 
 const styles = EStyleSheet.create({
 	page: {
@@ -72,7 +71,6 @@ class SelectLanguageScreen extends React.Component {
 				/>
 				<SafeAreaView forceInset={{bottom: 'always', top: 'never'}} style={styles.page}>
 					<View style={styles.container}>
-						<Image source={logo} resizeMode='contain'/>
 						<View style={styles.containerInner}>
 							<H1 style={styles.title}>Выберите язык</H1>
 							<H1 style={[styles.title, {marginBottom: styles.$marginBottom}]}>Select language</H1>
