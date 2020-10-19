@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {connect} from 'react-redux';
 import config from '../../config';
 import {SliderBox} from "react-native-image-slider-box";
@@ -11,9 +11,6 @@ const styles = EStyleSheet.create({
         flex: 1,
         backgroundColor: config.BackgroundColor
     },
-    content: {
-        padding: '20rem',
-    },
     bold: {
         marginBottom: '5rem',
         marginTop: '30rem',
@@ -22,6 +19,10 @@ const styles = EStyleSheet.create({
         marginBottom: '11rem',
         flexDirection: 'row',
         justifyContent: 'space-between',
+    },
+    contentContainerStyle: {
+        flexGrow: 1,
+        padding: '20rem',
     },
 });
 
@@ -42,14 +43,18 @@ const BranchesScreen = props => {
                 ImageLoader={() => <View/>}
                 imageLoadingColor={'transparent'}
             />
-            <View style={styles.content}>
+            <ScrollView
+                keyboardShouldPersistTaps='handled'
+                scrollEnabled={true}
+                contentContainerStyle={styles.contentContainerStyle}
+            >
                 <Bold style={styles.bold}>{branch.name}</Bold>
                 <View style={styles.middle}>
                     <MiddleText>{branch.address}</MiddleText>
                     <MiddleText>{branch.time}</MiddleText>
                 </View>
                 <Text>{branch.about}</Text>
-            </View>
+            </ScrollView>
         </View>
     );
 };
