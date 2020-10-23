@@ -7,9 +7,14 @@ const cat = [
     color: '#F2994A',
   },
   {
-    title: 'Закуски',
+    title: 'Сэндвичи',
     icon: 'snack',
     color: '#A67E6C',
+  },
+  {
+    title: 'Закуски',
+    icon: 'bakery',
+    color: '#F52D56',
   },
   {
     title: 'Салаты',
@@ -19,7 +24,7 @@ const cat = [
   {
     title: 'Супы',
     icon: 'soups',
-    color: '#F52D56',
+    color: '#5552D3',
   },
   {
     title: 'Хан-Самсы',
@@ -28,18 +33,18 @@ const cat = [
   },
   {
     title: 'Вторые блюда',
-    icon: 'second',
+    icon: 'barbecue',
     color: '#2F80ED',
   },
   {
-    title: 'Плов',
+    title: 'Гарниры',
     icon: 'pilaf',
-    color: '#9B51E0',
+    color: '#EB5757',
   },
   {
-    title: 'Гарниры',
+    title: 'Паназиатская кухня',
     icon: 'side-dishes',
-    color: '#FFC700',
+    color: '#9B51E0',
   },
   {
     title: 'Шашлыки',
@@ -64,7 +69,7 @@ const cat = [
   {
     title: 'Соусы',
     icon: 'sauces',
-    color: '#56CCF2',
+    color: '#A3A0FF',
   },
   {
     title: 'Спиртные напитки',
@@ -75,6 +80,21 @@ const cat = [
     title: 'Бар',
     icon: 'drinks',
     color: '#BDBDBD',
+  },
+  {
+    title: 'Паста',
+    icon: 'second',
+    color: '#FFC700',
+  },
+  {
+    title: 'Детское меню',
+    icon: 'children_menu',
+    color: '#56CCF2',
+  },
+  {
+    title: 'Стейк',
+    icon: 'steak',
+    color: '#5C4135',
   },
 ];
 
