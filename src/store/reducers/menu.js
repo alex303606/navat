@@ -96,6 +96,11 @@ const cat = [
     icon: 'steak',
     color: '#5C4135',
   },
+  {
+    title: 'Стейки',
+    icon: 'steak',
+    color: '#5C4135',
+  },
 ];
 
 const initialState = {

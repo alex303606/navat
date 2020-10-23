@@ -41,7 +41,7 @@ const styles = EStyleSheet.create({
         alignItems: 'center',
         paddingTop: '7rem',
         paddingBottom: '9rem',
-        paddingHorizontal: '7rem',
+        paddingHorizontal: '5rem',
     },
     showMoreBtn: {
         flexDirection: 'row',
