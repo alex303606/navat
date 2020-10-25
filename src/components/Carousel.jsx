@@ -97,7 +97,7 @@ export const Slide = (props) => {
                         <MiddleText style={{marginBottom: styles.$8}}>{address}</MiddleText>
                         <Stars
                             disabled
-                            default={rating}
+                            default={5}
                             count={5}
                             starSize={styles.$size}
                             spacing={styles.$3}
