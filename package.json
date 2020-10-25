@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android --variant=skyberryDebug",
+    "androidBundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "androidReleaseBuild": "cd android && ./gradlew clean && ./gradlew bundleSkyberryRelease",
-    "androidApkBuild": "cd android && ./gradlew clean && ./gradlew bundleSkyberryRelease",
+    "androidApkBuild": "cd android && ./gradlew clean && ./gradlew assembleSkyberryRelease",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
