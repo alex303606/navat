@@ -3,7 +3,7 @@ import Input from './Input';
 import { translate } from '../localization/i18n';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import config, { countries } from '../../config';
-import { H2 } from './Texts';
+import {H2, Label} from './Texts';
 import { TextInputMask } from 'react-native-masked-text';
 
 const styles = EStyleSheet.create({
@@ -38,11 +38,14 @@ const styles = EStyleSheet.create({
 		fontSize: '18rem',
 		marginBottom: '10rem',
 	},
+	label: {
+		marginBottom: '10rem',
+	},
 });
 
 const CheckoutFields = (props) => {
 	const fieldsIsValid = () => !props.fieldsErrors.emailError && !props.fieldsErrors.nameError && !props.fieldsErrors.phoneError && !props.fieldsErrors.addressError;
-	
+
 	return (
 		<Fragment>
 			<Input
@@ -53,6 +56,7 @@ const CheckoutFields = (props) => {
 				value={props.name}
 				autoCompleteType={'name'}
 				label={translate('name')}/>
+			<Label style={styles.label}>{translate('phoneLabel')}</Label>
 			<TextInputMask
 				keyboardType='phone-pad'
 				underlineColorAndroid='transparent'
