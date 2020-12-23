@@ -93,7 +93,7 @@ export const ru = {
 	fillRequiredFields: 'Заполните обязательные поля',
 	showAll: 'Показать все',
 	orderAccepted: 'Ваш заказ принят',
-	returnToHome: 'Вернуться на гланую',
+	returnToHome: 'Вернуться на главную',
 	orderNumber: 'Номер заказа:',
 	portion: 'Порция',
 	pc: '1 шт',
